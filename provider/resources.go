@@ -1,38 +1,23 @@
-// Copyright 2016-2018, Pulumi Corporation.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-package xyz
+package launchdarkly
 
 import (
 	"fmt"
 	"path/filepath"
+	"unicode"
 
+	"github.com/launchdarkly/terraform-provider-launchdarkly/launchdarkly"
+	"github.com/lbrlabs/pulumi-launchdarkly/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/terraform-providers/terraform-provider-xyz/xyz"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the token components used below.
 const (
-	// This variable controls the default name of the package in the package
-	// registries for nodejs and python:
-	mainPkg = "xyz"
-	// modules:
-	mainMod = "index" // the xyz module
+	mainPkg = "launchdarkly"
+	mainMod = "index" //
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -43,73 +28,79 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+// launchDarklyMember manufactures a type token for the Launch Darkly package and the given module and type.
+func launchDarklyMember(mod string, mem string) tokens.ModuleMember {
+	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+}
+
+// launchDarklyType manufactures a type token for the Launch Darkly package and the given module and type.
+func launchDarklyType(mod string, typ string) tokens.Type {
+	return tokens.Type(launchDarklyMember(mod, typ))
+}
+
+// launchDarklyDataSource manufactures a standard resource token given a module and resource name.
+// It automatically uses the Launch Darkly package and names the file by simply lower casing the data
+// source's first character.
+func launchDarklyDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return launchDarklyMember(mod+"/"+fn, res)
+}
+
+// launchDarklyResource manufactures a standard resource token given a module and resource name.
+// It automatically uses the Launch Darkly package and names the file by simply lower casing the resource's
+// first character.
+func launchDarklyResource(mod string, res string) tokens.Type {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return launchDarklyType(mod+"/"+fn, res)
+}
+
+// func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
+// 	return &license
+// }
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(xyz.Provider())
+	p := shimv2.NewProvider(launchdarkly.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "xyz",
-		// DisplayName is a way to be able to change the casing of the provider
-		// name when being displayed on the Pulumi registry
-		DisplayName: "",
-		// The default publisher for all packages is Pulumi.
-		// Change this to your personal name (or a company name) that you
-		// would like to be shown in the Pulumi Registry if this package is published
-		// there.
-		Publisher: "Pulumi",
-		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
-		// if this package is published there.
-		//
-		// You may host a logo on a domain you control or add an SVG logo for your package
-		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
-		// PluginDownloadURL is an optional URL used to download the Provider
-		// for use in Pulumi programs
-		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing xyz cloud resources.",
-		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
-		// For all available categories, see `Keywords` in
-		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "xyz", "category/cloud"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-xyz",
-		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
-		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
-		},
+		P:                 p,
+		Name:              "launchdarkly",
+		DisplayName:       "Launch Darkly",
+		Publisher:         "lbrlabs",
+		LogoURL:           "",
+		PluginDownloadURL: "github://api.github.com/lbrlabs",
+		Description:       "A Pulumi package for creating and managing launch darkly cloud resources.",
+		Keywords:          []string{"pulumi", "launchdarkly", "lbrlabs"},
+		// License:    string(*refProviderLicense(tfbridge.MPL20LicenseType)),
+		Homepage:             "https://www.pulumi.com",
+		Repository:           "https://github.com/lbrlabs/pulumi-launchdarkly",
+		GitHubOrg:            "launchdarkly",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"launchdarkly_access_token":             {Tok: launchDarklyResource(mainMod, "AccessToken")},
+			"launchdarkly_custom_role":              {Tok: launchDarklyResource(mainMod, "CustomRole")},
+			"launchdarkly_destination":              {Tok: launchDarklyResource(mainMod, "Destination")},
+			"launchdarkly_environment":              {Tok: launchDarklyResource(mainMod, "Environment")},
+			"launchdarkly_feature_flag":             {Tok: launchDarklyResource(mainMod, "FeatureFlag")},
+			"launchdarkly_feature_flag_environment": {Tok: launchDarklyResource(mainMod, "FeatureFlagEnvironment")},
+			"launchdarkly_project":                  {Tok: launchDarklyResource(mainMod, "Project")},
+			"launchdarkly_segment":                  {Tok: launchDarklyResource(mainMod, "Segment")},
+			"launchdarkly_team_member":              {Tok: launchDarklyResource(mainMod, "TeamMember")},
+			"launchdarkly_webhook":                  {Tok: launchDarklyResource(mainMod, "Webhook")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"launchdarkly_environment":  {Tok: launchDarklyDataSource(mainMod, "getEnvironment")},
+			"launchdarkly_feature_flag": {Tok: launchDarklyDataSource(mainMod, "getFeatureFlag")},
+			"launchdarkly_feature_flag_environment": {
+				Tok: launchDarklyDataSource(mainMod, "getFeatureFlagEnvironment"),
+			},
+			"launchdarkly_project":     {Tok: launchDarklyDataSource(mainMod, "getProject")},
+			"launchdarkly_segment":     {Tok: launchDarklyDataSource(mainMod, "getSegment")},
+			"launchdarkly_team_member": {Tok: launchDarklyDataSource(mainMod, "getTeamMember")},
+			"launchdarkly_webhook":     {Tok: launchDarklyDataSource(mainMod, "getWebhook")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -120,6 +111,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			PackageName: "@lbrlabs/pulumi-launchdarkly",
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
@@ -130,10 +122,11 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
+			PackageName: "lbrlabs_pulumi_launchdarkly",
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/lbrlabs/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -141,6 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "Lbrlabs.PulumiPackage",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
