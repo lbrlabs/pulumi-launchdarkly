@@ -112,10 +112,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 			PackageName: "@lbrlabs/pulumi-launchdarkly",
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
+
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
