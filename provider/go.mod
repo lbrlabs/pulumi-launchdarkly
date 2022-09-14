@@ -10,7 +10,7 @@ replace (
 require (
 	github.com/launchdarkly/terraform-provider-launchdarkly v1.6.1-0.20211011202212-22f9dd8fbd21
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.30.0
-	github.com/pulumi/pulumi/sdk/v3 v3.39.3
+	github.com/pulumi/pulumi/sdk/v3 v3.39.4
 )
 
 require (
