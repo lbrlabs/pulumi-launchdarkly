@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const example = new launchdarkly.Segment("example", {
  *     key: "example-segment-key",

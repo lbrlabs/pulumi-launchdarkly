@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const staging = new launchdarkly.Environment("staging", {
  *     key: "staging",
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const approvalsExample = new launchdarkly.Environment("approvalsExample", {
  *     key: "approvals-example",

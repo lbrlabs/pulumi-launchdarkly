@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const numberEnv = new launchdarkly.FeatureFlagEnvironment("numberEnv", {
  *     flagId: launchdarkly_feature_flag.number.id,

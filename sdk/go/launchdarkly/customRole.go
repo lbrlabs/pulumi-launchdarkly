@@ -25,7 +25,6 @@ import (
 // import (
 //
 //	"github.com/lbrlabs/pulumi-launchdarkly/sdk/go/launchdarkly"
-//	"github.com/pulumi/pulumi-launchdarkly/sdk/go/launchdarkly"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

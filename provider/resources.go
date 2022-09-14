@@ -112,7 +112,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 			PackageName: "@lbrlabs/pulumi-launchdarkly",
-
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges

@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const buildingMaterials = new launchdarkly.FeatureFlag("buildingMaterials", {
  *     projectKey: launchdarkly_project.example.key,
@@ -53,7 +53,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as pulumi_launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const jsonExample = new launchdarkly.FeatureFlag("jsonExample", {
  *     projectKey: "example-project",
