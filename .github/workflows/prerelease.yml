@@ -1,3 +1,5 @@
+permissions:
+  contents: write
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -11,7 +13,6 @@ env:
   PULUMI_TEST_OWNER: "lbrlabs"
   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
   PYPI_USERNAME: "__token__"
-
   TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
