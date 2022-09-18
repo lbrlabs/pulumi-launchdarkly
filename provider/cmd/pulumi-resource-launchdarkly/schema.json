@@ -58,7 +58,12 @@
         "variables": {
             "accessToken": {
                 "type": "string",
-                "description": "The LaunchDarkly API key\n"
+                "description": "The LaunchDarkly API key\n",
+                "defaultInfo": {
+                    "environment": [
+                        "LAUNCHDARKLY_ACCESS_TOKEN"
+                    ]
+                }
             },
             "apiHost": {
                 "type": "string",
@@ -66,7 +71,12 @@
             },
             "oauthToken": {
                 "type": "string",
-                "description": "The LaunchDarkly OAuth token\n"
+                "description": "The LaunchDarkly OAuth token\n",
+                "defaultInfo": {
+                    "environment": [
+                        "LAUNCHDARKLY_OAUTH_TOKEN"
+                    ]
+                }
             }
         }
     },
@@ -1583,7 +1593,12 @@
         "inputProperties": {
             "accessToken": {
                 "type": "string",
-                "description": "The LaunchDarkly API key\n"
+                "description": "The LaunchDarkly API key\n",
+                "defaultInfo": {
+                    "environment": [
+                        "LAUNCHDARKLY_ACCESS_TOKEN"
+                    ]
+                }
             },
             "apiHost": {
                 "type": "string",
@@ -1591,7 +1606,12 @@
             },
             "oauthToken": {
                 "type": "string",
-                "description": "The LaunchDarkly OAuth token\n"
+                "description": "The LaunchDarkly OAuth token\n",
+                "defaultInfo": {
+                    "environment": [
+                        "LAUNCHDARKLY_OAUTH_TOKEN"
+                    ]
+                }
             }
         }
     },

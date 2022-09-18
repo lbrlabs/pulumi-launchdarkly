@@ -32,6 +32,12 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if isZero(args.AccessToken) {
+		args.AccessToken = pulumi.StringPtr(getEnvOrDefault("", nil, "LAUNCHDARKLY_ACCESS_TOKEN").(string))
+	}
+	if isZero(args.OauthToken) {
+		args.OauthToken = pulumi.StringPtr(getEnvOrDefault("", nil, "LAUNCHDARKLY_OAUTH_TOKEN").(string))
+	}
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:launchdarkly", name, args, &resource, opts...)

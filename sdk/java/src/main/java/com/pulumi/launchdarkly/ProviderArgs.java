@@ -5,6 +5,7 @@ package com.pulumi.launchdarkly;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,6 +151,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
+            $.accessToken = Codegen.stringProp("accessToken").output().arg($.accessToken).env("LAUNCHDARKLY_ACCESS_TOKEN").getNullable();
+            $.oauthToken = Codegen.stringProp("oauthToken").output().arg($.oauthToken).env("LAUNCHDARKLY_OAUTH_TOKEN").getNullable();
             return $;
         }
     }

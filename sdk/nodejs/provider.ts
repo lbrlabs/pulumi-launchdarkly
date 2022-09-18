@@ -49,9 +49,9 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessToken"] = args ? args.accessToken : undefined;
+            resourceInputs["accessToken"] = (args ? args.accessToken : undefined) ?? utilities.getEnv("LAUNCHDARKLY_ACCESS_TOKEN");
             resourceInputs["apiHost"] = args ? args.apiHost : undefined;
-            resourceInputs["oauthToken"] = args ? args.oauthToken : undefined;
+            resourceInputs["oauthToken"] = (args ? args.oauthToken : undefined) ?? utilities.getEnv("LAUNCHDARKLY_OAUTH_TOKEN");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

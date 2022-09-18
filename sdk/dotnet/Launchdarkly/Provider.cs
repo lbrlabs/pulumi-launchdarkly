@@ -86,6 +86,8 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
         public ProviderArgs()
         {
+            AccessToken = Utilities.GetEnv("LAUNCHDARKLY_ACCESS_TOKEN");
+            OauthToken = Utilities.GetEnv("LAUNCHDARKLY_OAUTH_TOKEN");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

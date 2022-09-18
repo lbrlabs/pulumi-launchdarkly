@@ -15,7 +15,7 @@ public final class Config {
  * 
  */
     public Optional<String> accessToken() {
-        return Codegen.stringProp("accessToken").config(config).get();
+        return Codegen.stringProp("accessToken").config(config).env("LAUNCHDARKLY_ACCESS_TOKEN").get();
     }
 /**
  * The LaunchDarkly host address, e.g. https://app.launchdarkly.com
@@ -29,6 +29,6 @@ public final class Config {
  * 
  */
     public Optional<String> oauthToken() {
-        return Codegen.stringProp("oauthToken").config(config).get();
+        return Codegen.stringProp("oauthToken").config(config).env("LAUNCHDARKLY_OAUTH_TOKEN").get();
     }
 }

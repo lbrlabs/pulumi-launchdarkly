@@ -13,7 +13,7 @@ const __config = new pulumi.Config("launchdarkly");
 export declare const accessToken: string | undefined;
 Object.defineProperty(exports, "accessToken", {
     get() {
-        return __config.get("accessToken");
+        return __config.get("accessToken") ?? utilities.getEnv("LAUNCHDARKLY_ACCESS_TOKEN");
     },
     enumerable: true,
 });
@@ -35,7 +35,7 @@ Object.defineProperty(exports, "apiHost", {
 export declare const oauthToken: string | undefined;
 Object.defineProperty(exports, "oauthToken", {
     get() {
-        return __config.get("oauthToken");
+        return __config.get("oauthToken") ?? utilities.getEnv("LAUNCHDARKLY_OAUTH_TOKEN");
     },
     enumerable: true,
 });

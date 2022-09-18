@@ -10,7 +10,11 @@ import (
 
 // The LaunchDarkly API key
 func GetAccessToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "launchdarkly:accessToken")
+	v, err := config.Try(ctx, "launchdarkly:accessToken")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "LAUNCHDARKLY_ACCESS_TOKEN").(string)
 }
 
 // The LaunchDarkly host address, e.g. https://app.launchdarkly.com
@@ -20,5 +24,9 @@ func GetApiHost(ctx *pulumi.Context) string {
 
 // The LaunchDarkly OAuth token
 func GetOauthToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "launchdarkly:oauthToken")
+	v, err := config.Try(ctx, "launchdarkly:oauthToken")
+	if err == nil {
+		return v
+	}
+	return getEnvOrDefault("", nil, "LAUNCHDARKLY_OAUTH_TOKEN").(string)
 }

@@ -74,10 +74,21 @@ func Provider() tfbridge.ProviderInfo {
 		Description:       "A Pulumi package for creating and managing launch darkly cloud resources.",
 		Keywords:          []string{"pulumi", "launchdarkly", "lbrlabs"},
 		// License:    string(*refProviderLicense(tfbridge.MPL20LicenseType)),
-		Homepage:             "https://www.pulumi.com",
-		Repository:           "https://github.com/lbrlabs/pulumi-launchdarkly",
-		GitHubOrg:            "launchdarkly",
-		Config:               map[string]*tfbridge.SchemaInfo{},
+		Homepage:   "https://www.pulumi.com",
+		Repository: "https://github.com/lbrlabs/pulumi-launchdarkly",
+		GitHubOrg:  "launchdarkly",
+		Config: map[string]*tfbridge.SchemaInfo{
+			"access_token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LAUNCHDARKLY_ACCESS_TOKEN"},
+				},
+			},
+			"oauth_token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"LAUNCHDARKLY_OAUTH_TOKEN"},
+				},
+			},
+		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"launchdarkly_access_token":             {Tok: launchDarklyResource(mainMod, "AccessToken")},

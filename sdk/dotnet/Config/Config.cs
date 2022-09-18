@@ -32,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
         private static readonly Pulumi.Config __config = new Pulumi.Config("launchdarkly");
 
-        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken"));
+        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken") ?? Utilities.GetEnv("LAUNCHDARKLY_ACCESS_TOKEN"));
         /// <summary>
         /// The LaunchDarkly API key
         /// </summary>
@@ -52,7 +52,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             set => _apiHost.Set(value);
         }
 
-        private static readonly __Value<string?> _oauthToken = new __Value<string?>(() => __config.Get("oauthToken"));
+        private static readonly __Value<string?> _oauthToken = new __Value<string?>(() => __config.Get("oauthToken") ?? Utilities.GetEnv("LAUNCHDARKLY_OAUTH_TOKEN"));
         /// <summary>
         /// The LaunchDarkly OAuth token
         /// </summary>

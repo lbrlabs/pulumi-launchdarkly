@@ -20,7 +20,7 @@ class _ExportableConfig(types.ModuleType):
         """
         The LaunchDarkly API key
         """
-        return __config__.get('accessToken')
+        return __config__.get('accessToken') or _utilities.get_env('LAUNCHDARKLY_ACCESS_TOKEN')
 
     @property
     def api_host(self) -> Optional[str]:
@@ -34,5 +34,5 @@ class _ExportableConfig(types.ModuleType):
         """
         The LaunchDarkly OAuth token
         """
-        return __config__.get('oauthToken')
+        return __config__.get('oauthToken') or _utilities.get_env('LAUNCHDARKLY_OAUTH_TOKEN')
 

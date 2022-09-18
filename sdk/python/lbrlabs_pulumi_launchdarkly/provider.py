@@ -23,10 +23,14 @@ class ProviderArgs:
         :param pulumi.Input[str] api_host: The LaunchDarkly host address, e.g. https://app.launchdarkly.com
         :param pulumi.Input[str] oauth_token: The LaunchDarkly OAuth token
         """
+        if access_token is None:
+            access_token = _utilities.get_env('LAUNCHDARKLY_ACCESS_TOKEN')
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
         if api_host is not None:
             pulumi.set(__self__, "api_host", api_host)
+        if oauth_token is None:
+            oauth_token = _utilities.get_env('LAUNCHDARKLY_OAUTH_TOKEN')
         if oauth_token is not None:
             pulumi.set(__self__, "oauth_token", oauth_token)
 
@@ -127,8 +131,12 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if access_token is None:
+                access_token = _utilities.get_env('LAUNCHDARKLY_ACCESS_TOKEN')
             __props__.__dict__["access_token"] = access_token
             __props__.__dict__["api_host"] = api_host
+            if oauth_token is None:
+                oauth_token = _utilities.get_env('LAUNCHDARKLY_OAUTH_TOKEN')
             __props__.__dict__["oauth_token"] = oauth_token
         super(Provider, __self__).__init__(
             'launchdarkly',
