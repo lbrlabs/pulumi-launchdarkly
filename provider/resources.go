@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:              "launchdarkly",
 		DisplayName:       "Launch Darkly",
 		Publisher:         "lbrlabs",
-		LogoURL:           "https://raw.githubusercontent.com/lbrlabs/pulumi-launchdarkly/master/assets/logo.png",
+		LogoURL:           "https://raw.githubusercontent.com/lbrlabs/pulumi-launchdarkly/master/assets/logo.svg",
 		PluginDownloadURL: "github://api.github.com/lbrlabs",
 		Description:       "A Pulumi package for creating and managing launch darkly cloud resources.",
 		Keywords:          []string{"pulumi", "launchdarkly", "lbrlabs"},

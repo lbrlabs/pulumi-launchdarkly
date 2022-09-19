@@ -10,7 +10,7 @@
     "homepage": "https://www.pulumi.com",
     "attribution": "This Pulumi package is based on the [`launchdarkly` Terraform Provider](https://github.com/launchdarkly/terraform-provider-launchdarkly).",
     "repository": "https://github.com/lbrlabs/pulumi-launchdarkly",
-    "logoUrl": "https://raw.githubusercontent.com/lbrlabs/pulumi-launchdarkly/master/assets/logo.png",
+    "logoUrl": "https://raw.githubusercontent.com/lbrlabs/pulumi-launchdarkly/master/assets/logo.svg",
     "pluginDownloadURL": "github://api.github.com/lbrlabs",
     "publisher": "lbrlabs",
     "meta": {
