@@ -22,10 +22,17 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, client_side_availabilities=None, id=None, key=None, name=None, tags=None):
+    def __init__(__self__, client_side_availabilities=None, default_client_side_availabilities=None, id=None, key=None, name=None, tags=None):
         if client_side_availabilities and not isinstance(client_side_availabilities, list):
             raise TypeError("Expected argument 'client_side_availabilities' to be a list")
+        if client_side_availabilities is not None:
+            warnings.warn("""'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""client_side_availabilities is deprecated: 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""")
+
         pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
+        if default_client_side_availabilities and not isinstance(default_client_side_availabilities, list):
+            raise TypeError("Expected argument 'default_client_side_availabilities' to be a list")
+        pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,9 +50,18 @@ class GetProjectResult:
     @pulumi.getter(name="clientSideAvailabilities")
     def client_side_availabilities(self) -> Sequence['outputs.GetProjectClientSideAvailabilityResult']:
         """
-        A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+        **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+        Please migrate to `default_client_side_availability` to maintain future compatability.
         """
         return pulumi.get(self, "client_side_availabilities")
+
+    @property
+    @pulumi.getter(name="defaultClientSideAvailabilities")
+    def default_client_side_availabilities(self) -> Sequence['outputs.GetProjectDefaultClientSideAvailabilityResult']:
+        """
+        A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+        """
+        return pulumi.get(self, "default_client_side_availabilities")
 
     @property
     @pulumi.getter
@@ -84,6 +100,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             yield self
         return GetProjectResult(
             client_side_availabilities=self.client_side_availabilities,
+            default_client_side_availabilities=self.default_client_side_availabilities,
             id=self.id,
             key=self.key,
             name=self.name,
@@ -121,6 +138,7 @@ def get_project(key: Optional[str] = None,
 
     return AwaitableGetProjectResult(
         client_side_availabilities=__ret__.client_side_availabilities,
+        default_client_side_availabilities=__ret__.default_client_side_availabilities,
         id=__ret__.id,
         key=__ret__.key,
         name=__ret__.name,

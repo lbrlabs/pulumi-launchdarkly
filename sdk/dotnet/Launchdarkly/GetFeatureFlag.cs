@@ -40,7 +40,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFeatureFlagResult> InvokeAsync(GetFeatureFlagArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly feature flag data source.
@@ -70,7 +70,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFeatureFlagResult> Invoke(GetFeatureFlagInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeatureFlagResult>("launchdarkly:index/getFeatureFlag:getFeatureFlag", args ?? new GetFeatureFlagInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -78,6 +78,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     {
         [Input("archived")]
         public bool? Archived { get; set; }
+
+        [Input("clientSideAvailabilities")]
+        private List<Inputs.GetFeatureFlagClientSideAvailabilityArgs>? _clientSideAvailabilities;
+
+        /// <summary>
+        /// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        public List<Inputs.GetFeatureFlagClientSideAvailabilityArgs> ClientSideAvailabilities
+        {
+            get => _clientSideAvailabilities ?? (_clientSideAvailabilities = new List<Inputs.GetFeatureFlagClientSideAvailabilityArgs>());
+            set => _clientSideAvailabilities = value;
+        }
 
         [Input("customProperties")]
         private List<Inputs.GetFeatureFlagCustomPropertyArgs>? _customProperties;
@@ -103,6 +115,9 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("description")]
         public string? Description { get; set; }
 
+        /// <summary>
+        /// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+        /// </summary>
         [Input("includeInSnippet")]
         public bool? IncludeInSnippet { get; set; }
 
@@ -165,6 +180,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
+        [Input("clientSideAvailabilities")]
+        private InputList<Inputs.GetFeatureFlagClientSideAvailabilityInputArgs>? _clientSideAvailabilities;
+
+        /// <summary>
+        /// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        public InputList<Inputs.GetFeatureFlagClientSideAvailabilityInputArgs> ClientSideAvailabilities
+        {
+            get => _clientSideAvailabilities ?? (_clientSideAvailabilities = new InputList<Inputs.GetFeatureFlagClientSideAvailabilityInputArgs>());
+            set => _clientSideAvailabilities = value;
+        }
+
         [Input("customProperties")]
         private InputList<Inputs.GetFeatureFlagCustomPropertyInputArgs>? _customProperties;
 
@@ -189,6 +216,9 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+        /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
@@ -271,7 +301,10 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly bool? IncludeInSnippet;
+        /// <summary>
+        /// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+        /// </summary>
+        public readonly bool IncludeInSnippet;
         /// <summary>
         /// The unique custom property key.
         /// </summary>
@@ -316,7 +349,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
             string id,
 
-            bool? includeInSnippet,
+            bool includeInSnippet,
 
             string key,
 

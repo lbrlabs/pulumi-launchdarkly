@@ -17,7 +17,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Outputs
         /// <summary>
         /// When set to true, this flag is available to SDKs using the client-side ID.
         /// </summary>
-        public readonly bool? UsingEnvironmentId;
+        public readonly bool UsingEnvironmentId;
         /// <summary>
         /// When set to true, this flag is available to SDKs using a mobile key.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Outputs
 
         [OutputConstructor]
         private GetFeatureFlagClientSideAvailabilityResult(
-            bool? usingEnvironmentId,
+            bool usingEnvironmentId,
 
             bool? usingMobileKey)
         {

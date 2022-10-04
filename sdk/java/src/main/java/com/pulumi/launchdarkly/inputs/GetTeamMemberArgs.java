@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTeamMemberArgs extends com.pulumi.resources.InvokeArgs {
@@ -28,10 +30,26 @@ public final class GetTeamMemberArgs extends com.pulumi.resources.InvokeArgs {
         return this.email;
     }
 
+    /**
+     * The 24 character alphanumeric ID of the team member.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return The 24 character alphanumeric ID of the team member.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
     private GetTeamMemberArgs() {}
 
     private GetTeamMemberArgs(GetTeamMemberArgs $) {
         this.email = $.email;
+        this.id = $.id;
     }
 
     public static Builder builder() {
@@ -71,6 +89,27 @@ public final class GetTeamMemberArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder email(String email) {
             return email(Output.of(email));
+        }
+
+        /**
+         * @param id The 24 character alphanumeric ID of the team member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id The 24 character alphanumeric ID of the team member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         public GetTeamMemberArgs build() {

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AccessTokenInlineRole {
     /**
@@ -46,6 +47,29 @@ export interface AccessTokenPolicyStatement {
     notResources?: string[];
     /**
      * - The list of resource specifiers defining the resources to which the statement applies.
+     */
+    resources?: string[];
+}
+
+export interface AuditLogSubscriptionStatement {
+    /**
+     * The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+     */
+    actions?: string[];
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    /**
+     * The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+     */
+    notActions?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
      */
     resources?: string[];
 }
@@ -111,6 +135,17 @@ export interface EnvironmentApprovalSetting {
     requiredApprovalTags?: string[];
 }
 
+export interface FeatureFlagClientSideAvailability {
+    /**
+     * Whether this flag is available to SDKs using the client-side ID.
+     */
+    usingEnvironmentId: boolean;
+    /**
+     * Whether this flag is available to SDKs using a mobile key.
+     */
+    usingMobileKey?: boolean;
+}
+
 export interface FeatureFlagCustomProperty {
     /**
      * The unique custom property key.
@@ -143,7 +178,7 @@ export interface FeatureFlagEnvironmentFallthrough {
      */
     bucketBy?: string;
     /**
-     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
      */
     rolloutWeights?: number[];
     /**
@@ -173,7 +208,7 @@ export interface FeatureFlagEnvironmentRule {
      */
     clauses?: outputs.FeatureFlagEnvironmentRuleClause[];
     /**
-     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
      */
     rolloutWeights?: number[];
     /**
@@ -231,6 +266,27 @@ export interface FeatureFlagVariation {
     value: string;
 }
 
+export interface FlagTriggerInstructions {
+    kind: string;
+}
+
+export interface GetAuditLogSubscriptionStatement {
+    actions?: string[];
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    notActions?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    resources?: string[];
+}
+
 export interface GetEnvironmentApprovalSetting {
     canApplyDeclinedChanges?: boolean;
     canReviewOwnRequest?: boolean;
@@ -243,7 +299,7 @@ export interface GetFeatureFlagClientSideAvailability {
     /**
      * When set to true, this flag is available to SDKs using the client-side ID.
      */
-    usingEnvironmentId?: boolean;
+    usingEnvironmentId: boolean;
     /**
      * When set to true, this flag is available to SDKs using a mobile key.
      */
@@ -370,6 +426,20 @@ export interface GetFeatureFlagVariation {
     value: string;
 }
 
+export interface GetFlagTriggerInstructions {
+    kind: string;
+}
+
+export interface GetMetricUrl {
+    /**
+     * The metric type. Available choices are `click`, `custom`, and `pageview`.
+     */
+    kind: string;
+    pattern?: string;
+    substring?: string;
+    url?: string;
+}
+
 export interface GetProjectClientSideAvailability {
     /**
      * When set to true, the flags in this project are available to SDKs using the client-side ID by default.
@@ -379,6 +449,34 @@ export interface GetProjectClientSideAvailability {
      * When set to true, the flags in this project are available to SDKs using a mobile key by default.
      */
     usingMobileKey?: boolean;
+}
+
+export interface GetProjectDefaultClientSideAvailability {
+    /**
+     * When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+     */
+    usingEnvironmentId: boolean;
+    /**
+     * When set to true, the flags in this project are available to SDKs using a mobile key by default.
+     */
+    usingMobileKey: boolean;
+}
+
+export interface GetRelayProxyConfigurationPolicy {
+    actions?: string[];
+    /**
+     * Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    notActions?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: string[];
 }
 
 export interface GetSegmentRule {
@@ -419,6 +517,14 @@ export interface GetSegmentRuleClause {
     values: string[];
 }
 
+export interface GetTeamMaintainer {
+    email: string;
+    firstName: string;
+    id: string;
+    lastName: string;
+    role: string;
+}
+
 export interface GetWebhookStatement {
     actions?: string[];
     /**
@@ -434,6 +540,36 @@ export interface GetWebhookStatement {
      * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
      */
     resources?: string[];
+}
+
+export interface MetricUrl {
+    /**
+     * The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+     */
+    kind: string;
+    /**
+     * The regex pattern to match by.
+     */
+    pattern?: string;
+    /**
+     * The URL substring to match by.
+     */
+    substring?: string;
+    /**
+     * The exact or canonical URL.
+     */
+    url?: string;
+}
+
+export interface ProjectDefaultClientSideAvailability {
+    /**
+     * Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `defaultClientSideAvailability`.
+     */
+    usingEnvironmentId: boolean;
+    /**
+     * Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `defaultClientSideAvailability`.
+     */
+    usingMobileKey: boolean;
 }
 
 export interface ProjectEnvironment {
@@ -457,7 +593,7 @@ export interface ProjectEnvironment {
      */
     defaultTtl?: number;
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      */
     key: string;
     mobileKey: string;
@@ -502,6 +638,29 @@ export interface ProjectEnvironmentApprovalSetting {
     requiredApprovalTags?: string[];
 }
 
+export interface RelayProxyConfigurationPolicy {
+    /**
+     * The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     */
+    actions?: string[];
+    /**
+     * - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    /**
+     * The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     */
+    notActions?: string[];
+    /**
+     * - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: string[];
+    /**
+     * - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: string[];
+}
+
 export interface SegmentRule {
     /**
      * The attribute by which to group users together.
@@ -512,7 +671,7 @@ export interface SegmentRule {
      */
     clauses?: outputs.SegmentRuleClause[];
     /**
-     * The integer weight of the rule (between 0 and 100000).
+     * The integer weight of the rule (between 1 and 100000).
      */
     weight?: number;
 }

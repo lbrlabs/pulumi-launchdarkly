@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a LaunchDarkly Data Export Destination resource.
  * 
+ * &gt; **Note:** Data Export is available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ * 
  * Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
  * 
  * To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
@@ -236,28 +238,28 @@ public class Destination extends com.pulumi.resources.CustomResource {
         return this.config;
     }
     /**
-     * - The environment key.
+     * - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="envKey", type=String.class, parameters={})
     private Output<String> envKey;
 
     /**
-     * @return - The environment key.
+     * @return - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> envKey() {
         return this.envKey;
     }
     /**
-     * - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+     * - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="kind", type=String.class, parameters={})
     private Output<String> kind;
 
     /**
-     * @return - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+     * @return - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> kind() {
@@ -292,14 +294,14 @@ public class Destination extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.on);
     }
     /**
-     * - The LaunchDarkly project key.
+     * - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="projectKey", type=String.class, parameters={})
     private Output<String> projectKey;
 
     /**
-     * @return - The LaunchDarkly project key.
+     * @return - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> projectKey() {

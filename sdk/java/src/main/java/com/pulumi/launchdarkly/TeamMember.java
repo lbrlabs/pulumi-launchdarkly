@@ -81,14 +81,14 @@ public class TeamMember extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customRoles);
     }
     /**
-     * The unique email address associated with the team member.
+     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
-     * @return The unique email address associated with the team member.
+     * @return The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> email() {
@@ -123,14 +123,14 @@ public class TeamMember extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lastName);
     }
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
     /**
-     * @return The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+     * @return The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
      * 
      */
     public Output<String> role() {

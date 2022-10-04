@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.launchdarkly.FeatureFlagArgs;
 import com.pulumi.launchdarkly.Utilities;
 import com.pulumi.launchdarkly.inputs.FeatureFlagState;
+import com.pulumi.launchdarkly.outputs.FeatureFlagClientSideAvailability;
 import com.pulumi.launchdarkly.outputs.FeatureFlagCustomProperty;
 import com.pulumi.launchdarkly.outputs.FeatureFlagDefaults;
 import com.pulumi.launchdarkly.outputs.FeatureFlagVariation;
@@ -165,6 +166,20 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.archived);
     }
     /**
+     * A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    @Export(name="clientSideAvailabilities", type=List.class, parameters={FeatureFlagClientSideAvailability.class})
+    private Output<List<FeatureFlagClientSideAvailability>> clientSideAvailabilities;
+
+    /**
+     * @return A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    public Output<List<FeatureFlagClientSideAvailability>> clientSideAvailabilities() {
+        return this.clientSideAvailabilities;
+    }
+    /**
      * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
@@ -207,28 +222,32 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
     @Export(name="includeInSnippet", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> includeInSnippet;
+    private Output<Boolean> includeInSnippet;
 
     /**
-     * @return Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * @return **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
      * 
      */
-    public Output<Optional<Boolean>> includeInSnippet() {
-        return Codegen.optional(this.includeInSnippet);
+    public Output<Boolean> includeInSnippet() {
+        return this.includeInSnippet;
     }
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The unique feature flag key that references the flag in your application code.
+     * @return The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {
@@ -265,14 +284,14 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The feature flag&#39;s project key.
+     * The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="projectKey", type=String.class, parameters={})
     private Output<String> projectKey;
 
     /**
-     * @return The feature flag&#39;s project key.
+     * @return The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> projectKey() {

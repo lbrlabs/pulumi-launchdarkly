@@ -21,11 +21,11 @@ class TeamMemberArgs:
                  role: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TeamMember resource.
-        :param pulumi.Input[str] email: The unique email address associated with the team member.
+        :param pulumi.Input[str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
         :param pulumi.Input[str] first_name: The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
         :param pulumi.Input[str] last_name: The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
-        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         pulumi.set(__self__, "email", email)
         if custom_roles is not None:
@@ -41,7 +41,7 @@ class TeamMemberArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        The unique email address associated with the team member.
+        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -89,7 +89,7 @@ class TeamMemberArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 
@@ -109,10 +109,10 @@ class _TeamMemberState:
         """
         Input properties used for looking up and filtering TeamMember resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
-        :param pulumi.Input[str] email: The unique email address associated with the team member.
+        :param pulumi.Input[str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] first_name: The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
         :param pulumi.Input[str] last_name: The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
-        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         if custom_roles is not None:
             pulumi.set(__self__, "custom_roles", custom_roles)
@@ -141,7 +141,7 @@ class _TeamMemberState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique email address associated with the team member.
+        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -177,7 +177,7 @@ class _TeamMemberState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 
@@ -228,10 +228,10 @@ class TeamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
-        :param pulumi.Input[str] email: The unique email address associated with the team member.
+        :param pulumi.Input[str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] first_name: The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
         :param pulumi.Input[str] last_name: The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
-        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         ...
     @overload
@@ -326,10 +326,10 @@ class TeamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
-        :param pulumi.Input[str] email: The unique email address associated with the team member.
+        :param pulumi.Input[str] email: The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] first_name: The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
         :param pulumi.Input[str] last_name: The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
-        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        :param pulumi.Input[str] role: The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -354,7 +354,7 @@ class TeamMember(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        The unique email address associated with the team member.
+        The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "email")
 
@@ -378,7 +378,7 @@ class TeamMember(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
         """
-        The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         """
         return pulumi.get(self, "role")
 

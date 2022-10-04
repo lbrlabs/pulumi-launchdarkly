@@ -2,15 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Provides a LaunchDarkly custom role resource.
  *
- * This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+ * > **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
  *
- * > **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+ * This resource allows you to create and manage custom roles within your LaunchDarkly organization.
  *
  * ## Example Usage
  *
@@ -73,11 +74,15 @@ export class CustomRole extends pulumi.CustomResource {
     }
 
     /**
+     * The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+     */
+    public readonly basePermissions!: pulumi.Output<string | undefined>;
+    /**
      * The description of the custom role.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The unique key that references the custom role.
+     * The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -106,6 +111,7 @@ export class CustomRole extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomRoleState | undefined;
+            resourceInputs["basePermissions"] = state ? state.basePermissions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -116,6 +122,7 @@ export class CustomRole extends pulumi.CustomResource {
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
+            resourceInputs["basePermissions"] = args ? args.basePermissions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -132,11 +139,15 @@ export class CustomRole extends pulumi.CustomResource {
  */
 export interface CustomRoleState {
     /**
+     * The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+     */
+    basePermissions?: pulumi.Input<string>;
+    /**
      * The description of the custom role.
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique key that references the custom role.
+     * The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -158,11 +169,15 @@ export interface CustomRoleState {
  */
 export interface CustomRoleArgs {
     /**
+     * The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+     */
+    basePermissions?: pulumi.Input<string>;
+    /**
      * The description of the custom role.
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique key that references the custom role.
+     * The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**

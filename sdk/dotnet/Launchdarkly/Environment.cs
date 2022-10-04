@@ -118,7 +118,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<int?> DefaultTtl { get; private set; } = null!;
 
         /// <summary>
-        /// The project-unique key for the environment.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// - The environment's project key.
+        /// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -183,6 +183,12 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/lbrlabs",
+                AdditionalSecretOutputs =
+                {
+                    "apiKey",
+                    "clientSideId",
+                    "mobileKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -239,7 +245,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -251,7 +257,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// - The environment's project key.
+        /// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -288,11 +294,21 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
     public sealed class EnvironmentState : global::Pulumi.ResourceArgs
     {
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
         /// <summary>
         /// The environment's SDK key.
         /// </summary>
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("approvalSettings")]
         private InputList<Inputs.EnvironmentApprovalSettingGetArgs>? _approvalSettings;
@@ -302,11 +318,21 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             set => _approvalSettings = value;
         }
 
+        [Input("clientSideId")]
+        private Input<string>? _clientSideId;
+
         /// <summary>
         /// The environment's client-side ID.
         /// </summary>
-        [Input("clientSideId")]
-        public Input<string>? ClientSideId { get; set; }
+        public Input<string>? ClientSideId
+        {
+            get => _clientSideId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSideId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The color swatch as an RGB hex value with no leading `#`. For example: `000000`.
@@ -333,16 +359,26 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        [Input("mobileKey")]
+        private Input<string>? _mobileKey;
+
         /// <summary>
         /// The environment's mobile key.
         /// </summary>
-        [Input("mobileKey")]
-        public Input<string>? MobileKey { get; set; }
+        public Input<string>? MobileKey
+        {
+            get => _mobileKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _mobileKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the environment.
@@ -351,7 +387,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// - The environment's project key.
+        /// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

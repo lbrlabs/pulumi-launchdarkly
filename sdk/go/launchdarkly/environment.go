@@ -106,13 +106,13 @@ type Environment struct {
 	DefaultTrackEvents pulumi.BoolPtrOutput `pulumi:"defaultTrackEvents"`
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl pulumi.IntPtrOutput `pulumi:"defaultTtl"`
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey pulumi.StringOutput `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// - The environment's project key.
+	// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrOutput `pulumi:"requireComments"`
@@ -138,6 +138,12 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.ProjectKey == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectKey'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+		"clientSideId",
+		"mobileKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource Environment
 	err := ctx.RegisterResource("launchdarkly:index/environment:Environment", name, args, &resource, opts...)
@@ -174,13 +180,13 @@ type environmentState struct {
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The environment's mobile key.
 	MobileKey *string `pulumi:"mobileKey"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
-	// - The environment's project key.
+	// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments *bool `pulumi:"requireComments"`
@@ -204,13 +210,13 @@ type EnvironmentState struct {
 	DefaultTrackEvents pulumi.BoolPtrInput
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The environment's mobile key.
 	MobileKey pulumi.StringPtrInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
-	// - The environment's project key.
+	// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrInput
@@ -234,11 +240,11 @@ type environmentArgs struct {
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The name of the environment.
 	Name *string `pulumi:"name"`
-	// - The environment's project key.
+	// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments *bool `pulumi:"requireComments"`
@@ -259,11 +265,11 @@ type EnvironmentArgs struct {
 	DefaultTrackEvents pulumi.BoolPtrInput
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl pulumi.IntPtrInput
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The name of the environment.
 	Name pulumi.StringPtrInput
-	// - The environment's project key.
+	// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
 	RequireComments pulumi.BoolPtrInput
@@ -394,7 +400,7 @@ func (o EnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Environment) pulumi.IntPtrOutput { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
-// The project-unique key for the environment.
+// The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o EnvironmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -409,7 +415,7 @@ func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// - The environment's project key.
+// - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o EnvironmentOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

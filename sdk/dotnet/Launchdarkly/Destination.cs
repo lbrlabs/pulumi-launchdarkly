@@ -13,6 +13,8 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly Data Export Destination resource.
     /// 
+    /// &gt; **Note:** Data Export is available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+    /// 
     /// Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
     /// 
     /// To learn more about data export, read [Data Export Documentation](https://docs.launchdarkly.com/integrations/data-export).
@@ -178,13 +180,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableDictionary<string, string>> Config { get; private set; } = null!;
 
         /// <summary>
-        /// - The environment key.
+        /// - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("envKey")]
         public Output<string> EnvKey { get; private set; } = null!;
 
         /// <summary>
-        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -202,7 +204,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<bool?> On { get; private set; } = null!;
 
         /// <summary>
-        /// - The LaunchDarkly project key.
+        /// - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -273,13 +275,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// - The environment key.
+        /// - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
 
         /// <summary>
-        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -297,7 +299,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<bool>? On { get; set; }
 
         /// <summary>
-        /// - The LaunchDarkly project key.
+        /// - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -335,13 +337,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// - The environment key.
+        /// - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey")]
         public Input<string>? EnvKey { get; set; }
 
         /// <summary>
-        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        /// - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -359,7 +361,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<bool>? On { get; set; }
 
         /// <summary>
-        /// - The LaunchDarkly project key.
+        /// - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

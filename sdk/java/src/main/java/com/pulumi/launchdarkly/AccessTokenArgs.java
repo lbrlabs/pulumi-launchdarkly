@@ -36,14 +36,14 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default API version for this token. Defaults to the latest API version.
+     * The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
      * 
      */
     @Import(name="defaultApiVersion")
     private @Nullable Output<Integer> defaultApiVersion;
 
     /**
-     * @return The default API version for this token. Defaults to the latest API version.
+     * @return The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
      * 
      */
     public Optional<Output<Integer>> defaultApiVersion() {
@@ -54,10 +54,10 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
      * An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
      * 
      * @deprecated
-     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarly provider
+     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarkly provider
      * 
      */
-    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider */
+    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider */
     @Import(name="expire")
     private @Nullable Output<Integer> expire;
 
@@ -65,10 +65,10 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
      * @return An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
      * 
      * @deprecated
-     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarly provider
+     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarkly provider
      * 
      */
-    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider */
+    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider */
     public Optional<Output<Integer>> expire() {
         return Optional.ofNullable(this.expire);
     }
@@ -144,14 +144,14 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+     * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
      * 
      */
     @Import(name="serviceToken")
     private @Nullable Output<Boolean> serviceToken;
 
     /**
-     * @return Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+     * @return Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
      * 
      */
     public Optional<Output<Boolean>> serviceToken() {
@@ -221,7 +221,7 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultApiVersion The default API version for this token. Defaults to the latest API version.
+         * @param defaultApiVersion The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultApiVersion The default API version for this token. Defaults to the latest API version.
+         * @param defaultApiVersion The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
          * 
          * @return builder
          * 
@@ -247,10 +247,10 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarly provider
+         * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarkly provider
          * 
          */
-        @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider */
+        @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider */
         public Builder expire(@Nullable Output<Integer> expire) {
             $.expire = expire;
             return this;
@@ -262,10 +262,10 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarly provider
+         * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarkly provider
          * 
          */
-        @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider */
+        @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider */
         public Builder expire(Integer expire) {
             return expire(Output.of(expire));
         }
@@ -390,7 +390,7 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceToken Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+         * @param serviceToken Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class AccessTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceToken Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+         * @param serviceToken Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
          * 
          * @return builder
          * 

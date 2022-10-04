@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -93,7 +94,7 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The segment's environment key.
+     * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly envKey!: pulumi.Output<string>;
     /**
@@ -105,7 +106,7 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly includeds!: pulumi.Output<string[] | undefined>;
     /**
-     * The unique key that references the segment.
+     * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -113,7 +114,7 @@ export class Segment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The segment's project key.
+     * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly projectKey!: pulumi.Output<string>;
     /**
@@ -188,7 +189,7 @@ export interface SegmentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The segment's environment key.
+     * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     envKey?: pulumi.Input<string>;
     /**
@@ -200,7 +201,7 @@ export interface SegmentState {
      */
     includeds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique key that references the segment.
+     * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -208,7 +209,7 @@ export interface SegmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The segment's project key.
+     * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string>;
     /**
@@ -230,7 +231,7 @@ export interface SegmentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The segment's environment key.
+     * The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     envKey: pulumi.Input<string>;
     /**
@@ -242,7 +243,7 @@ export interface SegmentArgs {
      */
     includeds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique key that references the segment.
+     * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -250,7 +251,7 @@ export interface SegmentArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The segment's project key.
+     * The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**

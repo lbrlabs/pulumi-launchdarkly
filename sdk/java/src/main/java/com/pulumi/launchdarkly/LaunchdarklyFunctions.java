@@ -8,30 +8,197 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.launchdarkly.Utilities;
+import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionArgs;
+import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetEnvironmentArgs;
 import com.pulumi.launchdarkly.inputs.GetEnvironmentPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagEnvironmentArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagEnvironmentPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetFlagTriggerArgs;
+import com.pulumi.launchdarkly.inputs.GetFlagTriggerPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetMetricArgs;
+import com.pulumi.launchdarkly.inputs.GetMetricPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetProjectArgs;
 import com.pulumi.launchdarkly.inputs.GetProjectPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetRelayProxyConfigurationArgs;
+import com.pulumi.launchdarkly.inputs.GetRelayProxyConfigurationPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetSegmentArgs;
 import com.pulumi.launchdarkly.inputs.GetSegmentPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetTeamArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamMemberPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetTeamPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetWebhookArgs;
 import com.pulumi.launchdarkly.inputs.GetWebhookPlainArgs;
+import com.pulumi.launchdarkly.outputs.GetAuditLogSubscriptionResult;
 import com.pulumi.launchdarkly.outputs.GetEnvironmentResult;
 import com.pulumi.launchdarkly.outputs.GetFeatureFlagEnvironmentResult;
 import com.pulumi.launchdarkly.outputs.GetFeatureFlagResult;
+import com.pulumi.launchdarkly.outputs.GetFlagTriggerResult;
+import com.pulumi.launchdarkly.outputs.GetMetricResult;
 import com.pulumi.launchdarkly.outputs.GetProjectResult;
+import com.pulumi.launchdarkly.outputs.GetRelayProxyConfigurationResult;
 import com.pulumi.launchdarkly.outputs.GetSegmentResult;
 import com.pulumi.launchdarkly.outputs.GetTeamMemberResult;
+import com.pulumi.launchdarkly.outputs.GetTeamResult;
 import com.pulumi.launchdarkly.outputs.GetWebhookResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class LaunchdarklyFunctions {
+    /**
+     * Provides a LaunchDarkly audit log subscription data source.
+     * 
+     * This data source allows you to retrieve information about LaunchDarkly audit log subscriptions.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LaunchdarklyFunctions.getAuditLogSubscription(GetAuditLogSubscriptionArgs.builder()
+     *             .id(&#34;5f0cd446a77cba0b4c5644a7&#34;)
+     *             .integrationKey(&#34;msteams&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAuditLogSubscriptionResult> getAuditLogSubscription(GetAuditLogSubscriptionArgs args) {
+        return getAuditLogSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly audit log subscription data source.
+     * 
+     * This data source allows you to retrieve information about LaunchDarkly audit log subscriptions.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LaunchdarklyFunctions.getAuditLogSubscription(GetAuditLogSubscriptionArgs.builder()
+     *             .id(&#34;5f0cd446a77cba0b4c5644a7&#34;)
+     *             .integrationKey(&#34;msteams&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAuditLogSubscriptionResult> getAuditLogSubscriptionPlain(GetAuditLogSubscriptionPlainArgs args) {
+        return getAuditLogSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly audit log subscription data source.
+     * 
+     * This data source allows you to retrieve information about LaunchDarkly audit log subscriptions.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LaunchdarklyFunctions.getAuditLogSubscription(GetAuditLogSubscriptionArgs.builder()
+     *             .id(&#34;5f0cd446a77cba0b4c5644a7&#34;)
+     *             .integrationKey(&#34;msteams&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAuditLogSubscriptionResult> getAuditLogSubscription(GetAuditLogSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription", TypeShape.of(GetAuditLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly audit log subscription data source.
+     * 
+     * This data source allows you to retrieve information about LaunchDarkly audit log subscriptions.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetAuditLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LaunchdarklyFunctions.getAuditLogSubscription(GetAuditLogSubscriptionArgs.builder()
+     *             .id(&#34;5f0cd446a77cba0b4c5644a7&#34;)
+     *             .integrationKey(&#34;msteams&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAuditLogSubscriptionResult> getAuditLogSubscriptionPlain(GetAuditLogSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription", TypeShape.of(GetAuditLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides a LaunchDarkly environment data source.
      * 
@@ -513,6 +680,350 @@ public final class LaunchdarklyFunctions {
         return Deployment.getInstance().invokeAsync("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", TypeShape.of(GetFeatureFlagEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides a LaunchDarkly flag trigger data source.
+     * 
+     * &gt; **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * 
+     * This data source allows you to retrieve information about flag triggers from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerArgs;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerInstructionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getFlagTrigger(GetFlagTriggerArgs.builder()
+     *             .id(&#34;&lt;project_key&gt;/&lt;env_key&gt;/&lt;flag_key&gt;/61d490757f7821150815518f&#34;)
+     *             .instructions(GetFlagTriggerInstructionsArgs.builder()
+     *                 .kind(&#34;turnFlagOff&#34;)
+     *                 .build())
+     *             .integrationKey(&#34;datadog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlagTriggerResult> getFlagTrigger(GetFlagTriggerArgs args) {
+        return getFlagTrigger(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly flag trigger data source.
+     * 
+     * &gt; **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * 
+     * This data source allows you to retrieve information about flag triggers from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerArgs;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerInstructionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getFlagTrigger(GetFlagTriggerArgs.builder()
+     *             .id(&#34;&lt;project_key&gt;/&lt;env_key&gt;/&lt;flag_key&gt;/61d490757f7821150815518f&#34;)
+     *             .instructions(GetFlagTriggerInstructionsArgs.builder()
+     *                 .kind(&#34;turnFlagOff&#34;)
+     *                 .build())
+     *             .integrationKey(&#34;datadog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlagTriggerResult> getFlagTriggerPlain(GetFlagTriggerPlainArgs args) {
+        return getFlagTriggerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly flag trigger data source.
+     * 
+     * &gt; **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * 
+     * This data source allows you to retrieve information about flag triggers from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerArgs;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerInstructionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getFlagTrigger(GetFlagTriggerArgs.builder()
+     *             .id(&#34;&lt;project_key&gt;/&lt;env_key&gt;/&lt;flag_key&gt;/61d490757f7821150815518f&#34;)
+     *             .instructions(GetFlagTriggerInstructionsArgs.builder()
+     *                 .kind(&#34;turnFlagOff&#34;)
+     *                 .build())
+     *             .integrationKey(&#34;datadog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetFlagTriggerResult> getFlagTrigger(GetFlagTriggerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getFlagTrigger:getFlagTrigger", TypeShape.of(GetFlagTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly flag trigger data source.
+     * 
+     * &gt; **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * 
+     * This data source allows you to retrieve information about flag triggers from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerArgs;
+     * import com.pulumi.launchdarkly.inputs.GetFlagTriggerInstructionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getFlagTrigger(GetFlagTriggerArgs.builder()
+     *             .id(&#34;&lt;project_key&gt;/&lt;env_key&gt;/&lt;flag_key&gt;/61d490757f7821150815518f&#34;)
+     *             .instructions(GetFlagTriggerInstructionsArgs.builder()
+     *                 .kind(&#34;turnFlagOff&#34;)
+     *                 .build())
+     *             .integrationKey(&#34;datadog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetFlagTriggerResult> getFlagTriggerPlain(GetFlagTriggerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getFlagTrigger:getFlagTrigger", TypeShape.of(GetFlagTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly metric data source.
+     * 
+     * This data source allows you to retrieve metric information from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetMetricArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getMetric(GetMetricArgs.builder()
+     *             .key(&#34;example-metric&#34;)
+     *             .projectKey(&#34;example-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetricResult> getMetric(GetMetricArgs args) {
+        return getMetric(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly metric data source.
+     * 
+     * This data source allows you to retrieve metric information from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetMetricArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getMetric(GetMetricArgs.builder()
+     *             .key(&#34;example-metric&#34;)
+     *             .projectKey(&#34;example-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetricResult> getMetricPlain(GetMetricPlainArgs args) {
+        return getMetricPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly metric data source.
+     * 
+     * This data source allows you to retrieve metric information from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetMetricArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getMetric(GetMetricArgs.builder()
+     *             .key(&#34;example-metric&#34;)
+     *             .projectKey(&#34;example-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetMetricResult> getMetric(GetMetricArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getMetric:getMetric", TypeShape.of(GetMetricResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly metric data source.
+     * 
+     * This data source allows you to retrieve metric information from your LaunchDarkly organization.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetMetricArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getMetric(GetMetricArgs.builder()
+     *             .key(&#34;example-metric&#34;)
+     *             .projectKey(&#34;example-project&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetMetricResult> getMetricPlain(GetMetricPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getMetric:getMetric", TypeShape.of(GetMetricResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides a LaunchDarkly project data source.
      * 
      * This data source allows you to retrieve project information from your LaunchDarkly organization.
@@ -677,6 +1188,166 @@ public final class LaunchdarklyFunctions {
         return Deployment.getInstance().invokeAsync("launchdarkly:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.RelayProxyConfiguration;
+     * import com.pulumi.launchdarkly.RelayProxyConfigurationArgs;
+     * import com.pulumi.launchdarkly.inputs.RelayProxyConfigurationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new RelayProxyConfiguration(&#34;example&#34;, RelayProxyConfigurationArgs.builder()        
+     *             .policies(RelayProxyConfigurationPolicyArgs.builder()
+     *                 .actions(&#34;*&#34;)
+     *                 .effect(&#34;allow&#34;)
+     *                 .resources(&#34;proj/*:env/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRelayProxyConfigurationResult> getRelayProxyConfiguration(GetRelayProxyConfigurationArgs args) {
+        return getRelayProxyConfiguration(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.RelayProxyConfiguration;
+     * import com.pulumi.launchdarkly.RelayProxyConfigurationArgs;
+     * import com.pulumi.launchdarkly.inputs.RelayProxyConfigurationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new RelayProxyConfiguration(&#34;example&#34;, RelayProxyConfigurationArgs.builder()        
+     *             .policies(RelayProxyConfigurationPolicyArgs.builder()
+     *                 .actions(&#34;*&#34;)
+     *                 .effect(&#34;allow&#34;)
+     *                 .resources(&#34;proj/*:env/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRelayProxyConfigurationResult> getRelayProxyConfigurationPlain(GetRelayProxyConfigurationPlainArgs args) {
+        return getRelayProxyConfigurationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.RelayProxyConfiguration;
+     * import com.pulumi.launchdarkly.RelayProxyConfigurationArgs;
+     * import com.pulumi.launchdarkly.inputs.RelayProxyConfigurationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new RelayProxyConfiguration(&#34;example&#34;, RelayProxyConfigurationArgs.builder()        
+     *             .policies(RelayProxyConfigurationPolicyArgs.builder()
+     *                 .actions(&#34;*&#34;)
+     *                 .effect(&#34;allow&#34;)
+     *                 .resources(&#34;proj/*:env/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRelayProxyConfigurationResult> getRelayProxyConfiguration(GetRelayProxyConfigurationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", TypeShape.of(GetRelayProxyConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.RelayProxyConfiguration;
+     * import com.pulumi.launchdarkly.RelayProxyConfigurationArgs;
+     * import com.pulumi.launchdarkly.inputs.RelayProxyConfigurationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new RelayProxyConfiguration(&#34;example&#34;, RelayProxyConfigurationArgs.builder()        
+     *             .policies(RelayProxyConfigurationPolicyArgs.builder()
+     *                 .actions(&#34;*&#34;)
+     *                 .effect(&#34;allow&#34;)
+     *                 .resources(&#34;proj/*:env/*&#34;)
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRelayProxyConfigurationResult> getRelayProxyConfigurationPlain(GetRelayProxyConfigurationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", TypeShape.of(GetRelayProxyConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides a LaunchDarkly segment data source.
      * 
      * This data source allows you to retrieve segment information from your LaunchDarkly organization.
@@ -839,6 +1510,166 @@ public final class LaunchdarklyFunctions {
      */
     public static CompletableFuture<GetSegmentResult> getSegmentPlain(GetSegmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("launchdarkly:index/getSegment:getSegment", TypeShape.of(GetSegmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly team data source.
+     * 
+     * This data source allows you to retrieve team information from your LaunchDarkly organization.
+     * 
+     * &gt; **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var platformTeam = LaunchdarklyFunctions.getTeam(GetTeamArgs.builder()
+     *             .key(&#34;platform_team&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTeamResult> getTeam(GetTeamArgs args) {
+        return getTeam(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly team data source.
+     * 
+     * This data source allows you to retrieve team information from your LaunchDarkly organization.
+     * 
+     * &gt; **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var platformTeam = LaunchdarklyFunctions.getTeam(GetTeamArgs.builder()
+     *             .key(&#34;platform_team&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTeamResult> getTeamPlain(GetTeamPlainArgs args) {
+        return getTeamPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly team data source.
+     * 
+     * This data source allows you to retrieve team information from your LaunchDarkly organization.
+     * 
+     * &gt; **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var platformTeam = LaunchdarklyFunctions.getTeam(GetTeamArgs.builder()
+     *             .key(&#34;platform_team&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTeamResult> getTeam(GetTeamArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getTeam:getTeam", TypeShape.of(GetTeamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly team data source.
+     * 
+     * This data source allows you to retrieve team information from your LaunchDarkly organization.
+     * 
+     * &gt; **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var platformTeam = LaunchdarklyFunctions.getTeam(GetTeamArgs.builder()
+     *             .key(&#34;platform_team&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTeamResult> getTeamPlain(GetTeamPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getTeam:getTeam", TypeShape.of(GetTeamResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides a LaunchDarkly team member data source.

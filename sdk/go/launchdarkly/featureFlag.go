@@ -144,22 +144,26 @@ type FeatureFlag struct {
 
 	// Whether to archive the flag
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
+	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayOutput `pulumi:"clientSideAvailabilities"`
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayOutput `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsOutput `pulumi:"defaults"`
 	// The feature flag's description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK.
-	IncludeInSnippet pulumi.BoolPtrOutput `pulumi:"includeInSnippet"`
-	// The unique feature flag key that references the flag in your application code.
+	// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+	IncludeInSnippet pulumi.BoolOutput `pulumi:"includeInSnippet"`
+	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
 	// associated with your Terraform API key or the most recently set maintainer
 	MaintainerId pulumi.StringOutput `pulumi:"maintainerId"`
 	// The human-readable name of the feature flag.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The feature flag's project key.
+	// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// Set of feature flag tags.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -212,22 +216,26 @@ func GetFeatureFlag(ctx *pulumi.Context,
 type featureFlagState struct {
 	// Whether to archive the flag
 	Archived *bool `pulumi:"archived"`
+	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities []FeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
 	// The feature flag's description.
 	Description *string `pulumi:"description"`
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+	// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
 	// associated with your Terraform API key or the most recently set maintainer
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The human-readable name of the feature flag.
 	Name *string `pulumi:"name"`
-	// The feature flag's project key.
+	// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Set of feature flag tags.
 	Tags []string `pulumi:"tags"`
@@ -242,22 +250,26 @@ type featureFlagState struct {
 type FeatureFlagState struct {
 	// Whether to archive the flag
 	Archived pulumi.BoolPtrInput
+	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayInput
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsPtrInput
 	// The feature flag's description.
 	Description pulumi.StringPtrInput
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+	// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
 	// associated with your Terraform API key or the most recently set maintainer
 	MaintainerId pulumi.StringPtrInput
 	// The human-readable name of the feature flag.
 	Name pulumi.StringPtrInput
-	// The feature flag's project key.
+	// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// Set of feature flag tags.
 	Tags pulumi.StringArrayInput
@@ -276,22 +288,26 @@ func (FeatureFlagState) ElementType() reflect.Type {
 type featureFlagArgs struct {
 	// Whether to archive the flag
 	Archived *bool `pulumi:"archived"`
+	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities []FeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
 	// The feature flag's description.
 	Description *string `pulumi:"description"`
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+	// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
 	// associated with your Terraform API key or the most recently set maintainer
 	MaintainerId *string `pulumi:"maintainerId"`
 	// The human-readable name of the feature flag.
 	Name *string `pulumi:"name"`
-	// The feature flag's project key.
+	// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// Set of feature flag tags.
 	Tags []string `pulumi:"tags"`
@@ -307,22 +323,26 @@ type featureFlagArgs struct {
 type FeatureFlagArgs struct {
 	// Whether to archive the flag
 	Archived pulumi.BoolPtrInput
+	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayInput
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsPtrInput
 	// The feature flag's description.
 	Description pulumi.StringPtrInput
-	// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+	// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The unique feature flag key that references the flag in your application code.
+	// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
 	// associated with your Terraform API key or the most recently set maintainer
 	MaintainerId pulumi.StringPtrInput
 	// The human-readable name of the feature flag.
 	Name pulumi.StringPtrInput
-	// The feature flag's project key.
+	// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// Set of feature flag tags.
 	Tags pulumi.StringArrayInput
@@ -426,6 +446,11 @@ func (o FeatureFlagOutput) Archived() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolPtrOutput { return v.Archived }).(pulumi.BoolPtrOutput)
 }
 
+// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+func (o FeatureFlagOutput) ClientSideAvailabilities() FeatureFlagClientSideAvailabilityArrayOutput {
+	return o.ApplyT(func(v *FeatureFlag) FeatureFlagClientSideAvailabilityArrayOutput { return v.ClientSideAvailabilities }).(FeatureFlagClientSideAvailabilityArrayOutput)
+}
+
 // List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 func (o FeatureFlagOutput) CustomProperties() FeatureFlagCustomPropertyArrayOutput {
 	return o.ApplyT(func(v *FeatureFlag) FeatureFlagCustomPropertyArrayOutput { return v.CustomProperties }).(FeatureFlagCustomPropertyArrayOutput)
@@ -441,12 +466,14 @@ func (o FeatureFlagOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether this flag should be made available to the client-side JavaScript SDK.
-func (o FeatureFlagOutput) IncludeInSnippet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolPtrOutput { return v.IncludeInSnippet }).(pulumi.BoolPtrOutput)
+// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+//
+// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+func (o FeatureFlagOutput) IncludeInSnippet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FeatureFlag) pulumi.BoolOutput { return v.IncludeInSnippet }).(pulumi.BoolOutput)
 }
 
-// The unique feature flag key that references the flag in your application code.
+// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o FeatureFlagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -462,7 +489,7 @@ func (o FeatureFlagOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The feature flag's project key.
+// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o FeatureFlagOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlag) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

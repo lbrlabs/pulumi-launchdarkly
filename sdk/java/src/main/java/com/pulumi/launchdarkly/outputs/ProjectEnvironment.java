@@ -39,7 +39,7 @@ public final class ProjectEnvironment {
      */
     private @Nullable Integer defaultTtl;
     /**
-     * @return The project-unique key for the environment.
+     * @return The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      * 
      */
     private String key;
@@ -104,7 +104,7 @@ public final class ProjectEnvironment {
         return Optional.ofNullable(this.defaultTtl);
     }
     /**
-     * @return The project-unique key for the environment.
+     * @return The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      * 
      */
     public String key() {

@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTeamMemberResult> InvokeAsync(GetTeamMemberArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTeamMemberResult>("launchdarkly:index/getTeamMember:getTeamMember", args ?? new GetTeamMemberArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTeamMemberResult>("launchdarkly:index/getTeamMember:getTeamMember", args ?? new GetTeamMemberArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly team member data source.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTeamMemberResult> Invoke(GetTeamMemberInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTeamMemberResult>("launchdarkly:index/getTeamMember:getTeamMember", args ?? new GetTeamMemberInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTeamMemberResult>("launchdarkly:index/getTeamMember:getTeamMember", args ?? new GetTeamMemberInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -79,6 +79,12 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
+
+        /// <summary>
+        /// The 24 character alphanumeric ID of the team member.
+        /// </summary>
+        [Input("id")]
+        public string? Id { get; set; }
 
         public GetTeamMemberArgs()
         {
@@ -93,6 +99,12 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
+
+        /// <summary>
+        /// The 24 character alphanumeric ID of the team member.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
 
         public GetTeamMemberInvokeArgs()
         {
@@ -111,7 +123,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// </summary>
         public readonly string FirstName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The 24 character alphanumeric ID of the team member.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -33,14 +33,14 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The segment&#39;s environment key.
+     * The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="envKey", required=true)
     private Output<String> envKey;
 
     /**
-     * @return The segment&#39;s environment key.
+     * @return The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> envKey() {
@@ -78,14 +78,14 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique key that references the segment.
+     * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The unique key that references the segment.
+     * @return The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {
@@ -108,14 +108,14 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The segment&#39;s project key.
+     * The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="projectKey", required=true)
     private Output<String> projectKey;
 
     /**
-     * @return The segment&#39;s project key.
+     * @return The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> projectKey() {
@@ -206,7 +206,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envKey The segment&#39;s environment key.
+         * @param envKey The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envKey The segment&#39;s environment key.
+         * @param envKey The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The unique key that references the segment.
+         * @param key The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The unique key that references the segment.
+         * @param key The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey The segment&#39;s project key.
+         * @param projectKey The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class SegmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey The segment&#39;s project key.
+         * @param projectKey The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

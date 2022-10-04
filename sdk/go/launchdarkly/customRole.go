@@ -13,9 +13,9 @@ import (
 
 // Provides a LaunchDarkly custom role resource.
 //
-// This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+// > **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 //
-// > **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+// This resource allows you to create and manage custom roles within your LaunchDarkly organization.
 //
 // ## Example Usage
 //
@@ -76,9 +76,11 @@ import (
 type CustomRole struct {
 	pulumi.CustomResourceState
 
+	// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+	BasePermissions pulumi.StringPtrOutput `pulumi:"basePermissions"`
 	// The description of the custom role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The unique key that references the custom role.
+	// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The human-readable name for the custom role.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -121,9 +123,11 @@ func GetCustomRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomRole resources.
 type customRoleState struct {
+	// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+	BasePermissions *string `pulumi:"basePermissions"`
 	// The description of the custom role.
 	Description *string `pulumi:"description"`
-	// The unique key that references the custom role.
+	// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The human-readable name for the custom role.
 	Name *string `pulumi:"name"`
@@ -134,9 +138,11 @@ type customRoleState struct {
 }
 
 type CustomRoleState struct {
+	// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+	BasePermissions pulumi.StringPtrInput
 	// The description of the custom role.
 	Description pulumi.StringPtrInput
-	// The unique key that references the custom role.
+	// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The human-readable name for the custom role.
 	Name pulumi.StringPtrInput
@@ -151,9 +157,11 @@ func (CustomRoleState) ElementType() reflect.Type {
 }
 
 type customRoleArgs struct {
+	// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+	BasePermissions *string `pulumi:"basePermissions"`
 	// The description of the custom role.
 	Description *string `pulumi:"description"`
-	// The unique key that references the custom role.
+	// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The human-readable name for the custom role.
 	Name *string `pulumi:"name"`
@@ -165,9 +173,11 @@ type customRoleArgs struct {
 
 // The set of arguments for constructing a CustomRole resource.
 type CustomRoleArgs struct {
+	// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+	BasePermissions pulumi.StringPtrInput
 	// The description of the custom role.
 	Description pulumi.StringPtrInput
-	// The unique key that references the custom role.
+	// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The human-readable name for the custom role.
 	Name pulumi.StringPtrInput
@@ -264,12 +274,17 @@ func (o CustomRoleOutput) ToCustomRoleOutputWithContext(ctx context.Context) Cus
 	return o
 }
 
+// The base permission level. Either `reader` or `noAccess`. Defaults to `reader` if not set.
+func (o CustomRoleOutput) BasePermissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomRole) pulumi.StringPtrOutput { return v.BasePermissions }).(pulumi.StringPtrOutput)
+}
+
 // The description of the custom role.
 func (o CustomRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The unique key that references the custom role.
+// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o CustomRoleOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomRole) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }

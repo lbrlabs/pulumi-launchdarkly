@@ -117,14 +117,14 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The project-unique key for the environment.
+     * @return The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> key() {
@@ -162,14 +162,14 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - The environment&#39;s project key.
+     * - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="projectKey")
     private @Nullable Output<String> projectKey;
 
     /**
-     * @return - The environment&#39;s project key.
+     * @return - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> projectKey() {
@@ -398,7 +398,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The project-unique key for the environment.
+         * @param key The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The project-unique key for the environment.
+         * @param key The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey - The environment&#39;s project key.
+         * @param projectKey - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey - The environment&#39;s project key.
+         * @param projectKey - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

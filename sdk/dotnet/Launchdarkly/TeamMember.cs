@@ -55,7 +55,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableArray<string>> CustomRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The unique email address associated with the team member.
+        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -73,7 +73,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string?> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// The unique email address associated with the team member.
+        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -182,7 +182,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// The unique email address associated with the team member.
+        /// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
@@ -200,7 +200,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+        /// The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don't specify a role, `reader` is assigned by default.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

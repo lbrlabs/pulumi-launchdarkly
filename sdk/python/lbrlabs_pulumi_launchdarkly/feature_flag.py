@@ -20,6 +20,7 @@ class FeatureFlagArgs:
                  project_key: pulumi.Input[str],
                  variation_type: pulumi.Input[str],
                  archived: Optional[pulumi.Input[bool]] = None,
+                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
                  custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
                  defaults: Optional[pulumi.Input['FeatureFlagDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -31,14 +32,15 @@ class FeatureFlagArgs:
                  variations: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagVariationArgs']]]] = None):
         """
         The set of arguments for constructing a FeatureFlag resource.
-        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code.
-        :param pulumi.Input[str] project_key: The feature flag's project key.
+        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`.
         :param pulumi.Input[bool] archived: Whether to archive the flag
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
-        :param pulumi.Input[bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         :param pulumi.Input[str] maintainer_id: The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
                associated with your Terraform API key or the most recently set maintainer
         :param pulumi.Input[str] name: The human-readable name of the feature flag.
@@ -51,12 +53,17 @@ class FeatureFlagArgs:
         pulumi.set(__self__, "variation_type", variation_type)
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
+        if client_side_availabilities is not None:
+            pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
         if custom_properties is not None:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if include_in_snippet is not None:
+            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
         if include_in_snippet is not None:
             pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if maintainer_id is not None:
@@ -74,7 +81,7 @@ class FeatureFlagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The unique feature flag key that references the flag in your application code.
+        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -86,7 +93,7 @@ class FeatureFlagArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[str]:
         """
-        The feature flag's project key.
+        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -117,6 +124,18 @@ class FeatureFlagArgs:
     @archived.setter
     def archived(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "archived", value)
+
+    @property
+    @pulumi.getter(name="clientSideAvailabilities")
+    def client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
+        """
+        A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        """
+        return pulumi.get(self, "client_side_availabilities")
+
+    @client_side_availabilities.setter
+    def client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
+        pulumi.set(self, "client_side_availabilities", value)
 
     @property
     @pulumi.getter(name="customProperties")
@@ -158,7 +177,7 @@ class FeatureFlagArgs:
     @pulumi.getter(name="includeInSnippet")
     def include_in_snippet(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -232,6 +251,7 @@ class FeatureFlagArgs:
 class _FeatureFlagState:
     def __init__(__self__, *,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]] = None,
                  custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]] = None,
                  defaults: Optional[pulumi.Input['FeatureFlagDefaultsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -247,15 +267,16 @@ class _FeatureFlagState:
         """
         Input properties used for looking up and filtering FeatureFlag resources.
         :param pulumi.Input[bool] archived: Whether to archive the flag
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
-        :param pulumi.Input[bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK.
-        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] maintainer_id: The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
                associated with your Terraform API key or the most recently set maintainer
         :param pulumi.Input[str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[str] project_key: The feature flag's project key.
+        :param pulumi.Input[str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of feature flag tags.
         :param pulumi.Input[bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`.
@@ -263,12 +284,17 @@ class _FeatureFlagState:
         """
         if archived is not None:
             pulumi.set(__self__, "archived", archived)
+        if client_side_availabilities is not None:
+            pulumi.set(__self__, "client_side_availabilities", client_side_availabilities)
         if custom_properties is not None:
             pulumi.set(__self__, "custom_properties", custom_properties)
         if defaults is not None:
             pulumi.set(__self__, "defaults", defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if include_in_snippet is not None:
+            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
         if include_in_snippet is not None:
             pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key is not None:
@@ -299,6 +325,18 @@ class _FeatureFlagState:
     @archived.setter
     def archived(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "archived", value)
+
+    @property
+    @pulumi.getter(name="clientSideAvailabilities")
+    def client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]:
+        """
+        A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        """
+        return pulumi.get(self, "client_side_availabilities")
+
+    @client_side_availabilities.setter
+    def client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]]]):
+        pulumi.set(self, "client_side_availabilities", value)
 
     @property
     @pulumi.getter(name="customProperties")
@@ -340,7 +378,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="includeInSnippet")
     def include_in_snippet(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -352,7 +390,7 @@ class _FeatureFlagState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique feature flag key that references the flag in your application code.
+        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -389,7 +427,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The feature flag's project key.
+        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -452,6 +490,7 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]]] = None,
                  custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]]] = None,
                  defaults: Optional[pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -553,15 +592,16 @@ class FeatureFlag(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] archived: Whether to archive the flag
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
-        :param pulumi.Input[bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK.
-        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] maintainer_id: The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
                associated with your Terraform API key or the most recently set maintainer
         :param pulumi.Input[str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[str] project_key: The feature flag's project key.
+        :param pulumi.Input[str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of feature flag tags.
         :param pulumi.Input[bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`.
@@ -674,6 +714,7 @@ class FeatureFlag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  archived: Optional[pulumi.Input[bool]] = None,
+                 client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]]] = None,
                  custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]]] = None,
                  defaults: Optional[pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -696,9 +737,13 @@ class FeatureFlag(pulumi.CustomResource):
             __props__ = FeatureFlagArgs.__new__(FeatureFlagArgs)
 
             __props__.__dict__["archived"] = archived
+            __props__.__dict__["client_side_availabilities"] = client_side_availabilities
             __props__.__dict__["custom_properties"] = custom_properties
             __props__.__dict__["defaults"] = defaults
             __props__.__dict__["description"] = description
+            if include_in_snippet is not None and not opts.urn:
+                warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
+                pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
             __props__.__dict__["include_in_snippet"] = include_in_snippet
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
@@ -725,6 +770,7 @@ class FeatureFlag(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             archived: Optional[pulumi.Input[bool]] = None,
+            client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]]] = None,
             custom_properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]]] = None,
             defaults: Optional[pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -745,15 +791,16 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] archived: Whether to archive the flag
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
-        :param pulumi.Input[bool] include_in_snippet: Specifies whether this flag should be made available to the client-side JavaScript SDK.
-        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+        :param pulumi.Input[str] key: The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] maintainer_id: The LaunchDarkly id of the user who will maintain the flag. If not set, the API will automatically apply the member
                associated with your Terraform API key or the most recently set maintainer
         :param pulumi.Input[str] name: The human-readable name of the feature flag.
-        :param pulumi.Input[str] project_key: The feature flag's project key.
+        :param pulumi.Input[str] project_key: The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of feature flag tags.
         :param pulumi.Input[bool] temporary: Specifies whether the flag is a temporary flag.
         :param pulumi.Input[str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`.
@@ -764,6 +811,7 @@ class FeatureFlag(pulumi.CustomResource):
         __props__ = _FeatureFlagState.__new__(_FeatureFlagState)
 
         __props__.__dict__["archived"] = archived
+        __props__.__dict__["client_side_availabilities"] = client_side_availabilities
         __props__.__dict__["custom_properties"] = custom_properties
         __props__.__dict__["defaults"] = defaults
         __props__.__dict__["description"] = description
@@ -785,6 +833,14 @@ class FeatureFlag(pulumi.CustomResource):
         Whether to archive the flag
         """
         return pulumi.get(self, "archived")
+
+    @property
+    @pulumi.getter(name="clientSideAvailabilities")
+    def client_side_availabilities(self) -> pulumi.Output[Sequence['outputs.FeatureFlagClientSideAvailability']]:
+        """
+        A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        """
+        return pulumi.get(self, "client_side_availabilities")
 
     @property
     @pulumi.getter(name="customProperties")
@@ -812,9 +868,9 @@ class FeatureFlag(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includeInSnippet")
-    def include_in_snippet(self) -> pulumi.Output[Optional[bool]]:
+    def include_in_snippet(self) -> pulumi.Output[bool]:
         """
-        Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -822,7 +878,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
-        The unique feature flag key that references the flag in your application code.
+        The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -847,7 +903,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[str]:
         """
-        The feature flag's project key.
+        The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 

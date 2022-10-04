@@ -34,14 +34,14 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - The environment key.
+     * - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="envKey")
     private @Nullable Output<String> envKey;
 
     /**
-     * @return - The environment key.
+     * @return - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> envKey() {
@@ -49,14 +49,14 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+     * - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="kind")
     private @Nullable Output<String> kind;
 
     /**
-     * @return - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+     * @return - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -94,14 +94,14 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - The LaunchDarkly project key.
+     * - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="projectKey")
     private @Nullable Output<String> projectKey;
 
     /**
-     * @return - The LaunchDarkly project key.
+     * @return - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> projectKey() {
@@ -175,7 +175,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envKey - The environment key.
+         * @param envKey - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param envKey - The environment key.
+         * @param envKey - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+         * @param kind - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+         * @param kind - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey - The LaunchDarkly project key.
+         * @param projectKey - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class DestinationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey - The LaunchDarkly project key.
+         * @param projectKey - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

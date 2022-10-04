@@ -63,7 +63,7 @@ class GetTeamMemberResult:
     @pulumi.getter
     def id(self) -> str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The 24 character alphanumeric ID of the team member.
         """
         return pulumi.get(self, "id")
 
@@ -99,6 +99,7 @@ class AwaitableGetTeamMemberResult(GetTeamMemberResult):
 
 
 def get_team_member(email: Optional[str] = None,
+                    id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTeamMemberResult:
     """
     Provides a LaunchDarkly team member data source.
@@ -116,9 +117,11 @@ def get_team_member(email: Optional[str] = None,
 
 
     :param str email: The unique email address associated with the team member.
+    :param str id: The 24 character alphanumeric ID of the team member.
     """
     __args__ = dict()
     __args__['email'] = email
+    __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('launchdarkly:index/getTeamMember:getTeamMember', __args__, opts=opts, typ=GetTeamMemberResult).value
 
@@ -133,6 +136,7 @@ def get_team_member(email: Optional[str] = None,
 
 @_utilities.lift_output_func(get_team_member)
 def get_team_member_output(email: Optional[pulumi.Input[str]] = None,
+                           id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTeamMemberResult]:
     """
     Provides a LaunchDarkly team member data source.
@@ -150,5 +154,6 @@ def get_team_member_output(email: Optional[pulumi.Input[str]] = None,
 
 
     :param str email: The unique email address associated with the team member.
+    :param str id: The 24 character alphanumeric ID of the team member.
     """
     ...

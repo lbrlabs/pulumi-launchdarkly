@@ -60,13 +60,13 @@ type TeamMember struct {
 
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
 	CustomRoles pulumi.StringArrayOutput `pulumi:"customRoles"`
-	// The unique email address associated with the team member.
+	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
 	FirstName pulumi.StringPtrOutput `pulumi:"firstName"`
 	// The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
 	LastName pulumi.StringPtrOutput `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -105,26 +105,26 @@ func GetTeamMember(ctx *pulumi.Context,
 type teamMemberState struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
 	CustomRoles []string `pulumi:"customRoles"`
-	// The unique email address associated with the team member.
+	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Email *string `pulumi:"email"`
 	// The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
 	FirstName *string `pulumi:"firstName"`
 	// The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
 	LastName *string `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
 }
 
 type TeamMemberState struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
 	CustomRoles pulumi.StringArrayInput
-	// The unique email address associated with the team member.
+	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringPtrInput
 	// The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
 	FirstName pulumi.StringPtrInput
 	// The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
 	LastName pulumi.StringPtrInput
-	// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
 }
 
@@ -135,13 +135,13 @@ func (TeamMemberState) ElementType() reflect.Type {
 type teamMemberArgs struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
 	CustomRoles []string `pulumi:"customRoles"`
-	// The unique email address associated with the team member.
+	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Email string `pulumi:"email"`
 	// The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
 	FirstName *string `pulumi:"firstName"`
 	// The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
 	LastName *string `pulumi:"lastName"`
-	// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role *string `pulumi:"role"`
 }
 
@@ -149,13 +149,13 @@ type teamMemberArgs struct {
 type TeamMemberArgs struct {
 	// The list of custom roles keys associated with the team member. Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
 	CustomRoles pulumi.StringArrayInput
-	// The unique email address associated with the team member.
+	// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Email pulumi.StringInput
 	// The team member's given name. Please note that, once created, this cannot be updated except by the team member themself.
 	FirstName pulumi.StringPtrInput
 	// The team member's family name. Please note that, once created, this cannot be updated except by the team member themself.
 	LastName pulumi.StringPtrInput
-	// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+	// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 	Role pulumi.StringPtrInput
 }
 
@@ -251,7 +251,7 @@ func (o TeamMemberOutput) CustomRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringArrayOutput { return v.CustomRoles }).(pulumi.StringArrayOutput)
 }
 
-// The unique email address associated with the team member.
+// The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o TeamMemberOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
@@ -266,7 +266,7 @@ func (o TeamMemberOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringPtrOutput { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+// The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
 func (o TeamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

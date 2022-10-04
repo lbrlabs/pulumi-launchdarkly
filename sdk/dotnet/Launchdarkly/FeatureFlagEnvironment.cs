@@ -116,7 +116,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public partial class FeatureFlagEnvironment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The environment key.
+        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("envKey")]
         public Output<string> EnvKey { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<Outputs.FeatureFlagEnvironmentFallthrough> Fallthrough { get; private set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("flagId")]
         public Output<string> FlagId { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public sealed class FeatureFlagEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment key.
+        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey", required: true)]
         public Input<string> EnvKey { get; set; } = null!;
@@ -229,7 +229,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<Inputs.FeatureFlagEnvironmentFallthroughArgs> Fallthrough { get; set; } = null!;
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagId", required: true)]
         public Input<string> FlagId { get; set; } = null!;
@@ -297,7 +297,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public sealed class FeatureFlagEnvironmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The environment key.
+        /// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("envKey")]
         public Input<string>? EnvKey { get; set; }
@@ -309,7 +309,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<Inputs.FeatureFlagEnvironmentFallthroughGetArgs>? Fallthrough { get; set; }
 
         /// <summary>
-        /// The feature flag's unique `id` in the format `project_key/flag_key`.
+        /// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("flagId")]
         public Input<string>? FlagId { get; set; }

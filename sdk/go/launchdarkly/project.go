@@ -82,15 +82,19 @@ import (
 //
 // ```
 //
-//	**IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+//	**IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 type Project struct {
 	pulumi.CustomResourceState
 
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayOutput `pulumi:"defaultClientSideAvailabilities"`
 	// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 	Environments ProjectEnvironmentArrayOutput `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default
-	IncludeInSnippet pulumi.BoolPtrOutput `pulumi:"includeInSnippet"`
-	// The project's unique key.
+	// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
+	IncludeInSnippet pulumi.BoolOutput `pulumi:"includeInSnippet"`
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The project's name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -134,11 +138,15 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+	DefaultClientSideAvailabilities []ProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
 	// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 	Environments []ProjectEnvironment `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default
+	// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The project's unique key.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
@@ -147,11 +155,15 @@ type projectState struct {
 }
 
 type ProjectState struct {
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayInput
 	// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 	Environments ProjectEnvironmentArrayInput
-	// Whether feature flags created under the project should be available to client-side SDKs by default
+	// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The project's unique key.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The project's name.
 	Name pulumi.StringPtrInput
@@ -164,11 +176,15 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+	DefaultClientSideAvailabilities []ProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
 	// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 	Environments []ProjectEnvironment `pulumi:"environments"`
-	// Whether feature flags created under the project should be available to client-side SDKs by default
+	// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
-	// The project's unique key.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The project's name.
 	Name *string `pulumi:"name"`
@@ -178,11 +194,15 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+	DefaultClientSideAvailabilities ProjectDefaultClientSideAvailabilityArrayInput
 	// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 	Environments ProjectEnvironmentArrayInput
-	// Whether feature flags created under the project should be available to client-side SDKs by default
+	// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 	IncludeInSnippet pulumi.BoolPtrInput
-	// The project's unique key.
+	// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The project's name.
 	Name pulumi.StringPtrInput
@@ -277,17 +297,26 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+func (o ProjectOutput) DefaultClientSideAvailabilities() ProjectDefaultClientSideAvailabilityArrayOutput {
+	return o.ApplyT(func(v *Project) ProjectDefaultClientSideAvailabilityArrayOutput {
+		return v.DefaultClientSideAvailabilities
+	}).(ProjectDefaultClientSideAvailabilityArrayOutput)
+}
+
 // List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
 func (o ProjectOutput) Environments() ProjectEnvironmentArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectEnvironmentArrayOutput { return v.Environments }).(ProjectEnvironmentArrayOutput)
 }
 
-// Whether feature flags created under the project should be available to client-side SDKs by default
-func (o ProjectOutput) IncludeInSnippet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.IncludeInSnippet }).(pulumi.BoolPtrOutput)
+// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+//
+// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
+func (o ProjectOutput) IncludeInSnippet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolOutput { return v.IncludeInSnippet }).(pulumi.BoolOutput)
 }
 
-// The project's unique key.
+// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o ProjectOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }

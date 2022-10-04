@@ -6,6 +6,8 @@ package com.pulumi.launchdarkly.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTeamMemberPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -27,10 +29,26 @@ public final class GetTeamMemberPlainArgs extends com.pulumi.resources.InvokeArg
         return this.email;
     }
 
+    /**
+     * The 24 character alphanumeric ID of the team member.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable String id;
+
+    /**
+     * @return The 24 character alphanumeric ID of the team member.
+     * 
+     */
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
+
     private GetTeamMemberPlainArgs() {}
 
     private GetTeamMemberPlainArgs(GetTeamMemberPlainArgs $) {
         this.email = $.email;
+        this.id = $.id;
     }
 
     public static Builder builder() {
@@ -59,6 +77,17 @@ public final class GetTeamMemberPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder email(String email) {
             $.email = email;
+            return this;
+        }
+
+        /**
+         * @param id The 24 character alphanumeric ID of the team member.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(@Nullable String id) {
+            $.id = id;
             return this;
         }
 

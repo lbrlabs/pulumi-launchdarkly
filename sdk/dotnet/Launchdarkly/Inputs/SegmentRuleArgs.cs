@@ -32,7 +32,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Inputs
         }
 
         /// <summary>
-        /// The integer weight of the rule (between 0 and 100000).
+        /// The integer weight of the rule (between 1 and 100000).
         /// </summary>
         [Input("weight")]
         public Input<int>? Weight { get; set; }

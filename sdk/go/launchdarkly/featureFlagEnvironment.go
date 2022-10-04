@@ -109,11 +109,11 @@ import (
 type FeatureFlagEnvironment struct {
 	pulumi.CustomResourceState
 
-	// The environment key.
+	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringOutput `pulumi:"envKey"`
 	// - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
 	Fallthrough FeatureFlagEnvironmentFallthroughOutput `pulumi:"fallthrough"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	FlagId pulumi.StringOutput `pulumi:"flagId"`
 	// The index of the variation to serve if targeting is disabled.
 	OffVariation pulumi.IntOutput `pulumi:"offVariation"`
@@ -171,11 +171,11 @@ func GetFeatureFlagEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureFlagEnvironment resources.
 type featureFlagEnvironmentState struct {
-	// The environment key.
+	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey *string `pulumi:"envKey"`
 	// - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
 	Fallthrough *FeatureFlagEnvironmentFallthrough `pulumi:"fallthrough"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	FlagId *string `pulumi:"flagId"`
 	// The index of the variation to serve if targeting is disabled.
 	OffVariation *int `pulumi:"offVariation"`
@@ -192,11 +192,11 @@ type featureFlagEnvironmentState struct {
 }
 
 type FeatureFlagEnvironmentState struct {
-	// The environment key.
+	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringPtrInput
 	// - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
 	Fallthrough FeatureFlagEnvironmentFallthroughPtrInput
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	FlagId pulumi.StringPtrInput
 	// The index of the variation to serve if targeting is disabled.
 	OffVariation pulumi.IntPtrInput
@@ -217,11 +217,11 @@ func (FeatureFlagEnvironmentState) ElementType() reflect.Type {
 }
 
 type featureFlagEnvironmentArgs struct {
-	// The environment key.
+	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey string `pulumi:"envKey"`
 	// - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
 	Fallthrough FeatureFlagEnvironmentFallthrough `pulumi:"fallthrough"`
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	FlagId string `pulumi:"flagId"`
 	// The index of the variation to serve if targeting is disabled.
 	OffVariation int `pulumi:"offVariation"`
@@ -239,11 +239,11 @@ type featureFlagEnvironmentArgs struct {
 
 // The set of arguments for constructing a FeatureFlagEnvironment resource.
 type FeatureFlagEnvironmentArgs struct {
-	// The environment key.
+	// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringInput
 	// - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
 	Fallthrough FeatureFlagEnvironmentFallthroughInput
-	// The feature flag's unique `id` in the format `project_key/flag_key`.
+	// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	FlagId pulumi.StringInput
 	// The index of the variation to serve if targeting is disabled.
 	OffVariation pulumi.IntInput
@@ -346,7 +346,7 @@ func (o FeatureFlagEnvironmentOutput) ToFeatureFlagEnvironmentOutputWithContext(
 	return o
 }
 
-// The environment key.
+// The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o FeatureFlagEnvironmentOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlagEnvironment) pulumi.StringOutput { return v.EnvKey }).(pulumi.StringOutput)
 }
@@ -356,7 +356,7 @@ func (o FeatureFlagEnvironmentOutput) Fallthrough() FeatureFlagEnvironmentFallth
 	return o.ApplyT(func(v *FeatureFlagEnvironment) FeatureFlagEnvironmentFallthroughOutput { return v.Fallthrough }).(FeatureFlagEnvironmentFallthroughOutput)
 }
 
-// The feature flag's unique `id` in the format `project_key/flag_key`.
+// The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o FeatureFlagEnvironmentOutput) FlagId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureFlagEnvironment) pulumi.StringOutput { return v.FlagId }).(pulumi.StringOutput)
 }

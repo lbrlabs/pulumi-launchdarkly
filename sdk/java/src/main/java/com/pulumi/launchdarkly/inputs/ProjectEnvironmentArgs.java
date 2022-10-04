@@ -101,14 +101,14 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return The project-unique key for the environment.
+     * @return The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      * 
      */
     public Output<String> key() {
@@ -334,7 +334,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param key The project-unique key for the environment.
+         * @param key The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param key The project-unique key for the environment.
+         * @param key The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
          * 
          * @return builder
          * 

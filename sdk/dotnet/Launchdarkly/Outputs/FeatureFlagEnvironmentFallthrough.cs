@@ -19,7 +19,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Outputs
         /// </summary>
         public readonly string? BucketBy;
         /// <summary>
-        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000. You must specify either `variation` or `rollout_weights`.
+        /// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         /// </summary>
         public readonly ImmutableArray<int> RolloutWeights;
         /// <summary>

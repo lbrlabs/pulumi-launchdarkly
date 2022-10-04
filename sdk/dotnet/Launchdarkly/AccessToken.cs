@@ -13,7 +13,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     /// <summary>
     /// ## Example Usage
     /// 
-    /// Resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
+    /// The resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
     /// 
     /// With a built-in role
     /// 
@@ -94,7 +94,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableArray<string>> CustomRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         /// </summary>
         [Output("defaultApiVersion")]
         public Output<int> DefaultApiVersion { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         /// </summary>
         [Output("serviceToken")]
         public Output<bool?> ServiceToken { get; private set; } = null!;
@@ -166,6 +166,10 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/lbrlabs",
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -202,7 +206,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         /// </summary>
         [Input("defaultApiVersion")]
         public Input<int>? DefaultApiVersion { get; set; }
@@ -252,7 +256,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         /// </summary>
         [Input("serviceToken")]
         public Input<bool>? ServiceToken { get; set; }
@@ -278,7 +282,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// The default API version for this token. Defaults to the latest API version.
+        /// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         /// </summary>
         [Input("defaultApiVersion")]
         public Input<int>? DefaultApiVersion { get; set; }
@@ -328,16 +332,26 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        /// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         /// </summary>
         [Input("serviceToken")]
         public Input<bool>? ServiceToken { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The access token used to authorize usage of the LaunchDarkly API.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public AccessTokenState()
         {

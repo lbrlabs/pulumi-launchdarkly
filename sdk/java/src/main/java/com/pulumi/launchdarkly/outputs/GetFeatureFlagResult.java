@@ -43,7 +43,15 @@ public final class GetFeatureFlagResult {
      * 
      */
     private String id;
-    private @Nullable Boolean includeInSnippet;
+    /**
+     * @return **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+     * 
+     */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
+    private Boolean includeInSnippet;
     /**
      * @return The unique custom property key.
      * 
@@ -120,8 +128,16 @@ public final class GetFeatureFlagResult {
     public String id() {
         return this.id;
     }
-    public Optional<Boolean> includeInSnippet() {
-        return Optional.ofNullable(this.includeInSnippet);
+    /**
+     * @return **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+     * 
+     */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
+    public Boolean includeInSnippet() {
+        return this.includeInSnippet;
     }
     /**
      * @return The unique custom property key.
@@ -191,7 +207,7 @@ public final class GetFeatureFlagResult {
         private GetFeatureFlagDefaults defaults;
         private @Nullable String description;
         private String id;
-        private @Nullable Boolean includeInSnippet;
+        private Boolean includeInSnippet;
         private String key;
         private String maintainerId;
         private String name;
@@ -257,8 +273,8 @@ public final class GetFeatureFlagResult {
             return this;
         }
         @CustomType.Setter
-        public Builder includeInSnippet(@Nullable Boolean includeInSnippet) {
-            this.includeInSnippet = includeInSnippet;
+        public Builder includeInSnippet(Boolean includeInSnippet) {
+            this.includeInSnippet = Objects.requireNonNull(includeInSnippet);
             return this;
         }
         @CustomType.Setter

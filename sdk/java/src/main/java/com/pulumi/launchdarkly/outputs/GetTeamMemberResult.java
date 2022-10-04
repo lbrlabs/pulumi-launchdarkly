@@ -18,7 +18,7 @@ public final class GetTeamMemberResult {
      */
     private String firstName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The 24 character alphanumeric ID of the team member.
      * 
      */
     private String id;
@@ -48,7 +48,7 @@ public final class GetTeamMemberResult {
         return this.firstName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The 24 character alphanumeric ID of the team member.
      * 
      */
     public String id() {

@@ -115,14 +115,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment")
 public class FeatureFlagEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * The environment key.
+     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="envKey", type=String.class, parameters={})
     private Output<String> envKey;
 
     /**
-     * @return The environment key.
+     * @return The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> envKey() {
@@ -143,14 +143,14 @@ public class FeatureFlagEnvironment extends com.pulumi.resources.CustomResource 
         return this.fallthrough;
     }
     /**
-     * The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+     * The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="flagId", type=String.class, parameters={})
     private Output<String> flagId;
 
     /**
-     * @return The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+     * @return The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> flagId() {

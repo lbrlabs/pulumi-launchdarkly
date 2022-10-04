@@ -132,6 +132,12 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<bool?> Archived { get; private set; } = null!;
 
         /// <summary>
+        /// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        [Output("clientSideAvailabilities")]
+        public Output<ImmutableArray<Outputs.FeatureFlagClientSideAvailability>> ClientSideAvailabilities { get; private set; } = null!;
+
+        /// <summary>
         /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         [Output("customProperties")]
@@ -150,13 +156,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        /// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         /// </summary>
         [Output("includeInSnippet")]
-        public Output<bool?> IncludeInSnippet { get; private set; } = null!;
+        public Output<bool> IncludeInSnippet { get; private set; } = null!;
 
         /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -175,7 +181,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The feature flag's project key.
+        /// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("projectKey")]
         public Output<string> ProjectKey { get; private set; } = null!;
@@ -257,6 +263,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
+        [Input("clientSideAvailabilities")]
+        private InputList<Inputs.FeatureFlagClientSideAvailabilityArgs>? _clientSideAvailabilities;
+
+        /// <summary>
+        /// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        public InputList<Inputs.FeatureFlagClientSideAvailabilityArgs> ClientSideAvailabilities
+        {
+            get => _clientSideAvailabilities ?? (_clientSideAvailabilities = new InputList<Inputs.FeatureFlagClientSideAvailabilityArgs>());
+            set => _clientSideAvailabilities = value;
+        }
+
         [Input("customProperties")]
         private InputList<Inputs.FeatureFlagCustomPropertyArgs>? _customProperties;
 
@@ -282,13 +300,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        /// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -307,7 +325,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The feature flag's project key.
+        /// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey", required: true)]
         public Input<string> ProjectKey { get; set; } = null!;
@@ -362,6 +380,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("archived")]
         public Input<bool>? Archived { get; set; }
 
+        [Input("clientSideAvailabilities")]
+        private InputList<Inputs.FeatureFlagClientSideAvailabilityGetArgs>? _clientSideAvailabilities;
+
+        /// <summary>
+        /// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        public InputList<Inputs.FeatureFlagClientSideAvailabilityGetArgs> ClientSideAvailabilities
+        {
+            get => _clientSideAvailabilities ?? (_clientSideAvailabilities = new InputList<Inputs.FeatureFlagClientSideAvailabilityGetArgs>());
+            set => _clientSideAvailabilities = value;
+        }
+
         [Input("customProperties")]
         private InputList<Inputs.FeatureFlagCustomPropertyGetArgs>? _customProperties;
 
@@ -387,13 +417,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this flag should be made available to the client-side JavaScript SDK.
+        /// **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The unique feature flag key that references the flag in your application code.
+        /// The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -412,7 +442,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The feature flag's project key.
+        /// The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("projectKey")]
         public Input<string>? ProjectKey { get; set; }

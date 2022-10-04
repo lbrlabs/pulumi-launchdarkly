@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -106,7 +107,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly defaultTtl!: pulumi.Output<number | undefined>;
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -118,7 +119,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * - The environment's project key.
+     * - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly projectKey!: pulumi.Output<string>;
     /**
@@ -188,6 +189,8 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["mobileKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey", "clientSideId", "mobileKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -222,7 +225,7 @@ export interface EnvironmentState {
      */
     defaultTtl?: pulumi.Input<number>;
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -234,7 +237,7 @@ export interface EnvironmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * - The environment's project key.
+     * - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string>;
     /**
@@ -273,7 +276,7 @@ export interface EnvironmentArgs {
      */
     defaultTtl?: pulumi.Input<number>;
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -281,7 +284,7 @@ export interface EnvironmentArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * - The environment's project key.
+     * - The environment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**

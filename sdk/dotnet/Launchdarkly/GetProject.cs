@@ -41,7 +41,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("launchdarkly:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("launchdarkly:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly project data source.
@@ -72,7 +72,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectResult>("launchdarkly:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("launchdarkly:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -133,9 +133,14 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+        /// **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+        /// Please migrate to `default_client_side_availability` to maintain future compatability.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectClientSideAvailabilityResult> ClientSideAvailabilities;
+        /// <summary>
+        /// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetProjectDefaultClientSideAvailabilityResult> DefaultClientSideAvailabilities;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -154,6 +159,8 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private GetProjectResult(
             ImmutableArray<Outputs.GetProjectClientSideAvailabilityResult> clientSideAvailabilities,
 
+            ImmutableArray<Outputs.GetProjectDefaultClientSideAvailabilityResult> defaultClientSideAvailabilities,
+
             string id,
 
             string key,
@@ -163,6 +170,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             ImmutableArray<string> tags)
         {
             ClientSideAvailabilities = clientSideAvailabilities;
+            DefaultClientSideAvailabilities = defaultClientSideAvailabilities;
             Id = id;
             Key = key;
             Name = name;

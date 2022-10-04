@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -124,6 +125,10 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     public readonly archived!: pulumi.Output<boolean | undefined>;
     /**
+     * A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     */
+    public readonly clientSideAvailabilities!: pulumi.Output<outputs.FeatureFlagClientSideAvailability[]>;
+    /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      */
     public readonly customProperties!: pulumi.Output<outputs.FeatureFlagCustomProperty[] | undefined>;
@@ -136,11 +141,13 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
      */
-    public readonly includeInSnippet!: pulumi.Output<boolean | undefined>;
+    public readonly includeInSnippet!: pulumi.Output<boolean>;
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -153,7 +160,7 @@ export class FeatureFlag extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The feature flag's project key.
+     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly projectKey!: pulumi.Output<string>;
     /**
@@ -187,6 +194,7 @@ export class FeatureFlag extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FeatureFlagState | undefined;
             resourceInputs["archived"] = state ? state.archived : undefined;
+            resourceInputs["clientSideAvailabilities"] = state ? state.clientSideAvailabilities : undefined;
             resourceInputs["customProperties"] = state ? state.customProperties : undefined;
             resourceInputs["defaults"] = state ? state.defaults : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -211,6 +219,7 @@ export class FeatureFlag extends pulumi.CustomResource {
                 throw new Error("Missing required property 'variationType'");
             }
             resourceInputs["archived"] = args ? args.archived : undefined;
+            resourceInputs["clientSideAvailabilities"] = args ? args.clientSideAvailabilities : undefined;
             resourceInputs["customProperties"] = args ? args.customProperties : undefined;
             resourceInputs["defaults"] = args ? args.defaults : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -238,6 +247,10 @@ export interface FeatureFlagState {
      */
     archived?: pulumi.Input<boolean>;
     /**
+     * A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     */
+    clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.FeatureFlagClientSideAvailability>[]>;
+    /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: pulumi.Input<pulumi.Input<inputs.FeatureFlagCustomProperty>[]>;
@@ -250,11 +263,13 @@ export interface FeatureFlagState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -267,7 +282,7 @@ export interface FeatureFlagState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The feature flag's project key.
+     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey?: pulumi.Input<string>;
     /**
@@ -297,6 +312,10 @@ export interface FeatureFlagArgs {
      */
     archived?: pulumi.Input<boolean>;
     /**
+     * A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     */
+    clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.FeatureFlagClientSideAvailability>[]>;
+    /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: pulumi.Input<pulumi.Input<inputs.FeatureFlagCustomProperty>[]>;
@@ -309,11 +328,13 @@ export interface FeatureFlagArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `includeInSnippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**
@@ -326,7 +347,7 @@ export interface FeatureFlagArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The feature flag's project key.
+     * The feature flag's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     projectKey: pulumi.Input<string>;
     /**

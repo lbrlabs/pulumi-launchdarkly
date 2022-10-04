@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * Resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
+ * The resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
  * 
  * With a built-in role
  * ```java
@@ -138,14 +138,14 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customRoles);
     }
     /**
-     * The default API version for this token. Defaults to the latest API version.
+     * The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
      * 
      */
     @Export(name="defaultApiVersion", type=Integer.class, parameters={})
     private Output<Integer> defaultApiVersion;
 
     /**
-     * @return The default API version for this token. Defaults to the latest API version.
+     * @return The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
      * 
      */
     public Output<Integer> defaultApiVersion() {
@@ -155,10 +155,10 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
      * An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
      * 
      * @deprecated
-     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarly provider
+     * &#39;expire&#39; is deprecated and will be removed in the next major release of the LaunchDarkly provider
      * 
      */
-    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider */
+    @Deprecated /* 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider */
     @Export(name="expire", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> expire;
 
@@ -232,14 +232,14 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.role);
     }
     /**
-     * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+     * Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
      * 
      */
     @Export(name="serviceToken", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> serviceToken;
 
     /**
-     * @return Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+     * @return Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
      * 
      */
     public Output<Optional<Boolean>> serviceToken() {
@@ -292,6 +292,9 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

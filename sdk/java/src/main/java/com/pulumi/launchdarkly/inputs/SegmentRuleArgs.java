@@ -49,14 +49,14 @@ public final class SegmentRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The integer weight of the rule (between 0 and 100000).
+     * The integer weight of the rule (between 1 and 100000).
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return The integer weight of the rule (between 0 and 100000).
+     * @return The integer weight of the rule (between 1 and 100000).
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -142,7 +142,7 @@ public final class SegmentRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param weight The integer weight of the rule (between 0 and 100000).
+         * @param weight The integer weight of the rule (between 1 and 100000).
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SegmentRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param weight The integer weight of the rule (between 0 and 100000).
+         * @param weight The integer weight of the rule (between 1 and 100000).
          * 
          * @return builder
          * 

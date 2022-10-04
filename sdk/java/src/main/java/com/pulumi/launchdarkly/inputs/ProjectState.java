@@ -5,6 +5,7 @@ package com.pulumi.launchdarkly.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.launchdarkly.inputs.ProjectDefaultClientSideAvailabilityArgs;
 import com.pulumi.launchdarkly.inputs.ProjectEnvironmentArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectState Empty = new ProjectState();
+
+    /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     * 
+     */
+    @Import(name="defaultClientSideAvailabilities")
+    private @Nullable Output<List<ProjectDefaultClientSideAvailabilityArgs>> defaultClientSideAvailabilities;
+
+    /**
+     * @return A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     * 
+     */
+    public Optional<Output<List<ProjectDefaultClientSideAvailabilityArgs>>> defaultClientSideAvailabilities() {
+        return Optional.ofNullable(this.defaultClientSideAvailabilities);
+    }
 
     /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
@@ -34,29 +50,37 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default
+     * **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
     @Import(name="includeInSnippet")
     private @Nullable Output<Boolean> includeInSnippet;
 
     /**
-     * @return Whether feature flags created under the project should be available to client-side SDKs by default
+     * @return **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
     public Optional<Output<Boolean>> includeInSnippet() {
         return Optional.ofNullable(this.includeInSnippet);
     }
 
     /**
-     * The project&#39;s unique key.
+     * The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The project&#39;s unique key.
+     * @return The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> key() {
@@ -96,6 +120,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState() {}
 
     private ProjectState(ProjectState $) {
+        this.defaultClientSideAvailabilities = $.defaultClientSideAvailabilities;
         this.environments = $.environments;
         this.includeInSnippet = $.includeInSnippet;
         this.key = $.key;
@@ -119,6 +144,37 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProjectState defaults) {
             $ = new ProjectState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultClientSideAvailabilities A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultClientSideAvailabilities(@Nullable Output<List<ProjectDefaultClientSideAvailabilityArgs>> defaultClientSideAvailabilities) {
+            $.defaultClientSideAvailabilities = defaultClientSideAvailabilities;
+            return this;
+        }
+
+        /**
+         * @param defaultClientSideAvailabilities A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultClientSideAvailabilities(List<ProjectDefaultClientSideAvailabilityArgs> defaultClientSideAvailabilities) {
+            return defaultClientSideAvailabilities(Output.of(defaultClientSideAvailabilities));
+        }
+
+        /**
+         * @param defaultClientSideAvailabilities A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultClientSideAvailabilities(ProjectDefaultClientSideAvailabilityArgs... defaultClientSideAvailabilities) {
+            return defaultClientSideAvailabilities(List.of(defaultClientSideAvailabilities));
         }
 
         /**
@@ -153,28 +209,36 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeInSnippet Whether feature flags created under the project should be available to client-side SDKs by default
+         * @param includeInSnippet **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
          * 
          * @return builder
          * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
+         * 
          */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(@Nullable Output<Boolean> includeInSnippet) {
             $.includeInSnippet = includeInSnippet;
             return this;
         }
 
         /**
-         * @param includeInSnippet Whether feature flags created under the project should be available to client-side SDKs by default
+         * @param includeInSnippet **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
          * 
          * @return builder
          * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
+         * 
          */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(Boolean includeInSnippet) {
             return includeInSnippet(Output.of(includeInSnippet));
         }
 
         /**
-         * @param key The project&#39;s unique key.
+         * @param key The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -185,7 +249,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The project&#39;s unique key.
+         * @param key The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

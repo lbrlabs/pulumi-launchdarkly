@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -106,7 +107,7 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
     }
 
     /**
-     * The environment key.
+     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly envKey!: pulumi.Output<string>;
     /**
@@ -114,7 +115,7 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
      */
     public readonly fallthrough!: pulumi.Output<outputs.FeatureFlagEnvironmentFallthrough>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly flagId!: pulumi.Output<string>;
     /**
@@ -198,7 +199,7 @@ export class FeatureFlagEnvironment extends pulumi.CustomResource {
  */
 export interface FeatureFlagEnvironmentState {
     /**
-     * The environment key.
+     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     envKey?: pulumi.Input<string>;
     /**
@@ -206,7 +207,7 @@ export interface FeatureFlagEnvironmentState {
      */
     fallthrough?: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     flagId?: pulumi.Input<string>;
     /**
@@ -240,7 +241,7 @@ export interface FeatureFlagEnvironmentState {
  */
 export interface FeatureFlagEnvironmentArgs {
     /**
-     * The environment key.
+     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     envKey: pulumi.Input<string>;
     /**
@@ -248,7 +249,7 @@ export interface FeatureFlagEnvironmentArgs {
      */
     fallthrough: pulumi.Input<inputs.FeatureFlagEnvironmentFallthrough>;
     /**
-     * The feature flag's unique `id` in the format `project_key/flag_key`.
+     * The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     flagId: pulumi.Input<string>;
     /**

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.launchdarkly.ProjectArgs;
 import com.pulumi.launchdarkly.Utilities;
 import com.pulumi.launchdarkly.inputs.ProjectState;
+import com.pulumi.launchdarkly.outputs.ProjectDefaultClientSideAvailability;
 import com.pulumi.launchdarkly.outputs.ProjectEnvironment;
 import java.lang.Boolean;
 import java.lang.String;
@@ -81,11 +82,25 @@ import javax.annotation.Nullable;
  *  $ pulumi import launchdarkly:index/project:Project example example-project
  * ```
  * 
- *  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project&#39;s environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform&#39;s [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource &#34;launchdarkly_project&#34; &#34;example&#34; { 		lifecycle { 			ignore_changes = [environments] 		} 		name = &#34;testProject&#34; 		key = &#34;%s&#34; 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+ *  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project&#39;s environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform&#39;s [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource &#34;launchdarkly_project&#34; &#34;example&#34; { 		lifecycle { 			ignore_changes = [environments] 		} 		name = &#34;testProject&#34; 		key = &#34;%s&#34; 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
  * 
  */
 @ResourceType(type="launchdarkly:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
+    /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     * 
+     */
+    @Export(name="defaultClientSideAvailabilities", type=List.class, parameters={ProjectDefaultClientSideAvailability.class})
+    private Output<List<ProjectDefaultClientSideAvailability>> defaultClientSideAvailabilities;
+
+    /**
+     * @return A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     * 
+     */
+    public Output<List<ProjectDefaultClientSideAvailability>> defaultClientSideAvailabilities() {
+        return this.defaultClientSideAvailabilities;
+    }
     /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
      * 
@@ -101,28 +116,32 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.environments;
     }
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default
+     * **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
     @Export(name="includeInSnippet", type=Boolean.class, parameters={})
-    private Output</* @Nullable */ Boolean> includeInSnippet;
+    private Output<Boolean> includeInSnippet;
 
     /**
-     * @return Whether feature flags created under the project should be available to client-side SDKs by default
+     * @return **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
      * 
      */
-    public Output<Optional<Boolean>> includeInSnippet() {
-        return Codegen.optional(this.includeInSnippet);
+    public Output<Boolean> includeInSnippet() {
+        return this.includeInSnippet;
     }
     /**
-     * The project&#39;s unique key.
+     * The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The project&#39;s unique key.
+     * @return The project&#39;s unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {

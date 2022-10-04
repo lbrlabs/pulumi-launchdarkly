@@ -27,22 +27,22 @@ class AccessTokenArgs:
         """
         The set of arguments for constructing a AccessToken resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: A list of custom role IDs to use as access limits for the access token
-        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version.
+        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         :param pulumi.Input[int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenInlineRoleArgs']]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
-        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
         if custom_roles is not None:
             pulumi.set(__self__, "custom_roles", custom_roles)
         if default_api_version is not None:
             pulumi.set(__self__, "default_api_version", default_api_version)
         if expire is not None:
-            warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""", DeprecationWarning)
-            pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""")
+            warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""", DeprecationWarning)
+            pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""")
         if expire is not None:
             pulumi.set(__self__, "expire", expire)
         if inline_roles is not None:
@@ -75,7 +75,7 @@ class AccessTokenArgs:
     @pulumi.getter(name="defaultApiVersion")
     def default_api_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The default API version for this token. Defaults to the latest API version.
+        The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         """
         return pulumi.get(self, "default_api_version")
 
@@ -148,7 +148,7 @@ class AccessTokenArgs:
     @pulumi.getter(name="serviceToken")
     def service_token(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
         return pulumi.get(self, "service_token")
 
@@ -172,14 +172,14 @@ class _AccessTokenState:
         """
         Input properties used for looking up and filtering AccessToken resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: A list of custom role IDs to use as access limits for the access token
-        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version.
+        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         :param pulumi.Input[int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenInlineRoleArgs']]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
-        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         :param pulumi.Input[str] token: The access token used to authorize usage of the LaunchDarkly API.
         """
         if custom_roles is not None:
@@ -187,8 +187,8 @@ class _AccessTokenState:
         if default_api_version is not None:
             pulumi.set(__self__, "default_api_version", default_api_version)
         if expire is not None:
-            warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""", DeprecationWarning)
-            pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""")
+            warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""", DeprecationWarning)
+            pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""")
         if expire is not None:
             pulumi.set(__self__, "expire", expire)
         if inline_roles is not None:
@@ -223,7 +223,7 @@ class _AccessTokenState:
     @pulumi.getter(name="defaultApiVersion")
     def default_api_version(self) -> Optional[pulumi.Input[int]]:
         """
-        The default API version for this token. Defaults to the latest API version.
+        The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         """
         return pulumi.get(self, "default_api_version")
 
@@ -296,7 +296,7 @@ class _AccessTokenState:
     @pulumi.getter(name="serviceToken")
     def service_token(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
         return pulumi.get(self, "service_token")
 
@@ -334,7 +334,7 @@ class AccessToken(pulumi.CustomResource):
         """
         ## Example Usage
 
-        Resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
+        The resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
 
         With a built-in role
 
@@ -372,14 +372,14 @@ class AccessToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: A list of custom role IDs to use as access limits for the access token
-        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version.
+        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         :param pulumi.Input[int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenInlineRoleArgs']]]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
-        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
         ...
     @overload
@@ -390,7 +390,7 @@ class AccessToken(pulumi.CustomResource):
         """
         ## Example Usage
 
-        Resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
+        The resource must contain either a `role`, `custom_role` or an `inline_roles` (previously `policy_statements`) block. As of v1.7.0, `policy_statements` has been deprecated in favor of `inline_roles`.
 
         With a built-in role
 
@@ -460,8 +460,8 @@ class AccessToken(pulumi.CustomResource):
             __props__.__dict__["custom_roles"] = custom_roles
             __props__.__dict__["default_api_version"] = default_api_version
             if expire is not None and not opts.urn:
-                warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""", DeprecationWarning)
-                pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider""")
+                warnings.warn("""'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""", DeprecationWarning)
+                pulumi.log.warn("""expire is deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider""")
             __props__.__dict__["expire"] = expire
             __props__.__dict__["inline_roles"] = inline_roles
             __props__.__dict__["name"] = name
@@ -472,6 +472,8 @@ class AccessToken(pulumi.CustomResource):
             __props__.__dict__["role"] = role
             __props__.__dict__["service_token"] = service_token
             __props__.__dict__["token"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessToken, __self__).__init__(
             'launchdarkly:index/accessToken:AccessToken',
             resource_name,
@@ -499,14 +501,14 @@ class AccessToken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_roles: A list of custom role IDs to use as access limits for the access token
-        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version.
+        :param pulumi.Input[int] default_api_version: The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         :param pulumi.Input[int] expire: An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenInlineRoleArgs']]]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
-        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         :param pulumi.Input[str] token: The access token used to authorize usage of the LaunchDarkly API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -536,7 +538,7 @@ class AccessToken(pulumi.CustomResource):
     @pulumi.getter(name="defaultApiVersion")
     def default_api_version(self) -> pulumi.Output[int]:
         """
-        The default API version for this token. Defaults to the latest API version.
+        The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
         """
         return pulumi.get(self, "default_api_version")
 
@@ -585,7 +587,7 @@ class AccessToken(pulumi.CustomResource):
     @pulumi.getter(name="serviceToken")
     def service_token(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+        Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
         return pulumi.get(self, "service_token")
 

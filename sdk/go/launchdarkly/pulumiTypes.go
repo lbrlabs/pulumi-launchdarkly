@@ -276,6 +276,139 @@ func (o AccessTokenPolicyStatementArrayOutput) Index(i pulumi.IntInput) AccessTo
 	}).(AccessTokenPolicyStatementOutput)
 }
 
+type AuditLogSubscriptionStatement struct {
+	// The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+	Actions []string `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+	Effect string `pulumi:"effect"`
+	// The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+	NotActions []string `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	NotResources []string `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	Resources []string `pulumi:"resources"`
+}
+
+// AuditLogSubscriptionStatementInput is an input type that accepts AuditLogSubscriptionStatementArgs and AuditLogSubscriptionStatementOutput values.
+// You can construct a concrete instance of `AuditLogSubscriptionStatementInput` via:
+//
+//	AuditLogSubscriptionStatementArgs{...}
+type AuditLogSubscriptionStatementInput interface {
+	pulumi.Input
+
+	ToAuditLogSubscriptionStatementOutput() AuditLogSubscriptionStatementOutput
+	ToAuditLogSubscriptionStatementOutputWithContext(context.Context) AuditLogSubscriptionStatementOutput
+}
+
+type AuditLogSubscriptionStatementArgs struct {
+	// The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (AuditLogSubscriptionStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (i AuditLogSubscriptionStatementArgs) ToAuditLogSubscriptionStatementOutput() AuditLogSubscriptionStatementOutput {
+	return i.ToAuditLogSubscriptionStatementOutputWithContext(context.Background())
+}
+
+func (i AuditLogSubscriptionStatementArgs) ToAuditLogSubscriptionStatementOutputWithContext(ctx context.Context) AuditLogSubscriptionStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogSubscriptionStatementOutput)
+}
+
+// AuditLogSubscriptionStatementArrayInput is an input type that accepts AuditLogSubscriptionStatementArray and AuditLogSubscriptionStatementArrayOutput values.
+// You can construct a concrete instance of `AuditLogSubscriptionStatementArrayInput` via:
+//
+//	AuditLogSubscriptionStatementArray{ AuditLogSubscriptionStatementArgs{...} }
+type AuditLogSubscriptionStatementArrayInput interface {
+	pulumi.Input
+
+	ToAuditLogSubscriptionStatementArrayOutput() AuditLogSubscriptionStatementArrayOutput
+	ToAuditLogSubscriptionStatementArrayOutputWithContext(context.Context) AuditLogSubscriptionStatementArrayOutput
+}
+
+type AuditLogSubscriptionStatementArray []AuditLogSubscriptionStatementInput
+
+func (AuditLogSubscriptionStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (i AuditLogSubscriptionStatementArray) ToAuditLogSubscriptionStatementArrayOutput() AuditLogSubscriptionStatementArrayOutput {
+	return i.ToAuditLogSubscriptionStatementArrayOutputWithContext(context.Background())
+}
+
+func (i AuditLogSubscriptionStatementArray) ToAuditLogSubscriptionStatementArrayOutputWithContext(ctx context.Context) AuditLogSubscriptionStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuditLogSubscriptionStatementArrayOutput)
+}
+
+type AuditLogSubscriptionStatementOutput struct{ *pulumi.OutputState }
+
+func (AuditLogSubscriptionStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (o AuditLogSubscriptionStatementOutput) ToAuditLogSubscriptionStatementOutput() AuditLogSubscriptionStatementOutput {
+	return o
+}
+
+func (o AuditLogSubscriptionStatementOutput) ToAuditLogSubscriptionStatementOutputWithContext(ctx context.Context) AuditLogSubscriptionStatementOutput {
+	return o
+}
+
+// The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+func (o AuditLogSubscriptionStatementOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogSubscriptionStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+func (o AuditLogSubscriptionStatementOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v AuditLogSubscriptionStatement) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+func (o AuditLogSubscriptionStatementOutput) NotActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogSubscriptionStatement) []string { return v.NotActions }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+func (o AuditLogSubscriptionStatementOutput) NotResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogSubscriptionStatement) []string { return v.NotResources }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+func (o AuditLogSubscriptionStatementOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AuditLogSubscriptionStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type AuditLogSubscriptionStatementArrayOutput struct{ *pulumi.OutputState }
+
+func (AuditLogSubscriptionStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (o AuditLogSubscriptionStatementArrayOutput) ToAuditLogSubscriptionStatementArrayOutput() AuditLogSubscriptionStatementArrayOutput {
+	return o
+}
+
+func (o AuditLogSubscriptionStatementArrayOutput) ToAuditLogSubscriptionStatementArrayOutputWithContext(ctx context.Context) AuditLogSubscriptionStatementArrayOutput {
+	return o
+}
+
+func (o AuditLogSubscriptionStatementArrayOutput) Index(i pulumi.IntInput) AuditLogSubscriptionStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogSubscriptionStatement {
+		return vs[0].([]AuditLogSubscriptionStatement)[vs[1].(int)]
+	}).(AuditLogSubscriptionStatementOutput)
+}
+
 type CustomRolePolicy struct {
 	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
 	Actions []string `pulumi:"actions"`
@@ -657,6 +790,112 @@ func (o EnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) Environm
 	}).(EnvironmentApprovalSettingOutput)
 }
 
+type FeatureFlagClientSideAvailability struct {
+	// Whether this flag is available to SDKs using the client-side ID.
+	UsingEnvironmentId *bool `pulumi:"usingEnvironmentId"`
+	// Whether this flag is available to SDKs using a mobile key.
+	UsingMobileKey *bool `pulumi:"usingMobileKey"`
+}
+
+// FeatureFlagClientSideAvailabilityInput is an input type that accepts FeatureFlagClientSideAvailabilityArgs and FeatureFlagClientSideAvailabilityOutput values.
+// You can construct a concrete instance of `FeatureFlagClientSideAvailabilityInput` via:
+//
+//	FeatureFlagClientSideAvailabilityArgs{...}
+type FeatureFlagClientSideAvailabilityInput interface {
+	pulumi.Input
+
+	ToFeatureFlagClientSideAvailabilityOutput() FeatureFlagClientSideAvailabilityOutput
+	ToFeatureFlagClientSideAvailabilityOutputWithContext(context.Context) FeatureFlagClientSideAvailabilityOutput
+}
+
+type FeatureFlagClientSideAvailabilityArgs struct {
+	// Whether this flag is available to SDKs using the client-side ID.
+	UsingEnvironmentId pulumi.BoolPtrInput `pulumi:"usingEnvironmentId"`
+	// Whether this flag is available to SDKs using a mobile key.
+	UsingMobileKey pulumi.BoolPtrInput `pulumi:"usingMobileKey"`
+}
+
+func (FeatureFlagClientSideAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFlagClientSideAvailability)(nil)).Elem()
+}
+
+func (i FeatureFlagClientSideAvailabilityArgs) ToFeatureFlagClientSideAvailabilityOutput() FeatureFlagClientSideAvailabilityOutput {
+	return i.ToFeatureFlagClientSideAvailabilityOutputWithContext(context.Background())
+}
+
+func (i FeatureFlagClientSideAvailabilityArgs) ToFeatureFlagClientSideAvailabilityOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityOutput)
+}
+
+// FeatureFlagClientSideAvailabilityArrayInput is an input type that accepts FeatureFlagClientSideAvailabilityArray and FeatureFlagClientSideAvailabilityArrayOutput values.
+// You can construct a concrete instance of `FeatureFlagClientSideAvailabilityArrayInput` via:
+//
+//	FeatureFlagClientSideAvailabilityArray{ FeatureFlagClientSideAvailabilityArgs{...} }
+type FeatureFlagClientSideAvailabilityArrayInput interface {
+	pulumi.Input
+
+	ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput
+	ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Context) FeatureFlagClientSideAvailabilityArrayOutput
+}
+
+type FeatureFlagClientSideAvailabilityArray []FeatureFlagClientSideAvailabilityInput
+
+func (FeatureFlagClientSideAvailabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFlagClientSideAvailability)(nil)).Elem()
+}
+
+func (i FeatureFlagClientSideAvailabilityArray) ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput {
+	return i.ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureFlagClientSideAvailabilityArray) ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureFlagClientSideAvailabilityArrayOutput)
+}
+
+type FeatureFlagClientSideAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (FeatureFlagClientSideAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureFlagClientSideAvailability)(nil)).Elem()
+}
+
+func (o FeatureFlagClientSideAvailabilityOutput) ToFeatureFlagClientSideAvailabilityOutput() FeatureFlagClientSideAvailabilityOutput {
+	return o
+}
+
+func (o FeatureFlagClientSideAvailabilityOutput) ToFeatureFlagClientSideAvailabilityOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityOutput {
+	return o
+}
+
+// Whether this flag is available to SDKs using the client-side ID.
+func (o FeatureFlagClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFlagClientSideAvailability) *bool { return v.UsingEnvironmentId }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this flag is available to SDKs using a mobile key.
+func (o FeatureFlagClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureFlagClientSideAvailability) *bool { return v.UsingMobileKey }).(pulumi.BoolPtrOutput)
+}
+
+type FeatureFlagClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureFlagClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureFlagClientSideAvailability)(nil)).Elem()
+}
+
+func (o FeatureFlagClientSideAvailabilityArrayOutput) ToFeatureFlagClientSideAvailabilityArrayOutput() FeatureFlagClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o FeatureFlagClientSideAvailabilityArrayOutput) ToFeatureFlagClientSideAvailabilityArrayOutputWithContext(ctx context.Context) FeatureFlagClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o FeatureFlagClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) FeatureFlagClientSideAvailabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureFlagClientSideAvailability {
+		return vs[0].([]FeatureFlagClientSideAvailability)[vs[1].(int)]
+	}).(FeatureFlagClientSideAvailabilityOutput)
+}
+
 type FeatureFlagCustomProperty struct {
 	// The unique custom property key.
 	Key string `pulumi:"key"`
@@ -931,7 +1170,7 @@ func (o FeatureFlagDefaultsPtrOutput) OnVariation() pulumi.IntPtrOutput {
 type FeatureFlagEnvironmentFallthrough struct {
 	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
 	BucketBy *string `pulumi:"bucketBy"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 	RolloutWeights []int `pulumi:"rolloutWeights"`
 	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`.
 	Variation *int `pulumi:"variation"`
@@ -951,7 +1190,7 @@ type FeatureFlagEnvironmentFallthroughInput interface {
 type FeatureFlagEnvironmentFallthroughArgs struct {
 	// Group percentage rollout by a custom attribute. This argument is only valid if `rolloutWeights` is also specified.
 	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 	RolloutWeights pulumi.IntArrayInput `pulumi:"rolloutWeights"`
 	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`.
 	Variation pulumi.IntPtrInput `pulumi:"variation"`
@@ -1039,7 +1278,7 @@ func (o FeatureFlagEnvironmentFallthroughOutput) BucketBy() pulumi.StringPtrOutp
 	return o.ApplyT(func(v FeatureFlagEnvironmentFallthrough) *string { return v.BucketBy }).(pulumi.StringPtrOutput)
 }
 
-// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 func (o FeatureFlagEnvironmentFallthroughOutput) RolloutWeights() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentFallthrough) []int { return v.RolloutWeights }).(pulumi.IntArrayOutput)
 }
@@ -1083,7 +1322,7 @@ func (o FeatureFlagEnvironmentFallthroughPtrOutput) BucketBy() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 func (o FeatureFlagEnvironmentFallthroughPtrOutput) RolloutWeights() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *FeatureFlagEnvironmentFallthrough) []int {
 		if v == nil {
@@ -1214,7 +1453,7 @@ type FeatureFlagEnvironmentRule struct {
 	BucketBy *string `pulumi:"bucketBy"`
 	// List of nested blocks specifying the logical clauses to evaluate. To learn more, read Nested Clauses Blocks.
 	Clauses []FeatureFlagEnvironmentRuleClause `pulumi:"clauses"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 	RolloutWeights []int `pulumi:"rolloutWeights"`
 	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`.
 	Variation *int `pulumi:"variation"`
@@ -1236,7 +1475,7 @@ type FeatureFlagEnvironmentRuleArgs struct {
 	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
 	// List of nested blocks specifying the logical clauses to evaluate. To learn more, read Nested Clauses Blocks.
 	Clauses FeatureFlagEnvironmentRuleClauseArrayInput `pulumi:"clauses"`
-	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+	// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 	RolloutWeights pulumi.IntArrayInput `pulumi:"rolloutWeights"`
 	// The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rolloutWeights`.
 	Variation pulumi.IntPtrInput `pulumi:"variation"`
@@ -1303,7 +1542,7 @@ func (o FeatureFlagEnvironmentRuleOutput) Clauses() FeatureFlagEnvironmentRuleCl
 	return o.ApplyT(func(v FeatureFlagEnvironmentRule) []FeatureFlagEnvironmentRuleClause { return v.Clauses }).(FeatureFlagEnvironmentRuleClauseArrayOutput)
 }
 
-// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+// List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
 func (o FeatureFlagEnvironmentRuleOutput) RolloutWeights() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v FeatureFlagEnvironmentRule) []int { return v.RolloutWeights }).(pulumi.IntArrayOutput)
 }
@@ -1687,6 +1926,369 @@ func (o FeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) FeatureFlagVar
 	}).(FeatureFlagVariationOutput)
 }
 
+type FlagTriggerInstructions struct {
+	Kind string `pulumi:"kind"`
+}
+
+// FlagTriggerInstructionsInput is an input type that accepts FlagTriggerInstructionsArgs and FlagTriggerInstructionsOutput values.
+// You can construct a concrete instance of `FlagTriggerInstructionsInput` via:
+//
+//	FlagTriggerInstructionsArgs{...}
+type FlagTriggerInstructionsInput interface {
+	pulumi.Input
+
+	ToFlagTriggerInstructionsOutput() FlagTriggerInstructionsOutput
+	ToFlagTriggerInstructionsOutputWithContext(context.Context) FlagTriggerInstructionsOutput
+}
+
+type FlagTriggerInstructionsArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (FlagTriggerInstructionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlagTriggerInstructions)(nil)).Elem()
+}
+
+func (i FlagTriggerInstructionsArgs) ToFlagTriggerInstructionsOutput() FlagTriggerInstructionsOutput {
+	return i.ToFlagTriggerInstructionsOutputWithContext(context.Background())
+}
+
+func (i FlagTriggerInstructionsArgs) ToFlagTriggerInstructionsOutputWithContext(ctx context.Context) FlagTriggerInstructionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTriggerInstructionsOutput)
+}
+
+func (i FlagTriggerInstructionsArgs) ToFlagTriggerInstructionsPtrOutput() FlagTriggerInstructionsPtrOutput {
+	return i.ToFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i FlagTriggerInstructionsArgs) ToFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) FlagTriggerInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTriggerInstructionsOutput).ToFlagTriggerInstructionsPtrOutputWithContext(ctx)
+}
+
+// FlagTriggerInstructionsPtrInput is an input type that accepts FlagTriggerInstructionsArgs, FlagTriggerInstructionsPtr and FlagTriggerInstructionsPtrOutput values.
+// You can construct a concrete instance of `FlagTriggerInstructionsPtrInput` via:
+//
+//	        FlagTriggerInstructionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlagTriggerInstructionsPtrInput interface {
+	pulumi.Input
+
+	ToFlagTriggerInstructionsPtrOutput() FlagTriggerInstructionsPtrOutput
+	ToFlagTriggerInstructionsPtrOutputWithContext(context.Context) FlagTriggerInstructionsPtrOutput
+}
+
+type flagTriggerInstructionsPtrType FlagTriggerInstructionsArgs
+
+func FlagTriggerInstructionsPtr(v *FlagTriggerInstructionsArgs) FlagTriggerInstructionsPtrInput {
+	return (*flagTriggerInstructionsPtrType)(v)
+}
+
+func (*flagTriggerInstructionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlagTriggerInstructions)(nil)).Elem()
+}
+
+func (i *flagTriggerInstructionsPtrType) ToFlagTriggerInstructionsPtrOutput() FlagTriggerInstructionsPtrOutput {
+	return i.ToFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i *flagTriggerInstructionsPtrType) ToFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) FlagTriggerInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlagTriggerInstructionsPtrOutput)
+}
+
+type FlagTriggerInstructionsOutput struct{ *pulumi.OutputState }
+
+func (FlagTriggerInstructionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlagTriggerInstructions)(nil)).Elem()
+}
+
+func (o FlagTriggerInstructionsOutput) ToFlagTriggerInstructionsOutput() FlagTriggerInstructionsOutput {
+	return o
+}
+
+func (o FlagTriggerInstructionsOutput) ToFlagTriggerInstructionsOutputWithContext(ctx context.Context) FlagTriggerInstructionsOutput {
+	return o
+}
+
+func (o FlagTriggerInstructionsOutput) ToFlagTriggerInstructionsPtrOutput() FlagTriggerInstructionsPtrOutput {
+	return o.ToFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (o FlagTriggerInstructionsOutput) ToFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) FlagTriggerInstructionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlagTriggerInstructions) *FlagTriggerInstructions {
+		return &v
+	}).(FlagTriggerInstructionsPtrOutput)
+}
+
+func (o FlagTriggerInstructionsOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v FlagTriggerInstructions) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type FlagTriggerInstructionsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlagTriggerInstructionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlagTriggerInstructions)(nil)).Elem()
+}
+
+func (o FlagTriggerInstructionsPtrOutput) ToFlagTriggerInstructionsPtrOutput() FlagTriggerInstructionsPtrOutput {
+	return o
+}
+
+func (o FlagTriggerInstructionsPtrOutput) ToFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) FlagTriggerInstructionsPtrOutput {
+	return o
+}
+
+func (o FlagTriggerInstructionsPtrOutput) Elem() FlagTriggerInstructionsOutput {
+	return o.ApplyT(func(v *FlagTriggerInstructions) FlagTriggerInstructions {
+		if v != nil {
+			return *v
+		}
+		var ret FlagTriggerInstructions
+		return ret
+	}).(FlagTriggerInstructionsOutput)
+}
+
+func (o FlagTriggerInstructionsPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlagTriggerInstructions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricUrl struct {
+	// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+	Kind string `pulumi:"kind"`
+	// The regex pattern to match by.
+	Pattern *string `pulumi:"pattern"`
+	// The URL substring to match by.
+	Substring *string `pulumi:"substring"`
+	// The exact or canonical URL.
+	Url *string `pulumi:"url"`
+}
+
+// MetricUrlInput is an input type that accepts MetricUrlArgs and MetricUrlOutput values.
+// You can construct a concrete instance of `MetricUrlInput` via:
+//
+//	MetricUrlArgs{...}
+type MetricUrlInput interface {
+	pulumi.Input
+
+	ToMetricUrlOutput() MetricUrlOutput
+	ToMetricUrlOutputWithContext(context.Context) MetricUrlOutput
+}
+
+type MetricUrlArgs struct {
+	// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The regex pattern to match by.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// The URL substring to match by.
+	Substring pulumi.StringPtrInput `pulumi:"substring"`
+	// The exact or canonical URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (MetricUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricUrl)(nil)).Elem()
+}
+
+func (i MetricUrlArgs) ToMetricUrlOutput() MetricUrlOutput {
+	return i.ToMetricUrlOutputWithContext(context.Background())
+}
+
+func (i MetricUrlArgs) ToMetricUrlOutputWithContext(ctx context.Context) MetricUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricUrlOutput)
+}
+
+// MetricUrlArrayInput is an input type that accepts MetricUrlArray and MetricUrlArrayOutput values.
+// You can construct a concrete instance of `MetricUrlArrayInput` via:
+//
+//	MetricUrlArray{ MetricUrlArgs{...} }
+type MetricUrlArrayInput interface {
+	pulumi.Input
+
+	ToMetricUrlArrayOutput() MetricUrlArrayOutput
+	ToMetricUrlArrayOutputWithContext(context.Context) MetricUrlArrayOutput
+}
+
+type MetricUrlArray []MetricUrlInput
+
+func (MetricUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricUrl)(nil)).Elem()
+}
+
+func (i MetricUrlArray) ToMetricUrlArrayOutput() MetricUrlArrayOutput {
+	return i.ToMetricUrlArrayOutputWithContext(context.Background())
+}
+
+func (i MetricUrlArray) ToMetricUrlArrayOutputWithContext(ctx context.Context) MetricUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricUrlArrayOutput)
+}
+
+type MetricUrlOutput struct{ *pulumi.OutputState }
+
+func (MetricUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricUrl)(nil)).Elem()
+}
+
+func (o MetricUrlOutput) ToMetricUrlOutput() MetricUrlOutput {
+	return o
+}
+
+func (o MetricUrlOutput) ToMetricUrlOutputWithContext(ctx context.Context) MetricUrlOutput {
+	return o
+}
+
+// The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+func (o MetricUrlOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricUrl) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The regex pattern to match by.
+func (o MetricUrlOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricUrl) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// The URL substring to match by.
+func (o MetricUrlOutput) Substring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricUrl) *string { return v.Substring }).(pulumi.StringPtrOutput)
+}
+
+// The exact or canonical URL.
+func (o MetricUrlOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricUrl) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type MetricUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricUrl)(nil)).Elem()
+}
+
+func (o MetricUrlArrayOutput) ToMetricUrlArrayOutput() MetricUrlArrayOutput {
+	return o
+}
+
+func (o MetricUrlArrayOutput) ToMetricUrlArrayOutputWithContext(ctx context.Context) MetricUrlArrayOutput {
+	return o
+}
+
+func (o MetricUrlArrayOutput) Index(i pulumi.IntInput) MetricUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricUrl {
+		return vs[0].([]MetricUrl)[vs[1].(int)]
+	}).(MetricUrlOutput)
+}
+
+type ProjectDefaultClientSideAvailability struct {
+	// Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `defaultClientSideAvailability`.
+	UsingEnvironmentId bool `pulumi:"usingEnvironmentId"`
+	// Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `defaultClientSideAvailability`.
+	UsingMobileKey bool `pulumi:"usingMobileKey"`
+}
+
+// ProjectDefaultClientSideAvailabilityInput is an input type that accepts ProjectDefaultClientSideAvailabilityArgs and ProjectDefaultClientSideAvailabilityOutput values.
+// You can construct a concrete instance of `ProjectDefaultClientSideAvailabilityInput` via:
+//
+//	ProjectDefaultClientSideAvailabilityArgs{...}
+type ProjectDefaultClientSideAvailabilityInput interface {
+	pulumi.Input
+
+	ToProjectDefaultClientSideAvailabilityOutput() ProjectDefaultClientSideAvailabilityOutput
+	ToProjectDefaultClientSideAvailabilityOutputWithContext(context.Context) ProjectDefaultClientSideAvailabilityOutput
+}
+
+type ProjectDefaultClientSideAvailabilityArgs struct {
+	// Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `defaultClientSideAvailability`.
+	UsingEnvironmentId pulumi.BoolInput `pulumi:"usingEnvironmentId"`
+	// Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `defaultClientSideAvailability`.
+	UsingMobileKey pulumi.BoolInput `pulumi:"usingMobileKey"`
+}
+
+func (ProjectDefaultClientSideAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (i ProjectDefaultClientSideAvailabilityArgs) ToProjectDefaultClientSideAvailabilityOutput() ProjectDefaultClientSideAvailabilityOutput {
+	return i.ToProjectDefaultClientSideAvailabilityOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultClientSideAvailabilityArgs) ToProjectDefaultClientSideAvailabilityOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityOutput)
+}
+
+// ProjectDefaultClientSideAvailabilityArrayInput is an input type that accepts ProjectDefaultClientSideAvailabilityArray and ProjectDefaultClientSideAvailabilityArrayOutput values.
+// You can construct a concrete instance of `ProjectDefaultClientSideAvailabilityArrayInput` via:
+//
+//	ProjectDefaultClientSideAvailabilityArray{ ProjectDefaultClientSideAvailabilityArgs{...} }
+type ProjectDefaultClientSideAvailabilityArrayInput interface {
+	pulumi.Input
+
+	ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput
+	ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Context) ProjectDefaultClientSideAvailabilityArrayOutput
+}
+
+type ProjectDefaultClientSideAvailabilityArray []ProjectDefaultClientSideAvailabilityInput
+
+func (ProjectDefaultClientSideAvailabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (i ProjectDefaultClientSideAvailabilityArray) ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput {
+	return i.ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultClientSideAvailabilityArray) ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultClientSideAvailabilityArrayOutput)
+}
+
+type ProjectDefaultClientSideAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultClientSideAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (o ProjectDefaultClientSideAvailabilityOutput) ToProjectDefaultClientSideAvailabilityOutput() ProjectDefaultClientSideAvailabilityOutput {
+	return o
+}
+
+func (o ProjectDefaultClientSideAvailabilityOutput) ToProjectDefaultClientSideAvailabilityOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityOutput {
+	return o
+}
+
+// Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `defaultClientSideAvailability`.
+func (o ProjectDefaultClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolOutput {
+	return o.ApplyT(func(v ProjectDefaultClientSideAvailability) bool { return v.UsingEnvironmentId }).(pulumi.BoolOutput)
+}
+
+// Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `defaultClientSideAvailability`.
+func (o ProjectDefaultClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v ProjectDefaultClientSideAvailability) bool { return v.UsingMobileKey }).(pulumi.BoolOutput)
+}
+
+type ProjectDefaultClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (o ProjectDefaultClientSideAvailabilityArrayOutput) ToProjectDefaultClientSideAvailabilityArrayOutput() ProjectDefaultClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultClientSideAvailabilityArrayOutput) ToProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) ProjectDefaultClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) ProjectDefaultClientSideAvailabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectDefaultClientSideAvailability {
+		return vs[0].([]ProjectDefaultClientSideAvailability)[vs[1].(int)]
+	}).(ProjectDefaultClientSideAvailabilityOutput)
+}
+
 type ProjectEnvironment struct {
 	ApiKey           *string                             `pulumi:"apiKey"`
 	ApprovalSettings []ProjectEnvironmentApprovalSetting `pulumi:"approvalSettings"`
@@ -1699,7 +2301,7 @@ type ProjectEnvironment struct {
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
 	Key       string  `pulumi:"key"`
 	MobileKey *string `pulumi:"mobileKey"`
 	// The name of the environment.
@@ -1735,7 +2337,7 @@ type ProjectEnvironmentArgs struct {
 	DefaultTrackEvents pulumi.BoolPtrInput `pulumi:"defaultTrackEvents"`
 	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
-	// The project-unique key for the environment.
+	// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
 	Key       pulumi.StringInput    `pulumi:"key"`
 	MobileKey pulumi.StringPtrInput `pulumi:"mobileKey"`
 	// The name of the environment.
@@ -1831,7 +2433,7 @@ func (o ProjectEnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectEnvironment) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
-// The project-unique key for the environment.
+// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
 func (o ProjectEnvironmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ProjectEnvironment) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -2013,12 +2615,145 @@ func (o ProjectEnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) P
 	}).(ProjectEnvironmentApprovalSettingOutput)
 }
 
+type RelayProxyConfigurationPolicy struct {
+	// The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	Actions []string `pulumi:"actions"`
+	// - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+	Effect string `pulumi:"effect"`
+	// The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	NotActions []string `pulumi:"notActions"`
+	// - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	NotResources []string `pulumi:"notResources"`
+	// - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	Resources []string `pulumi:"resources"`
+}
+
+// RelayProxyConfigurationPolicyInput is an input type that accepts RelayProxyConfigurationPolicyArgs and RelayProxyConfigurationPolicyOutput values.
+// You can construct a concrete instance of `RelayProxyConfigurationPolicyInput` via:
+//
+//	RelayProxyConfigurationPolicyArgs{...}
+type RelayProxyConfigurationPolicyInput interface {
+	pulumi.Input
+
+	ToRelayProxyConfigurationPolicyOutput() RelayProxyConfigurationPolicyOutput
+	ToRelayProxyConfigurationPolicyOutputWithContext(context.Context) RelayProxyConfigurationPolicyOutput
+}
+
+type RelayProxyConfigurationPolicyArgs struct {
+	// The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
+	// - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
+	// - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (RelayProxyConfigurationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (i RelayProxyConfigurationPolicyArgs) ToRelayProxyConfigurationPolicyOutput() RelayProxyConfigurationPolicyOutput {
+	return i.ToRelayProxyConfigurationPolicyOutputWithContext(context.Background())
+}
+
+func (i RelayProxyConfigurationPolicyArgs) ToRelayProxyConfigurationPolicyOutputWithContext(ctx context.Context) RelayProxyConfigurationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelayProxyConfigurationPolicyOutput)
+}
+
+// RelayProxyConfigurationPolicyArrayInput is an input type that accepts RelayProxyConfigurationPolicyArray and RelayProxyConfigurationPolicyArrayOutput values.
+// You can construct a concrete instance of `RelayProxyConfigurationPolicyArrayInput` via:
+//
+//	RelayProxyConfigurationPolicyArray{ RelayProxyConfigurationPolicyArgs{...} }
+type RelayProxyConfigurationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToRelayProxyConfigurationPolicyArrayOutput() RelayProxyConfigurationPolicyArrayOutput
+	ToRelayProxyConfigurationPolicyArrayOutputWithContext(context.Context) RelayProxyConfigurationPolicyArrayOutput
+}
+
+type RelayProxyConfigurationPolicyArray []RelayProxyConfigurationPolicyInput
+
+func (RelayProxyConfigurationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (i RelayProxyConfigurationPolicyArray) ToRelayProxyConfigurationPolicyArrayOutput() RelayProxyConfigurationPolicyArrayOutput {
+	return i.ToRelayProxyConfigurationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i RelayProxyConfigurationPolicyArray) ToRelayProxyConfigurationPolicyArrayOutputWithContext(ctx context.Context) RelayProxyConfigurationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RelayProxyConfigurationPolicyArrayOutput)
+}
+
+type RelayProxyConfigurationPolicyOutput struct{ *pulumi.OutputState }
+
+func (RelayProxyConfigurationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (o RelayProxyConfigurationPolicyOutput) ToRelayProxyConfigurationPolicyOutput() RelayProxyConfigurationPolicyOutput {
+	return o
+}
+
+func (o RelayProxyConfigurationPolicyOutput) ToRelayProxyConfigurationPolicyOutputWithContext(ctx context.Context) RelayProxyConfigurationPolicyOutput {
+	return o
+}
+
+// The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+func (o RelayProxyConfigurationPolicyOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RelayProxyConfigurationPolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+func (o RelayProxyConfigurationPolicyOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v RelayProxyConfigurationPolicy) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+func (o RelayProxyConfigurationPolicyOutput) NotActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RelayProxyConfigurationPolicy) []string { return v.NotActions }).(pulumi.StringArrayOutput)
+}
+
+// - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+func (o RelayProxyConfigurationPolicyOutput) NotResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RelayProxyConfigurationPolicy) []string { return v.NotResources }).(pulumi.StringArrayOutput)
+}
+
+// - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+func (o RelayProxyConfigurationPolicyOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RelayProxyConfigurationPolicy) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type RelayProxyConfigurationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (RelayProxyConfigurationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (o RelayProxyConfigurationPolicyArrayOutput) ToRelayProxyConfigurationPolicyArrayOutput() RelayProxyConfigurationPolicyArrayOutput {
+	return o
+}
+
+func (o RelayProxyConfigurationPolicyArrayOutput) ToRelayProxyConfigurationPolicyArrayOutputWithContext(ctx context.Context) RelayProxyConfigurationPolicyArrayOutput {
+	return o
+}
+
+func (o RelayProxyConfigurationPolicyArrayOutput) Index(i pulumi.IntInput) RelayProxyConfigurationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RelayProxyConfigurationPolicy {
+		return vs[0].([]RelayProxyConfigurationPolicy)[vs[1].(int)]
+	}).(RelayProxyConfigurationPolicyOutput)
+}
+
 type SegmentRule struct {
 	// The attribute by which to group users together.
 	BucketBy *string `pulumi:"bucketBy"`
 	// List of nested custom rule clause blocks. To learn more, read Nested Clauses Blocks.
 	Clauses []SegmentRuleClause `pulumi:"clauses"`
-	// The integer weight of the rule (between 0 and 100000).
+	// The integer weight of the rule (between 1 and 100000).
 	Weight *int `pulumi:"weight"`
 }
 
@@ -2038,7 +2773,7 @@ type SegmentRuleArgs struct {
 	BucketBy pulumi.StringPtrInput `pulumi:"bucketBy"`
 	// List of nested custom rule clause blocks. To learn more, read Nested Clauses Blocks.
 	Clauses SegmentRuleClauseArrayInput `pulumi:"clauses"`
-	// The integer weight of the rule (between 0 and 100000).
+	// The integer weight of the rule (between 1 and 100000).
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -2103,7 +2838,7 @@ func (o SegmentRuleOutput) Clauses() SegmentRuleClauseArrayOutput {
 	return o.ApplyT(func(v SegmentRule) []SegmentRuleClause { return v.Clauses }).(SegmentRuleClauseArrayOutput)
 }
 
-// The integer weight of the rule (between 0 and 100000).
+// The integer weight of the rule (between 1 and 100000).
 func (o SegmentRuleOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SegmentRule) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -2394,6 +3129,133 @@ func (o WebhookStatementArrayOutput) Index(i pulumi.IntInput) WebhookStatementOu
 	}).(WebhookStatementOutput)
 }
 
+type GetAuditLogSubscriptionStatement struct {
+	Actions []string `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+	Effect     string   `pulumi:"effect"`
+	NotActions []string `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	NotResources []string `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	Resources []string `pulumi:"resources"`
+}
+
+// GetAuditLogSubscriptionStatementInput is an input type that accepts GetAuditLogSubscriptionStatementArgs and GetAuditLogSubscriptionStatementOutput values.
+// You can construct a concrete instance of `GetAuditLogSubscriptionStatementInput` via:
+//
+//	GetAuditLogSubscriptionStatementArgs{...}
+type GetAuditLogSubscriptionStatementInput interface {
+	pulumi.Input
+
+	ToGetAuditLogSubscriptionStatementOutput() GetAuditLogSubscriptionStatementOutput
+	ToGetAuditLogSubscriptionStatementOutputWithContext(context.Context) GetAuditLogSubscriptionStatementOutput
+}
+
+type GetAuditLogSubscriptionStatementArgs struct {
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+	Effect     pulumi.StringInput      `pulumi:"effect"`
+	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (GetAuditLogSubscriptionStatementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (i GetAuditLogSubscriptionStatementArgs) ToGetAuditLogSubscriptionStatementOutput() GetAuditLogSubscriptionStatementOutput {
+	return i.ToGetAuditLogSubscriptionStatementOutputWithContext(context.Background())
+}
+
+func (i GetAuditLogSubscriptionStatementArgs) ToGetAuditLogSubscriptionStatementOutputWithContext(ctx context.Context) GetAuditLogSubscriptionStatementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuditLogSubscriptionStatementOutput)
+}
+
+// GetAuditLogSubscriptionStatementArrayInput is an input type that accepts GetAuditLogSubscriptionStatementArray and GetAuditLogSubscriptionStatementArrayOutput values.
+// You can construct a concrete instance of `GetAuditLogSubscriptionStatementArrayInput` via:
+//
+//	GetAuditLogSubscriptionStatementArray{ GetAuditLogSubscriptionStatementArgs{...} }
+type GetAuditLogSubscriptionStatementArrayInput interface {
+	pulumi.Input
+
+	ToGetAuditLogSubscriptionStatementArrayOutput() GetAuditLogSubscriptionStatementArrayOutput
+	ToGetAuditLogSubscriptionStatementArrayOutputWithContext(context.Context) GetAuditLogSubscriptionStatementArrayOutput
+}
+
+type GetAuditLogSubscriptionStatementArray []GetAuditLogSubscriptionStatementInput
+
+func (GetAuditLogSubscriptionStatementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (i GetAuditLogSubscriptionStatementArray) ToGetAuditLogSubscriptionStatementArrayOutput() GetAuditLogSubscriptionStatementArrayOutput {
+	return i.ToGetAuditLogSubscriptionStatementArrayOutputWithContext(context.Background())
+}
+
+func (i GetAuditLogSubscriptionStatementArray) ToGetAuditLogSubscriptionStatementArrayOutputWithContext(ctx context.Context) GetAuditLogSubscriptionStatementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAuditLogSubscriptionStatementArrayOutput)
+}
+
+type GetAuditLogSubscriptionStatementOutput struct{ *pulumi.OutputState }
+
+func (GetAuditLogSubscriptionStatementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (o GetAuditLogSubscriptionStatementOutput) ToGetAuditLogSubscriptionStatementOutput() GetAuditLogSubscriptionStatementOutput {
+	return o
+}
+
+func (o GetAuditLogSubscriptionStatementOutput) ToGetAuditLogSubscriptionStatementOutputWithContext(ctx context.Context) GetAuditLogSubscriptionStatementOutput {
+	return o
+}
+
+func (o GetAuditLogSubscriptionStatementOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+func (o GetAuditLogSubscriptionStatementOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o GetAuditLogSubscriptionStatementOutput) NotActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) []string { return v.NotActions }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+func (o GetAuditLogSubscriptionStatementOutput) NotResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) []string { return v.NotResources }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+func (o GetAuditLogSubscriptionStatementOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAuditLogSubscriptionStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type GetAuditLogSubscriptionStatementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAuditLogSubscriptionStatementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAuditLogSubscriptionStatement)(nil)).Elem()
+}
+
+func (o GetAuditLogSubscriptionStatementArrayOutput) ToGetAuditLogSubscriptionStatementArrayOutput() GetAuditLogSubscriptionStatementArrayOutput {
+	return o
+}
+
+func (o GetAuditLogSubscriptionStatementArrayOutput) ToGetAuditLogSubscriptionStatementArrayOutputWithContext(ctx context.Context) GetAuditLogSubscriptionStatementArrayOutput {
+	return o
+}
+
+func (o GetAuditLogSubscriptionStatementArrayOutput) Index(i pulumi.IntInput) GetAuditLogSubscriptionStatementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAuditLogSubscriptionStatement {
+		return vs[0].([]GetAuditLogSubscriptionStatement)[vs[1].(int)]
+	}).(GetAuditLogSubscriptionStatementOutput)
+}
+
 type GetEnvironmentApprovalSetting struct {
 	CanApplyDeclinedChanges *bool    `pulumi:"canApplyDeclinedChanges"`
 	CanReviewOwnRequest     *bool    `pulumi:"canReviewOwnRequest"`
@@ -2514,7 +3376,7 @@ func (o GetEnvironmentApprovalSettingArrayOutput) Index(i pulumi.IntInput) GetEn
 
 type GetFeatureFlagClientSideAvailability struct {
 	// When set to true, this flag is available to SDKs using the client-side ID.
-	UsingEnvironmentId *bool `pulumi:"usingEnvironmentId"`
+	UsingEnvironmentId bool `pulumi:"usingEnvironmentId"`
 	// When set to true, this flag is available to SDKs using a mobile key.
 	UsingMobileKey *bool `pulumi:"usingMobileKey"`
 }
@@ -2532,7 +3394,7 @@ type GetFeatureFlagClientSideAvailabilityInput interface {
 
 type GetFeatureFlagClientSideAvailabilityArgs struct {
 	// When set to true, this flag is available to SDKs using the client-side ID.
-	UsingEnvironmentId pulumi.BoolPtrInput `pulumi:"usingEnvironmentId"`
+	UsingEnvironmentId pulumi.BoolInput `pulumi:"usingEnvironmentId"`
 	// When set to true, this flag is available to SDKs using a mobile key.
 	UsingMobileKey pulumi.BoolPtrInput `pulumi:"usingMobileKey"`
 }
@@ -2589,8 +3451,8 @@ func (o GetFeatureFlagClientSideAvailabilityOutput) ToGetFeatureFlagClientSideAv
 }
 
 // When set to true, this flag is available to SDKs using the client-side ID.
-func (o GetFeatureFlagClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetFeatureFlagClientSideAvailability) *bool { return v.UsingEnvironmentId }).(pulumi.BoolPtrOutput)
+func (o GetFeatureFlagClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFlagClientSideAvailability) bool { return v.UsingEnvironmentId }).(pulumi.BoolOutput)
 }
 
 // When set to true, this flag is available to SDKs using a mobile key.
@@ -3648,6 +4510,254 @@ func (o GetFeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) GetFeatureF
 	}).(GetFeatureFlagVariationOutput)
 }
 
+type GetFlagTriggerInstructions struct {
+	Kind string `pulumi:"kind"`
+}
+
+// GetFlagTriggerInstructionsInput is an input type that accepts GetFlagTriggerInstructionsArgs and GetFlagTriggerInstructionsOutput values.
+// You can construct a concrete instance of `GetFlagTriggerInstructionsInput` via:
+//
+//	GetFlagTriggerInstructionsArgs{...}
+type GetFlagTriggerInstructionsInput interface {
+	pulumi.Input
+
+	ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput
+	ToGetFlagTriggerInstructionsOutputWithContext(context.Context) GetFlagTriggerInstructionsOutput
+}
+
+type GetFlagTriggerInstructionsArgs struct {
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (GetFlagTriggerInstructionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTriggerInstructions)(nil)).Elem()
+}
+
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput {
+	return i.ToGetFlagTriggerInstructionsOutputWithContext(context.Background())
+}
+
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionsOutput)
+}
+
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsPtrOutput() GetFlagTriggerInstructionsPtrOutput {
+	return i.ToGetFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i GetFlagTriggerInstructionsArgs) ToGetFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionsOutput).ToGetFlagTriggerInstructionsPtrOutputWithContext(ctx)
+}
+
+// GetFlagTriggerInstructionsPtrInput is an input type that accepts GetFlagTriggerInstructionsArgs, GetFlagTriggerInstructionsPtr and GetFlagTriggerInstructionsPtrOutput values.
+// You can construct a concrete instance of `GetFlagTriggerInstructionsPtrInput` via:
+//
+//	        GetFlagTriggerInstructionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetFlagTriggerInstructionsPtrInput interface {
+	pulumi.Input
+
+	ToGetFlagTriggerInstructionsPtrOutput() GetFlagTriggerInstructionsPtrOutput
+	ToGetFlagTriggerInstructionsPtrOutputWithContext(context.Context) GetFlagTriggerInstructionsPtrOutput
+}
+
+type getFlagTriggerInstructionsPtrType GetFlagTriggerInstructionsArgs
+
+func GetFlagTriggerInstructionsPtr(v *GetFlagTriggerInstructionsArgs) GetFlagTriggerInstructionsPtrInput {
+	return (*getFlagTriggerInstructionsPtrType)(v)
+}
+
+func (*getFlagTriggerInstructionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFlagTriggerInstructions)(nil)).Elem()
+}
+
+func (i *getFlagTriggerInstructionsPtrType) ToGetFlagTriggerInstructionsPtrOutput() GetFlagTriggerInstructionsPtrOutput {
+	return i.ToGetFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (i *getFlagTriggerInstructionsPtrType) ToGetFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFlagTriggerInstructionsPtrOutput)
+}
+
+type GetFlagTriggerInstructionsOutput struct{ *pulumi.OutputState }
+
+func (GetFlagTriggerInstructionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFlagTriggerInstructions)(nil)).Elem()
+}
+
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsOutput() GetFlagTriggerInstructionsOutput {
+	return o
+}
+
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsOutput {
+	return o
+}
+
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsPtrOutput() GetFlagTriggerInstructionsPtrOutput {
+	return o.ToGetFlagTriggerInstructionsPtrOutputWithContext(context.Background())
+}
+
+func (o GetFlagTriggerInstructionsOutput) ToGetFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetFlagTriggerInstructions) *GetFlagTriggerInstructions {
+		return &v
+	}).(GetFlagTriggerInstructionsPtrOutput)
+}
+
+func (o GetFlagTriggerInstructionsOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlagTriggerInstructions) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type GetFlagTriggerInstructionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetFlagTriggerInstructionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetFlagTriggerInstructions)(nil)).Elem()
+}
+
+func (o GetFlagTriggerInstructionsPtrOutput) ToGetFlagTriggerInstructionsPtrOutput() GetFlagTriggerInstructionsPtrOutput {
+	return o
+}
+
+func (o GetFlagTriggerInstructionsPtrOutput) ToGetFlagTriggerInstructionsPtrOutputWithContext(ctx context.Context) GetFlagTriggerInstructionsPtrOutput {
+	return o
+}
+
+func (o GetFlagTriggerInstructionsPtrOutput) Elem() GetFlagTriggerInstructionsOutput {
+	return o.ApplyT(func(v *GetFlagTriggerInstructions) GetFlagTriggerInstructions {
+		if v != nil {
+			return *v
+		}
+		var ret GetFlagTriggerInstructions
+		return ret
+	}).(GetFlagTriggerInstructionsOutput)
+}
+
+func (o GetFlagTriggerInstructionsPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetFlagTriggerInstructions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetMetricUrl struct {
+	// The metric type. Available choices are `click`, `custom`, and `pageview`.
+	Kind      string  `pulumi:"kind"`
+	Pattern   *string `pulumi:"pattern"`
+	Substring *string `pulumi:"substring"`
+	Url       *string `pulumi:"url"`
+}
+
+// GetMetricUrlInput is an input type that accepts GetMetricUrlArgs and GetMetricUrlOutput values.
+// You can construct a concrete instance of `GetMetricUrlInput` via:
+//
+//	GetMetricUrlArgs{...}
+type GetMetricUrlInput interface {
+	pulumi.Input
+
+	ToGetMetricUrlOutput() GetMetricUrlOutput
+	ToGetMetricUrlOutputWithContext(context.Context) GetMetricUrlOutput
+}
+
+type GetMetricUrlArgs struct {
+	// The metric type. Available choices are `click`, `custom`, and `pageview`.
+	Kind      pulumi.StringInput    `pulumi:"kind"`
+	Pattern   pulumi.StringPtrInput `pulumi:"pattern"`
+	Substring pulumi.StringPtrInput `pulumi:"substring"`
+	Url       pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (GetMetricUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricUrl)(nil)).Elem()
+}
+
+func (i GetMetricUrlArgs) ToGetMetricUrlOutput() GetMetricUrlOutput {
+	return i.ToGetMetricUrlOutputWithContext(context.Background())
+}
+
+func (i GetMetricUrlArgs) ToGetMetricUrlOutputWithContext(ctx context.Context) GetMetricUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricUrlOutput)
+}
+
+// GetMetricUrlArrayInput is an input type that accepts GetMetricUrlArray and GetMetricUrlArrayOutput values.
+// You can construct a concrete instance of `GetMetricUrlArrayInput` via:
+//
+//	GetMetricUrlArray{ GetMetricUrlArgs{...} }
+type GetMetricUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetMetricUrlArrayOutput() GetMetricUrlArrayOutput
+	ToGetMetricUrlArrayOutputWithContext(context.Context) GetMetricUrlArrayOutput
+}
+
+type GetMetricUrlArray []GetMetricUrlInput
+
+func (GetMetricUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricUrl)(nil)).Elem()
+}
+
+func (i GetMetricUrlArray) ToGetMetricUrlArrayOutput() GetMetricUrlArrayOutput {
+	return i.ToGetMetricUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetricUrlArray) ToGetMetricUrlArrayOutputWithContext(ctx context.Context) GetMetricUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetricUrlArrayOutput)
+}
+
+type GetMetricUrlOutput struct{ *pulumi.OutputState }
+
+func (GetMetricUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetricUrl)(nil)).Elem()
+}
+
+func (o GetMetricUrlOutput) ToGetMetricUrlOutput() GetMetricUrlOutput {
+	return o
+}
+
+func (o GetMetricUrlOutput) ToGetMetricUrlOutputWithContext(ctx context.Context) GetMetricUrlOutput {
+	return o
+}
+
+// The metric type. Available choices are `click`, `custom`, and `pageview`.
+func (o GetMetricUrlOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetricUrl) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o GetMetricUrlOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetricUrl) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetricUrlOutput) Substring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetricUrl) *string { return v.Substring }).(pulumi.StringPtrOutput)
+}
+
+func (o GetMetricUrlOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMetricUrl) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type GetMetricUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetricUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetricUrl)(nil)).Elem()
+}
+
+func (o GetMetricUrlArrayOutput) ToGetMetricUrlArrayOutput() GetMetricUrlArrayOutput {
+	return o
+}
+
+func (o GetMetricUrlArrayOutput) ToGetMetricUrlArrayOutputWithContext(ctx context.Context) GetMetricUrlArrayOutput {
+	return o
+}
+
+func (o GetMetricUrlArrayOutput) Index(i pulumi.IntInput) GetMetricUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetricUrl {
+		return vs[0].([]GetMetricUrl)[vs[1].(int)]
+	}).(GetMetricUrlOutput)
+}
+
 type GetProjectClientSideAvailability struct {
 	// When set to true, the flags in this project are available to SDKs using the client-side ID by default.
 	UsingEnvironmentId *bool `pulumi:"usingEnvironmentId"`
@@ -3752,6 +4862,239 @@ func (o GetProjectClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectClientSideAvailability {
 		return vs[0].([]GetProjectClientSideAvailability)[vs[1].(int)]
 	}).(GetProjectClientSideAvailabilityOutput)
+}
+
+type GetProjectDefaultClientSideAvailability struct {
+	// When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+	UsingEnvironmentId bool `pulumi:"usingEnvironmentId"`
+	// When set to true, the flags in this project are available to SDKs using a mobile key by default.
+	UsingMobileKey bool `pulumi:"usingMobileKey"`
+}
+
+// GetProjectDefaultClientSideAvailabilityInput is an input type that accepts GetProjectDefaultClientSideAvailabilityArgs and GetProjectDefaultClientSideAvailabilityOutput values.
+// You can construct a concrete instance of `GetProjectDefaultClientSideAvailabilityInput` via:
+//
+//	GetProjectDefaultClientSideAvailabilityArgs{...}
+type GetProjectDefaultClientSideAvailabilityInput interface {
+	pulumi.Input
+
+	ToGetProjectDefaultClientSideAvailabilityOutput() GetProjectDefaultClientSideAvailabilityOutput
+	ToGetProjectDefaultClientSideAvailabilityOutputWithContext(context.Context) GetProjectDefaultClientSideAvailabilityOutput
+}
+
+type GetProjectDefaultClientSideAvailabilityArgs struct {
+	// When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+	UsingEnvironmentId pulumi.BoolInput `pulumi:"usingEnvironmentId"`
+	// When set to true, the flags in this project are available to SDKs using a mobile key by default.
+	UsingMobileKey pulumi.BoolInput `pulumi:"usingMobileKey"`
+}
+
+func (GetProjectDefaultClientSideAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (i GetProjectDefaultClientSideAvailabilityArgs) ToGetProjectDefaultClientSideAvailabilityOutput() GetProjectDefaultClientSideAvailabilityOutput {
+	return i.ToGetProjectDefaultClientSideAvailabilityOutputWithContext(context.Background())
+}
+
+func (i GetProjectDefaultClientSideAvailabilityArgs) ToGetProjectDefaultClientSideAvailabilityOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectDefaultClientSideAvailabilityOutput)
+}
+
+// GetProjectDefaultClientSideAvailabilityArrayInput is an input type that accepts GetProjectDefaultClientSideAvailabilityArray and GetProjectDefaultClientSideAvailabilityArrayOutput values.
+// You can construct a concrete instance of `GetProjectDefaultClientSideAvailabilityArrayInput` via:
+//
+//	GetProjectDefaultClientSideAvailabilityArray{ GetProjectDefaultClientSideAvailabilityArgs{...} }
+type GetProjectDefaultClientSideAvailabilityArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput
+	ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput
+}
+
+type GetProjectDefaultClientSideAvailabilityArray []GetProjectDefaultClientSideAvailabilityInput
+
+func (GetProjectDefaultClientSideAvailabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (i GetProjectDefaultClientSideAvailabilityArray) ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput {
+	return i.ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectDefaultClientSideAvailabilityArray) ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectDefaultClientSideAvailabilityArrayOutput)
+}
+
+type GetProjectDefaultClientSideAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (GetProjectDefaultClientSideAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (o GetProjectDefaultClientSideAvailabilityOutput) ToGetProjectDefaultClientSideAvailabilityOutput() GetProjectDefaultClientSideAvailabilityOutput {
+	return o
+}
+
+func (o GetProjectDefaultClientSideAvailabilityOutput) ToGetProjectDefaultClientSideAvailabilityOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityOutput {
+	return o
+}
+
+// When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+func (o GetProjectDefaultClientSideAvailabilityOutput) UsingEnvironmentId() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectDefaultClientSideAvailability) bool { return v.UsingEnvironmentId }).(pulumi.BoolOutput)
+}
+
+// When set to true, the flags in this project are available to SDKs using a mobile key by default.
+func (o GetProjectDefaultClientSideAvailabilityOutput) UsingMobileKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectDefaultClientSideAvailability) bool { return v.UsingMobileKey }).(pulumi.BoolOutput)
+}
+
+type GetProjectDefaultClientSideAvailabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectDefaultClientSideAvailabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectDefaultClientSideAvailability)(nil)).Elem()
+}
+
+func (o GetProjectDefaultClientSideAvailabilityArrayOutput) ToGetProjectDefaultClientSideAvailabilityArrayOutput() GetProjectDefaultClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o GetProjectDefaultClientSideAvailabilityArrayOutput) ToGetProjectDefaultClientSideAvailabilityArrayOutputWithContext(ctx context.Context) GetProjectDefaultClientSideAvailabilityArrayOutput {
+	return o
+}
+
+func (o GetProjectDefaultClientSideAvailabilityArrayOutput) Index(i pulumi.IntInput) GetProjectDefaultClientSideAvailabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectDefaultClientSideAvailability {
+		return vs[0].([]GetProjectDefaultClientSideAvailability)[vs[1].(int)]
+	}).(GetProjectDefaultClientSideAvailabilityOutput)
+}
+
+type GetRelayProxyConfigurationPolicy struct {
+	Actions []string `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+	Effect     string   `pulumi:"effect"`
+	NotActions []string `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	NotResources []string `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	Resources []string `pulumi:"resources"`
+}
+
+// GetRelayProxyConfigurationPolicyInput is an input type that accepts GetRelayProxyConfigurationPolicyArgs and GetRelayProxyConfigurationPolicyOutput values.
+// You can construct a concrete instance of `GetRelayProxyConfigurationPolicyInput` via:
+//
+//	GetRelayProxyConfigurationPolicyArgs{...}
+type GetRelayProxyConfigurationPolicyInput interface {
+	pulumi.Input
+
+	ToGetRelayProxyConfigurationPolicyOutput() GetRelayProxyConfigurationPolicyOutput
+	ToGetRelayProxyConfigurationPolicyOutputWithContext(context.Context) GetRelayProxyConfigurationPolicyOutput
+}
+
+type GetRelayProxyConfigurationPolicyArgs struct {
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+	Effect     pulumi.StringInput      `pulumi:"effect"`
+	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
+	// The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
+	// The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (GetRelayProxyConfigurationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (i GetRelayProxyConfigurationPolicyArgs) ToGetRelayProxyConfigurationPolicyOutput() GetRelayProxyConfigurationPolicyOutput {
+	return i.ToGetRelayProxyConfigurationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRelayProxyConfigurationPolicyArgs) ToGetRelayProxyConfigurationPolicyOutputWithContext(ctx context.Context) GetRelayProxyConfigurationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRelayProxyConfigurationPolicyOutput)
+}
+
+// GetRelayProxyConfigurationPolicyArrayInput is an input type that accepts GetRelayProxyConfigurationPolicyArray and GetRelayProxyConfigurationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRelayProxyConfigurationPolicyArrayInput` via:
+//
+//	GetRelayProxyConfigurationPolicyArray{ GetRelayProxyConfigurationPolicyArgs{...} }
+type GetRelayProxyConfigurationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRelayProxyConfigurationPolicyArrayOutput() GetRelayProxyConfigurationPolicyArrayOutput
+	ToGetRelayProxyConfigurationPolicyArrayOutputWithContext(context.Context) GetRelayProxyConfigurationPolicyArrayOutput
+}
+
+type GetRelayProxyConfigurationPolicyArray []GetRelayProxyConfigurationPolicyInput
+
+func (GetRelayProxyConfigurationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (i GetRelayProxyConfigurationPolicyArray) ToGetRelayProxyConfigurationPolicyArrayOutput() GetRelayProxyConfigurationPolicyArrayOutput {
+	return i.ToGetRelayProxyConfigurationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRelayProxyConfigurationPolicyArray) ToGetRelayProxyConfigurationPolicyArrayOutputWithContext(ctx context.Context) GetRelayProxyConfigurationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRelayProxyConfigurationPolicyArrayOutput)
+}
+
+type GetRelayProxyConfigurationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRelayProxyConfigurationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (o GetRelayProxyConfigurationPolicyOutput) ToGetRelayProxyConfigurationPolicyOutput() GetRelayProxyConfigurationPolicyOutput {
+	return o
+}
+
+func (o GetRelayProxyConfigurationPolicyOutput) ToGetRelayProxyConfigurationPolicyOutputWithContext(ctx context.Context) GetRelayProxyConfigurationPolicyOutput {
+	return o
+}
+
+func (o GetRelayProxyConfigurationPolicyOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+func (o GetRelayProxyConfigurationPolicyOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+func (o GetRelayProxyConfigurationPolicyOutput) NotActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) []string { return v.NotActions }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+func (o GetRelayProxyConfigurationPolicyOutput) NotResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) []string { return v.NotResources }).(pulumi.StringArrayOutput)
+}
+
+// The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+func (o GetRelayProxyConfigurationPolicyOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRelayProxyConfigurationPolicy) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type GetRelayProxyConfigurationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRelayProxyConfigurationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRelayProxyConfigurationPolicy)(nil)).Elem()
+}
+
+func (o GetRelayProxyConfigurationPolicyArrayOutput) ToGetRelayProxyConfigurationPolicyArrayOutput() GetRelayProxyConfigurationPolicyArrayOutput {
+	return o
+}
+
+func (o GetRelayProxyConfigurationPolicyArrayOutput) ToGetRelayProxyConfigurationPolicyArrayOutputWithContext(ctx context.Context) GetRelayProxyConfigurationPolicyArrayOutput {
+	return o
+}
+
+func (o GetRelayProxyConfigurationPolicyArrayOutput) Index(i pulumi.IntInput) GetRelayProxyConfigurationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRelayProxyConfigurationPolicy {
+		return vs[0].([]GetRelayProxyConfigurationPolicy)[vs[1].(int)]
+	}).(GetRelayProxyConfigurationPolicyOutput)
 }
 
 type GetSegmentRule struct {
@@ -4002,6 +5345,124 @@ func (o GetSegmentRuleClauseArrayOutput) Index(i pulumi.IntInput) GetSegmentRule
 	}).(GetSegmentRuleClauseOutput)
 }
 
+type GetTeamMaintainer struct {
+	Email     string `pulumi:"email"`
+	FirstName string `pulumi:"firstName"`
+	Id        string `pulumi:"id"`
+	LastName  string `pulumi:"lastName"`
+	Role      string `pulumi:"role"`
+}
+
+// GetTeamMaintainerInput is an input type that accepts GetTeamMaintainerArgs and GetTeamMaintainerOutput values.
+// You can construct a concrete instance of `GetTeamMaintainerInput` via:
+//
+//	GetTeamMaintainerArgs{...}
+type GetTeamMaintainerInput interface {
+	pulumi.Input
+
+	ToGetTeamMaintainerOutput() GetTeamMaintainerOutput
+	ToGetTeamMaintainerOutputWithContext(context.Context) GetTeamMaintainerOutput
+}
+
+type GetTeamMaintainerArgs struct {
+	Email     pulumi.StringInput `pulumi:"email"`
+	FirstName pulumi.StringInput `pulumi:"firstName"`
+	Id        pulumi.StringInput `pulumi:"id"`
+	LastName  pulumi.StringInput `pulumi:"lastName"`
+	Role      pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetTeamMaintainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMaintainer)(nil)).Elem()
+}
+
+func (i GetTeamMaintainerArgs) ToGetTeamMaintainerOutput() GetTeamMaintainerOutput {
+	return i.ToGetTeamMaintainerOutputWithContext(context.Background())
+}
+
+func (i GetTeamMaintainerArgs) ToGetTeamMaintainerOutputWithContext(ctx context.Context) GetTeamMaintainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMaintainerOutput)
+}
+
+// GetTeamMaintainerArrayInput is an input type that accepts GetTeamMaintainerArray and GetTeamMaintainerArrayOutput values.
+// You can construct a concrete instance of `GetTeamMaintainerArrayInput` via:
+//
+//	GetTeamMaintainerArray{ GetTeamMaintainerArgs{...} }
+type GetTeamMaintainerArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamMaintainerArrayOutput() GetTeamMaintainerArrayOutput
+	ToGetTeamMaintainerArrayOutputWithContext(context.Context) GetTeamMaintainerArrayOutput
+}
+
+type GetTeamMaintainerArray []GetTeamMaintainerInput
+
+func (GetTeamMaintainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMaintainer)(nil)).Elem()
+}
+
+func (i GetTeamMaintainerArray) ToGetTeamMaintainerArrayOutput() GetTeamMaintainerArrayOutput {
+	return i.ToGetTeamMaintainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamMaintainerArray) ToGetTeamMaintainerArrayOutputWithContext(ctx context.Context) GetTeamMaintainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMaintainerArrayOutput)
+}
+
+type GetTeamMaintainerOutput struct{ *pulumi.OutputState }
+
+func (GetTeamMaintainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMaintainer)(nil)).Elem()
+}
+
+func (o GetTeamMaintainerOutput) ToGetTeamMaintainerOutput() GetTeamMaintainerOutput {
+	return o
+}
+
+func (o GetTeamMaintainerOutput) ToGetTeamMaintainerOutputWithContext(ctx context.Context) GetTeamMaintainerOutput {
+	return o
+}
+
+func (o GetTeamMaintainerOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o GetTeamMaintainerOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMaintainer) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+func (o GetTeamMaintainerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetTeamMaintainerOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMaintainer) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+func (o GetTeamMaintainerOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMaintainer) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetTeamMaintainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamMaintainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMaintainer)(nil)).Elem()
+}
+
+func (o GetTeamMaintainerArrayOutput) ToGetTeamMaintainerArrayOutput() GetTeamMaintainerArrayOutput {
+	return o
+}
+
+func (o GetTeamMaintainerArrayOutput) ToGetTeamMaintainerArrayOutputWithContext(ctx context.Context) GetTeamMaintainerArrayOutput {
+	return o
+}
+
+func (o GetTeamMaintainerArrayOutput) Index(i pulumi.IntInput) GetTeamMaintainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMaintainer {
+		return vs[0].([]GetTeamMaintainer)[vs[1].(int)]
+	}).(GetTeamMaintainerOutput)
+}
+
 type GetWebhookStatement struct {
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
@@ -4134,12 +5595,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenInlineRoleArrayInput)(nil)).Elem(), AccessTokenInlineRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementInput)(nil)).Elem(), AccessTokenPolicyStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessTokenPolicyStatementArrayInput)(nil)).Elem(), AccessTokenPolicyStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementInput)(nil)).Elem(), AuditLogSubscriptionStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogSubscriptionStatementArrayInput)(nil)).Elem(), AuditLogSubscriptionStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyInput)(nil)).Elem(), CustomRolePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyArrayInput)(nil)).Elem(), CustomRolePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyStatementInput)(nil)).Elem(), CustomRolePolicyStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomRolePolicyStatementArrayInput)(nil)).Elem(), CustomRolePolicyStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingInput)(nil)).Elem(), EnvironmentApprovalSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApprovalSettingArrayInput)(nil)).Elem(), EnvironmentApprovalSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagClientSideAvailabilityInput)(nil)).Elem(), FeatureFlagClientSideAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagClientSideAvailabilityArrayInput)(nil)).Elem(), FeatureFlagClientSideAvailabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertyInput)(nil)).Elem(), FeatureFlagCustomPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagCustomPropertyArrayInput)(nil)).Elem(), FeatureFlagCustomPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagDefaultsInput)(nil)).Elem(), FeatureFlagDefaultsArgs{})
@@ -4156,16 +5621,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagEnvironmentTargetArrayInput)(nil)).Elem(), FeatureFlagEnvironmentTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagVariationInput)(nil)).Elem(), FeatureFlagVariationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureFlagVariationArrayInput)(nil)).Elem(), FeatureFlagVariationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlagTriggerInstructionsPtrInput)(nil)).Elem(), FlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricUrlInput)(nil)).Elem(), MetricUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricUrlArrayInput)(nil)).Elem(), MetricUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultClientSideAvailabilityInput)(nil)).Elem(), ProjectDefaultClientSideAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectDefaultClientSideAvailabilityArrayInput)(nil)).Elem(), ProjectDefaultClientSideAvailabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentInput)(nil)).Elem(), ProjectEnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentArrayInput)(nil)).Elem(), ProjectEnvironmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentApprovalSettingInput)(nil)).Elem(), ProjectEnvironmentApprovalSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectEnvironmentApprovalSettingArrayInput)(nil)).Elem(), ProjectEnvironmentApprovalSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelayProxyConfigurationPolicyInput)(nil)).Elem(), RelayProxyConfigurationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RelayProxyConfigurationPolicyArrayInput)(nil)).Elem(), RelayProxyConfigurationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleInput)(nil)).Elem(), SegmentRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleArrayInput)(nil)).Elem(), SegmentRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleClauseInput)(nil)).Elem(), SegmentRuleClauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SegmentRuleClauseArrayInput)(nil)).Elem(), SegmentRuleClauseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementInput)(nil)).Elem(), WebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookStatementArrayInput)(nil)).Elem(), WebhookStatementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAuditLogSubscriptionStatementArrayInput)(nil)).Elem(), GetAuditLogSubscriptionStatementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingInput)(nil)).Elem(), GetEnvironmentApprovalSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentApprovalSettingArrayInput)(nil)).Elem(), GetEnvironmentApprovalSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagClientSideAvailabilityInput)(nil)).Elem(), GetFeatureFlagClientSideAvailabilityArgs{})
@@ -4186,24 +5661,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagEnvironmentTargetArrayInput)(nil)).Elem(), GetFeatureFlagEnvironmentTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationInput)(nil)).Elem(), GetFeatureFlagVariationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFlagVariationArrayInput)(nil)).Elem(), GetFeatureFlagVariationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionsInput)(nil)).Elem(), GetFlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFlagTriggerInstructionsPtrInput)(nil)).Elem(), GetFlagTriggerInstructionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricUrlInput)(nil)).Elem(), GetMetricUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetricUrlArrayInput)(nil)).Elem(), GetMetricUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectClientSideAvailabilityInput)(nil)).Elem(), GetProjectClientSideAvailabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectClientSideAvailabilityArrayInput)(nil)).Elem(), GetProjectClientSideAvailabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectDefaultClientSideAvailabilityInput)(nil)).Elem(), GetProjectDefaultClientSideAvailabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectDefaultClientSideAvailabilityArrayInput)(nil)).Elem(), GetProjectDefaultClientSideAvailabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRelayProxyConfigurationPolicyInput)(nil)).Elem(), GetRelayProxyConfigurationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRelayProxyConfigurationPolicyArrayInput)(nil)).Elem(), GetRelayProxyConfigurationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleInput)(nil)).Elem(), GetSegmentRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleArrayInput)(nil)).Elem(), GetSegmentRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleClauseInput)(nil)).Elem(), GetSegmentRuleClauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleClauseArrayInput)(nil)).Elem(), GetSegmentRuleClauseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerInput)(nil)).Elem(), GetTeamMaintainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerArrayInput)(nil)).Elem(), GetTeamMaintainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementInput)(nil)).Elem(), GetWebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementArrayInput)(nil)).Elem(), GetWebhookStatementArray{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleOutput{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleArrayOutput{})
 	pulumi.RegisterOutputType(AccessTokenPolicyStatementOutput{})
 	pulumi.RegisterOutputType(AccessTokenPolicyStatementArrayOutput{})
+	pulumi.RegisterOutputType(AuditLogSubscriptionStatementOutput{})
+	pulumi.RegisterOutputType(AuditLogSubscriptionStatementArrayOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyArrayOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyStatementOutput{})
 	pulumi.RegisterOutputType(CustomRolePolicyStatementArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentApprovalSettingOutput{})
 	pulumi.RegisterOutputType(EnvironmentApprovalSettingArrayOutput{})
+	pulumi.RegisterOutputType(FeatureFlagClientSideAvailabilityOutput{})
+	pulumi.RegisterOutputType(FeatureFlagClientSideAvailabilityArrayOutput{})
 	pulumi.RegisterOutputType(FeatureFlagCustomPropertyOutput{})
 	pulumi.RegisterOutputType(FeatureFlagCustomPropertyArrayOutput{})
 	pulumi.RegisterOutputType(FeatureFlagDefaultsOutput{})
@@ -4220,16 +5709,26 @@ func init() {
 	pulumi.RegisterOutputType(FeatureFlagEnvironmentTargetArrayOutput{})
 	pulumi.RegisterOutputType(FeatureFlagVariationOutput{})
 	pulumi.RegisterOutputType(FeatureFlagVariationArrayOutput{})
+	pulumi.RegisterOutputType(FlagTriggerInstructionsOutput{})
+	pulumi.RegisterOutputType(FlagTriggerInstructionsPtrOutput{})
+	pulumi.RegisterOutputType(MetricUrlOutput{})
+	pulumi.RegisterOutputType(MetricUrlArrayOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultClientSideAvailabilityOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultClientSideAvailabilityArrayOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentApprovalSettingOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentApprovalSettingArrayOutput{})
+	pulumi.RegisterOutputType(RelayProxyConfigurationPolicyOutput{})
+	pulumi.RegisterOutputType(RelayProxyConfigurationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(SegmentRuleOutput{})
 	pulumi.RegisterOutputType(SegmentRuleArrayOutput{})
 	pulumi.RegisterOutputType(SegmentRuleClauseOutput{})
 	pulumi.RegisterOutputType(SegmentRuleClauseArrayOutput{})
 	pulumi.RegisterOutputType(WebhookStatementOutput{})
 	pulumi.RegisterOutputType(WebhookStatementArrayOutput{})
+	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementOutput{})
+	pulumi.RegisterOutputType(GetAuditLogSubscriptionStatementArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentApprovalSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagClientSideAvailabilityOutput{})
@@ -4250,12 +5749,22 @@ func init() {
 	pulumi.RegisterOutputType(GetFeatureFlagEnvironmentTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationOutput{})
 	pulumi.RegisterOutputType(GetFeatureFlagVariationArrayOutput{})
+	pulumi.RegisterOutputType(GetFlagTriggerInstructionsOutput{})
+	pulumi.RegisterOutputType(GetFlagTriggerInstructionsPtrOutput{})
+	pulumi.RegisterOutputType(GetMetricUrlOutput{})
+	pulumi.RegisterOutputType(GetMetricUrlArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectClientSideAvailabilityOutput{})
 	pulumi.RegisterOutputType(GetProjectClientSideAvailabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectDefaultClientSideAvailabilityOutput{})
+	pulumi.RegisterOutputType(GetProjectDefaultClientSideAvailabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetRelayProxyConfigurationPolicyOutput{})
+	pulumi.RegisterOutputType(GetRelayProxyConfigurationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentRuleOutput{})
 	pulumi.RegisterOutputType(GetSegmentRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSegmentRuleClauseOutput{})
 	pulumi.RegisterOutputType(GetSegmentRuleClauseArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamMaintainerOutput{})
+	pulumi.RegisterOutputType(GetTeamMaintainerArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementArrayOutput{})
 }

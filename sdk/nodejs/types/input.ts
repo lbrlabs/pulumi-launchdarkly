@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AccessTokenInlineRole {
     /**
@@ -46,6 +47,29 @@ export interface AccessTokenPolicyStatement {
     notResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * - The list of resource specifiers defining the resources to which the statement applies.
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AuditLogSubscriptionStatement {
+    /**
+     * The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+     */
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -111,6 +135,17 @@ export interface EnvironmentApprovalSetting {
     requiredApprovalTags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface FeatureFlagClientSideAvailability {
+    /**
+     * Whether this flag is available to SDKs using the client-side ID.
+     */
+    usingEnvironmentId?: pulumi.Input<boolean>;
+    /**
+     * Whether this flag is available to SDKs using a mobile key.
+     */
+    usingMobileKey?: pulumi.Input<boolean>;
+}
+
 export interface FeatureFlagCustomProperty {
     /**
      * The unique custom property key.
@@ -143,7 +178,7 @@ export interface FeatureFlagEnvironmentFallthrough {
      */
     bucketBy?: pulumi.Input<string>;
     /**
-     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
      */
     rolloutWeights?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -173,7 +208,7 @@ export interface FeatureFlagEnvironmentRule {
      */
     clauses?: pulumi.Input<pulumi.Input<inputs.FeatureFlagEnvironmentRuleClause>[]>;
     /**
-     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000. You must specify either `variation` or `rolloutWeights`.
+     * List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rolloutWeights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rolloutWeights`.
      */
     rolloutWeights?: pulumi.Input<pulumi.Input<number>[]>;
     /**
@@ -231,12 +266,42 @@ export interface FeatureFlagVariation {
     value: pulumi.Input<string>;
 }
 
-export interface GetEnvironmentApprovalSettingArgs {
-    canApplyDeclinedChanges?: pulumi.Input<boolean>;
-    canReviewOwnRequest?: pulumi.Input<boolean>;
-    minNumApprovals?: pulumi.Input<number>;
-    required?: pulumi.Input<boolean>;
-    requiredApprovalTags?: pulumi.Input<pulumi.Input<string>[]>;
+export interface FlagTriggerInstructions {
+    kind: pulumi.Input<string>;
+}
+
+export interface GetAuditLogSubscriptionStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetAuditLogSubscriptionStatement {
+    actions?: string[];
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    notActions?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    resources?: string[];
 }
 
 export interface GetEnvironmentApprovalSetting {
@@ -245,6 +310,36 @@ export interface GetEnvironmentApprovalSetting {
     minNumApprovals?: number;
     required?: boolean;
     requiredApprovalTags?: string[];
+}
+
+export interface GetEnvironmentApprovalSettingArgs {
+    canApplyDeclinedChanges?: pulumi.Input<boolean>;
+    canReviewOwnRequest?: pulumi.Input<boolean>;
+    minNumApprovals?: pulumi.Input<number>;
+    required?: pulumi.Input<boolean>;
+    requiredApprovalTags?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetFeatureFlagClientSideAvailability {
+    /**
+     * When set to true, this flag is available to SDKs using the client-side ID.
+     */
+    usingEnvironmentId?: boolean;
+    /**
+     * When set to true, this flag is available to SDKs using a mobile key.
+     */
+    usingMobileKey?: boolean;
+}
+
+export interface GetFeatureFlagClientSideAvailabilityArgs {
+    /**
+     * When set to true, this flag is available to SDKs using the client-side ID.
+     */
+    usingEnvironmentId?: pulumi.Input<boolean>;
+    /**
+     * When set to true, this flag is available to SDKs using a mobile key.
+     */
+    usingMobileKey?: pulumi.Input<boolean>;
 }
 
 export interface GetFeatureFlagCustomPropertyArgs {
@@ -299,21 +394,6 @@ export interface GetFeatureFlagDefaults {
     onVariation: number;
 }
 
-export interface GetFeatureFlagEnvironmentFallthrough {
-    /**
-     * Group percentage rollout by a custom attribute.
-     */
-    bucketBy?: string;
-    /**
-     * List of integer percentage rollout weights applied to each variation when the rule clauses evaluates to `true`.
-     */
-    rolloutWeights?: number[];
-    /**
-     * The integer variation index served when the rule clauses evaluate to `true`.
-     */
-    variation?: number;
-}
-
 export interface GetFeatureFlagEnvironmentFallthroughArgs {
     /**
      * Group percentage rollout by a custom attribute.
@@ -327,6 +407,21 @@ export interface GetFeatureFlagEnvironmentFallthroughArgs {
      * The integer variation index served when the rule clauses evaluate to `true`.
      */
     variation?: pulumi.Input<number>;
+}
+
+export interface GetFeatureFlagEnvironmentFallthrough {
+    /**
+     * Group percentage rollout by a custom attribute.
+     */
+    bucketBy?: string;
+    /**
+     * List of integer percentage rollout weights applied to each variation when the rule clauses evaluates to `true`.
+     */
+    rolloutWeights?: number[];
+    /**
+     * The integer variation index served when the rule clauses evaluate to `true`.
+     */
+    variation?: number;
 }
 
 export interface GetFeatureFlagEnvironmentPrerequisite {
@@ -389,29 +484,6 @@ export interface GetFeatureFlagEnvironmentRuleArgs {
     variation?: pulumi.Input<number>;
 }
 
-export interface GetFeatureFlagEnvironmentRuleClauseArgs {
-    /**
-     * The user attribute operated on.
-     */
-    attribute: pulumi.Input<string>;
-    /**
-     * Whether the rule clause is negated.
-     */
-    negate?: pulumi.Input<boolean>;
-    /**
-     * The operator associated with the rule clause. This will be one of `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`.
-     */
-    op: pulumi.Input<string>;
-    /**
-     * The type for each of the clause's values. Available types are `boolean`, `string`, and `number`.
-     */
-    valueType?: pulumi.Input<string>;
-    /**
-     * The list of values associated with the rule clause.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetFeatureFlagEnvironmentRuleClause {
     /**
      * The user attribute operated on.
@@ -435,15 +507,27 @@ export interface GetFeatureFlagEnvironmentRuleClause {
     values: string[];
 }
 
-export interface GetFeatureFlagEnvironmentTargetArgs {
+export interface GetFeatureFlagEnvironmentRuleClauseArgs {
+    /**
+     * The user attribute operated on.
+     */
+    attribute: pulumi.Input<string>;
+    /**
+     * Whether the rule clause is negated.
+     */
+    negate?: pulumi.Input<boolean>;
+    /**
+     * The operator associated with the rule clause. This will be one of `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`.
+     */
+    op: pulumi.Input<string>;
+    /**
+     * The type for each of the clause's values. Available types are `boolean`, `string`, and `number`.
+     */
+    valueType?: pulumi.Input<string>;
     /**
      * The list of values associated with the rule clause.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The integer variation index served when the rule clauses evaluate to `true`.
-     */
-    variation: pulumi.Input<number>;
 }
 
 export interface GetFeatureFlagEnvironmentTarget {
@@ -455,6 +539,17 @@ export interface GetFeatureFlagEnvironmentTarget {
      * The integer variation index served when the rule clauses evaluate to `true`.
      */
     variation: number;
+}
+
+export interface GetFeatureFlagEnvironmentTargetArgs {
+    /**
+     * The list of values associated with the rule clause.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The integer variation index served when the rule clauses evaluate to `true`.
+     */
+    variation: pulumi.Input<number>;
 }
 
 export interface GetFeatureFlagVariationArgs {
@@ -487,6 +582,68 @@ export interface GetFeatureFlagVariation {
     value: string;
 }
 
+export interface GetFlagTriggerInstructionsArgs {
+    kind: pulumi.Input<string>;
+}
+
+export interface GetFlagTriggerInstructions {
+    kind: string;
+}
+
+export interface GetMetricUrlArgs {
+    /**
+     * The metric type. Available choices are `click`, `custom`, and `pageview`.
+     */
+    kind: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
+    substring?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
+}
+
+export interface GetMetricUrl {
+    /**
+     * The metric type. Available choices are `click`, `custom`, and `pageview`.
+     */
+    kind: string;
+    pattern?: string;
+    substring?: string;
+    url?: string;
+}
+
+export interface GetRelayProxyConfigurationPolicy {
+    actions?: string[];
+    /**
+     * Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+     */
+    effect: string;
+    notActions?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: string[];
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: string[];
+}
+
+export interface GetRelayProxyConfigurationPolicyArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetSegmentRule {
     /**
      * The attribute by which to group users together.
@@ -517,29 +674,6 @@ export interface GetSegmentRuleArgs {
     weight?: pulumi.Input<number>;
 }
 
-export interface GetSegmentRuleClauseArgs {
-    /**
-     * The user attribute operated on.
-     */
-    attribute: pulumi.Input<string>;
-    /**
-     * Whether the rule clause is negated.
-     */
-    negate?: pulumi.Input<boolean>;
-    /**
-     * The operator associated with the rule clause. This will be one of `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`.
-     */
-    op: pulumi.Input<string>;
-    /**
-     * The type for each of the clause's values. Available types are `boolean`, `string`, and `number`.
-     */
-    valueType?: pulumi.Input<string>;
-    /**
-     * The list of values associated with the rule clause.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetSegmentRuleClause {
     /**
      * The user attribute operated on.
@@ -561,6 +695,29 @@ export interface GetSegmentRuleClause {
      * The list of values associated with the rule clause.
      */
     values: string[];
+}
+
+export interface GetSegmentRuleClauseArgs {
+    /**
+     * The user attribute operated on.
+     */
+    attribute: pulumi.Input<string>;
+    /**
+     * Whether the rule clause is negated.
+     */
+    negate?: pulumi.Input<boolean>;
+    /**
+     * The operator associated with the rule clause. This will be one of `in`, `endsWith`, `startsWith`, `matches`, `contains`, `lessThan`, `lessThanOrEqual`, `greaterThanOrEqual`, `before`, `after`, `segmentMatch`, `semVerEqual`, `semVerLessThan`, and `semVerGreaterThan`.
+     */
+    op: pulumi.Input<string>;
+    /**
+     * The type for each of the clause's values. Available types are `boolean`, `string`, and `number`.
+     */
+    valueType?: pulumi.Input<string>;
+    /**
+     * The list of values associated with the rule clause.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetWebhookStatementArgs {
@@ -597,6 +754,36 @@ export interface GetWebhookStatement {
     resources?: string[];
 }
 
+export interface MetricUrl {
+    /**
+     * The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+     */
+    kind: pulumi.Input<string>;
+    /**
+     * The regex pattern to match by.
+     */
+    pattern?: pulumi.Input<string>;
+    /**
+     * The URL substring to match by.
+     */
+    substring?: pulumi.Input<string>;
+    /**
+     * The exact or canonical URL.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface ProjectDefaultClientSideAvailability {
+    /**
+     * Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `defaultClientSideAvailability`.
+     */
+    usingEnvironmentId: pulumi.Input<boolean>;
+    /**
+     * Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `defaultClientSideAvailability`.
+     */
+    usingMobileKey: pulumi.Input<boolean>;
+}
+
 export interface ProjectEnvironment {
     apiKey?: pulumi.Input<string>;
     approvalSettings?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironmentApprovalSetting>[]>;
@@ -618,7 +805,7 @@ export interface ProjectEnvironment {
      */
     defaultTtl?: pulumi.Input<number>;
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
      */
     key: pulumi.Input<string>;
     mobileKey?: pulumi.Input<string>;
@@ -663,6 +850,29 @@ export interface ProjectEnvironmentApprovalSetting {
     requiredApprovalTags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface RelayProxyConfigurationPolicy {
+    /**
+     * The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    /**
+     * The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     */
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface SegmentRule {
     /**
      * The attribute by which to group users together.
@@ -673,7 +883,7 @@ export interface SegmentRule {
      */
     clauses?: pulumi.Input<pulumi.Input<inputs.SegmentRuleClause>[]>;
     /**
-     * The integer weight of the rule (between 0 and 100000).
+     * The integer weight of the rule (between 1 and 100000).
      */
     weight?: pulumi.Input<number>;
 }

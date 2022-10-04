@@ -116,14 +116,14 @@ public class Segment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The segment&#39;s environment key.
+     * The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="envKey", type=String.class, parameters={})
     private Output<String> envKey;
 
     /**
-     * @return The segment&#39;s environment key.
+     * @return The segment&#39;s environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> envKey() {
@@ -158,14 +158,14 @@ public class Segment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.includeds);
     }
     /**
-     * The unique key that references the segment.
+     * The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The unique key that references the segment.
+     * @return The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {
@@ -186,14 +186,14 @@ public class Segment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The segment&#39;s project key.
+     * The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="projectKey", type=String.class, parameters={})
     private Output<String> projectKey;
 
     /**
-     * @return The segment&#39;s project key.
+     * @return The segment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> projectKey() {

@@ -25,7 +25,7 @@ public final class SegmentRule {
      */
     private @Nullable List<SegmentRuleClause> clauses;
     /**
-     * @return The integer weight of the rule (between 0 and 100000).
+     * @return The integer weight of the rule (between 1 and 100000).
      * 
      */
     private @Nullable Integer weight;
@@ -46,7 +46,7 @@ public final class SegmentRule {
         return this.clauses == null ? List.of() : this.clauses;
     }
     /**
-     * @return The integer weight of the rule (between 0 and 100000).
+     * @return The integer weight of the rule (between 1 and 100000).
      * 
      */
     public Optional<Integer> weight() {

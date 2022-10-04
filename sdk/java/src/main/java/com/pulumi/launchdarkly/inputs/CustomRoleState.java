@@ -19,6 +19,21 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
     public static final CustomRoleState Empty = new CustomRoleState();
 
     /**
+     * The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+     * 
+     */
+    @Import(name="basePermissions")
+    private @Nullable Output<String> basePermissions;
+
+    /**
+     * @return The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+     * 
+     */
+    public Optional<Output<String>> basePermissions() {
+        return Optional.ofNullable(this.basePermissions);
+    }
+
+    /**
      * The description of the custom role.
      * 
      */
@@ -34,14 +49,14 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique key that references the custom role.
+     * The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The unique key that references the custom role.
+     * @return The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> key() {
@@ -100,6 +115,7 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
     private CustomRoleState() {}
 
     private CustomRoleState(CustomRoleState $) {
+        this.basePermissions = $.basePermissions;
         this.description = $.description;
         this.key = $.key;
         this.name = $.name;
@@ -126,6 +142,27 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param basePermissions The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePermissions(@Nullable Output<String> basePermissions) {
+            $.basePermissions = basePermissions;
+            return this;
+        }
+
+        /**
+         * @param basePermissions The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder basePermissions(String basePermissions) {
+            return basePermissions(Output.of(basePermissions));
+        }
+
+        /**
          * @param description The description of the custom role.
          * 
          * @return builder
@@ -147,7 +184,7 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The unique key that references the custom role.
+         * @param key The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -158,7 +195,7 @@ public final class CustomRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The unique key that references the custom role.
+         * @param key The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

@@ -88,17 +88,17 @@ type Segment struct {
 	CreationDate pulumi.IntOutput `pulumi:"creationDate"`
 	// The description of the segment's purpose.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The segment's environment key.
+	// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringOutput `pulumi:"envKey"`
 	// List of user keys excluded from the segment.
 	Excludeds pulumi.StringArrayOutput `pulumi:"excludeds"`
 	// List of user keys included in the segment.
 	Includeds pulumi.StringArrayOutput `pulumi:"includeds"`
-	// The unique key that references the segment.
+	// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The human-friendly name for the segment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The segment's project key.
+	// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
 	Rules SegmentRuleArrayOutput `pulumi:"rules"`
@@ -149,17 +149,17 @@ type segmentState struct {
 	CreationDate *int `pulumi:"creationDate"`
 	// The description of the segment's purpose.
 	Description *string `pulumi:"description"`
-	// The segment's environment key.
+	// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey *string `pulumi:"envKey"`
 	// List of user keys excluded from the segment.
 	Excludeds []string `pulumi:"excludeds"`
 	// List of user keys included in the segment.
 	Includeds []string `pulumi:"includeds"`
-	// The unique key that references the segment.
+	// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key *string `pulumi:"key"`
 	// The human-friendly name for the segment.
 	Name *string `pulumi:"name"`
-	// The segment's project key.
+	// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey *string `pulumi:"projectKey"`
 	// List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
 	Rules []SegmentRule `pulumi:"rules"`
@@ -172,17 +172,17 @@ type SegmentState struct {
 	CreationDate pulumi.IntPtrInput
 	// The description of the segment's purpose.
 	Description pulumi.StringPtrInput
-	// The segment's environment key.
+	// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringPtrInput
 	// List of user keys excluded from the segment.
 	Excludeds pulumi.StringArrayInput
 	// List of user keys included in the segment.
 	Includeds pulumi.StringArrayInput
-	// The unique key that references the segment.
+	// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringPtrInput
 	// The human-friendly name for the segment.
 	Name pulumi.StringPtrInput
-	// The segment's project key.
+	// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringPtrInput
 	// List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
 	Rules SegmentRuleArrayInput
@@ -197,17 +197,17 @@ func (SegmentState) ElementType() reflect.Type {
 type segmentArgs struct {
 	// The description of the segment's purpose.
 	Description *string `pulumi:"description"`
-	// The segment's environment key.
+	// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey string `pulumi:"envKey"`
 	// List of user keys excluded from the segment.
 	Excludeds []string `pulumi:"excludeds"`
 	// List of user keys included in the segment.
 	Includeds []string `pulumi:"includeds"`
-	// The unique key that references the segment.
+	// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key string `pulumi:"key"`
 	// The human-friendly name for the segment.
 	Name *string `pulumi:"name"`
-	// The segment's project key.
+	// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey string `pulumi:"projectKey"`
 	// List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
 	Rules []SegmentRule `pulumi:"rules"`
@@ -219,17 +219,17 @@ type segmentArgs struct {
 type SegmentArgs struct {
 	// The description of the segment's purpose.
 	Description pulumi.StringPtrInput
-	// The segment's environment key.
+	// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	EnvKey pulumi.StringInput
 	// List of user keys excluded from the segment.
 	Excludeds pulumi.StringArrayInput
 	// List of user keys included in the segment.
 	Includeds pulumi.StringArrayInput
-	// The unique key that references the segment.
+	// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	Key pulumi.StringInput
 	// The human-friendly name for the segment.
 	Name pulumi.StringPtrInput
-	// The segment's project key.
+	// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 	ProjectKey pulumi.StringInput
 	// List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
 	Rules SegmentRuleArrayInput
@@ -334,7 +334,7 @@ func (o SegmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The segment's environment key.
+// The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o SegmentOutput) EnvKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.EnvKey }).(pulumi.StringOutput)
 }
@@ -349,7 +349,7 @@ func (o SegmentOutput) Includeds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringArrayOutput { return v.Includeds }).(pulumi.StringArrayOutput)
 }
 
-// The unique key that references the segment.
+// The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o SegmentOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
@@ -359,7 +359,7 @@ func (o SegmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The segment's project key.
+// The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
 func (o SegmentOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Segment) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

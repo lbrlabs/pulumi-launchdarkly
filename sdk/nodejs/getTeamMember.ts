@@ -28,6 +28,7 @@ export function getTeamMember(args: GetTeamMemberArgs, opts?: pulumi.InvokeOptio
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("launchdarkly:index/getTeamMember:getTeamMember", {
         "email": args.email,
+        "id": args.id,
     }, opts);
 }
 
@@ -39,6 +40,10 @@ export interface GetTeamMemberArgs {
      * The unique email address associated with the team member.
      */
     email: string;
+    /**
+     * The 24 character alphanumeric ID of the team member.
+     */
+    id?: string;
 }
 
 /**
@@ -52,7 +57,7 @@ export interface GetTeamMemberResult {
      */
     readonly firstName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The 24 character alphanumeric ID of the team member.
      */
     readonly id: string;
     /**
@@ -77,4 +82,8 @@ export interface GetTeamMemberOutputArgs {
      * The unique email address associated with the team member.
      */
     email: pulumi.Input<string>;
+    /**
+     * The 24 character alphanumeric ID of the team member.
+     */
+    id?: pulumi.Input<string>;
 }

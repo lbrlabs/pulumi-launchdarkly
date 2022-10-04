@@ -14,7 +14,16 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Inputs
     public sealed class ProjectEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        private Input<string>? _apiKey;
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("approvalSettings")]
         private InputList<Inputs.ProjectEnvironmentApprovalSettingArgs>? _approvalSettings;
@@ -25,7 +34,16 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Inputs
         }
 
         [Input("clientSideId")]
-        public Input<string>? ClientSideId { get; set; }
+        private Input<string>? _clientSideId;
+        public Input<string>? ClientSideId
+        {
+            get => _clientSideId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSideId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The color swatch as an RGB hex value with no leading `#`. For example: `000000`.
@@ -52,13 +70,22 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Inputs
         public Input<int>? DefaultTtl { get; set; }
 
         /// <summary>
-        /// The project-unique key for the environment.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         [Input("mobileKey")]
-        public Input<string>? MobileKey { get; set; }
+        private Input<string>? _mobileKey;
+        public Input<string>? MobileKey
+        {
+            get => _mobileKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _mobileKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of the environment.

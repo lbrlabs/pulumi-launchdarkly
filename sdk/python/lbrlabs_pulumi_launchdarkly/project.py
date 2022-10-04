@@ -18,19 +18,26 @@ class ProjectArgs:
     def __init__(__self__, *,
                  environments: pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]],
                  key: pulumi.Input[str],
+                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
                  include_in_snippet: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
-        :param pulumi.Input[str] key: The project's unique key.
-        :param pulumi.Input[bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default
+        :param pulumi.Input[str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         :param pulumi.Input[str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The project's set of tags.
         """
         pulumi.set(__self__, "environments", environments)
         pulumi.set(__self__, "key", key)
+        if default_client_side_availabilities is not None:
+            pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
+        if include_in_snippet is not None:
+            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""")
         if include_in_snippet is not None:
             pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if name is not None:
@@ -54,7 +61,7 @@ class ProjectArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The project's unique key.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -63,10 +70,22 @@ class ProjectArgs:
         pulumi.set(self, "key", value)
 
     @property
+    @pulumi.getter(name="defaultClientSideAvailabilities")
+    def default_client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+        """
+        A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        """
+        return pulumi.get(self, "default_client_side_availabilities")
+
+    @default_client_side_availabilities.setter
+    def default_client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
+        pulumi.set(self, "default_client_side_availabilities", value)
+
+    @property
     @pulumi.getter(name="includeInSnippet")
     def include_in_snippet(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default
+        **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -102,6 +121,7 @@ class ProjectArgs:
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
+                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]]] = None,
                  include_in_snippet: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -109,14 +129,20 @@ class _ProjectState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectEnvironmentArgs']]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
-        :param pulumi.Input[bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default
-        :param pulumi.Input[str] key: The project's unique key.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The project's set of tags.
         """
+        if default_client_side_availabilities is not None:
+            pulumi.set(__self__, "default_client_side_availabilities", default_client_side_availabilities)
         if environments is not None:
             pulumi.set(__self__, "environments", environments)
+        if include_in_snippet is not None:
+            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""")
         if include_in_snippet is not None:
             pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key is not None:
@@ -125,6 +151,18 @@ class _ProjectState:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="defaultClientSideAvailabilities")
+    def default_client_side_availabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]:
+        """
+        A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        """
+        return pulumi.get(self, "default_client_side_availabilities")
+
+    @default_client_side_availabilities.setter
+    def default_client_side_availabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectDefaultClientSideAvailabilityArgs']]]]):
+        pulumi.set(self, "default_client_side_availabilities", value)
 
     @property
     @pulumi.getter
@@ -142,7 +180,7 @@ class _ProjectState:
     @pulumi.getter(name="includeInSnippet")
     def include_in_snippet(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default
+        **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -154,7 +192,7 @@ class _ProjectState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The project's unique key.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -192,6 +230,7 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectDefaultClientSideAvailabilityArgs']]]]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectEnvironmentArgs']]]]] = None,
                  include_in_snippet: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -242,13 +281,14 @@ class Project(pulumi.CustomResource):
          $ pulumi import launchdarkly:index/project:Project example example-project
         ```
 
-         **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+         **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectDefaultClientSideAvailabilityArgs']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectEnvironmentArgs']]]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
-        :param pulumi.Input[bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default
-        :param pulumi.Input[str] key: The project's unique key.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The project's set of tags.
         """
@@ -302,7 +342,7 @@ class Project(pulumi.CustomResource):
          $ pulumi import launchdarkly:index/project:Project example example-project
         ```
 
-         **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+         **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -319,6 +359,7 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectDefaultClientSideAvailabilityArgs']]]]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectEnvironmentArgs']]]]] = None,
                  include_in_snippet: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -333,9 +374,13 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
+            __props__.__dict__["default_client_side_availabilities"] = default_client_side_availabilities
             if environments is None and not opts.urn:
                 raise TypeError("Missing required property 'environments'")
             __props__.__dict__["environments"] = environments
+            if include_in_snippet is not None and not opts.urn:
+                warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""", DeprecationWarning)
+                pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.""")
             __props__.__dict__["include_in_snippet"] = include_in_snippet
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
@@ -352,6 +397,7 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            default_client_side_availabilities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectDefaultClientSideAvailabilityArgs']]]]] = None,
             environments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectEnvironmentArgs']]]]] = None,
             include_in_snippet: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
@@ -364,9 +410,10 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectDefaultClientSideAvailabilityArgs']]]] default_client_side_availabilities: A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectEnvironmentArgs']]]] environments: List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
-        :param pulumi.Input[bool] include_in_snippet: Whether feature flags created under the project should be available to client-side SDKs by default
-        :param pulumi.Input[str] key: The project's unique key.
+        :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
+        :param pulumi.Input[str] key: The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The project's name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The project's set of tags.
         """
@@ -374,12 +421,21 @@ class Project(pulumi.CustomResource):
 
         __props__ = _ProjectState.__new__(_ProjectState)
 
+        __props__.__dict__["default_client_side_availabilities"] = default_client_side_availabilities
         __props__.__dict__["environments"] = environments
         __props__.__dict__["include_in_snippet"] = include_in_snippet
         __props__.__dict__["key"] = key
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         return Project(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="defaultClientSideAvailabilities")
+    def default_client_side_availabilities(self) -> pulumi.Output[Sequence['outputs.ProjectDefaultClientSideAvailability']]:
+        """
+        A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        """
+        return pulumi.get(self, "default_client_side_availabilities")
 
     @property
     @pulumi.getter
@@ -391,9 +447,9 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="includeInSnippet")
-    def include_in_snippet(self) -> pulumi.Output[Optional[bool]]:
+    def include_in_snippet(self) -> pulumi.Output[bool]:
         """
-        Whether feature flags created under the project should be available to client-side SDKs by default
+        **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         """
         return pulumi.get(self, "include_in_snippet")
 
@@ -401,7 +457,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
-        The project's unique key.
+        The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 

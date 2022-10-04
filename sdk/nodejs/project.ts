@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -50,7 +51,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import launchdarkly:index/project:Project example example-project
  * ```
  *
- *  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+ *  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -81,15 +82,21 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     */
+    public readonly defaultClientSideAvailabilities!: pulumi.Output<outputs.ProjectDefaultClientSideAvailability[]>;
+    /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
      */
     public readonly environments!: pulumi.Output<outputs.ProjectEnvironment[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default
+     * **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
      */
-    public readonly includeInSnippet!: pulumi.Output<boolean | undefined>;
+    public readonly includeInSnippet!: pulumi.Output<boolean>;
     /**
-     * The project's unique key.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly key!: pulumi.Output<string>;
     /**
@@ -114,6 +121,7 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            resourceInputs["defaultClientSideAvailabilities"] = state ? state.defaultClientSideAvailabilities : undefined;
             resourceInputs["environments"] = state ? state.environments : undefined;
             resourceInputs["includeInSnippet"] = state ? state.includeInSnippet : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
@@ -127,6 +135,7 @@ export class Project extends pulumi.CustomResource {
             if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
+            resourceInputs["defaultClientSideAvailabilities"] = args ? args.defaultClientSideAvailabilities : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["includeInSnippet"] = args ? args.includeInSnippet : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
@@ -143,15 +152,21 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     */
+    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
      */
     environments?: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default
+     * **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The project's unique key.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key?: pulumi.Input<string>;
     /**
@@ -169,15 +184,21 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+     */
+    defaultClientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.ProjectDefaultClientSideAvailability>[]>;
+    /**
      * List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
      */
     environments: pulumi.Input<pulumi.Input<inputs.ProjectEnvironment>[]>;
     /**
-     * Whether feature flags created under the project should be available to client-side SDKs by default
+     * **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `defaultClientSideAvailability` to maintain future compatibility.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
      */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
-     * The project's unique key.
+     * The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     key: pulumi.Input<string>;
     /**

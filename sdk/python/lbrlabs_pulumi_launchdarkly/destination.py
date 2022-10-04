@@ -24,9 +24,9 @@ class DestinationArgs:
         """
         The set of arguments for constructing a Destination resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: - The destination-specific configuration. To learn more, read Destination-Specific Configs.
-        :param pulumi.Input[str] env_key: - The environment key.
-        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
-        :param pulumi.Input[str] project_key: - The LaunchDarkly project key.
+        :param pulumi.Input[str] env_key: - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] project_key: - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: -
         :param pulumi.Input[bool] on: - Whether the data export destination is on or not.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with your resource
@@ -58,7 +58,7 @@ class DestinationArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[str]:
         """
-        - The environment key.
+        - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -70,7 +70,7 @@ class DestinationArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -82,7 +82,7 @@ class DestinationArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[str]:
         """
-        - The LaunchDarkly project key.
+        - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -140,11 +140,11 @@ class _DestinationState:
         """
         Input properties used for looking up and filtering Destination resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: - The destination-specific configuration. To learn more, read Destination-Specific Configs.
-        :param pulumi.Input[str] env_key: - The environment key.
-        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        :param pulumi.Input[str] env_key: - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: -
         :param pulumi.Input[bool] on: - Whether the data export destination is on or not.
-        :param pulumi.Input[str] project_key: - The LaunchDarkly project key.
+        :param pulumi.Input[str] project_key: - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with your resource
         """
         if config is not None:
@@ -178,7 +178,7 @@ class _DestinationState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> Optional[pulumi.Input[str]]:
         """
-        - The environment key.
+        - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -190,7 +190,7 @@ class _DestinationState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -226,7 +226,7 @@ class _DestinationState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> Optional[pulumi.Input[str]]:
         """
-        - The LaunchDarkly project key.
+        - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -262,6 +262,8 @@ class Destination(pulumi.CustomResource):
                  __props__=None):
         """
         Provides a LaunchDarkly Data Export Destination resource.
+
+        > **Note:** Data Export is available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
         Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
 
@@ -366,11 +368,11 @@ class Destination(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: - The destination-specific configuration. To learn more, read Destination-Specific Configs.
-        :param pulumi.Input[str] env_key: - The environment key.
-        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        :param pulumi.Input[str] env_key: - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: -
         :param pulumi.Input[bool] on: - Whether the data export destination is on or not.
-        :param pulumi.Input[str] project_key: - The LaunchDarkly project key.
+        :param pulumi.Input[str] project_key: - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with your resource
         """
         ...
@@ -381,6 +383,8 @@ class Destination(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a LaunchDarkly Data Export Destination resource.
+
+        > **Note:** Data Export is available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
         Data Export Destinations are locations that receive exported data. This resource allows you to configure destinations for the export of raw analytics data, including feature flag requests, analytics events, custom events, and more.
 
@@ -553,11 +557,11 @@ class Destination(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: - The destination-specific configuration. To learn more, read Destination-Specific Configs.
-        :param pulumi.Input[str] env_key: - The environment key.
-        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        :param pulumi.Input[str] env_key: - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] kind: - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: -
         :param pulumi.Input[bool] on: - Whether the data export destination is on or not.
-        :param pulumi.Input[str] project_key: - The LaunchDarkly project key.
+        :param pulumi.Input[str] project_key: - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with your resource
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -585,7 +589,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[str]:
         """
-        - The environment key.
+        - The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -593,7 +597,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`.
+        - The data export destination type. Available choices are `kinesis`, `google-pubsub`, `mparticle`, `azure-event-hubs`, and `segment`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "kind")
 
@@ -617,7 +621,7 @@ class Destination(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[str]:
         """
-        - The LaunchDarkly project key.
+        - The LaunchDarkly project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 

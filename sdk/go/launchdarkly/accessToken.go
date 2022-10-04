@@ -12,7 +12,7 @@ import (
 
 // ## Example Usage
 //
-// Resource must contain either a `role`, `customRole` or an `inlineRoles` (previously `policyStatements`) block. As of v1.7.0, `policyStatements` has been deprecated in favor of `inlineRoles`.
+// The resource must contain either a `role`, `customRole` or an `inlineRoles` (previously `policyStatements`) block. As of v1.7.0, `policyStatements` has been deprecated in favor of `inlineRoles`.
 //
 // # With a built-in role
 //
@@ -109,11 +109,11 @@ type AccessToken struct {
 
 	// A list of custom role IDs to use as access limits for the access token
 	CustomRoles pulumi.StringArrayOutput `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version.
+	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 	DefaultApiVersion pulumi.IntOutput `pulumi:"defaultApiVersion"`
 	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 	Expire pulumi.IntPtrOutput `pulumi:"expire"`
 	// An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
 	// of a built-in or custom role.
@@ -126,7 +126,7 @@ type AccessToken struct {
 	PolicyStatements AccessTokenPolicyStatementArrayOutput `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrOutput `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 	ServiceToken pulumi.BoolPtrOutput `pulumi:"serviceToken"`
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token pulumi.StringOutput `pulumi:"token"`
@@ -139,6 +139,10 @@ func NewAccessToken(ctx *pulumi.Context,
 		args = &AccessTokenArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource AccessToken
 	err := ctx.RegisterResource("launchdarkly:index/accessToken:AccessToken", name, args, &resource, opts...)
@@ -164,11 +168,11 @@ func GetAccessToken(ctx *pulumi.Context,
 type accessTokenState struct {
 	// A list of custom role IDs to use as access limits for the access token
 	CustomRoles []string `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version.
+	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 	DefaultApiVersion *int `pulumi:"defaultApiVersion"`
 	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 	Expire *int `pulumi:"expire"`
 	// An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
 	// of a built-in or custom role.
@@ -181,7 +185,7 @@ type accessTokenState struct {
 	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role *string `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 	ServiceToken *bool `pulumi:"serviceToken"`
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token *string `pulumi:"token"`
@@ -190,11 +194,11 @@ type accessTokenState struct {
 type AccessTokenState struct {
 	// A list of custom role IDs to use as access limits for the access token
 	CustomRoles pulumi.StringArrayInput
-	// The default API version for this token. Defaults to the latest API version.
+	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 	DefaultApiVersion pulumi.IntPtrInput
 	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 	Expire pulumi.IntPtrInput
 	// An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
 	// of a built-in or custom role.
@@ -207,7 +211,7 @@ type AccessTokenState struct {
 	PolicyStatements AccessTokenPolicyStatementArrayInput
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrInput
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 	ServiceToken pulumi.BoolPtrInput
 	// The access token used to authorize usage of the LaunchDarkly API.
 	Token pulumi.StringPtrInput
@@ -220,11 +224,11 @@ func (AccessTokenState) ElementType() reflect.Type {
 type accessTokenArgs struct {
 	// A list of custom role IDs to use as access limits for the access token
 	CustomRoles []string `pulumi:"customRoles"`
-	// The default API version for this token. Defaults to the latest API version.
+	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 	DefaultApiVersion *int `pulumi:"defaultApiVersion"`
 	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 	Expire *int `pulumi:"expire"`
 	// An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
 	// of a built-in or custom role.
@@ -237,7 +241,7 @@ type accessTokenArgs struct {
 	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role *string `pulumi:"role"`
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 	ServiceToken *bool `pulumi:"serviceToken"`
 }
 
@@ -245,11 +249,11 @@ type accessTokenArgs struct {
 type AccessTokenArgs struct {
 	// A list of custom role IDs to use as access limits for the access token
 	CustomRoles pulumi.StringArrayInput
-	// The default API version for this token. Defaults to the latest API version.
+	// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 	DefaultApiVersion pulumi.IntPtrInput
 	// An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 	//
-	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+	// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 	Expire pulumi.IntPtrInput
 	// An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
 	// of a built-in or custom role.
@@ -262,7 +266,7 @@ type AccessTokenArgs struct {
 	PolicyStatements AccessTokenPolicyStatementArrayInput
 	// A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
 	Role pulumi.StringPtrInput
-	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+	// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 	ServiceToken pulumi.BoolPtrInput
 }
 
@@ -358,14 +362,14 @@ func (o AccessTokenOutput) CustomRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringArrayOutput { return v.CustomRoles }).(pulumi.StringArrayOutput)
 }
 
-// The default API version for this token. Defaults to the latest API version.
+// The default API version for this token. Defaults to the latest API version. A change in this field will force the destruction of the existing token in state and the creation of a new one.
 func (o AccessTokenOutput) DefaultApiVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.IntOutput { return v.DefaultApiVersion }).(pulumi.IntOutput)
 }
 
 // An expiration time for the current token secret, expressed as a Unix epoch time. Replace the computed token secret with a new value. The expired secret will no longer be able to authorize usage of the LaunchDarkly API. This field argument is **deprecated**. Please update your config to remove `expire` to maintain compatibility with future versions.
 //
-// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarly provider
+// Deprecated: 'expire' is deprecated and will be removed in the next major release of the LaunchDarkly provider
 func (o AccessTokenOutput) Expire() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.IntPtrOutput { return v.Expire }).(pulumi.IntPtrOutput)
 }
@@ -393,7 +397,7 @@ func (o AccessTokenOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens)
+// Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
 func (o AccessTokenOutput) ServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.BoolPtrOutput { return v.ServiceToken }).(pulumi.BoolPtrOutput)
 }

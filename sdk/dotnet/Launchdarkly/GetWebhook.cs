@@ -39,7 +39,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetWebhookResult> InvokeAsync(GetWebhookArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("launchdarkly:index/getWebhook:getWebhook", args ?? new GetWebhookArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebhookResult>("launchdarkly:index/getWebhook:getWebhook", args ?? new GetWebhookArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly webhook data source.
@@ -68,7 +68,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetWebhookResult> Invoke(GetWebhookInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("launchdarkly:index/getWebhook:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebhookResult>("launchdarkly:index/getWebhook:getWebhook", args ?? new GetWebhookInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -86,11 +86,17 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("secret")]
+        private string? _secret;
+
         /// <summary>
         /// The secret used to sign the webhook.
         /// </summary>
-        [Input("secret")]
-        public string? Secret { get; set; }
+        public string? Secret
+        {
+            get => _secret;
+            set => _secret = value;
+        }
 
         [Input("statements")]
         private List<Inputs.GetWebhookStatementArgs>? _statements;
@@ -136,11 +142,21 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// The secret used to sign the webhook.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("statements")]
         private InputList<Inputs.GetWebhookStatementInputArgs>? _statements;

@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "launchdarkly:index/accessToken:AccessToken":
 		r = &AccessToken{}
+	case "launchdarkly:index/auditLogSubscription:AuditLogSubscription":
+		r = &AuditLogSubscription{}
 	case "launchdarkly:index/customRole:CustomRole":
 		r = &CustomRole{}
 	case "launchdarkly:index/destination:Destination":
@@ -32,10 +34,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureFlag{}
 	case "launchdarkly:index/featureFlagEnvironment:FeatureFlagEnvironment":
 		r = &FeatureFlagEnvironment{}
+	case "launchdarkly:index/flagTrigger:FlagTrigger":
+		r = &FlagTrigger{}
+	case "launchdarkly:index/metric:Metric":
+		r = &Metric{}
 	case "launchdarkly:index/project:Project":
 		r = &Project{}
+	case "launchdarkly:index/relayProxyConfiguration:RelayProxyConfiguration":
+		r = &RelayProxyConfiguration{}
 	case "launchdarkly:index/segment:Segment":
 		r = &Segment{}
+	case "launchdarkly:index/team:Team":
+		r = &Team{}
 	case "launchdarkly:index/teamMember:TeamMember":
 		r = &TeamMember{}
 	case "launchdarkly:index/webhook:Webhook":
@@ -75,6 +85,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/auditLogSubscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/customRole",
 		&module{version},
 	)
@@ -100,12 +115,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/flagTrigger",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/metric",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/project",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"launchdarkly",
+		"index/relayProxyConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
 		"index/segment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"launchdarkly",
+		"index/team",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

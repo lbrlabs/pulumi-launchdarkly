@@ -53,6 +53,8 @@ func LookupTeamMember(ctx *pulumi.Context, args *LookupTeamMemberArgs, opts ...p
 type LookupTeamMemberArgs struct {
 	// The unique email address associated with the team member.
 	Email string `pulumi:"email"`
+	// The 24 character alphanumeric ID of the team member.
+	Id *string `pulumi:"id"`
 }
 
 // A collection of values returned by getTeamMember.
@@ -61,7 +63,7 @@ type LookupTeamMemberResult struct {
 	Email       string   `pulumi:"email"`
 	// The team member's given name.
 	FirstName string `pulumi:"firstName"`
-	// The provider-assigned unique ID for this managed resource.
+	// The 24 character alphanumeric ID of the team member.
 	Id string `pulumi:"id"`
 	// The team member's family name.
 	LastName string `pulumi:"lastName"`
@@ -86,6 +88,8 @@ func LookupTeamMemberOutput(ctx *pulumi.Context, args LookupTeamMemberOutputArgs
 type LookupTeamMemberOutputArgs struct {
 	// The unique email address associated with the team member.
 	Email pulumi.StringInput `pulumi:"email"`
+	// The 24 character alphanumeric ID of the team member.
+	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
 func (LookupTeamMemberOutputArgs) ElementType() reflect.Type {
@@ -120,7 +124,7 @@ func (o LookupTeamMemberResultOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.FirstName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The 24 character alphanumeric ID of the team member.
 func (o LookupTeamMemberResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTeamMemberResult) string { return v.Id }).(pulumi.StringOutput)
 }

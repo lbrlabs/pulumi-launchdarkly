@@ -27,9 +27,9 @@ class SegmentArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Segment resource.
-        :param pulumi.Input[str] env_key: The segment's environment key.
-        :param pulumi.Input[str] key: The unique key that references the segment.
-        :param pulumi.Input[str] project_key: The segment's project key.
+        :param pulumi.Input[str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] description: The description of the segment's purpose.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludeds: List of user keys excluded from the segment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] includeds: List of user keys included in the segment.
@@ -57,7 +57,7 @@ class SegmentArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[str]:
         """
-        The segment's environment key.
+        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -69,7 +69,7 @@ class SegmentArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The unique key that references the segment.
+        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -81,7 +81,7 @@ class SegmentArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[str]:
         """
-        The segment's project key.
+        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -179,12 +179,12 @@ class _SegmentState:
         Input properties used for looking up and filtering Segment resources.
         :param pulumi.Input[int] creation_date: The segment's creation date represented as a UNIX epoch timestamp.
         :param pulumi.Input[str] description: The description of the segment's purpose.
-        :param pulumi.Input[str] env_key: The segment's environment key.
+        :param pulumi.Input[str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludeds: List of user keys excluded from the segment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] includeds: List of user keys included in the segment.
-        :param pulumi.Input[str] key: The unique key that references the segment.
+        :param pulumi.Input[str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-friendly name for the segment.
-        :param pulumi.Input[str] project_key: The segment's project key.
+        :param pulumi.Input[str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input['SegmentRuleArgs']]] rules: List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of tags for the segment.
         """
@@ -237,7 +237,7 @@ class _SegmentState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The segment's environment key.
+        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -273,7 +273,7 @@ class _SegmentState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique key that references the segment.
+        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -297,7 +297,7 @@ class _SegmentState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The segment's project key.
+        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 
@@ -398,12 +398,12 @@ class Segment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the segment's purpose.
-        :param pulumi.Input[str] env_key: The segment's environment key.
+        :param pulumi.Input[str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludeds: List of user keys excluded from the segment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] includeds: List of user keys included in the segment.
-        :param pulumi.Input[str] key: The unique key that references the segment.
+        :param pulumi.Input[str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-friendly name for the segment.
-        :param pulumi.Input[str] project_key: The segment's project key.
+        :param pulumi.Input[str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SegmentRuleArgs']]]] rules: List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of tags for the segment.
         """
@@ -541,12 +541,12 @@ class Segment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] creation_date: The segment's creation date represented as a UNIX epoch timestamp.
         :param pulumi.Input[str] description: The description of the segment's purpose.
-        :param pulumi.Input[str] env_key: The segment's environment key.
+        :param pulumi.Input[str] env_key: The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] excludeds: List of user keys excluded from the segment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] includeds: List of user keys included in the segment.
-        :param pulumi.Input[str] key: The unique key that references the segment.
+        :param pulumi.Input[str] key: The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-friendly name for the segment.
-        :param pulumi.Input[str] project_key: The segment's project key.
+        :param pulumi.Input[str] project_key: The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SegmentRuleArgs']]]] rules: List of nested custom rule blocks to apply to the segment. To learn more, read Nested Rules Blocks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Set of tags for the segment.
         """
@@ -586,7 +586,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[str]:
         """
-        The segment's environment key.
+        The segment's environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -610,7 +610,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
-        The unique key that references the segment.
+        The unique key that references the segment. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -626,7 +626,7 @@ class Segment(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[str]:
         """
-        The segment's project key.
+        The segment's project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "project_key")
 

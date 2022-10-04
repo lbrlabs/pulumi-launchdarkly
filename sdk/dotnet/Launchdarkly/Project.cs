@@ -80,11 +80,17 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     ///  $ pulumi import launchdarkly:index/project:Project example example-project
     /// ```
     /// 
-    ///  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.
+    ///  **IMPORTANT:** Please note that, regardless of how many `environments` blocks you include on your import, _all_ of the project's environments will be saved to the Terraform state and will update with subsequent applies. This means that any environments not included in your import configuration will be torn down with any subsequent apply. If you wish to manage project properties with Terraform but not nested environments consider using Terraform's [ignore changes](https://www.terraform.io/docs/language/meta-arguments/lifecycle.html#ignore_changes) lifecycle meta-argument; see below for example. resource "launchdarkly_project" "example" { 		lifecycle { 			ignore_changes = [environments] 		} 		name = "testProject" 		key = "%s" 		# environments not included on this configuration will not be affected by subsequent applies 	} **Managing environment resources with Terraform should always be done on the project unless the project is not also managed with Terraform.**
     /// </summary>
     [LaunchdarklyResourceType("launchdarkly:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        /// </summary>
+        [Output("defaultClientSideAvailabilities")]
+        public Output<ImmutableArray<Outputs.ProjectDefaultClientSideAvailability>> DefaultClientSideAvailabilities { get; private set; } = null!;
+
         /// <summary>
         /// List of nested `environments` blocks describing LaunchDarkly environments that belong to the project
         /// </summary>
@@ -92,13 +98,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableArray<Outputs.ProjectEnvironment>> Environments { get; private set; } = null!;
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default
+        /// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         /// </summary>
         [Output("includeInSnippet")]
-        public Output<bool?> IncludeInSnippet { get; private set; } = null!;
+        public Output<bool> IncludeInSnippet { get; private set; } = null!;
 
         /// <summary>
-        /// The project's unique key.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -162,6 +168,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
+        [Input("defaultClientSideAvailabilities")]
+        private InputList<Inputs.ProjectDefaultClientSideAvailabilityArgs>? _defaultClientSideAvailabilities;
+
+        /// <summary>
+        /// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        /// </summary>
+        public InputList<Inputs.ProjectDefaultClientSideAvailabilityArgs> DefaultClientSideAvailabilities
+        {
+            get => _defaultClientSideAvailabilities ?? (_defaultClientSideAvailabilities = new InputList<Inputs.ProjectDefaultClientSideAvailabilityArgs>());
+            set => _defaultClientSideAvailabilities = value;
+        }
+
         [Input("environments", required: true)]
         private InputList<Inputs.ProjectEnvironmentArgs>? _environments;
 
@@ -175,13 +193,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default
+        /// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The project's unique key.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -212,6 +230,18 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
 
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
+        [Input("defaultClientSideAvailabilities")]
+        private InputList<Inputs.ProjectDefaultClientSideAvailabilityGetArgs>? _defaultClientSideAvailabilities;
+
+        /// <summary>
+        /// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client Side Availability Block.
+        /// </summary>
+        public InputList<Inputs.ProjectDefaultClientSideAvailabilityGetArgs> DefaultClientSideAvailabilities
+        {
+            get => _defaultClientSideAvailabilities ?? (_defaultClientSideAvailabilities = new InputList<Inputs.ProjectDefaultClientSideAvailabilityGetArgs>());
+            set => _defaultClientSideAvailabilities = value;
+        }
+
         [Input("environments")]
         private InputList<Inputs.ProjectEnvironmentGetArgs>? _environments;
 
@@ -225,13 +255,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         }
 
         /// <summary>
-        /// Whether feature flags created under the project should be available to client-side SDKs by default
+        /// **Deprecated** (Optional) Whether feature flags created under the project should be available to client-side SDKs by default. Please migrate to `default_client_side_availability` to maintain future compatibility.
         /// </summary>
         [Input("includeInSnippet")]
         public Input<bool>? IncludeInSnippet { get; set; }
 
         /// <summary>
-        /// The project's unique key.
+        /// The project's unique key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

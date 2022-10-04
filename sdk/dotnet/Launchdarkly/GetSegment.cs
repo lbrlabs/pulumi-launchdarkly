@@ -41,7 +41,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSegmentResult> InvokeAsync(GetSegmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSegmentResult>("launchdarkly:index/getSegment:getSegment", args ?? new GetSegmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSegmentResult>("launchdarkly:index/getSegment:getSegment", args ?? new GetSegmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly segment data source.
@@ -72,7 +72,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSegmentResult> Invoke(GetSegmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSegmentResult>("launchdarkly:index/getSegment:getSegment", args ?? new GetSegmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSegmentResult>("launchdarkly:index/getSegment:getSegment", args ?? new GetSegmentInvokeArgs(), options.WithDefaults());
     }
 
 

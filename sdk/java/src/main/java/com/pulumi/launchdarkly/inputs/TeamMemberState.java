@@ -32,14 +32,14 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique email address associated with the team member.
+     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The unique email address associated with the team member.
+     * @return The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> email() {
@@ -77,14 +77,14 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+     * @return The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
      * 
      */
     public Optional<Output<String>> role() {
@@ -151,7 +151,7 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The unique email address associated with the team member.
+         * @param email The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The unique email address associated with the team member.
+         * @param email The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+         * @param role The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class TeamMemberState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param role The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
+         * @param role The role associated with team member. Supported roles are `reader`, `writer`, `no_access`, or `admin`. If you don&#39;t specify a role, `reader` is assigned by default.
          * 
          * @return builder
          * 

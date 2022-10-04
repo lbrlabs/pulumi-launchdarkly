@@ -83,6 +83,10 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/lbrlabs",
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -118,11 +122,21 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("on")]
         public Input<bool>? On { get; set; }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// The secret used to sign the webhook.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("statements")]
         private InputList<Inputs.WebhookStatementArgs>? _statements;
@@ -170,11 +184,21 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         [Input("on")]
         public Input<bool>? On { get; set; }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// The secret used to sign the webhook.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("statements")]
         private InputList<Inputs.WebhookStatementGetArgs>? _statements;

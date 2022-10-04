@@ -23,14 +23,14 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
     public static final FeatureFlagEnvironmentArgs Empty = new FeatureFlagEnvironmentArgs();
 
     /**
-     * The environment key.
+     * The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="envKey", required=true)
     private Output<String> envKey;
 
     /**
-     * @return The environment key.
+     * @return The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> envKey() {
@@ -53,14 +53,14 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+     * The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="flagId", required=true)
     private Output<String> flagId;
 
     /**
-     * @return The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+     * @return The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> flagId() {
@@ -190,7 +190,7 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param envKey The environment key.
+         * @param envKey The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param envKey The environment key.
+         * @param envKey The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param flagId The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+         * @param flagId The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class FeatureFlagEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param flagId The feature flag&#39;s unique `id` in the format `project_key/flag_key`.
+         * @param flagId The feature flag&#39;s unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

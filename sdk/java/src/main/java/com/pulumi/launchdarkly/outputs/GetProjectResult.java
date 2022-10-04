@@ -5,6 +5,7 @@ package com.pulumi.launchdarkly.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.launchdarkly.outputs.GetProjectClientSideAvailability;
+import com.pulumi.launchdarkly.outputs.GetProjectDefaultClientSideAvailability;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,10 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectResult {
     /**
-     * @return A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+     * @return **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     * Please migrate to `default_client_side_availability` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;client_side_availability&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
     private List<GetProjectClientSideAvailability> clientSideAvailabilities;
+    /**
+     * @return A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    private List<GetProjectDefaultClientSideAvailability> defaultClientSideAvailabilities;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -36,11 +47,23 @@ public final class GetProjectResult {
 
     private GetProjectResult() {}
     /**
-     * @return A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+     * @return **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     * Please migrate to `default_client_side_availability` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;client_side_availability&#39; is now deprecated. Please migrate to &#39;default_client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability. */
     public List<GetProjectClientSideAvailability> clientSideAvailabilities() {
         return this.clientSideAvailabilities;
+    }
+    /**
+     * @return A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    public List<GetProjectDefaultClientSideAvailability> defaultClientSideAvailabilities() {
+        return this.defaultClientSideAvailabilities;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,6 +100,7 @@ public final class GetProjectResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetProjectClientSideAvailability> clientSideAvailabilities;
+        private List<GetProjectDefaultClientSideAvailability> defaultClientSideAvailabilities;
         private String id;
         private String key;
         private String name;
@@ -85,6 +109,7 @@ public final class GetProjectResult {
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientSideAvailabilities = defaults.clientSideAvailabilities;
+    	      this.defaultClientSideAvailabilities = defaults.defaultClientSideAvailabilities;
     	      this.id = defaults.id;
     	      this.key = defaults.key;
     	      this.name = defaults.name;
@@ -98,6 +123,14 @@ public final class GetProjectResult {
         }
         public Builder clientSideAvailabilities(GetProjectClientSideAvailability... clientSideAvailabilities) {
             return clientSideAvailabilities(List.of(clientSideAvailabilities));
+        }
+        @CustomType.Setter
+        public Builder defaultClientSideAvailabilities(List<GetProjectDefaultClientSideAvailability> defaultClientSideAvailabilities) {
+            this.defaultClientSideAvailabilities = Objects.requireNonNull(defaultClientSideAvailabilities);
+            return this;
+        }
+        public Builder defaultClientSideAvailabilities(GetProjectDefaultClientSideAvailability... defaultClientSideAvailabilities) {
+            return defaultClientSideAvailabilities(List.of(defaultClientSideAvailabilities));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -125,6 +158,7 @@ public final class GetProjectResult {
         public GetProjectResult build() {
             final var o = new GetProjectResult();
             o.clientSideAvailabilities = clientSideAvailabilities;
+            o.defaultClientSideAvailabilities = defaultClientSideAvailabilities;
             o.id = id;
             o.key = key;
             o.name = name;

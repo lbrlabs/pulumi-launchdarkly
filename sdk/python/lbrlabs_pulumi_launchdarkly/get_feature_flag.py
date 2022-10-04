@@ -44,6 +44,10 @@ class GetFeatureFlagResult:
         pulumi.set(__self__, "id", id)
         if include_in_snippet and not isinstance(include_in_snippet, bool):
             raise TypeError("Expected argument 'include_in_snippet' to be a bool")
+        if include_in_snippet is not None:
+            warnings.warn("""'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""", DeprecationWarning)
+            pulumi.log.warn("""include_in_snippet is deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.""")
+
         pulumi.set(__self__, "include_in_snippet", include_in_snippet)
         if key and not isinstance(key, str):
             raise TypeError("Expected argument 'key' to be a str")
@@ -117,7 +121,10 @@ class GetFeatureFlagResult:
 
     @property
     @pulumi.getter(name="includeInSnippet")
-    def include_in_snippet(self) -> Optional[bool]:
+    def include_in_snippet(self) -> bool:
+        """
+        **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+        """
         return pulumi.get(self, "include_in_snippet")
 
     @property
@@ -206,6 +213,7 @@ class AwaitableGetFeatureFlagResult(GetFeatureFlagResult):
 
 
 def get_feature_flag(archived: Optional[bool] = None,
+                     client_side_availabilities: Optional[Sequence[pulumi.InputType['GetFeatureFlagClientSideAvailabilityArgs']]] = None,
                      custom_properties: Optional[Sequence[pulumi.InputType['GetFeatureFlagCustomPropertyArgs']]] = None,
                      defaults: Optional[pulumi.InputType['GetFeatureFlagDefaultsArgs']] = None,
                      description: Optional[str] = None,
@@ -233,9 +241,11 @@ def get_feature_flag(archived: Optional[bool] = None,
     ```
 
 
+    :param Sequence[pulumi.InputType['GetFeatureFlagClientSideAvailabilityArgs']] client_side_availabilities: A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
     :param Sequence[pulumi.InputType['GetFeatureFlagCustomPropertyArgs']] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
     :param pulumi.InputType['GetFeatureFlagDefaultsArgs'] defaults: A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
     :param str description: The variation's description.
+    :param bool include_in_snippet: **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
     :param str key: The unique feature flag key that references the flag in your application code.
     :param str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID.
     :param str project_key: The feature flag's project key.
@@ -245,6 +255,7 @@ def get_feature_flag(archived: Optional[bool] = None,
     """
     __args__ = dict()
     __args__['archived'] = archived
+    __args__['clientSideAvailabilities'] = client_side_availabilities
     __args__['customProperties'] = custom_properties
     __args__['defaults'] = defaults
     __args__['description'] = description
@@ -278,6 +289,7 @@ def get_feature_flag(archived: Optional[bool] = None,
 
 @_utilities.lift_output_func(get_feature_flag)
 def get_feature_flag_output(archived: Optional[pulumi.Input[Optional[bool]]] = None,
+                            client_side_availabilities: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFeatureFlagClientSideAvailabilityArgs']]]]] = None,
                             custom_properties: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFeatureFlagCustomPropertyArgs']]]]] = None,
                             defaults: Optional[pulumi.Input[Optional[pulumi.InputType['GetFeatureFlagDefaultsArgs']]]] = None,
                             description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -305,9 +317,11 @@ def get_feature_flag_output(archived: Optional[pulumi.Input[Optional[bool]]] = N
     ```
 
 
+    :param Sequence[pulumi.InputType['GetFeatureFlagClientSideAvailabilityArgs']] client_side_availabilities: A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
     :param Sequence[pulumi.InputType['GetFeatureFlagCustomPropertyArgs']] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
     :param pulumi.InputType['GetFeatureFlagDefaultsArgs'] defaults: A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
     :param str description: The variation's description.
+    :param bool include_in_snippet: **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
     :param str key: The unique feature flag key that references the flag in your application code.
     :param str maintainer_id: The feature flag maintainer's 24 character alphanumeric team member ID.
     :param str project_key: The feature flag's project key.

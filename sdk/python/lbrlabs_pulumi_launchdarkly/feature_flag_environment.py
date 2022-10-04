@@ -27,9 +27,9 @@ class FeatureFlagEnvironmentArgs:
                  track_events: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a FeatureFlagEnvironment resource.
-        :param pulumi.Input[str] env_key: The environment key.
+        :param pulumi.Input[str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
-        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[int] off_variation: The index of the variation to serve if targeting is disabled.
         :param pulumi.Input[bool] on: - (Optional) Whether targeting is enabled. Defaults to `false` if not set.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: List of nested blocks describing prerequisite feature flags rules. To learn more, read Nested Prequisites Blocks.
@@ -56,7 +56,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Input[str]:
         """
-        The environment key.
+        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -80,7 +80,7 @@ class FeatureFlagEnvironmentArgs:
     @pulumi.getter(name="flagId")
     def flag_id(self) -> pulumi.Input[str]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
@@ -175,9 +175,9 @@ class _FeatureFlagEnvironmentState:
                  track_events: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering FeatureFlagEnvironment resources.
-        :param pulumi.Input[str] env_key: The environment key.
+        :param pulumi.Input[str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input['FeatureFlagEnvironmentFallthroughArgs'] fallthrough: - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
-        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[int] off_variation: The index of the variation to serve if targeting is disabled.
         :param pulumi.Input[bool] on: - (Optional) Whether targeting is enabled. Defaults to `false` if not set.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagEnvironmentPrerequisiteArgs']]] prerequisites: List of nested blocks describing prerequisite feature flags rules. To learn more, read Nested Prequisites Blocks.
@@ -208,7 +208,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="envKey")
     def env_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The environment key.
+        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -232,7 +232,7 @@ class _FeatureFlagEnvironmentState:
     @pulumi.getter(name="flagId")
     def flag_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 
@@ -401,9 +401,9 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] env_key: The environment key.
+        :param pulumi.Input[str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentFallthroughArgs']] fallthrough: - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
-        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[int] off_variation: The index of the variation to serve if targeting is disabled.
         :param pulumi.Input[bool] on: - (Optional) Whether targeting is enabled. Defaults to `false` if not set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentPrerequisiteArgs']]]] prerequisites: List of nested blocks describing prerequisite feature flags rules. To learn more, read Nested Prequisites Blocks.
@@ -564,9 +564,9 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] env_key: The environment key.
+        :param pulumi.Input[str] env_key: The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentFallthroughArgs']] fallthrough: - (Required) Nested block describing the default variation to serve if no `prerequisites`, `target`, or `rules` apply.To learn more, read Nested Fallthrough Block.
-        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`.
+        :param pulumi.Input[str] flag_id: The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[int] off_variation: The index of the variation to serve if targeting is disabled.
         :param pulumi.Input[bool] on: - (Optional) Whether targeting is enabled. Defaults to `false` if not set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagEnvironmentPrerequisiteArgs']]]] prerequisites: List of nested blocks describing prerequisite feature flags rules. To learn more, read Nested Prequisites Blocks.
@@ -593,7 +593,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="envKey")
     def env_key(self) -> pulumi.Output[str]:
         """
-        The environment key.
+        The environment key. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "env_key")
 
@@ -609,7 +609,7 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="flagId")
     def flag_id(self) -> pulumi.Output[str]:
         """
-        The feature flag's unique `id` in the format `project_key/flag_key`.
+        The feature flag's unique `id` in the format `project_key/flag_key`. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "flag_id")
 

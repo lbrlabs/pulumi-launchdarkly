@@ -61,8 +61,13 @@ type LookupProjectArgs struct {
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
-	// A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+	// **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+	// Please migrate to `defaultClientSideAvailability` to maintain future compatability.
+	//
+	// Deprecated: 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 	ClientSideAvailabilities []GetProjectClientSideAvailability `pulumi:"clientSideAvailabilities"`
+	// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+	DefaultClientSideAvailabilities []GetProjectDefaultClientSideAvailability `pulumi:"defaultClientSideAvailabilities"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string `pulumi:"id"`
 	Key string `pulumi:"key"`
@@ -112,9 +117,19 @@ func (o LookupProjectResultOutput) ToLookupProjectResultOutputWithContext(ctx co
 	return o
 }
 
-// A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+// **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+// Please migrate to `defaultClientSideAvailability` to maintain future compatability.
+//
+// Deprecated: 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
 func (o LookupProjectResultOutput) ClientSideAvailabilities() GetProjectClientSideAvailabilityArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []GetProjectClientSideAvailability { return v.ClientSideAvailabilities }).(GetProjectClientSideAvailabilityArrayOutput)
+}
+
+// A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+func (o LookupProjectResultOutput) DefaultClientSideAvailabilities() GetProjectDefaultClientSideAvailabilityArrayOutput {
+	return o.ApplyT(func(v LookupProjectResult) []GetProjectDefaultClientSideAvailability {
+		return v.DefaultClientSideAvailabilities
+	}).(GetProjectDefaultClientSideAvailabilityArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

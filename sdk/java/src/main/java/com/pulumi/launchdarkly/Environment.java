@@ -196,14 +196,14 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultTtl);
     }
     /**
-     * The project-unique key for the environment.
+     * The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The project-unique key for the environment.
+     * @return The project-unique key for the environment. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {
@@ -238,14 +238,14 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * - The environment&#39;s project key.
+     * - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="projectKey", type=String.class, parameters={})
     private Output<String> projectKey;
 
     /**
-     * @return - The environment&#39;s project key.
+     * @return - The environment&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> projectKey() {
@@ -326,6 +326,11 @@ public class Environment extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "apiKey",
+                "clientSideId",
+                "mobileKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -20,9 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Provides a LaunchDarkly custom role resource.
  * 
- * This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+ * &gt; **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
  * 
- * &gt; **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+ * This resource allows you to create and manage custom roles within your LaunchDarkly organization.
  * 
  * ## Example Usage
  * ```java
@@ -79,6 +79,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="launchdarkly:index/customRole:CustomRole")
 public class CustomRole extends com.pulumi.resources.CustomResource {
     /**
+     * The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+     * 
+     */
+    @Export(name="basePermissions", type=String.class, parameters={})
+    private Output</* @Nullable */ String> basePermissions;
+
+    /**
+     * @return The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+     * 
+     */
+    public Output<Optional<String>> basePermissions() {
+        return Codegen.optional(this.basePermissions);
+    }
+    /**
      * The description of the custom role.
      * 
      */
@@ -93,14 +107,14 @@ public class CustomRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The unique key that references the custom role.
+     * The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
-     * @return The unique key that references the custom role.
+     * @return The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Output<String> key() {

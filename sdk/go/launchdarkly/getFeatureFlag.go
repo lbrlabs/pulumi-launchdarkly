@@ -53,13 +53,18 @@ func LookupFeatureFlag(ctx *pulumi.Context, args *LookupFeatureFlagArgs, opts ..
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagArgs struct {
 	Archived *bool `pulumi:"archived"`
+	// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities []GetFeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []GetFeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
 	Defaults *GetFeatureFlagDefaults `pulumi:"defaults"`
 	// The variation's description.
-	Description      *string `pulumi:"description"`
-	IncludeInSnippet *bool   `pulumi:"includeInSnippet"`
+	Description *string `pulumi:"description"`
+	// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+	IncludeInSnippet *bool `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code.
 	Key string `pulumi:"key"`
 	// The feature flag maintainer's 24 character alphanumeric team member ID.
@@ -86,8 +91,11 @@ type LookupFeatureFlagResult struct {
 	// The variation's description.
 	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id               string `pulumi:"id"`
-	IncludeInSnippet *bool  `pulumi:"includeInSnippet"`
+	Id string `pulumi:"id"`
+	// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+	IncludeInSnippet bool `pulumi:"includeInSnippet"`
 	// The unique custom property key.
 	Key string `pulumi:"key"`
 	// The feature flag maintainer's 24 character alphanumeric team member ID.
@@ -121,13 +129,18 @@ func LookupFeatureFlagOutput(ctx *pulumi.Context, args LookupFeatureFlagOutputAr
 // A collection of arguments for invoking getFeatureFlag.
 type LookupFeatureFlagOutputArgs struct {
 	Archived pulumi.BoolPtrInput `pulumi:"archived"`
+	// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+	ClientSideAvailabilities GetFeatureFlagClientSideAvailabilityArrayInput `pulumi:"clientSideAvailabilities"`
 	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties GetFeatureFlagCustomPropertyArrayInput `pulumi:"customProperties"`
 	// A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
 	Defaults GetFeatureFlagDefaultsPtrInput `pulumi:"defaults"`
 	// The variation's description.
-	Description      pulumi.StringPtrInput `pulumi:"description"`
-	IncludeInSnippet pulumi.BoolPtrInput   `pulumi:"includeInSnippet"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+	//
+	// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+	IncludeInSnippet pulumi.BoolPtrInput `pulumi:"includeInSnippet"`
 	// The unique feature flag key that references the flag in your application code.
 	Key pulumi.StringInput `pulumi:"key"`
 	// The feature flag maintainer's 24 character alphanumeric team member ID.
@@ -192,8 +205,11 @@ func (o LookupFeatureFlagResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupFeatureFlagResultOutput) IncludeInSnippet() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupFeatureFlagResult) *bool { return v.IncludeInSnippet }).(pulumi.BoolPtrOutput)
+// **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+//
+// Deprecated: 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+func (o LookupFeatureFlagResultOutput) IncludeInSnippet() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFeatureFlagResult) bool { return v.IncludeInSnippet }).(pulumi.BoolOutput)
 }
 
 // The unique custom property key.

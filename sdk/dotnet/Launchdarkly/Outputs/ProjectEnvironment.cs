@@ -34,7 +34,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Outputs
         /// </summary>
         public readonly int? DefaultTtl;
         /// <summary>
-        /// The project-unique key for the environment.
+        /// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
         /// </summary>
         public readonly string Key;
         public readonly string? MobileKey;

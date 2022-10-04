@@ -13,9 +13,11 @@ from . import outputs
 __all__ = [
     'AccessTokenInlineRole',
     'AccessTokenPolicyStatement',
+    'AuditLogSubscriptionStatement',
     'CustomRolePolicy',
     'CustomRolePolicyStatement',
     'EnvironmentApprovalSetting',
+    'FeatureFlagClientSideAvailability',
     'FeatureFlagCustomProperty',
     'FeatureFlagDefaults',
     'FeatureFlagEnvironmentFallthrough',
@@ -24,11 +26,16 @@ __all__ = [
     'FeatureFlagEnvironmentRuleClause',
     'FeatureFlagEnvironmentTarget',
     'FeatureFlagVariation',
+    'FlagTriggerInstructions',
+    'MetricUrl',
+    'ProjectDefaultClientSideAvailability',
     'ProjectEnvironment',
     'ProjectEnvironmentApprovalSetting',
+    'RelayProxyConfigurationPolicy',
     'SegmentRule',
     'SegmentRuleClause',
     'WebhookStatement',
+    'GetAuditLogSubscriptionStatementResult',
     'GetEnvironmentApprovalSettingResult',
     'GetFeatureFlagClientSideAvailabilityResult',
     'GetFeatureFlagCustomPropertyResult',
@@ -39,9 +46,14 @@ __all__ = [
     'GetFeatureFlagEnvironmentRuleClauseResult',
     'GetFeatureFlagEnvironmentTargetResult',
     'GetFeatureFlagVariationResult',
+    'GetFlagTriggerInstructionsResult',
+    'GetMetricUrlResult',
     'GetProjectClientSideAvailabilityResult',
+    'GetProjectDefaultClientSideAvailabilityResult',
+    'GetRelayProxyConfigurationPolicyResult',
     'GetSegmentRuleResult',
     'GetSegmentRuleClauseResult',
+    'GetTeamMaintainerResult',
     'GetWebhookStatementResult',
 ]
 
@@ -211,6 +223,91 @@ class AccessTokenPolicyStatement(dict):
     def resources(self) -> Optional[Sequence[str]]:
         """
         - The list of resource specifiers defining the resources to which the statement applies.
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
+class AuditLogSubscriptionStatement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notActions":
+            suggest = "not_actions"
+        elif key == "notResources":
+            suggest = "not_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogSubscriptionStatement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogSubscriptionStatement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogSubscriptionStatement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: str,
+                 actions: Optional[Sequence[str]] = None,
+                 not_actions: Optional[Sequence[str]] = None,
+                 not_resources: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        :param Sequence[str] actions: The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+        :param Sequence[str] not_actions: The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+        :param Sequence[str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        :param Sequence[str] resources: The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        """
+        pulumi.set(__self__, "effect", effect)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if not_actions is not None:
+            pulumi.set(__self__, "not_actions", not_actions)
+        if not_resources is not None:
+            pulumi.set(__self__, "not_resources", not_resources)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        """
+        The list of action specifiers defining the actions to which the statement applies. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="notActions")
+    def not_actions(self) -> Optional[Sequence[str]]:
+        """
+        The list of action specifiers defining the actions to which the statement does not apply. For a list of available actions, read [Using actions](https://docs.launchdarkly.com/home/members/role-actions).
+        """
+        return pulumi.get(self, "not_actions")
+
+    @property
+    @pulumi.getter(name="notResources")
+    def not_resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        """
+        return pulumi.get(self, "not_resources")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
         """
         return pulumi.get(self, "resources")
 
@@ -431,6 +528,56 @@ class EnvironmentApprovalSetting(dict):
 
 
 @pulumi.output_type
+class FeatureFlagClientSideAvailability(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usingEnvironmentId":
+            suggest = "using_environment_id"
+        elif key == "usingMobileKey":
+            suggest = "using_mobile_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFlagClientSideAvailability. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFlagClientSideAvailability.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFlagClientSideAvailability.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 using_environment_id: Optional[bool] = None,
+                 using_mobile_key: Optional[bool] = None):
+        """
+        :param bool using_environment_id: Whether this flag is available to SDKs using the client-side ID.
+        :param bool using_mobile_key: Whether this flag is available to SDKs using a mobile key.
+        """
+        if using_environment_id is not None:
+            pulumi.set(__self__, "using_environment_id", using_environment_id)
+        if using_mobile_key is not None:
+            pulumi.set(__self__, "using_mobile_key", using_mobile_key)
+
+    @property
+    @pulumi.getter(name="usingEnvironmentId")
+    def using_environment_id(self) -> Optional[bool]:
+        """
+        Whether this flag is available to SDKs using the client-side ID.
+        """
+        return pulumi.get(self, "using_environment_id")
+
+    @property
+    @pulumi.getter(name="usingMobileKey")
+    def using_mobile_key(self) -> Optional[bool]:
+        """
+        Whether this flag is available to SDKs using a mobile key.
+        """
+        return pulumi.get(self, "using_mobile_key")
+
+
+@pulumi.output_type
 class FeatureFlagCustomProperty(dict):
     def __init__(__self__, *,
                  key: str,
@@ -545,7 +692,7 @@ class FeatureFlagEnvironmentFallthrough(dict):
                  variation: Optional[int] = None):
         """
         :param str bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
-        :param Sequence[int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000. You must specify either `variation` or `rollout_weights`.
+        :param Sequence[int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         :param int variation: The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`.
         """
         if bucket_by is not None:
@@ -567,7 +714,7 @@ class FeatureFlagEnvironmentFallthrough(dict):
     @pulumi.getter(name="rolloutWeights")
     def rollout_weights(self) -> Optional[Sequence[int]]:
         """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000. You must specify either `variation` or `rollout_weights`.
+        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         """
         return pulumi.get(self, "rollout_weights")
 
@@ -655,7 +802,7 @@ class FeatureFlagEnvironmentRule(dict):
         """
         :param str bucket_by: Group percentage rollout by a custom attribute. This argument is only valid if `rollout_weights` is also specified.
         :param Sequence['FeatureFlagEnvironmentRuleClauseArgs'] clauses: List of nested blocks specifying the logical clauses to evaluate. To learn more, read Nested Clauses Blocks.
-        :param Sequence[int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000. You must specify either `variation` or `rollout_weights`.
+        :param Sequence[int] rollout_weights: List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         :param int variation: The integer variation index to serve if the rule clauses evaluate to `true`. You must specify either `variation` or `rollout_weights`.
         """
         if bucket_by is not None:
@@ -687,7 +834,7 @@ class FeatureFlagEnvironmentRule(dict):
     @pulumi.getter(name="rolloutWeights")
     def rollout_weights(self) -> Optional[Sequence[int]]:
         """
-        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000. You must specify either `variation` or `rollout_weights`.
+        List of integer percentage rollout weights (in thousandths of a percent) to apply to each variation if the rule clauses evaluates to `true`. The sum of the `rollout_weights` must equal 100000 and the number of rollout weights specified in the array must match the number of flag variations. You must specify either `variation` or `rollout_weights`.
         """
         return pulumi.get(self, "rollout_weights")
 
@@ -853,6 +1000,120 @@ class FeatureFlagVariation(dict):
 
 
 @pulumi.output_type
+class FlagTriggerInstructions(dict):
+    def __init__(__self__, *,
+                 kind: str):
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class MetricUrl(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 pattern: Optional[str] = None,
+                 substring: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str kind: The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+        :param str pattern: The regex pattern to match by.
+        :param str substring: The URL substring to match by.
+        :param str url: The exact or canonical URL.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if substring is not None:
+            pulumi.set(__self__, "substring", substring)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The URL type. Available choices are `exact`, `canonical`, `substring` and `regex`.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        """
+        The regex pattern to match by.
+        """
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter
+    def substring(self) -> Optional[str]:
+        """
+        The URL substring to match by.
+        """
+        return pulumi.get(self, "substring")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The exact or canonical URL.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class ProjectDefaultClientSideAvailability(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usingEnvironmentId":
+            suggest = "using_environment_id"
+        elif key == "usingMobileKey":
+            suggest = "using_mobile_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProjectDefaultClientSideAvailability. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProjectDefaultClientSideAvailability.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProjectDefaultClientSideAvailability.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 using_environment_id: bool,
+                 using_mobile_key: bool):
+        """
+        :param bool using_environment_id: Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `default_client_side_availability`.
+        :param bool using_mobile_key: Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `default_client_side_availability`.
+        """
+        pulumi.set(__self__, "using_environment_id", using_environment_id)
+        pulumi.set(__self__, "using_mobile_key", using_mobile_key)
+
+    @property
+    @pulumi.getter(name="usingEnvironmentId")
+    def using_environment_id(self) -> bool:
+        """
+        Whether feature flags created under the project are available to JavaScript SDKs using the client-side ID by default. Defaults to `false` when not using `default_client_side_availability`.
+        """
+        return pulumi.get(self, "using_environment_id")
+
+    @property
+    @pulumi.getter(name="usingMobileKey")
+    def using_mobile_key(self) -> bool:
+        """
+        Whether feature flags created under the project are available to mobile SDKs, and other non-JavaScript SDKs, using a mobile key by default. Defaults to `true` when not using `default_client_side_availability`.
+        """
+        return pulumi.get(self, "using_mobile_key")
+
+
+@pulumi.output_type
 class ProjectEnvironment(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -903,7 +1164,7 @@ class ProjectEnvironment(dict):
                  tags: Optional[Sequence[str]] = None):
         """
         :param str color: The color swatch as an RGB hex value with no leading `#`. For example: `000000`.
-        :param str key: The project-unique key for the environment.
+        :param str key: The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
         :param str name: The name of the environment.
         :param bool confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
         :param bool default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
@@ -948,7 +1209,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The project-unique key for the environment.
+        The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -1120,6 +1381,91 @@ class ProjectEnvironmentApprovalSetting(dict):
 
 
 @pulumi.output_type
+class RelayProxyConfigurationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notActions":
+            suggest = "not_actions"
+        elif key == "notResources":
+            suggest = "not_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RelayProxyConfigurationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RelayProxyConfigurationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RelayProxyConfigurationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 effect: str,
+                 actions: Optional[Sequence[str]] = None,
+                 not_actions: Optional[Sequence[str]] = None,
+                 not_resources: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str effect: - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+        :param Sequence[str] actions: The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param Sequence[str] not_actions: The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param Sequence[str] not_resources: - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        :param Sequence[str] resources: - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        pulumi.set(__self__, "effect", effect)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if not_actions is not None:
+            pulumi.set(__self__, "not_actions", not_actions)
+        if not_resources is not None:
+            pulumi.set(__self__, "not_resources", not_resources)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        - Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        """
+        The list of action specifiers defining the actions to which the rule policy applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="notActions")
+    def not_actions(self) -> Optional[Sequence[str]]:
+        """
+        The list of action specifiers defining the actions to which the rule policy does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        """
+        return pulumi.get(self, "not_actions")
+
+    @property
+    @pulumi.getter(name="notResources")
+    def not_resources(self) -> Optional[Sequence[str]]:
+        """
+        - The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        return pulumi.get(self, "not_resources")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        - The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
 class SegmentRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1145,7 +1491,7 @@ class SegmentRule(dict):
         """
         :param str bucket_by: The attribute by which to group users together.
         :param Sequence['SegmentRuleClauseArgs'] clauses: List of nested custom rule clause blocks. To learn more, read Nested Clauses Blocks.
-        :param int weight: The integer weight of the rule (between 0 and 100000).
+        :param int weight: The integer weight of the rule (between 1 and 100000).
         """
         if bucket_by is not None:
             pulumi.set(__self__, "bucket_by", bucket_by)
@@ -1174,7 +1520,7 @@ class SegmentRule(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        The integer weight of the rule (between 0 and 100000).
+        The integer weight of the rule (between 1 and 100000).
         """
         return pulumi.get(self, "weight")
 
@@ -1346,6 +1692,64 @@ class WebhookStatement(dict):
 
 
 @pulumi.output_type
+class GetAuditLogSubscriptionStatementResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 actions: Optional[Sequence[str]] = None,
+                 not_actions: Optional[Sequence[str]] = None,
+                 not_resources: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str effect: Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        :param Sequence[str] not_resources: The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        :param Sequence[str] resources: The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        """
+        pulumi.set(__self__, "effect", effect)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if not_actions is not None:
+            pulumi.set(__self__, "not_actions", not_actions)
+        if not_resources is not None:
+            pulumi.set(__self__, "not_resources", not_resources)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="notActions")
+    def not_actions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "not_actions")
+
+    @property
+    @pulumi.getter(name="notResources")
+    def not_resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        """
+        return pulumi.get(self, "not_resources")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+        """
+        return pulumi.get(self, "resources")
+
+
+@pulumi.output_type
 class GetEnvironmentApprovalSettingResult(dict):
     def __init__(__self__, *,
                  can_apply_declined_changes: Optional[bool] = None,
@@ -1393,20 +1797,19 @@ class GetEnvironmentApprovalSettingResult(dict):
 @pulumi.output_type
 class GetFeatureFlagClientSideAvailabilityResult(dict):
     def __init__(__self__, *,
-                 using_environment_id: Optional[bool] = None,
+                 using_environment_id: bool,
                  using_mobile_key: Optional[bool] = None):
         """
         :param bool using_environment_id: When set to true, this flag is available to SDKs using the client-side ID.
         :param bool using_mobile_key: When set to true, this flag is available to SDKs using a mobile key.
         """
-        if using_environment_id is not None:
-            pulumi.set(__self__, "using_environment_id", using_environment_id)
+        pulumi.set(__self__, "using_environment_id", using_environment_id)
         if using_mobile_key is not None:
             pulumi.set(__self__, "using_mobile_key", using_mobile_key)
 
     @property
     @pulumi.getter(name="usingEnvironmentId")
-    def using_environment_id(self) -> Optional[bool]:
+    def using_environment_id(self) -> bool:
         """
         When set to true, this flag is available to SDKs using the client-side ID.
         """
@@ -1753,6 +2156,60 @@ class GetFeatureFlagVariationResult(dict):
 
 
 @pulumi.output_type
+class GetFlagTriggerInstructionsResult(dict):
+    def __init__(__self__, *,
+                 kind: str):
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
+class GetMetricUrlResult(dict):
+    def __init__(__self__, *,
+                 kind: str,
+                 pattern: Optional[str] = None,
+                 substring: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str kind: The metric type. Available choices are `click`, `custom`, and `pageview`.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if substring is not None:
+            pulumi.set(__self__, "substring", substring)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        """
+        The metric type. Available choices are `click`, `custom`, and `pageview`.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[str]:
+        return pulumi.get(self, "pattern")
+
+    @property
+    @pulumi.getter
+    def substring(self) -> Optional[str]:
+        return pulumi.get(self, "substring")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class GetProjectClientSideAvailabilityResult(dict):
     def __init__(__self__, *,
                  using_environment_id: Optional[bool] = None,
@@ -1781,6 +2238,93 @@ class GetProjectClientSideAvailabilityResult(dict):
         When set to true, the flags in this project are available to SDKs using a mobile key by default.
         """
         return pulumi.get(self, "using_mobile_key")
+
+
+@pulumi.output_type
+class GetProjectDefaultClientSideAvailabilityResult(dict):
+    def __init__(__self__, *,
+                 using_environment_id: bool,
+                 using_mobile_key: bool):
+        """
+        :param bool using_environment_id: When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+        :param bool using_mobile_key: When set to true, the flags in this project are available to SDKs using a mobile key by default.
+        """
+        pulumi.set(__self__, "using_environment_id", using_environment_id)
+        pulumi.set(__self__, "using_mobile_key", using_mobile_key)
+
+    @property
+    @pulumi.getter(name="usingEnvironmentId")
+    def using_environment_id(self) -> bool:
+        """
+        When set to true, the flags in this project are available to SDKs using the client-side ID by default.
+        """
+        return pulumi.get(self, "using_environment_id")
+
+    @property
+    @pulumi.getter(name="usingMobileKey")
+    def using_mobile_key(self) -> bool:
+        """
+        When set to true, the flags in this project are available to SDKs using a mobile key by default.
+        """
+        return pulumi.get(self, "using_mobile_key")
+
+
+@pulumi.output_type
+class GetRelayProxyConfigurationPolicyResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 actions: Optional[Sequence[str]] = None,
+                 not_actions: Optional[Sequence[str]] = None,
+                 not_resources: Optional[Sequence[str]] = None,
+                 resources: Optional[Sequence[str]] = None):
+        """
+        :param str effect: Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+        :param Sequence[str] not_resources: The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        :param Sequence[str] resources: The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        pulumi.set(__self__, "effect", effect)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if not_actions is not None:
+            pulumi.set(__self__, "not_actions", not_actions)
+        if not_resources is not None:
+            pulumi.set(__self__, "not_resources", not_resources)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        Either `allow` or `deny`. This argument defines whether the rule policy allows or denies access to the named resources and actions.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="notActions")
+    def not_actions(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "not_actions")
+
+    @property
+    @pulumi.getter(name="notResources")
+    def not_resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the rule policy does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        return pulumi.get(self, "not_resources")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[Sequence[str]]:
+        """
+        The list of resource specifiers defining the resources to which the rule policy applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        """
+        return pulumi.get(self, "resources")
 
 
 @pulumi.output_type
@@ -1888,6 +2432,46 @@ class GetSegmentRuleClauseResult(dict):
         The type for each of the clause's values. Available types are `boolean`, `string`, and `number`.
         """
         return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class GetTeamMaintainerResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 first_name: str,
+                 id: str,
+                 last_name: str,
+                 role: str):
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "first_name", first_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_name", last_name)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> str:
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> str:
+        return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type

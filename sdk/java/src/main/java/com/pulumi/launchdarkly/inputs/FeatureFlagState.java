@@ -5,6 +5,7 @@ package com.pulumi.launchdarkly.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.launchdarkly.inputs.FeatureFlagClientSideAvailabilityArgs;
 import com.pulumi.launchdarkly.inputs.FeatureFlagCustomPropertyArgs;
 import com.pulumi.launchdarkly.inputs.FeatureFlagDefaultsArgs;
 import com.pulumi.launchdarkly.inputs.FeatureFlagVariationArgs;
@@ -33,6 +34,21 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> archived() {
         return Optional.ofNullable(this.archived);
+    }
+
+    /**
+     * A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    @Import(name="clientSideAvailabilities")
+    private @Nullable Output<List<FeatureFlagClientSideAvailabilityArgs>> clientSideAvailabilities;
+
+    /**
+     * @return A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    public Optional<Output<List<FeatureFlagClientSideAvailabilityArgs>>> clientSideAvailabilities() {
+        return Optional.ofNullable(this.clientSideAvailabilities);
     }
 
     /**
@@ -81,29 +97,37 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
     @Import(name="includeInSnippet")
     private @Nullable Output<Boolean> includeInSnippet;
 
     /**
-     * @return Specifies whether this flag should be made available to the client-side JavaScript SDK.
+     * @return **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
      * 
      */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
     public Optional<Output<Boolean>> includeInSnippet() {
         return Optional.ofNullable(this.includeInSnippet);
     }
 
     /**
-     * The unique feature flag key that references the flag in your application code.
+     * The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The unique feature flag key that references the flag in your application code.
+     * @return The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> key() {
@@ -143,14 +167,14 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The feature flag&#39;s project key.
+     * The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     @Import(name="projectKey")
     private @Nullable Output<String> projectKey;
 
     /**
-     * @return The feature flag&#39;s project key.
+     * @return The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
      * 
      */
     public Optional<Output<String>> projectKey() {
@@ -221,6 +245,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
 
     private FeatureFlagState(FeatureFlagState $) {
         this.archived = $.archived;
+        this.clientSideAvailabilities = $.clientSideAvailabilities;
         this.customProperties = $.customProperties;
         this.defaults = $.defaults;
         this.description = $.description;
@@ -272,6 +297,37 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder archived(Boolean archived) {
             return archived(Output.of(archived));
+        }
+
+        /**
+         * @param clientSideAvailabilities A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(@Nullable Output<List<FeatureFlagClientSideAvailabilityArgs>> clientSideAvailabilities) {
+            $.clientSideAvailabilities = clientSideAvailabilities;
+            return this;
+        }
+
+        /**
+         * @param clientSideAvailabilities A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(List<FeatureFlagClientSideAvailabilityArgs> clientSideAvailabilities) {
+            return clientSideAvailabilities(Output.of(clientSideAvailabilities));
+        }
+
+        /**
+         * @param clientSideAvailabilities A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(FeatureFlagClientSideAvailabilityArgs... clientSideAvailabilities) {
+            return clientSideAvailabilities(List.of(clientSideAvailabilities));
         }
 
         /**
@@ -348,28 +404,36 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeInSnippet Specifies whether this flag should be made available to the client-side JavaScript SDK.
+         * @param includeInSnippet **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
          * 
          * @return builder
          * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+         * 
          */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(@Nullable Output<Boolean> includeInSnippet) {
             $.includeInSnippet = includeInSnippet;
             return this;
         }
 
         /**
-         * @param includeInSnippet Specifies whether this flag should be made available to the client-side JavaScript SDK.
+         * @param includeInSnippet **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
          * 
          * @return builder
          * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+         * 
          */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(Boolean includeInSnippet) {
             return includeInSnippet(Output.of(includeInSnippet));
         }
 
         /**
-         * @param key The unique feature flag key that references the flag in your application code.
+         * @param key The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -380,7 +444,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key The unique feature flag key that references the flag in your application code.
+         * @param key The unique feature flag key that references the flag in your application code. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -434,7 +498,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey The feature flag&#39;s project key.
+         * @param projectKey The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 
@@ -445,7 +509,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey The feature flag&#39;s project key.
+         * @param projectKey The feature flag&#39;s project key. A change in this field will force the destruction of the existing resource and the creation of a new one.
          * 
          * @return builder
          * 

@@ -296,12 +296,14 @@ class Webhook(pulumi.CustomResource):
 
             __props__.__dict__["name"] = name
             __props__.__dict__["on"] = on
-            __props__.__dict__["secret"] = secret
+            __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["statements"] = statements
             __props__.__dict__["tags"] = tags
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Webhook, __self__).__init__(
             'launchdarkly:index/webhook:Webhook',
             resource_name,

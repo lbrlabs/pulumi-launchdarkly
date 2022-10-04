@@ -5,6 +5,7 @@ package com.pulumi.launchdarkly.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.launchdarkly.inputs.GetFeatureFlagClientSideAvailabilityArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagCustomPropertyArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagDefaultsArgs;
 import com.pulumi.launchdarkly.inputs.GetFeatureFlagVariationArgs;
@@ -25,6 +26,21 @@ public final class GetFeatureFlagArgs extends com.pulumi.resources.InvokeArgs {
 
     public Optional<Output<Boolean>> archived() {
         return Optional.ofNullable(this.archived);
+    }
+
+    /**
+     * A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    @Import(name="clientSideAvailabilities")
+    private @Nullable Output<List<GetFeatureFlagClientSideAvailabilityArgs>> clientSideAvailabilities;
+
+    /**
+     * @return A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+     * 
+     */
+    public Optional<Output<List<GetFeatureFlagClientSideAvailabilityArgs>>> clientSideAvailabilities() {
+        return Optional.ofNullable(this.clientSideAvailabilities);
     }
 
     /**
@@ -72,9 +88,25 @@ public final class GetFeatureFlagArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+     * 
+     */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
     @Import(name="includeInSnippet")
     private @Nullable Output<Boolean> includeInSnippet;
 
+    /**
+     * @return **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     * 
+     * @deprecated
+     * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+     * 
+     */
+    @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
     public Optional<Output<Boolean>> includeInSnippet() {
         return Optional.ofNullable(this.includeInSnippet);
     }
@@ -173,6 +205,7 @@ public final class GetFeatureFlagArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetFeatureFlagArgs(GetFeatureFlagArgs $) {
         this.archived = $.archived;
+        this.clientSideAvailabilities = $.clientSideAvailabilities;
         this.customProperties = $.customProperties;
         this.defaults = $.defaults;
         this.description = $.description;
@@ -210,6 +243,37 @@ public final class GetFeatureFlagArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder archived(Boolean archived) {
             return archived(Output.of(archived));
+        }
+
+        /**
+         * @param clientSideAvailabilities A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(@Nullable Output<List<GetFeatureFlagClientSideAvailabilityArgs>> clientSideAvailabilities) {
+            $.clientSideAvailabilities = clientSideAvailabilities;
+            return this;
+        }
+
+        /**
+         * @param clientSideAvailabilities A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(List<GetFeatureFlagClientSideAvailabilityArgs> clientSideAvailabilities) {
+            return clientSideAvailabilities(Output.of(clientSideAvailabilities));
+        }
+
+        /**
+         * @param clientSideAvailabilities A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSideAvailabilities(GetFeatureFlagClientSideAvailabilityArgs... clientSideAvailabilities) {
+            return clientSideAvailabilities(List.of(clientSideAvailabilities));
         }
 
         /**
@@ -285,11 +349,31 @@ public final class GetFeatureFlagArgs extends com.pulumi.resources.InvokeArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param includeInSnippet **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+         * 
+         */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(@Nullable Output<Boolean> includeInSnippet) {
             $.includeInSnippet = includeInSnippet;
             return this;
         }
 
+        /**
+         * @param includeInSnippet **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `include_in_snippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * &#39;include_in_snippet&#39; is now deprecated. Please migrate to &#39;client_side_availability&#39; to maintain future compatability.
+         * 
+         */
+        @Deprecated /* 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability. */
         public Builder includeInSnippet(Boolean includeInSnippet) {
             return includeInSnippet(Output.of(includeInSnippet));
         }

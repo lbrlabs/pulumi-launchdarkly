@@ -13,9 +13,9 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     /// <summary>
     /// Provides a LaunchDarkly custom role resource.
     /// 
-    /// This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+    /// &gt; **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
     /// 
-    /// &gt; **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+    /// This resource allows you to create and manage custom roles within your LaunchDarkly organization.
     /// 
     /// ## Example Usage
     /// 
@@ -74,13 +74,19 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public partial class CustomRole : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        /// </summary>
+        [Output("basePermissions")]
+        public Output<string?> BasePermissions { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the custom role.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The unique key that references the custom role.
+        /// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Output("key")]
         public Output<string> Key { get; private set; } = null!;
@@ -148,13 +154,19 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public sealed class CustomRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        /// </summary>
+        [Input("basePermissions")]
+        public Input<string>? BasePermissions { get; set; }
+
+        /// <summary>
         /// The description of the custom role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The unique key that references the custom role.
+        /// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -195,13 +207,19 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     public sealed class CustomRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        /// </summary>
+        [Input("basePermissions")]
+        public Input<string>? BasePermissions { get; set; }
+
+        /// <summary>
         /// The description of the custom role.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The unique key that references the custom role.
+        /// The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

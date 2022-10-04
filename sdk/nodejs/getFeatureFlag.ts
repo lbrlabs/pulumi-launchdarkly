@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -30,6 +31,7 @@ export function getFeatureFlag(args: GetFeatureFlagArgs, opts?: pulumi.InvokeOpt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("launchdarkly:index/getFeatureFlag:getFeatureFlag", {
         "archived": args.archived,
+        "clientSideAvailabilities": args.clientSideAvailabilities,
         "customProperties": args.customProperties,
         "defaults": args.defaults,
         "description": args.description,
@@ -49,6 +51,10 @@ export function getFeatureFlag(args: GetFeatureFlagArgs, opts?: pulumi.InvokeOpt
 export interface GetFeatureFlagArgs {
     archived?: boolean;
     /**
+     * A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+     */
+    clientSideAvailabilities?: inputs.GetFeatureFlagClientSideAvailability[];
+    /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: inputs.GetFeatureFlagCustomProperty[];
@@ -60,6 +66,11 @@ export interface GetFeatureFlagArgs {
      * The variation's description.
      */
     description?: string;
+    /**
+     * **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+     */
     includeInSnippet?: boolean;
     /**
      * The unique feature flag key that references the flag in your application code.
@@ -112,7 +123,12 @@ export interface GetFeatureFlagResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly includeInSnippet?: boolean;
+    /**
+     * **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+     */
+    readonly includeInSnippet: boolean;
     /**
      * The unique custom property key.
      */
@@ -154,6 +170,10 @@ export function getFeatureFlagOutput(args: GetFeatureFlagOutputArgs, opts?: pulu
 export interface GetFeatureFlagOutputArgs {
     archived?: pulumi.Input<boolean>;
     /**
+     * A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
+     */
+    clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.GetFeatureFlagClientSideAvailabilityArgs>[]>;
+    /**
      * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: pulumi.Input<pulumi.Input<inputs.GetFeatureFlagCustomPropertyArgs>[]>;
@@ -165,6 +185,11 @@ export interface GetFeatureFlagOutputArgs {
      * The variation's description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * **Deprecated** A boolean describing whether this flag has been made available to the client-side Javescript SDK using the client-side ID only. `includeInSnippet` is now deprecated. Please retrieve information from `client_side_availability.using_environment_id` to maintain future compatability.
+     *
+     * @deprecated 'include_in_snippet' is now deprecated. Please migrate to 'client_side_availability' to maintain future compatability.
+     */
     includeInSnippet?: pulumi.Input<boolean>;
     /**
      * The unique feature flag key that references the flag in your application code.

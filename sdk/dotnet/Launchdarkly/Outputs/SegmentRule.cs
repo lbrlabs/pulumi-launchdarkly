@@ -23,7 +23,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SegmentRuleClause> Clauses;
         /// <summary>
-        /// The integer weight of the rule (between 0 and 100000).
+        /// The integer weight of the rule (between 1 and 100000).
         /// </summary>
         public readonly int? Weight;
 

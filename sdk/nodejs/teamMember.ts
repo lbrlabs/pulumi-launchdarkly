@@ -66,7 +66,7 @@ export class TeamMember extends pulumi.CustomResource {
      */
     public readonly customRoles!: pulumi.Output<string[] | undefined>;
     /**
-     * The unique email address associated with the team member.
+     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -78,7 +78,7 @@ export class TeamMember extends pulumi.CustomResource {
      */
     public readonly lastName!: pulumi.Output<string | undefined>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -125,7 +125,7 @@ export interface TeamMemberState {
      */
     customRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique email address associated with the team member.
+     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     email?: pulumi.Input<string>;
     /**
@@ -137,7 +137,7 @@ export interface TeamMemberState {
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
     role?: pulumi.Input<string>;
 }
@@ -151,7 +151,7 @@ export interface TeamMemberArgs {
      */
     customRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The unique email address associated with the team member.
+     * The unique email address associated with the team member. A change in this field will force the destruction of the existing resource and the creation of a new one.
      */
     email: pulumi.Input<string>;
     /**
@@ -163,7 +163,7 @@ export interface TeamMemberArgs {
      */
     lastName?: pulumi.Input<string>;
     /**
-     * The role associated with team member. Supported roles are `reader`, `writer`, or `admin`. If you don't specify a role, `reader` is assigned by default.
+     * The role associated with team member. Supported roles are `reader`, `writer`, `noAccess`, or `admin`. If you don't specify a role, `reader` is assigned by default.
      */
     role?: pulumi.Input<string>;
 }

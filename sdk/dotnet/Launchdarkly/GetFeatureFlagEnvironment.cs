@@ -40,7 +40,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFeatureFlagEnvironmentResult> InvokeAsync(GetFeatureFlagEnvironmentArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeatureFlagEnvironmentResult>("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", args ?? new GetFeatureFlagEnvironmentArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureFlagEnvironmentResult>("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", args ?? new GetFeatureFlagEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides a LaunchDarkly environment-specific feature flag data source.
@@ -70,7 +70,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFeatureFlagEnvironmentResult> Invoke(GetFeatureFlagEnvironmentInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeatureFlagEnvironmentResult>("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", args ?? new GetFeatureFlagEnvironmentInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeatureFlagEnvironmentResult>("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", args ?? new GetFeatureFlagEnvironmentInvokeArgs(), options.WithDefaults());
     }
 
 

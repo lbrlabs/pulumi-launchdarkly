@@ -15,7 +15,7 @@ public final class GetFeatureFlagClientSideAvailability {
      * @return When set to true, this flag is available to SDKs using the client-side ID.
      * 
      */
-    private @Nullable Boolean usingEnvironmentId;
+    private Boolean usingEnvironmentId;
     /**
      * @return When set to true, this flag is available to SDKs using a mobile key.
      * 
@@ -27,8 +27,8 @@ public final class GetFeatureFlagClientSideAvailability {
      * @return When set to true, this flag is available to SDKs using the client-side ID.
      * 
      */
-    public Optional<Boolean> usingEnvironmentId() {
-        return Optional.ofNullable(this.usingEnvironmentId);
+    public Boolean usingEnvironmentId() {
+        return this.usingEnvironmentId;
     }
     /**
      * @return When set to true, this flag is available to SDKs using a mobile key.
@@ -47,7 +47,7 @@ public final class GetFeatureFlagClientSideAvailability {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean usingEnvironmentId;
+        private Boolean usingEnvironmentId;
         private @Nullable Boolean usingMobileKey;
         public Builder() {}
         public Builder(GetFeatureFlagClientSideAvailability defaults) {
@@ -57,8 +57,8 @@ public final class GetFeatureFlagClientSideAvailability {
         }
 
         @CustomType.Setter
-        public Builder usingEnvironmentId(@Nullable Boolean usingEnvironmentId) {
-            this.usingEnvironmentId = usingEnvironmentId;
+        public Builder usingEnvironmentId(Boolean usingEnvironmentId) {
+            this.usingEnvironmentId = Objects.requireNonNull(usingEnvironmentId);
             return this;
         }
         @CustomType.Setter

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -54,9 +55,16 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
-     * A map describing whether flags in this project are available to the client-side JavaScript SDK by default. To learn more, read Nested Client-Side Availability Block.
+     * **Deprecated** A map describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     * Please migrate to `defaultClientSideAvailability` to maintain future compatability.
+     *
+     * @deprecated 'client_side_availability' is now deprecated. Please migrate to 'default_client_side_availability' to maintain future compatability.
      */
     readonly clientSideAvailabilities: outputs.GetProjectClientSideAvailability[];
+    /**
+     * A block describing which client-side SDKs can use new flags by default. To learn more, read Nested Client-Side Availability Block.
+     */
+    readonly defaultClientSideAvailabilities: outputs.GetProjectDefaultClientSideAvailability[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -17,18 +17,22 @@ __all__ = ['CustomRoleArgs', 'CustomRole']
 class CustomRoleArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
+                 base_permissions: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyArgs']]]] = None,
                  policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         The set of arguments for constructing a CustomRole resource.
-        :param pulumi.Input[str] key: The unique key that references the custom role.
+        :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
+        :param pulumi.Input[str] base_permissions: The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
         :param pulumi.Input[str] description: The description of the custom role.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
         :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
         """
         pulumi.set(__self__, "key", key)
+        if base_permissions is not None:
+            pulumi.set(__self__, "base_permissions", base_permissions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -45,13 +49,25 @@ class CustomRoleArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The unique key that references the custom role.
+        The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
     @key.setter
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="basePermissions")
+    def base_permissions(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        """
+        return pulumi.get(self, "base_permissions")
+
+    @base_permissions.setter
+    def base_permissions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_permissions", value)
 
     @property
     @pulumi.getter
@@ -102,6 +118,7 @@ class CustomRoleArgs:
 @pulumi.input_type
 class _CustomRoleState:
     def __init__(__self__, *,
+                 base_permissions: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -109,11 +126,14 @@ class _CustomRoleState:
                  policy_statements: Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomRole resources.
+        :param pulumi.Input[str] base_permissions: The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
         :param pulumi.Input[str] description: The description of the custom role.
-        :param pulumi.Input[str] key: The unique key that references the custom role.
+        :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
         :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
         """
+        if base_permissions is not None:
+            pulumi.set(__self__, "base_permissions", base_permissions)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if key is not None:
@@ -127,6 +147,18 @@ class _CustomRoleState:
             pulumi.set(__self__, "policies", policies)
         if policy_statements is not None:
             pulumi.set(__self__, "policy_statements", policy_statements)
+
+    @property
+    @pulumi.getter(name="basePermissions")
+    def base_permissions(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        """
+        return pulumi.get(self, "base_permissions")
+
+    @base_permissions.setter
+    def base_permissions(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_permissions", value)
 
     @property
     @pulumi.getter
@@ -144,7 +176,7 @@ class _CustomRoleState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique key that references the custom role.
+        The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
@@ -191,6 +223,7 @@ class CustomRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_permissions: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -200,9 +233,9 @@ class CustomRole(pulumi.CustomResource):
         """
         Provides a LaunchDarkly custom role resource.
 
-        This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+        > **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
-        > **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+        This resource allows you to create and manage custom roles within your LaunchDarkly organization.
 
         ## Example Usage
 
@@ -237,8 +270,9 @@ class CustomRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] base_permissions: The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
         :param pulumi.Input[str] description: The description of the custom role.
-        :param pulumi.Input[str] key: The unique key that references the custom role.
+        :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
         """
@@ -251,9 +285,9 @@ class CustomRole(pulumi.CustomResource):
         """
         Provides a LaunchDarkly custom role resource.
 
-        This resource allows you to create and manage custom roles within your LaunchDarkly organization.
+        > **Note:** Custom roles are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
 
-        > **Note:** Custom roles are only available to customers on enterprise plans. To learn more about enterprise plans, contact sales@launchdarkly.com.
+        This resource allows you to create and manage custom roles within your LaunchDarkly organization.
 
         ## Example Usage
 
@@ -301,6 +335,7 @@ class CustomRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 base_permissions: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -315,6 +350,7 @@ class CustomRole(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomRoleArgs.__new__(CustomRoleArgs)
 
+            __props__.__dict__["base_permissions"] = base_permissions
             __props__.__dict__["description"] = description
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
@@ -335,6 +371,7 @@ class CustomRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            base_permissions: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -347,8 +384,9 @@ class CustomRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] base_permissions: The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
         :param pulumi.Input[str] description: The description of the custom role.
-        :param pulumi.Input[str] key: The unique key that references the custom role.
+        :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
         """
@@ -356,12 +394,21 @@ class CustomRole(pulumi.CustomResource):
 
         __props__ = _CustomRoleState.__new__(_CustomRoleState)
 
+        __props__.__dict__["base_permissions"] = base_permissions
         __props__.__dict__["description"] = description
         __props__.__dict__["key"] = key
         __props__.__dict__["name"] = name
         __props__.__dict__["policies"] = policies
         __props__.__dict__["policy_statements"] = policy_statements
         return CustomRole(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="basePermissions")
+    def base_permissions(self) -> pulumi.Output[Optional[str]]:
+        """
+        The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
+        """
+        return pulumi.get(self, "base_permissions")
 
     @property
     @pulumi.getter
@@ -375,7 +422,7 @@ class CustomRole(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
         """
-        The unique key that references the custom role.
+        The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         """
         return pulumi.get(self, "key")
 
