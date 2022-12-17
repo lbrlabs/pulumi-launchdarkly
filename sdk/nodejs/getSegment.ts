@@ -17,19 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getSegment({
+ * const example = launchdarkly.getSegment({
  *     envKey: "example-env",
  *     key: "example-segment",
  *     projectKey: "example-project",
- * }));
+ * });
  * ```
  */
 export function getSegment(args: GetSegmentArgs, opts?: pulumi.InvokeOptions): Promise<GetSegmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getSegment:getSegment", {
         "description": args.description,
         "envKey": args.envKey,
@@ -120,9 +117,26 @@ export interface GetSegmentResult {
      */
     readonly tags?: string[];
 }
-
+/**
+ * Provides a LaunchDarkly segment data source.
+ *
+ * This data source allows you to retrieve segment information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getSegment({
+ *     envKey: "example-env",
+ *     key: "example-segment",
+ *     projectKey: "example-project",
+ * });
+ * ```
+ */
 export function getSegmentOutput(args: GetSegmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSegmentResult> {
-    return pulumi.output(args).apply(a => getSegment(a, opts))
+    return pulumi.output(args).apply((a: any) => getSegment(a, opts))
 }
 
 /**

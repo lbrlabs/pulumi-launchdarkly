@@ -33,8 +33,8 @@ import (
 //					"host_url": pulumi.Any("https://api.datadoghq.com"),
 //				},
 //				IntegrationKey: pulumi.String("datadog"),
-//				Statements: AuditLogSubscriptionStatementArray{
-//					&AuditLogSubscriptionStatementArgs{
+//				Statements: launchdarkly.AuditLogSubscriptionStatementArray{
+//					&launchdarkly.AuditLogSubscriptionStatementArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},

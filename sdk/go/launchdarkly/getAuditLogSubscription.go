@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupAuditLogSubscription(ctx, &GetAuditLogSubscriptionArgs{
+//			_, err = launchdarkly.LookupAuditLogSubscription(ctx, &launchdarkly.LookupAuditLogSubscriptionArgs{
 //				Id:             "5f0cd446a77cba0b4c5644a7",
 //				IntegrationKey: "msteams",
 //			}, nil)

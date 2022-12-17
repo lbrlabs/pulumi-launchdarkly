@@ -9,13 +9,13 @@ import * as utilities from "./utilities";
  *
  * This resource allows you to create and manage team members within your LaunchDarkly organization.
  *
- * > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/docs/teams).
+ * > **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/docs/teams/managing).
  *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const example = new launchdarkly.TeamMember("example", {
  *     email: "example.user@example.com",

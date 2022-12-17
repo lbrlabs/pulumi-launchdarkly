@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupSegment(ctx, &GetSegmentArgs{
+//			_, err = launchdarkly.LookupSegment(ctx, &launchdarkly.LookupSegmentArgs{
 //				EnvKey:     "example-env",
 //				Key:        "example-segment",
 //				ProjectKey: "example-project",

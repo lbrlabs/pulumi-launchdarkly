@@ -121,10 +121,11 @@ func Provider() tfbridge.ProviderInfo {
 			"launchdarkly_project":                   {Tok: launchDarklyDataSource(mainMod, "getProject")},
 			"launchdarkly_relay_proxy_configuration": {Tok: launchDarklyDataSource(mainMod, "getRelayProxyConfiguration")},
 
-			"launchdarkly_segment":     {Tok: launchDarklyDataSource(mainMod, "getSegment")},
-			"launchdarkly_team":        {Tok: launchDarklyDataSource(mainMod, "getTeam")},
-			"launchdarkly_team_member": {Tok: launchDarklyDataSource(mainMod, "getTeamMember")},
-			"launchdarkly_webhook":     {Tok: launchDarklyDataSource(mainMod, "getWebhook")},
+			"launchdarkly_segment":      {Tok: launchDarklyDataSource(mainMod, "getSegment")},
+			"launchdarkly_team":         {Tok: launchDarklyDataSource(mainMod, "getTeam")},
+			"launchdarkly_team_member":  {Tok: launchDarklyDataSource(mainMod, "getTeamMember")},
+			"launchdarkly_team_members": {Tok: launchDarklyDataSource(mainMod, "getTeamMembers")},
+			"launchdarkly_webhook":      {Tok: launchDarklyDataSource(mainMod, "getWebhook")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

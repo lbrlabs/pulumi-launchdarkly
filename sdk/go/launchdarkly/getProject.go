@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupProject(ctx, &GetProjectArgs{
+//			_, err = launchdarkly.LookupProject(ctx, &launchdarkly.LookupProjectArgs{
 //				Key: "example-project",
 //			}, nil)
 //			if err != nil {

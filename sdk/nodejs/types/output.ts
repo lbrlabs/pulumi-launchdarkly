@@ -525,6 +525,27 @@ export interface GetTeamMaintainer {
     role: string;
 }
 
+export interface GetTeamMembersTeamMember {
+    customRoles: string[];
+    email: string;
+    /**
+     * The team member's given name.
+     */
+    firstName: string;
+    /**
+     * The 24 character alphanumeric ID of the team member.
+     */
+    id: string;
+    /**
+     * The team member's family name.
+     */
+    lastName: string;
+    /**
+     * The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+     */
+    role: string;
+}
+
 export interface GetWebhookStatement {
     actions?: string[];
     /**
@@ -721,3 +742,4 @@ export interface WebhookStatement {
      */
     resources?: string[];
 }
+

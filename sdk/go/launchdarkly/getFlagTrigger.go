@@ -30,9 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupFlagTrigger(ctx, &GetFlagTriggerArgs{
+//			_, err = launchdarkly.LookupFlagTrigger(ctx, &launchdarkly.LookupFlagTriggerArgs{
 //				Id: "<project_key>/<env_key>/<flag_key>/61d490757f7821150815518f",
-//				Instructions: GetFlagTriggerInstructions{
+//				Instructions: launchdarkly.GetFlagTriggerInstructions{
 //					Kind: "turnFlagOff",
 //				},
 //				IntegrationKey: pulumi.StringRef("datadog"),

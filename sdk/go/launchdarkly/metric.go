@@ -39,8 +39,8 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("example"),
 //				},
-//				Urls: MetricUrlArray{
-//					&MetricUrlArgs{
+//				Urls: launchdarkly.MetricUrlArray{
+//					&launchdarkly.MetricUrlArgs{
 //						Kind:      pulumi.String("substring"),
 //						Substring: pulumi.String("foo"),
 //					},

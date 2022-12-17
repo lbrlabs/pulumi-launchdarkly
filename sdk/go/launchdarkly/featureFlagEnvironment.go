@@ -33,20 +33,20 @@ import (
 //				FlagId: pulumi.Any(launchdarkly_feature_flag.Number.Id),
 //				EnvKey: pulumi.Any(launchdarkly_environment.Staging.Key),
 //				On:     pulumi.Bool(true),
-//				Prerequisites: FeatureFlagEnvironmentPrerequisiteArray{
-//					&FeatureFlagEnvironmentPrerequisiteArgs{
+//				Prerequisites: launchdarkly.FeatureFlagEnvironmentPrerequisiteArray{
+//					&launchdarkly.FeatureFlagEnvironmentPrerequisiteArgs{
 //						FlagKey:   pulumi.Any(launchdarkly_feature_flag.Basic.Key),
 //						Variation: pulumi.Int(0),
 //					},
 //				},
-//				Targets: FeatureFlagEnvironmentTargetArray{
-//					&FeatureFlagEnvironmentTargetArgs{
+//				Targets: launchdarkly.FeatureFlagEnvironmentTargetArray{
+//					&launchdarkly.FeatureFlagEnvironmentTargetArgs{
 //						Values: pulumi.StringArray{
 //							pulumi.String("user0"),
 //						},
 //						Variation: pulumi.Int(0),
 //					},
-//					&FeatureFlagEnvironmentTargetArgs{
+//					&launchdarkly.FeatureFlagEnvironmentTargetArgs{
 //						Values: pulumi.StringArray{
 //							pulumi.String("user1"),
 //							pulumi.String("user2"),
@@ -54,10 +54,10 @@ import (
 //						Variation: pulumi.Int(1),
 //					},
 //				},
-//				Rules: FeatureFlagEnvironmentRuleArray{
-//					&FeatureFlagEnvironmentRuleArgs{
-//						Clauses: FeatureFlagEnvironmentRuleClauseArray{
-//							&FeatureFlagEnvironmentRuleClauseArgs{
+//				Rules: launchdarkly.FeatureFlagEnvironmentRuleArray{
+//					&launchdarkly.FeatureFlagEnvironmentRuleArgs{
+//						Clauses: launchdarkly.FeatureFlagEnvironmentRuleClauseArray{
+//							&launchdarkly.FeatureFlagEnvironmentRuleClauseArgs{
 //								Attribute: pulumi.String("country"),
 //								Op:        pulumi.String("startsWith"),
 //								Values: pulumi.StringArray{
@@ -67,11 +67,11 @@ import (
 //								},
 //								Negate: pulumi.Bool(false),
 //							},
-//							&FeatureFlagEnvironmentRuleClauseArgs{
+//							&launchdarkly.FeatureFlagEnvironmentRuleClauseArgs{
 //								Attribute: pulumi.String("segmentMatch"),
 //								Op:        pulumi.String("segmentMatch"),
 //								Values: pulumi.StringArray{
-//									pulumi.Any(launchdarkly_segment.Example.Key),
+//									launchdarkly_segment.Example.Key,
 //								},
 //								Negate: pulumi.Bool(false),
 //							},
@@ -79,7 +79,7 @@ import (
 //						Variation: pulumi.Int(0),
 //					},
 //				},
-//				Fallthrough: &FeatureFlagEnvironmentFallthroughArgs{
+//				Fallthrough: &launchdarkly.FeatureFlagEnvironmentFallthroughArgs{
 //					RolloutWeights: pulumi.IntArray{
 //						pulumi.Int(60000),
 //						pulumi.Int(40000),

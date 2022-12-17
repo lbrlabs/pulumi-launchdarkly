@@ -24,6 +24,7 @@ from .get_relay_proxy_configuration import *
 from .get_segment import *
 from .get_team import *
 from .get_team_member import *
+from .get_team_members import *
 from .get_webhook import *
 from .metric import *
 from .project import *

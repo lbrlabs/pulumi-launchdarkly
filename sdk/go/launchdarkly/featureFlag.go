@@ -34,24 +34,24 @@ import (
 //				Key:           pulumi.String("building-materials"),
 //				Description:   pulumi.String("this is a multivariate flag with string variations."),
 //				VariationType: pulumi.String("string"),
-//				Variations: FeatureFlagVariationArray{
-//					&FeatureFlagVariationArgs{
+//				Variations: launchdarkly.FeatureFlagVariationArray{
+//					&launchdarkly.FeatureFlagVariationArgs{
 //						Value:       pulumi.String("straw"),
 //						Name:        pulumi.String("Straw"),
 //						Description: pulumi.String("Watch out for wind."),
 //					},
-//					&FeatureFlagVariationArgs{
+//					&launchdarkly.FeatureFlagVariationArgs{
 //						Value:       pulumi.String("sticks"),
 //						Name:        pulumi.String("Sticks"),
 //						Description: pulumi.String("Sturdier than straw"),
 //					},
-//					&FeatureFlagVariationArgs{
+//					&launchdarkly.FeatureFlagVariationArgs{
 //						Value:       pulumi.String("bricks"),
 //						Name:        pulumi.String("Bricks"),
 //						Description: pulumi.String("The strongest variation"),
 //					},
 //				},
-//				Defaults: &FeatureFlagDefaultsArgs{
+//				Defaults: &launchdarkly.FeatureFlagDefaultsArgs{
 //					OnVariation:  pulumi.Int(2),
 //					OffVariation: pulumi.Int(0),
 //				},
@@ -106,17 +106,17 @@ import (
 //				ProjectKey:    pulumi.String("example-project"),
 //				Key:           pulumi.String("json-example"),
 //				VariationType: pulumi.String("json"),
-//				Variations: FeatureFlagVariationArray{
-//					&FeatureFlagVariationArgs{
+//				Variations: launchdarkly.FeatureFlagVariationArray{
+//					&launchdarkly.FeatureFlagVariationArgs{
 //						Name:  pulumi.String("Single foo"),
 //						Value: pulumi.String(json0),
 //					},
-//					&FeatureFlagVariationArgs{
+//					&launchdarkly.FeatureFlagVariationArgs{
 //						Name:  pulumi.String("Multiple foos"),
 //						Value: pulumi.String(json1),
 //					},
 //				},
-//				Defaults: &FeatureFlagDefaultsArgs{
+//				Defaults: &launchdarkly.FeatureFlagDefaultsArgs{
 //					OnVariation:  pulumi.Int(1),
 //					OffVariation: pulumi.Int(0),
 //				},

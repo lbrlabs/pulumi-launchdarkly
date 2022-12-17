@@ -11,23 +11,18 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const example = new launchdarkly.RelayProxyConfiguration("example", {
- *     policies: [{
- *         actions: ["*"],
- *         effect: "allow",
- *         resources: ["proj/*:env/*"],
- *     }],
- * });
+ * const example = new launchdarkly.RelayProxyConfiguration("example", {policies: [{
+ *     actions: ["*"],
+ *     effect: "allow",
+ *     resources: ["proj/*:env/*"],
+ * }]});
  * ```
  */
 export function getRelayProxyConfiguration(args: GetRelayProxyConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetRelayProxyConfigurationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getRelayProxyConfiguration:getRelayProxyConfiguration", {
         "id": args.id,
         "policies": args.policies,
@@ -66,9 +61,22 @@ export interface GetRelayProxyConfigurationResult {
      */
     readonly policies?: outputs.GetRelayProxyConfigurationPolicy[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
+ *
+ * const example = new launchdarkly.RelayProxyConfiguration("example", {policies: [{
+ *     actions: ["*"],
+ *     effect: "allow",
+ *     resources: ["proj/*:env/*"],
+ * }]});
+ * ```
+ */
 export function getRelayProxyConfigurationOutput(args: GetRelayProxyConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRelayProxyConfigurationResult> {
-    return pulumi.output(args).apply(a => getRelayProxyConfiguration(a, opts))
+    return pulumi.output(args).apply((a: any) => getRelayProxyConfiguration(a, opts))
 }
 
 /**

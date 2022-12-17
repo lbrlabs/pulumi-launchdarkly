@@ -15,31 +15,27 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const readerToken = new launchdarkly.AccessToken("reader_token", {
- *     role: "reader",
- * });
+ * const readerToken = new launchdarkly.AccessToken("readerToken", {role: "reader"});
  * ```
  *
  * With a custom role
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const customRoleToken = new launchdarkly.AccessToken("custom_role_token", {
- *     customRoles: ["ops"],
- * });
+ * const customRoleToken = new launchdarkly.AccessToken("customRoleToken", {customRoles: ["ops"]});
  * ```
  *
  * With an inline custom role (policy statements)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const tokenWithPolicyStatements = new launchdarkly.AccessToken("token_with_policy_statements", {
+ * const tokenWithPolicyStatements = new launchdarkly.AccessToken("tokenWithPolicyStatements", {
  *     inlineRoles: [{
  *         actions: ["*"],
  *         effect: "deny",

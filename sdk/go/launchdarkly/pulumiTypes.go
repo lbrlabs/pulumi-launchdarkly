@@ -5463,6 +5463,142 @@ func (o GetTeamMaintainerArrayOutput) Index(i pulumi.IntInput) GetTeamMaintainer
 	}).(GetTeamMaintainerOutput)
 }
 
+type GetTeamMembersTeamMember struct {
+	CustomRoles []string `pulumi:"customRoles"`
+	Email       string   `pulumi:"email"`
+	// The team member's given name.
+	FirstName string `pulumi:"firstName"`
+	// The 24 character alphanumeric ID of the team member.
+	Id string `pulumi:"id"`
+	// The team member's family name.
+	LastName string `pulumi:"lastName"`
+	// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+	Role string `pulumi:"role"`
+}
+
+// GetTeamMembersTeamMemberInput is an input type that accepts GetTeamMembersTeamMemberArgs and GetTeamMembersTeamMemberOutput values.
+// You can construct a concrete instance of `GetTeamMembersTeamMemberInput` via:
+//
+//	GetTeamMembersTeamMemberArgs{...}
+type GetTeamMembersTeamMemberInput interface {
+	pulumi.Input
+
+	ToGetTeamMembersTeamMemberOutput() GetTeamMembersTeamMemberOutput
+	ToGetTeamMembersTeamMemberOutputWithContext(context.Context) GetTeamMembersTeamMemberOutput
+}
+
+type GetTeamMembersTeamMemberArgs struct {
+	CustomRoles pulumi.StringArrayInput `pulumi:"customRoles"`
+	Email       pulumi.StringInput      `pulumi:"email"`
+	// The team member's given name.
+	FirstName pulumi.StringInput `pulumi:"firstName"`
+	// The 24 character alphanumeric ID of the team member.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The team member's family name.
+	LastName pulumi.StringInput `pulumi:"lastName"`
+	// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetTeamMembersTeamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMembersTeamMember)(nil)).Elem()
+}
+
+func (i GetTeamMembersTeamMemberArgs) ToGetTeamMembersTeamMemberOutput() GetTeamMembersTeamMemberOutput {
+	return i.ToGetTeamMembersTeamMemberOutputWithContext(context.Background())
+}
+
+func (i GetTeamMembersTeamMemberArgs) ToGetTeamMembersTeamMemberOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMembersTeamMemberOutput)
+}
+
+// GetTeamMembersTeamMemberArrayInput is an input type that accepts GetTeamMembersTeamMemberArray and GetTeamMembersTeamMemberArrayOutput values.
+// You can construct a concrete instance of `GetTeamMembersTeamMemberArrayInput` via:
+//
+//	GetTeamMembersTeamMemberArray{ GetTeamMembersTeamMemberArgs{...} }
+type GetTeamMembersTeamMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetTeamMembersTeamMemberArrayOutput() GetTeamMembersTeamMemberArrayOutput
+	ToGetTeamMembersTeamMemberArrayOutputWithContext(context.Context) GetTeamMembersTeamMemberArrayOutput
+}
+
+type GetTeamMembersTeamMemberArray []GetTeamMembersTeamMemberInput
+
+func (GetTeamMembersTeamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMembersTeamMember)(nil)).Elem()
+}
+
+func (i GetTeamMembersTeamMemberArray) ToGetTeamMembersTeamMemberArrayOutput() GetTeamMembersTeamMemberArrayOutput {
+	return i.ToGetTeamMembersTeamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetTeamMembersTeamMemberArray) ToGetTeamMembersTeamMemberArrayOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTeamMembersTeamMemberArrayOutput)
+}
+
+type GetTeamMembersTeamMemberOutput struct{ *pulumi.OutputState }
+
+func (GetTeamMembersTeamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTeamMembersTeamMember)(nil)).Elem()
+}
+
+func (o GetTeamMembersTeamMemberOutput) ToGetTeamMembersTeamMemberOutput() GetTeamMembersTeamMemberOutput {
+	return o
+}
+
+func (o GetTeamMembersTeamMemberOutput) ToGetTeamMembersTeamMemberOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberOutput {
+	return o
+}
+
+func (o GetTeamMembersTeamMemberOutput) CustomRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) []string { return v.CustomRoles }).(pulumi.StringArrayOutput)
+}
+
+func (o GetTeamMembersTeamMemberOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The team member's given name.
+func (o GetTeamMembersTeamMemberOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// The 24 character alphanumeric ID of the team member.
+func (o GetTeamMembersTeamMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The team member's family name.
+func (o GetTeamMembersTeamMemberOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+// The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+func (o GetTeamMembersTeamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTeamMembersTeamMember) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetTeamMembersTeamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTeamMembersTeamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTeamMembersTeamMember)(nil)).Elem()
+}
+
+func (o GetTeamMembersTeamMemberArrayOutput) ToGetTeamMembersTeamMemberArrayOutput() GetTeamMembersTeamMemberArrayOutput {
+	return o
+}
+
+func (o GetTeamMembersTeamMemberArrayOutput) ToGetTeamMembersTeamMemberArrayOutputWithContext(ctx context.Context) GetTeamMembersTeamMemberArrayOutput {
+	return o
+}
+
+func (o GetTeamMembersTeamMemberArrayOutput) Index(i pulumi.IntInput) GetTeamMembersTeamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTeamMembersTeamMember {
+		return vs[0].([]GetTeamMembersTeamMember)[vs[1].(int)]
+	}).(GetTeamMembersTeamMemberOutput)
+}
+
 type GetWebhookStatement struct {
 	Actions []string `pulumi:"actions"`
 	// Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
@@ -5677,6 +5813,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSegmentRuleClauseArrayInput)(nil)).Elem(), GetSegmentRuleClauseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerInput)(nil)).Elem(), GetTeamMaintainerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMaintainerArrayInput)(nil)).Elem(), GetTeamMaintainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberInput)(nil)).Elem(), GetTeamMembersTeamMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTeamMembersTeamMemberArrayInput)(nil)).Elem(), GetTeamMembersTeamMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementInput)(nil)).Elem(), GetWebhookStatementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhookStatementArrayInput)(nil)).Elem(), GetWebhookStatementArray{})
 	pulumi.RegisterOutputType(AccessTokenInlineRoleOutput{})
@@ -5765,6 +5903,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSegmentRuleClauseArrayOutput{})
 	pulumi.RegisterOutputType(GetTeamMaintainerOutput{})
 	pulumi.RegisterOutputType(GetTeamMaintainerArrayOutput{})
+	pulumi.RegisterOutputType(GetTeamMembersTeamMemberOutput{})
+	pulumi.RegisterOutputType(GetTeamMembersTeamMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementOutput{})
 	pulumi.RegisterOutputType(GetWebhookStatementArrayOutput{})
 }

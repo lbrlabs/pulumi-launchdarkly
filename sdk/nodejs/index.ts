@@ -8,143 +8,148 @@ import * as utilities from "./utilities";
 export { AccessTokenArgs, AccessTokenState } from "./accessToken";
 export type AccessToken = import("./accessToken").AccessToken;
 export const AccessToken: typeof import("./accessToken").AccessToken = null as any;
+utilities.lazyLoad(exports, ["AccessToken"], () => require("./accessToken"));
 
 export { AuditLogSubscriptionArgs, AuditLogSubscriptionState } from "./auditLogSubscription";
 export type AuditLogSubscription = import("./auditLogSubscription").AuditLogSubscription;
 export const AuditLogSubscription: typeof import("./auditLogSubscription").AuditLogSubscription = null as any;
+utilities.lazyLoad(exports, ["AuditLogSubscription"], () => require("./auditLogSubscription"));
 
 export { CustomRoleArgs, CustomRoleState } from "./customRole";
 export type CustomRole = import("./customRole").CustomRole;
 export const CustomRole: typeof import("./customRole").CustomRole = null as any;
+utilities.lazyLoad(exports, ["CustomRole"], () => require("./customRole"));
 
 export { DestinationArgs, DestinationState } from "./destination";
 export type Destination = import("./destination").Destination;
 export const Destination: typeof import("./destination").Destination = null as any;
+utilities.lazyLoad(exports, ["Destination"], () => require("./destination"));
 
 export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { FeatureFlagArgs, FeatureFlagState } from "./featureFlag";
 export type FeatureFlag = import("./featureFlag").FeatureFlag;
 export const FeatureFlag: typeof import("./featureFlag").FeatureFlag = null as any;
+utilities.lazyLoad(exports, ["FeatureFlag"], () => require("./featureFlag"));
 
 export { FeatureFlagEnvironmentArgs, FeatureFlagEnvironmentState } from "./featureFlagEnvironment";
 export type FeatureFlagEnvironment = import("./featureFlagEnvironment").FeatureFlagEnvironment;
 export const FeatureFlagEnvironment: typeof import("./featureFlagEnvironment").FeatureFlagEnvironment = null as any;
+utilities.lazyLoad(exports, ["FeatureFlagEnvironment"], () => require("./featureFlagEnvironment"));
 
 export { FlagTriggerArgs, FlagTriggerState } from "./flagTrigger";
 export type FlagTrigger = import("./flagTrigger").FlagTrigger;
 export const FlagTrigger: typeof import("./flagTrigger").FlagTrigger = null as any;
+utilities.lazyLoad(exports, ["FlagTrigger"], () => require("./flagTrigger"));
 
 export { GetAuditLogSubscriptionArgs, GetAuditLogSubscriptionResult, GetAuditLogSubscriptionOutputArgs } from "./getAuditLogSubscription";
 export const getAuditLogSubscription: typeof import("./getAuditLogSubscription").getAuditLogSubscription = null as any;
 export const getAuditLogSubscriptionOutput: typeof import("./getAuditLogSubscription").getAuditLogSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getAuditLogSubscription","getAuditLogSubscriptionOutput"], () => require("./getAuditLogSubscription"));
 
 export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
 export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
 export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
 
 export { GetFeatureFlagArgs, GetFeatureFlagResult, GetFeatureFlagOutputArgs } from "./getFeatureFlag";
 export const getFeatureFlag: typeof import("./getFeatureFlag").getFeatureFlag = null as any;
 export const getFeatureFlagOutput: typeof import("./getFeatureFlag").getFeatureFlagOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureFlag","getFeatureFlagOutput"], () => require("./getFeatureFlag"));
 
 export { GetFeatureFlagEnvironmentArgs, GetFeatureFlagEnvironmentResult, GetFeatureFlagEnvironmentOutputArgs } from "./getFeatureFlagEnvironment";
 export const getFeatureFlagEnvironment: typeof import("./getFeatureFlagEnvironment").getFeatureFlagEnvironment = null as any;
 export const getFeatureFlagEnvironmentOutput: typeof import("./getFeatureFlagEnvironment").getFeatureFlagEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureFlagEnvironment","getFeatureFlagEnvironmentOutput"], () => require("./getFeatureFlagEnvironment"));
 
 export { GetFlagTriggerArgs, GetFlagTriggerResult, GetFlagTriggerOutputArgs } from "./getFlagTrigger";
 export const getFlagTrigger: typeof import("./getFlagTrigger").getFlagTrigger = null as any;
 export const getFlagTriggerOutput: typeof import("./getFlagTrigger").getFlagTriggerOutput = null as any;
+utilities.lazyLoad(exports, ["getFlagTrigger","getFlagTriggerOutput"], () => require("./getFlagTrigger"));
 
 export { GetMetricArgs, GetMetricResult, GetMetricOutputArgs } from "./getMetric";
 export const getMetric: typeof import("./getMetric").getMetric = null as any;
 export const getMetricOutput: typeof import("./getMetric").getMetricOutput = null as any;
+utilities.lazyLoad(exports, ["getMetric","getMetricOutput"], () => require("./getMetric"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
 export { GetRelayProxyConfigurationArgs, GetRelayProxyConfigurationResult, GetRelayProxyConfigurationOutputArgs } from "./getRelayProxyConfiguration";
 export const getRelayProxyConfiguration: typeof import("./getRelayProxyConfiguration").getRelayProxyConfiguration = null as any;
 export const getRelayProxyConfigurationOutput: typeof import("./getRelayProxyConfiguration").getRelayProxyConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getRelayProxyConfiguration","getRelayProxyConfigurationOutput"], () => require("./getRelayProxyConfiguration"));
 
 export { GetSegmentArgs, GetSegmentResult, GetSegmentOutputArgs } from "./getSegment";
 export const getSegment: typeof import("./getSegment").getSegment = null as any;
 export const getSegmentOutput: typeof import("./getSegment").getSegmentOutput = null as any;
+utilities.lazyLoad(exports, ["getSegment","getSegmentOutput"], () => require("./getSegment"));
 
 export { GetTeamArgs, GetTeamResult, GetTeamOutputArgs } from "./getTeam";
 export const getTeam: typeof import("./getTeam").getTeam = null as any;
 export const getTeamOutput: typeof import("./getTeam").getTeamOutput = null as any;
+utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
 
 export { GetTeamMemberArgs, GetTeamMemberResult, GetTeamMemberOutputArgs } from "./getTeamMember";
 export const getTeamMember: typeof import("./getTeamMember").getTeamMember = null as any;
 export const getTeamMemberOutput: typeof import("./getTeamMember").getTeamMemberOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamMember","getTeamMemberOutput"], () => require("./getTeamMember"));
+
+export { GetTeamMembersArgs, GetTeamMembersResult, GetTeamMembersOutputArgs } from "./getTeamMembers";
+export const getTeamMembers: typeof import("./getTeamMembers").getTeamMembers = null as any;
+export const getTeamMembersOutput: typeof import("./getTeamMembers").getTeamMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getTeamMembers","getTeamMembersOutput"], () => require("./getTeamMembers"));
 
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
+utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 
 export { MetricArgs, MetricState } from "./metric";
 export type Metric = import("./metric").Metric;
 export const Metric: typeof import("./metric").Metric = null as any;
+utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
 export { RelayProxyConfigurationArgs, RelayProxyConfigurationState } from "./relayProxyConfiguration";
 export type RelayProxyConfiguration = import("./relayProxyConfiguration").RelayProxyConfiguration;
 export const RelayProxyConfiguration: typeof import("./relayProxyConfiguration").RelayProxyConfiguration = null as any;
+utilities.lazyLoad(exports, ["RelayProxyConfiguration"], () => require("./relayProxyConfiguration"));
 
 export { SegmentArgs, SegmentState } from "./segment";
 export type Segment = import("./segment").Segment;
 export const Segment: typeof import("./segment").Segment = null as any;
+utilities.lazyLoad(exports, ["Segment"], () => require("./segment"));
 
 export { TeamArgs, TeamState } from "./team";
 export type Team = import("./team").Team;
 export const Team: typeof import("./team").Team = null as any;
+utilities.lazyLoad(exports, ["Team"], () => require("./team"));
 
 export { TeamMemberArgs, TeamMemberState } from "./teamMember";
 export type TeamMember = import("./teamMember").TeamMember;
 export const TeamMember: typeof import("./teamMember").TeamMember = null as any;
+utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
 
 export { WebhookArgs, WebhookState } from "./webhook";
 export type Webhook = import("./webhook").Webhook;
 export const Webhook: typeof import("./webhook").Webhook = null as any;
-
-utilities.lazyLoad(exports, ["AccessToken"], () => require("./accessToken"));
-utilities.lazyLoad(exports, ["AuditLogSubscription"], () => require("./auditLogSubscription"));
-utilities.lazyLoad(exports, ["CustomRole"], () => require("./customRole"));
-utilities.lazyLoad(exports, ["Destination"], () => require("./destination"));
-utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
-utilities.lazyLoad(exports, ["FeatureFlag"], () => require("./featureFlag"));
-utilities.lazyLoad(exports, ["FeatureFlagEnvironment"], () => require("./featureFlagEnvironment"));
-utilities.lazyLoad(exports, ["FlagTrigger"], () => require("./flagTrigger"));
-utilities.lazyLoad(exports, ["getAuditLogSubscription","getAuditLogSubscriptionOutput"], () => require("./getAuditLogSubscription"));
-utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
-utilities.lazyLoad(exports, ["getFeatureFlag","getFeatureFlagOutput"], () => require("./getFeatureFlag"));
-utilities.lazyLoad(exports, ["getFeatureFlagEnvironment","getFeatureFlagEnvironmentOutput"], () => require("./getFeatureFlagEnvironment"));
-utilities.lazyLoad(exports, ["getFlagTrigger","getFlagTriggerOutput"], () => require("./getFlagTrigger"));
-utilities.lazyLoad(exports, ["getMetric","getMetricOutput"], () => require("./getMetric"));
-utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
-utilities.lazyLoad(exports, ["getRelayProxyConfiguration","getRelayProxyConfigurationOutput"], () => require("./getRelayProxyConfiguration"));
-utilities.lazyLoad(exports, ["getSegment","getSegmentOutput"], () => require("./getSegment"));
-utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
-utilities.lazyLoad(exports, ["getTeamMember","getTeamMemberOutput"], () => require("./getTeamMember"));
-utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
-utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
-utilities.lazyLoad(exports, ["Project"], () => require("./project"));
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
-utilities.lazyLoad(exports, ["RelayProxyConfiguration"], () => require("./relayProxyConfiguration"));
-utilities.lazyLoad(exports, ["Segment"], () => require("./segment"));
-utilities.lazyLoad(exports, ["Team"], () => require("./team"));
-utilities.lazyLoad(exports, ["TeamMember"], () => require("./teamMember"));
 utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export sub-modules:
 import * as config from "./config";

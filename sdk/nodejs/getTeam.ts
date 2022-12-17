@@ -18,17 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const platformTeam = pulumi.output(launchdarkly.getTeam({
+ * const platformTeam = launchdarkly.getTeam({
  *     key: "platform_team",
- * }));
+ * });
  * ```
  */
 export function getTeam(args: GetTeamArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getTeam:getTeam", {
         "customRoleKeys": args.customRoleKeys,
         "description": args.description,
@@ -89,9 +86,25 @@ export interface GetTeamResult {
      */
     readonly projectKeys: string[];
 }
-
+/**
+ * Provides a LaunchDarkly team data source.
+ *
+ * This data source allows you to retrieve team information from your LaunchDarkly organization.
+ *
+ * > **Note:** Teams are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const platformTeam = launchdarkly.getTeam({
+ *     key: "platform_team",
+ * });
+ * ```
+ */
 export function getTeamOutput(args: GetTeamOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamResult> {
-    return pulumi.output(args).apply(a => getTeam(a, opts))
+    return pulumi.output(args).apply((a: any) => getTeam(a, opts))
 }
 
 /**

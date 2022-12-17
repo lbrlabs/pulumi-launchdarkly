@@ -54,6 +54,7 @@ __all__ = [
     'GetSegmentRuleResult',
     'GetSegmentRuleClauseResult',
     'GetTeamMaintainerResult',
+    'GetTeamMembersTeamMemberResult',
     'GetWebhookStatementResult',
 ]
 
@@ -2471,6 +2472,71 @@ class GetTeamMaintainerResult(dict):
     @property
     @pulumi.getter
     def role(self) -> str:
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetTeamMembersTeamMemberResult(dict):
+    def __init__(__self__, *,
+                 custom_roles: Sequence[str],
+                 email: str,
+                 first_name: str,
+                 id: str,
+                 last_name: str,
+                 role: str):
+        """
+        :param str first_name: The team member's given name.
+        :param str id: The 24 character alphanumeric ID of the team member.
+        :param str last_name: The team member's family name.
+        :param str role: The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+        """
+        pulumi.set(__self__, "custom_roles", custom_roles)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "first_name", first_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_name", last_name)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="customRoles")
+    def custom_roles(self) -> Sequence[str]:
+        return pulumi.get(self, "custom_roles")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="firstName")
+    def first_name(self) -> str:
+        """
+        The team member's given name.
+        """
+        return pulumi.get(self, "first_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The 24 character alphanumeric ID of the team member.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastName")
+    def last_name(self) -> str:
+        """
+        The team member's family name.
+        """
+        return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.
+        """
         return pulumi.get(self, "role")
 
 
