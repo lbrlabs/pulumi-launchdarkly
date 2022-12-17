@@ -34,6 +34,7 @@
         "getSegment.ts",
         "getTeam.ts",
         "getTeamMember.ts",
+        "getTeamMembers.ts",
         "getWebhook.ts",
         "index.ts",
         "metric.ts",

@@ -644,21 +644,6 @@ export interface GetRelayProxyConfigurationPolicyArgs {
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetSegmentRule {
-    /**
-     * The attribute by which to group users together.
-     */
-    bucketBy?: string;
-    /**
-     * List of nested custom rule clause blocks. To learn more, read Nested Clauses Blocks.
-     */
-    clauses?: inputs.GetSegmentRuleClause[];
-    /**
-     * The integer weight of the rule (between 0 and 100000).
-     */
-    weight?: number;
-}
-
 export interface GetSegmentRuleArgs {
     /**
      * The attribute by which to group users together.
@@ -672,6 +657,21 @@ export interface GetSegmentRuleArgs {
      * The integer weight of the rule (between 0 and 100000).
      */
     weight?: pulumi.Input<number>;
+}
+
+export interface GetSegmentRule {
+    /**
+     * The attribute by which to group users together.
+     */
+    bucketBy?: string;
+    /**
+     * List of nested custom rule clause blocks. To learn more, read Nested Clauses Blocks.
+     */
+    clauses?: inputs.GetSegmentRuleClause[];
+    /**
+     * The integer weight of the rule (between 0 and 100000).
+     */
+    weight?: number;
 }
 
 export interface GetSegmentRuleClause {
@@ -720,23 +720,6 @@ export interface GetSegmentRuleClauseArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetWebhookStatementArgs {
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-     */
-    effect: pulumi.Input<string>;
-    notActions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement does not apply. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
-     */
-    notResources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetWebhookStatement {
     actions?: string[];
     /**
@@ -752,6 +735,23 @@ export interface GetWebhookStatement {
      * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
      */
     resources?: string[];
+}
+
+export interface GetWebhookStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MetricUrl {

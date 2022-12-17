@@ -29,6 +29,8 @@ import com.pulumi.launchdarkly.inputs.GetSegmentPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamMemberPlainArgs;
+import com.pulumi.launchdarkly.inputs.GetTeamMembersArgs;
+import com.pulumi.launchdarkly.inputs.GetTeamMembersPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetTeamPlainArgs;
 import com.pulumi.launchdarkly.inputs.GetWebhookArgs;
 import com.pulumi.launchdarkly.inputs.GetWebhookPlainArgs;
@@ -42,6 +44,7 @@ import com.pulumi.launchdarkly.outputs.GetProjectResult;
 import com.pulumi.launchdarkly.outputs.GetRelayProxyConfigurationResult;
 import com.pulumi.launchdarkly.outputs.GetSegmentResult;
 import com.pulumi.launchdarkly.outputs.GetTeamMemberResult;
+import com.pulumi.launchdarkly.outputs.GetTeamMembersResult;
 import com.pulumi.launchdarkly.outputs.GetTeamResult;
 import com.pulumi.launchdarkly.outputs.GetWebhookResult;
 import java.util.concurrent.CompletableFuture;
@@ -1826,6 +1829,174 @@ public final class LaunchdarklyFunctions {
      */
     public static CompletableFuture<GetTeamMemberResult> getTeamMemberPlain(GetTeamMemberPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("launchdarkly:index/getTeamMember:getTeamMember", TypeShape.of(GetTeamMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly team members data source.
+     * 
+     * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getTeamMember(GetTeamMemberArgs.builder()
+     *             .emails(            
+     *                 &#34;example@example.com&#34;,
+     *                 &#34;example2@example.com&#34;,
+     *                 &#34;example3@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTeamMembersResult> getTeamMembers(GetTeamMembersArgs args) {
+        return getTeamMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly team members data source.
+     * 
+     * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getTeamMember(GetTeamMemberArgs.builder()
+     *             .emails(            
+     *                 &#34;example@example.com&#34;,
+     *                 &#34;example2@example.com&#34;,
+     *                 &#34;example3@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTeamMembersResult> getTeamMembersPlain(GetTeamMembersPlainArgs args) {
+        return getTeamMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a LaunchDarkly team members data source.
+     * 
+     * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getTeamMember(GetTeamMemberArgs.builder()
+     *             .emails(            
+     *                 &#34;example@example.com&#34;,
+     *                 &#34;example2@example.com&#34;,
+     *                 &#34;example3@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTeamMembersResult> getTeamMembers(GetTeamMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("launchdarkly:index/getTeamMembers:getTeamMembers", TypeShape.of(GetTeamMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a LaunchDarkly team members data source.
+     * 
+     * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.launchdarkly.LaunchdarklyFunctions;
+     * import com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LaunchdarklyFunctions.getTeamMember(GetTeamMemberArgs.builder()
+     *             .emails(            
+     *                 &#34;example@example.com&#34;,
+     *                 &#34;example2@example.com&#34;,
+     *                 &#34;example3@example.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTeamMembersResult> getTeamMembersPlain(GetTeamMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("launchdarkly:index/getTeamMembers:getTeamMembers", TypeShape.of(GetTeamMembersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides a LaunchDarkly webhook data source.

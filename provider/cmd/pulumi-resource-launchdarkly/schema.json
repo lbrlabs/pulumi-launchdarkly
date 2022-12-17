@@ -2040,6 +2040,79 @@
                 }
             }
         },
+        "launchdarkly:index/getTeamMembersTeamMember:getTeamMembersTeamMember": {
+            "properties": {
+                "customRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "email": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "The team member's given name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The 24 character alphanumeric ID of the team member.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "The team member's family name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role associated with team member. Possible roles are `owner`, `reader`, `writer`, or `admin`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "customRoles",
+                "email",
+                "firstName",
+                "id",
+                "lastName",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "launchdarkly:index/getWebhookStatement:getWebhookStatement": {
             "properties": {
                 "actions": {
@@ -4142,7 +4215,7 @@
             }
         },
         "launchdarkly:index/teamMember:TeamMember": {
-            "description": "Provides a LaunchDarkly team member resource.\n\nThis resource allows you to create and manage team members within your LaunchDarkly organization.\n\n\u003e **Note:** You can only manage team members with \"admin\" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/docs/teams).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as launchdarkly from \"@pulumi/launchdarkly\";\n\nconst example = new launchdarkly.TeamMember(\"example\", {\n    email: \"example.user@example.com\",\n    firstName: \"John\",\n    lastName: \"Smith\",\n    role: \"writer\",\n});\n```\n```python\nimport pulumi\nimport lbrlabs_pulumi_launchdarkly as launchdarkly\n\nexample = launchdarkly.TeamMember(\"example\",\n    email=\"example.user@example.com\",\n    first_name=\"John\",\n    last_name=\"Smith\",\n    role=\"writer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Launchdarkly = Lbrlabs.PulumiPackage.Launchdarkly;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Launchdarkly.TeamMember(\"example\", new()\n    {\n        Email = \"example.user@example.com\",\n        FirstName = \"John\",\n        LastName = \"Smith\",\n        Role = \"writer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/lbrlabs/pulumi-launchdarkly/sdk/go/launchdarkly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := launchdarkly.NewTeamMember(ctx, \"example\", \u0026launchdarkly.TeamMemberArgs{\n\t\t\tEmail:     pulumi.String(\"example.user@example.com\"),\n\t\t\tFirstName: pulumi.String(\"John\"),\n\t\t\tLastName:  pulumi.String(\"Smith\"),\n\t\t\tRole:      pulumi.String(\"writer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.launchdarkly.TeamMember;\nimport com.pulumi.launchdarkly.TeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamMember(\"example\", TeamMemberArgs.builder()        \n            .email(\"example.user@example.com\")\n            .firstName(\"John\")\n            .lastName(\"Smith\")\n            .role(\"writer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: launchdarkly:TeamMember\n    properties:\n      email: example.user@example.com\n      firstName: John\n      lastName: Smith\n      role: writer\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLaunchDarkly team members can be imported using the team member's 24 character ID, e.g.\n\n```sh\n $ pulumi import launchdarkly:index/teamMember:TeamMember example 5f05565b48be0b441fb63020\n```\n\n ",
+            "description": "Provides a LaunchDarkly team member resource.\n\nThis resource allows you to create and manage team members within your LaunchDarkly organization.\n\n\u003e **Note:** You can only manage team members with \"admin\" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/docs/teams/managing).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as launchdarkly from \"@pulumi/launchdarkly\";\n\nconst example = new launchdarkly.TeamMember(\"example\", {\n    email: \"example.user@example.com\",\n    firstName: \"John\",\n    lastName: \"Smith\",\n    role: \"writer\",\n});\n```\n```python\nimport pulumi\nimport lbrlabs_pulumi_launchdarkly as launchdarkly\n\nexample = launchdarkly.TeamMember(\"example\",\n    email=\"example.user@example.com\",\n    first_name=\"John\",\n    last_name=\"Smith\",\n    role=\"writer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Launchdarkly = Lbrlabs.PulumiPackage.Launchdarkly;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Launchdarkly.TeamMember(\"example\", new()\n    {\n        Email = \"example.user@example.com\",\n        FirstName = \"John\",\n        LastName = \"Smith\",\n        Role = \"writer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/lbrlabs/pulumi-launchdarkly/sdk/go/launchdarkly\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := launchdarkly.NewTeamMember(ctx, \"example\", \u0026launchdarkly.TeamMemberArgs{\n\t\t\tEmail:     pulumi.String(\"example.user@example.com\"),\n\t\t\tFirstName: pulumi.String(\"John\"),\n\t\t\tLastName:  pulumi.String(\"Smith\"),\n\t\t\tRole:      pulumi.String(\"writer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.launchdarkly.TeamMember;\nimport com.pulumi.launchdarkly.TeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamMember(\"example\", TeamMemberArgs.builder()        \n            .email(\"example.user@example.com\")\n            .firstName(\"John\")\n            .lastName(\"Smith\")\n            .role(\"writer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: launchdarkly:TeamMember\n    properties:\n      email: example.user@example.com\n      firstName: John\n      lastName: Smith\n      role: writer\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nLaunchDarkly team members can be imported using the team member's 24 character ID, e.g.\n\n```sh\n $ pulumi import launchdarkly:index/teamMember:TeamMember example 5f05565b48be0b441fb63020\n```\n\n ",
             "properties": {
                 "customRoles": {
                     "type": "array",
@@ -5480,6 +5553,59 @@
                     "id",
                     "lastName",
                     "role"
+                ]
+            }
+        },
+        "launchdarkly:index/getTeamMembers:getTeamMembers": {
+            "description": "Provides a LaunchDarkly team members data source.\n\nThis data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as launchdarkly from \"@pulumi/launchdarkly\";\n\nconst example = pulumi.output(launchdarkly.getTeamMember({\n    emails: [\n        \"example@example.com\",\n        \"example2@example.com\",\n        \"example3@example.com\",\n    ],\n}));\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.launchdarkly.LaunchdarklyFunctions;\nimport com.pulumi.launchdarkly.inputs.GetTeamMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = LaunchdarklyFunctions.getTeamMember(GetTeamMemberArgs.builder()\n            .emails(            \n                \"example@example.com\",\n                \"example2@example.com\",\n                \"example3@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    Fn::Invoke:\n      Function: launchdarkly:getTeamMember\n      Arguments:\n        emails:\n          - example@example.com\n          - example2@example.com\n          - example3@example.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTeamMembers.\n",
+                "properties": {
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of unique email addresses associated with the team members.\n"
+                    },
+                    "ignoreMissing": {
+                        "type": "boolean",
+                        "description": "A boolean to determine whether to ignore members that weren't found.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "emails"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTeamMembers.\n",
+                "properties": {
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ignoreMissing": {
+                        "type": "boolean"
+                    },
+                    "teamMembers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/launchdarkly:index/getTeamMembersTeamMember:getTeamMembersTeamMember"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "emails",
+                    "teamMembers",
+                    "id"
                 ]
             }
         },

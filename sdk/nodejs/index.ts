@@ -81,6 +81,10 @@ export { GetTeamMemberArgs, GetTeamMemberResult, GetTeamMemberOutputArgs } from 
 export const getTeamMember: typeof import("./getTeamMember").getTeamMember = null as any;
 export const getTeamMemberOutput: typeof import("./getTeamMember").getTeamMemberOutput = null as any;
 
+export { GetTeamMembersArgs, GetTeamMembersResult, GetTeamMembersOutputArgs } from "./getTeamMembers";
+export const getTeamMembers: typeof import("./getTeamMembers").getTeamMembers = null as any;
+export const getTeamMembersOutput: typeof import("./getTeamMembers").getTeamMembersOutput = null as any;
+
 export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
 export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
 export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
@@ -136,6 +140,7 @@ utilities.lazyLoad(exports, ["getRelayProxyConfiguration","getRelayProxyConfigur
 utilities.lazyLoad(exports, ["getSegment","getSegmentOutput"], () => require("./getSegment"));
 utilities.lazyLoad(exports, ["getTeam","getTeamOutput"], () => require("./getTeam"));
 utilities.lazyLoad(exports, ["getTeamMember","getTeamMemberOutput"], () => require("./getTeamMember"));
+utilities.lazyLoad(exports, ["getTeamMembers","getTeamMembersOutput"], () => require("./getTeamMembers"));
 utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
 utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
