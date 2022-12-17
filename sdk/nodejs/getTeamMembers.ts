@@ -10,28 +10,10 @@ import * as utilities from "./utilities";
  * Provides a LaunchDarkly team members data source.
  *
  * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
- *
- * const example = pulumi.output(launchdarkly.getTeamMember({
- *     emails: [
- *         "example@example.com",
- *         "example2@example.com",
- *         "example3@example.com",
- *     ],
- * }));
- * ```
  */
 export function getTeamMembers(args: GetTeamMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamMembersResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getTeamMembers:getTeamMembers", {
         "emails": args.emails,
         "ignoreMissing": args.ignoreMissing,
@@ -64,9 +46,13 @@ export interface GetTeamMembersResult {
     readonly ignoreMissing?: boolean;
     readonly teamMembers: outputs.GetTeamMembersTeamMember[];
 }
-
+/**
+ * Provides a LaunchDarkly team members data source.
+ *
+ * This data source allows you to retrieve team member information from your LaunchDarkly organization on multiple team members.
+ */
 export function getTeamMembersOutput(args: GetTeamMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamMembersResult> {
-    return pulumi.output(args).apply(a => getTeamMembers(a, opts))
+    return pulumi.output(args).apply((a: any) => getTeamMembers(a, opts))
 }
 
 /**

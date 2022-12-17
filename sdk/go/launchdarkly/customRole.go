@@ -34,8 +34,8 @@ import (
 //			_, err := launchdarkly.NewCustomRole(ctx, "example", &launchdarkly.CustomRoleArgs{
 //				Description: pulumi.String("This is an example role"),
 //				Key:         pulumi.String("example-role-key-1"),
-//				PolicyStatements: CustomRolePolicyStatementArray{
-//					&CustomRolePolicyStatementArgs{
+//				PolicyStatements: launchdarkly.CustomRolePolicyStatementArray{
+//					&launchdarkly.CustomRolePolicyStatementArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},
@@ -44,7 +44,7 @@ import (
 //							pulumi.String("proj/*:env/production:flag/*"),
 //						},
 //					},
-//					&CustomRolePolicyStatementArgs{
+//					&launchdarkly.CustomRolePolicyStatementArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},

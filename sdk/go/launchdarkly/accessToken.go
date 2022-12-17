@@ -83,8 +83,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := launchdarkly.NewAccessToken(ctx, "tokenWithPolicyStatements", &launchdarkly.AccessTokenArgs{
-//				InlineRoles: AccessTokenInlineRoleArray{
-//					&AccessTokenInlineRoleArgs{
+//				InlineRoles: launchdarkly.AccessTokenInlineRoleArray{
+//					&launchdarkly.AccessTokenInlineRoleArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},

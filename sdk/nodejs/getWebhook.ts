@@ -17,17 +17,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getWebhook({
+ * const example = launchdarkly.getWebhook({
  *     id: "57c0af6099690907435299",
- * }));
+ * });
  * ```
  */
 export function getWebhook(args: GetWebhookArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getWebhook:getWebhook", {
         "id": args.id,
         "name": args.name,
@@ -93,9 +90,24 @@ export interface GetWebhookResult {
      */
     readonly url: string;
 }
-
+/**
+ * Provides a LaunchDarkly webhook data source.
+ *
+ * This data source allows you to retrieve webhook information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getWebhook({
+ *     id: "57c0af6099690907435299",
+ * });
+ * ```
+ */
 export function getWebhookOutput(args: GetWebhookOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookResult> {
-    return pulumi.output(args).apply(a => getWebhook(a, opts))
+    return pulumi.output(args).apply((a: any) => getWebhook(a, opts))
 }
 
 /**

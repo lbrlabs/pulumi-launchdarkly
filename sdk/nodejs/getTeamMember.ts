@@ -15,17 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getTeamMember({
+ * const example = launchdarkly.getTeamMember({
  *     email: "example@example.com",
- * }));
+ * });
  * ```
  */
 export function getTeamMember(args: GetTeamMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetTeamMemberResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getTeamMember:getTeamMember", {
         "email": args.email,
         "id": args.id,
@@ -69,9 +66,24 @@ export interface GetTeamMemberResult {
      */
     readonly role: string;
 }
-
+/**
+ * Provides a LaunchDarkly team member data source.
+ *
+ * This data source allows you to retrieve team member information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getTeamMember({
+ *     email: "example@example.com",
+ * });
+ * ```
+ */
 export function getTeamMemberOutput(args: GetTeamMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTeamMemberResult> {
-    return pulumi.output(args).apply(a => getTeamMember(a, opts))
+    return pulumi.output(args).apply((a: any) => getTeamMember(a, opts))
 }
 
 /**

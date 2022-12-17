@@ -25,8 +25,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := launchdarkly.NewRelayProxyConfiguration(ctx, "example", &launchdarkly.RelayProxyConfigurationArgs{
-//				Policies: RelayProxyConfigurationPolicyArray{
-//					&RelayProxyConfigurationPolicyArgs{
+//				Policies: launchdarkly.RelayProxyConfigurationPolicyArray{
+//					&launchdarkly.RelayProxyConfigurationPolicyArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("*"),
 //						},

@@ -62,8 +62,8 @@ import (
 //					pulumi.String("terraform"),
 //					pulumi.String("staging"),
 //				},
-//				ApprovalSettings: EnvironmentApprovalSettingArray{
-//					&EnvironmentApprovalSettingArgs{
+//				ApprovalSettings: launchdarkly.EnvironmentApprovalSettingArray{
+//					&launchdarkly.EnvironmentApprovalSettingArgs{
 //						Required:                pulumi.Bool(true),
 //						CanReviewOwnRequest:     pulumi.Bool(true),
 //						MinNumApprovals:         pulumi.Int(2),

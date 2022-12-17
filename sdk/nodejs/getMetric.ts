@@ -17,18 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getMetric({
+ * const example = launchdarkly.getMetric({
  *     key: "example-metric",
  *     projectKey: "example-project",
- * }));
+ * });
  * ```
  */
 export function getMetric(args: GetMetricArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getMetric:getMetric", {
         "description": args.description,
         "eventKey": args.eventKey,
@@ -153,9 +150,25 @@ export interface GetMetricResult {
      */
     readonly urls?: outputs.GetMetricUrl[];
 }
-
+/**
+ * Provides a LaunchDarkly metric data source.
+ *
+ * This data source allows you to retrieve metric information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getMetric({
+ *     key: "example-metric",
+ *     projectKey: "example-project",
+ * });
+ * ```
+ */
 export function getMetricOutput(args: GetMetricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricResult> {
-    return pulumi.output(args).apply(a => getMetric(a, opts))
+    return pulumi.output(args).apply((a: any) => getMetric(a, opts))
 }
 
 /**

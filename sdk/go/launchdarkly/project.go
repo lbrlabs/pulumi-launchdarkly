@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := launchdarkly.NewProject(ctx, "example", &launchdarkly.ProjectArgs{
-//				Environments: ProjectEnvironmentArray{
-//					&ProjectEnvironmentArgs{
-//						ApprovalSettings: ProjectEnvironmentApprovalSettingArray{
-//							&ProjectEnvironmentApprovalSettingArgs{
+//				Environments: launchdarkly.ProjectEnvironmentArray{
+//					&launchdarkly.ProjectEnvironmentArgs{
+//						ApprovalSettings: launchdarkly.ProjectEnvironmentApprovalSettingArray{
+//							&launchdarkly.ProjectEnvironmentApprovalSettingArgs{
 //								CanApplyDeclinedChanges: pulumi.Bool(false),
 //								CanReviewOwnRequest:     pulumi.Bool(false),
 //								MinNumApprovals:         pulumi.Int(3),
@@ -49,7 +49,7 @@ import (
 //							pulumi.String("terraform"),
 //						},
 //					},
-//					&ProjectEnvironmentArgs{
+//					&launchdarkly.ProjectEnvironmentArgs{
 //						Color: pulumi.String("000000"),
 //						Key:   pulumi.String("staging"),
 //						Name:  pulumi.String("Staging"),

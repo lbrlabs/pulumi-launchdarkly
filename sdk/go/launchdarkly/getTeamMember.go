@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupTeamMember(ctx, &GetTeamMemberArgs{
+//			_, err = launchdarkly.LookupTeamMember(ctx, &launchdarkly.LookupTeamMemberArgs{
 //				Email: "example@example.com",
 //			}, nil)
 //			if err != nil {

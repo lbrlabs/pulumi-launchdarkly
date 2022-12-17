@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupEnvironment(ctx, &GetEnvironmentArgs{
+//			_, err = launchdarkly.LookupEnvironment(ctx, &launchdarkly.LookupEnvironmentArgs{
 //				Key:        "example-env",
 //				ProjectKey: "example-project",
 //			}, nil)

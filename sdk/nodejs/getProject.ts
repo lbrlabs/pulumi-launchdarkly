@@ -19,17 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getProject({
+ * const example = launchdarkly.getProject({
  *     key: "example-project",
- * }));
+ * });
  * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getProject:getProject", {
         "key": args.key,
         "tags": args.tags,
@@ -79,9 +76,26 @@ export interface GetProjectResult {
      */
     readonly tags?: string[];
 }
-
+/**
+ * Provides a LaunchDarkly project data source.
+ *
+ * This data source allows you to retrieve project information from your LaunchDarkly organization.
+ *
+ * > **Note:** LaunchDarkly data sources do not provide access to the project's environments. If you wish to import environment configurations as data sources you must use the [`launchdarkly.Environment` data source](https://www.terraform.io/docs/providers/launchdarkly/d/environment.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getProject({
+ *     key: "example-project",
+ * });
+ * ```
+ */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
-    return pulumi.output(args).apply(a => getProject(a, opts))
+    return pulumi.output(args).apply((a: any) => getProject(a, opts))
 }
 
 /**

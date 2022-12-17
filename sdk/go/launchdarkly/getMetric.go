@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupMetric(ctx, &GetMetricArgs{
+//			_, err = launchdarkly.LookupMetric(ctx, &launchdarkly.LookupMetricArgs{
 //				Key:        "example-metric",
 //				ProjectKey: "example-project",
 //			}, nil)
