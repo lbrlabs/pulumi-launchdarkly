@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupWebhook(ctx, &GetWebhookArgs{
+//			_, err = launchdarkly.LookupWebhook(ctx, &launchdarkly.LookupWebhookArgs{
 //				Id: "57c0af6099690907435299",
 //			}, nil)
 //			if err != nil {

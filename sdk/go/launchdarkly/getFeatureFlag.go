@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := launchdarkly.LookupFeatureFlag(ctx, &GetFeatureFlagArgs{
+//			_, err = launchdarkly.LookupFeatureFlag(ctx, &launchdarkly.LookupFeatureFlagArgs{
 //				Key:        "example-flag",
 //				ProjectKey: "example-project",
 //			}, nil)

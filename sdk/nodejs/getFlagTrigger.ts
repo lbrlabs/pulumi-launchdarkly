@@ -19,21 +19,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getFlagTrigger({
+ * const example = launchdarkly.getFlagTrigger({
  *     id: "<project_key>/<env_key>/<flag_key>/61d490757f7821150815518f",
  *     instructions: {
  *         kind: "turnFlagOff",
  *     },
  *     integrationKey: "datadog",
- * }));
+ * });
  * ```
  */
 export function getFlagTrigger(args: GetFlagTriggerArgs, opts?: pulumi.InvokeOptions): Promise<GetFlagTriggerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getFlagTrigger:getFlagTrigger", {
         "enabled": args.enabled,
         "envKey": args.envKey,
@@ -108,9 +105,30 @@ export interface GetFlagTriggerResult {
     readonly projectKey: string;
     readonly triggerUrl: string;
 }
-
+/**
+ * Provides a LaunchDarkly flag trigger data source.
+ *
+ * > **Note:** Flag triggers are available to customers on an Enterprise LaunchDarkly plan. To learn more, read about our pricing. To upgrade your plan, [contact LaunchDarkly Sales](https://launchdarkly.com/contact-sales/).
+ *
+ * This data source allows you to retrieve information about flag triggers from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getFlagTrigger({
+ *     id: "<project_key>/<env_key>/<flag_key>/61d490757f7821150815518f",
+ *     instructions: {
+ *         kind: "turnFlagOff",
+ *     },
+ *     integrationKey: "datadog",
+ * });
+ * ```
+ */
 export function getFlagTriggerOutput(args: GetFlagTriggerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlagTriggerResult> {
-    return pulumi.output(args).apply(a => getFlagTrigger(a, opts))
+    return pulumi.output(args).apply((a: any) => getFlagTrigger(a, opts))
 }
 
 /**

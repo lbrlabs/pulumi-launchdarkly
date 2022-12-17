@@ -17,18 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getFeatureFlag({
+ * const example = launchdarkly.getFeatureFlag({
  *     key: "example-flag",
  *     projectKey: "example-project",
- * }));
+ * });
  * ```
  */
 export function getFeatureFlag(args: GetFeatureFlagArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureFlagResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getFeatureFlag:getFeatureFlag", {
         "archived": args.archived,
         "clientSideAvailabilities": args.clientSideAvailabilities,
@@ -159,9 +156,25 @@ export interface GetFeatureFlagResult {
      */
     readonly variations: outputs.GetFeatureFlagVariation[];
 }
-
+/**
+ * Provides a LaunchDarkly feature flag data source.
+ *
+ * This data source allows you to retrieve feature flag information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getFeatureFlag({
+ *     key: "example-flag",
+ *     projectKey: "example-project",
+ * });
+ * ```
+ */
 export function getFeatureFlagOutput(args: GetFeatureFlagOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureFlagResult> {
-    return pulumi.output(args).apply(a => getFeatureFlag(a, opts))
+    return pulumi.output(args).apply((a: any) => getFeatureFlag(a, opts))
 }
 
 /**

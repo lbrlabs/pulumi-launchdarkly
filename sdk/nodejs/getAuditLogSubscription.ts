@@ -15,18 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const test = pulumi.output(launchdarkly.getAuditLogSubscription({
+ * const test = launchdarkly.getAuditLogSubscription({
  *     id: "5f0cd446a77cba0b4c5644a7",
  *     integrationKey: "msteams",
- * }));
+ * });
  * ```
  */
 export function getAuditLogSubscription(args: GetAuditLogSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetAuditLogSubscriptionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getAuditLogSubscription:getAuditLogSubscription", {
         "config": args.config,
         "id": args.id,
@@ -99,9 +96,23 @@ export interface GetAuditLogSubscriptionResult {
      */
     readonly tags?: string[];
 }
-
+/**
+ * Provides a LaunchDarkly audit log subscription data source.
+ *
+ * This data source allows you to retrieve information about LaunchDarkly audit log subscriptions.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const test = launchdarkly.getAuditLogSubscription({
+ *     id: "5f0cd446a77cba0b4c5644a7",
+ *     integrationKey: "msteams",
+ * });
+ * ```
+ */
 export function getAuditLogSubscriptionOutput(args: GetAuditLogSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuditLogSubscriptionResult> {
-    return pulumi.output(args).apply(a => getAuditLogSubscription(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuditLogSubscription(a, opts))
 }
 
 /**

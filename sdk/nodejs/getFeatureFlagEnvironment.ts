@@ -17,18 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getFeatureFlagEnvironment({
+ * const example = launchdarkly.getFeatureFlagEnvironment({
  *     envKey: "example-env",
  *     flagId: "example-project/example-flag",
- * }));
+ * });
  * ```
  */
 export function getFeatureFlagEnvironment(args: GetFeatureFlagEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureFlagEnvironmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getFeatureFlagEnvironment:getFeatureFlagEnvironment", {
         "envKey": args.envKey,
         "fallthrough": args.fallthrough,
@@ -111,9 +108,25 @@ export interface GetFeatureFlagEnvironmentResult {
      */
     readonly trackEvents?: boolean;
 }
-
+/**
+ * Provides a LaunchDarkly environment-specific feature flag data source.
+ *
+ * This data source allows you to retrieve environment-specific feature flag information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getFeatureFlagEnvironment({
+ *     envKey: "example-env",
+ *     flagId: "example-project/example-flag",
+ * });
+ * ```
+ */
 export function getFeatureFlagEnvironmentOutput(args: GetFeatureFlagEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureFlagEnvironmentResult> {
-    return pulumi.output(args).apply(a => getFeatureFlagEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getFeatureFlagEnvironment(a, opts))
 }
 
 /**

@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const platformTeam = new launchdarkly.Team("platform_team", {
+ * const platformTeam = new launchdarkly.Team("platformTeam", {
  *     customRoleKeys: [
  *         "platform",
  *         "nomad-administrators",

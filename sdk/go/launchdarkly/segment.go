@@ -46,10 +46,10 @@ import (
 //					pulumi.String("user3"),
 //					pulumi.String("user4"),
 //				},
-//				Rules: SegmentRuleArray{
-//					&SegmentRuleArgs{
-//						Clauses: SegmentRuleClauseArray{
-//							&SegmentRuleClauseArgs{
+//				Rules: launchdarkly.SegmentRuleArray{
+//					&launchdarkly.SegmentRuleArgs{
+//						Clauses: launchdarkly.SegmentRuleClauseArray{
+//							&launchdarkly.SegmentRuleClauseArgs{
 //								Attribute: pulumi.String("country"),
 //								Op:        pulumi.String("startsWith"),
 //								Values: pulumi.StringArray{

@@ -17,18 +17,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as launchdarkly from "@pulumi/launchdarkly";
  *
- * const example = pulumi.output(launchdarkly.getEnvironment({
+ * const example = launchdarkly.getEnvironment({
  *     key: "example-env",
  *     projectKey: "example-project",
- * }));
+ * });
  * ```
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("launchdarkly:index/getEnvironment:getEnvironment", {
         "approvalSettings": args.approvalSettings,
         "confirmChanges": args.confirmChanges,
@@ -137,9 +134,25 @@ export interface GetEnvironmentResult {
      */
     readonly tags?: string[];
 }
-
+/**
+ * Provides a LaunchDarkly environment data source.
+ *
+ * This data source allows you to retrieve environment information from your LaunchDarkly organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as launchdarkly from "@pulumi/launchdarkly";
+ *
+ * const example = launchdarkly.getEnvironment({
+ *     key: "example-env",
+ *     projectKey: "example-project",
+ * });
+ * ```
+ */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply(a => getEnvironment(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
 }
 
 /**

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
  * const example = new launchdarkly.CustomRole("example", {
  *     description: "This is an example role",

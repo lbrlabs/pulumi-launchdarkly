@@ -11,15 +11,13 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as launchdarkly from "@pulumi/launchdarkly";
+ * import * as launchdarkly from "@lbrlabs/pulumi-launchdarkly";
  *
- * const example = new launchdarkly.RelayProxyConfiguration("example", {
- *     policies: [{
- *         actions: ["*"],
- *         effect: "allow",
- *         resources: ["proj/*:env/*"],
- *     }],
- * });
+ * const example = new launchdarkly.RelayProxyConfiguration("example", {policies: [{
+ *     actions: ["*"],
+ *     effect: "allow",
+ *     resources: ["proj/*:env/*"],
+ * }]});
  * ```
  *
  * ## Import

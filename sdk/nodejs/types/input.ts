@@ -270,23 +270,6 @@ export interface FlagTriggerInstructions {
     kind: pulumi.Input<string>;
 }
 
-export interface GetAuditLogSubscriptionStatementArgs {
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-     */
-    effect: pulumi.Input<string>;
-    notActions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
-     */
-    notResources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetAuditLogSubscriptionStatement {
     actions?: string[];
     /**
@@ -302,6 +285,23 @@ export interface GetAuditLogSubscriptionStatement {
      * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
      */
     resources?: string[];
+}
+
+export interface GetAuditLogSubscriptionStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. To learn more about how to configure these, read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. To learn more about how to configure these read [Using resources](https://docs.launchdarkly.com/home/members/role-resources).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetEnvironmentApprovalSetting {
@@ -342,21 +342,6 @@ export interface GetFeatureFlagClientSideAvailabilityArgs {
     usingMobileKey?: pulumi.Input<boolean>;
 }
 
-export interface GetFeatureFlagCustomPropertyArgs {
-    /**
-     * The unique feature flag key that references the flag in your application code.
-     */
-    key: pulumi.Input<string>;
-    /**
-     * The name of the custom property.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * The list of custom property value strings.
-     */
-    values: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetFeatureFlagCustomProperty {
     /**
      * The unique feature flag key that references the flag in your application code.
@@ -372,15 +357,19 @@ export interface GetFeatureFlagCustomProperty {
     values: string[];
 }
 
-export interface GetFeatureFlagDefaultsArgs {
+export interface GetFeatureFlagCustomPropertyArgs {
     /**
-     * (Required) The index of the variation the flag will default to in all new environments when off.
+     * The unique feature flag key that references the flag in your application code.
      */
-    offVariation: pulumi.Input<number>;
+    key: pulumi.Input<string>;
     /**
-     * (Required) The index of the variation the flag will default to in all new environments when on.
+     * The name of the custom property.
      */
-    onVariation: pulumi.Input<number>;
+    name: pulumi.Input<string>;
+    /**
+     * The list of custom property value strings.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetFeatureFlagDefaults {
@@ -394,19 +383,15 @@ export interface GetFeatureFlagDefaults {
     onVariation: number;
 }
 
-export interface GetFeatureFlagEnvironmentFallthroughArgs {
+export interface GetFeatureFlagDefaultsArgs {
     /**
-     * Group percentage rollout by a custom attribute.
+     * (Required) The index of the variation the flag will default to in all new environments when off.
      */
-    bucketBy?: pulumi.Input<string>;
+    offVariation: pulumi.Input<number>;
     /**
-     * List of integer percentage rollout weights applied to each variation when the rule clauses evaluates to `true`.
+     * (Required) The index of the variation the flag will default to in all new environments when on.
      */
-    rolloutWeights?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * The integer variation index served when the rule clauses evaluate to `true`.
-     */
-    variation?: pulumi.Input<number>;
+    onVariation: pulumi.Input<number>;
 }
 
 export interface GetFeatureFlagEnvironmentFallthrough {
@@ -422,6 +407,21 @@ export interface GetFeatureFlagEnvironmentFallthrough {
      * The integer variation index served when the rule clauses evaluate to `true`.
      */
     variation?: number;
+}
+
+export interface GetFeatureFlagEnvironmentFallthroughArgs {
+    /**
+     * Group percentage rollout by a custom attribute.
+     */
+    bucketBy?: pulumi.Input<string>;
+    /**
+     * List of integer percentage rollout weights applied to each variation when the rule clauses evaluates to `true`.
+     */
+    rolloutWeights?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The integer variation index served when the rule clauses evaluate to `true`.
+     */
+    variation?: pulumi.Input<number>;
 }
 
 export interface GetFeatureFlagEnvironmentPrerequisite {
@@ -552,21 +552,6 @@ export interface GetFeatureFlagEnvironmentTargetArgs {
     variation: pulumi.Input<number>;
 }
 
-export interface GetFeatureFlagVariationArgs {
-    /**
-     * The variation's description.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The name of the custom property.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The list of custom property value strings.
-     */
-    value: pulumi.Input<string>;
-}
-
 export interface GetFeatureFlagVariation {
     /**
      * The variation's description.
@@ -582,22 +567,27 @@ export interface GetFeatureFlagVariation {
     value: string;
 }
 
-export interface GetFlagTriggerInstructionsArgs {
-    kind: pulumi.Input<string>;
+export interface GetFeatureFlagVariationArgs {
+    /**
+     * The variation's description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The name of the custom property.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The list of custom property value strings.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface GetFlagTriggerInstructions {
     kind: string;
 }
 
-export interface GetMetricUrlArgs {
-    /**
-     * The metric type. Available choices are `click`, `custom`, and `pageview`.
-     */
+export interface GetFlagTriggerInstructionsArgs {
     kind: pulumi.Input<string>;
-    pattern?: pulumi.Input<string>;
-    substring?: pulumi.Input<string>;
-    url?: pulumi.Input<string>;
 }
 
 export interface GetMetricUrl {
@@ -608,6 +598,16 @@ export interface GetMetricUrl {
     pattern?: string;
     substring?: string;
     url?: string;
+}
+
+export interface GetMetricUrlArgs {
+    /**
+     * The metric type. Available choices are `click`, `custom`, and `pageview`.
+     */
+    kind: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
+    substring?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 export interface GetRelayProxyConfigurationPolicy {
@@ -720,23 +720,6 @@ export interface GetSegmentRuleClauseArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetWebhookStatementArgs {
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-     */
-    effect: pulumi.Input<string>;
-    notActions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement does not apply. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
-     */
-    notResources?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
-     */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
 export interface GetWebhookStatement {
     actions?: string[];
     /**
@@ -752,6 +735,23 @@ export interface GetWebhookStatement {
      * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
      */
     resources?: string[];
+}
+
+export interface GetWebhookStatementArgs {
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
+     */
+    effect: pulumi.Input<string>;
+    notActions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement does not apply. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    notResources?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of resource specifiers defining the resources to which the statement applies. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     */
+    resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface MetricUrl {
@@ -933,4 +933,3 @@ export interface WebhookStatement {
      */
     resources?: pulumi.Input<pulumi.Input<string>[]>;
 }
-
