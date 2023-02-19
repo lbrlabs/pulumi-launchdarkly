@@ -52,14 +52,14 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     @Import(name="customProperties")
     private @Nullable Output<List<FeatureFlagCustomPropertyArgs>> customProperties;
 
     /**
-     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     public Optional<Output<List<FeatureFlagCustomPropertyArgs>>> customProperties() {
@@ -331,7 +331,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class FeatureFlagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
          * 
          * @return builder
          * 

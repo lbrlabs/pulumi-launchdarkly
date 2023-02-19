@@ -22,10 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a LaunchDarkly environment-specific feature flag resource.
- * 
- * This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
- * 
  * ## Example Usage
  * ```java
  * package generated_program;

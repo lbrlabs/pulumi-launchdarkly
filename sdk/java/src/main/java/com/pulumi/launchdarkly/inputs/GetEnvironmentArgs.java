@@ -42,14 +42,14 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     @Import(name="defaultTrackEvents")
     private @Nullable Output<Boolean> defaultTrackEvents;
 
     /**
-     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     public Optional<Output<Boolean>> defaultTrackEvents() {
@@ -57,14 +57,14 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     @Import(name="defaultTtl")
     private @Nullable Output<Integer> defaultTtl;
 
     /**
-     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     public Optional<Output<Integer>> defaultTtl() {
@@ -213,7 +213,7 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param defaultTrackEvents A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+         * @param defaultTrackEvents A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param defaultTrackEvents A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+         * @param defaultTrackEvents A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param defaultTtl The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+         * @param defaultTtl The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class GetEnvironmentArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param defaultTtl The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+         * @param defaultTtl The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
          * 
          * @return builder
          * 

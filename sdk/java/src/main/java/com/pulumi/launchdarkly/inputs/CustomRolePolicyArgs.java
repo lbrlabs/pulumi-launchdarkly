@@ -15,14 +15,14 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
     public static final CustomRolePolicyArgs Empty = new CustomRolePolicyArgs();
 
     /**
-     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
      * 
      */
     @Import(name="actions", required=true)
     private Output<List<String>> actions;
 
     /**
-     * @return The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * @return The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
      * 
      */
     public Output<List<String>> actions() {
@@ -45,14 +45,14 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
      * 
      */
     @Import(name="resources", required=true)
     private Output<List<String>> resources;
 
     /**
-     * @return - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     * @return - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
      * 
      */
     public Output<List<String>> resources() {
@@ -86,7 +86,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+         * @param actions The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class CustomRolePolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+         * @param resources - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
          * 
          * @return builder
          * 

@@ -106,7 +106,7 @@ public final class AccessTokenState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+     * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
      * 
      * @deprecated
      * &#39;policy_statements&#39; is deprecated in favor of &#39;inline_roles&#39;. This field will be removed in the next major release of the LaunchDarkly provider
@@ -117,7 +117,7 @@ public final class AccessTokenState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<AccessTokenPolicyStatementArgs>> policyStatements;
 
     /**
-     * @return Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+     * @return Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
      * 
      * @deprecated
      * &#39;policy_statements&#39; is deprecated in favor of &#39;inline_roles&#39;. This field will be removed in the next major release of the LaunchDarkly provider
@@ -342,7 +342,7 @@ public final class AccessTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class AccessTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class AccessTokenState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+         * @param policyStatements Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
          * 
          * @return builder
          * 

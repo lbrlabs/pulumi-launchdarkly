@@ -28,7 +28,7 @@ class CustomRoleArgs:
         :param pulumi.Input[str] base_permissions: The base permission level. Either `reader` or `no_access`. Defaults to `reader` if not set.
         :param pulumi.Input[str] description: The description of the custom role.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         pulumi.set(__self__, "key", key)
         if base_permissions is not None:
@@ -106,7 +106,7 @@ class CustomRoleArgs:
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
         """
-        The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         return pulumi.get(self, "policy_statements")
 
@@ -130,7 +130,7 @@ class _CustomRoleState:
         :param pulumi.Input[str] description: The description of the custom role.
         :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        :param pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]] policy_statements: The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         if base_permissions is not None:
             pulumi.set(__self__, "base_permissions", base_permissions)
@@ -209,7 +209,7 @@ class _CustomRoleState:
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomRolePolicyStatementArgs']]]]:
         """
-        The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         return pulumi.get(self, "policy_statements")
 
@@ -274,7 +274,7 @@ class CustomRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the custom role.
         :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         ...
     @overload
@@ -388,7 +388,7 @@ class CustomRole(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the custom role.
         :param pulumi.Input[str] key: The unique key that references the custom role. A change in this field will force the destruction of the existing resource and the creation of a new one.
         :param pulumi.Input[str] name: The human-readable name for the custom role.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomRolePolicyStatementArgs']]]] policy_statements: The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -443,7 +443,7 @@ class CustomRole(pulumi.CustomResource):
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> pulumi.Output[Optional[Sequence['outputs.CustomRolePolicyStatement']]]:
         """
-        The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         """
         return pulumi.get(self, "policy_statements")
 

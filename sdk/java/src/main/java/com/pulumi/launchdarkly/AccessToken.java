@@ -200,7 +200,7 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+     * Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
      * 
      * @deprecated
      * &#39;policy_statements&#39; is deprecated in favor of &#39;inline_roles&#39;. This field will be removed in the next major release of the LaunchDarkly provider
@@ -211,7 +211,7 @@ public class AccessToken extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<AccessTokenPolicyStatement>> policyStatements;
 
     /**
-     * @return Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+     * @return Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
      * 
      */
     public Output<Optional<List<AccessTokenPolicyStatement>>> policyStatements() {

@@ -119,7 +119,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         /// </summary>
         [Output("policyStatements")]
         public Output<ImmutableArray<Outputs.AccessTokenPolicyStatement>> PolicyStatements { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.AccessTokenPolicyStatementArgs>? _policyStatements;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         /// </summary>
         [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
         public InputList<Inputs.AccessTokenPolicyStatementArgs> PolicyStatements
@@ -316,7 +316,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.AccessTokenPolicyStatementGetArgs>? _policyStatements;
 
         /// <summary>
-        /// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        /// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         /// </summary>
         [Obsolete(@"'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider")]
         public InputList<Inputs.AccessTokenPolicyStatementGetArgs> PolicyStatements

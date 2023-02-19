@@ -146,7 +146,7 @@ type FeatureFlag struct {
 	Archived pulumi.BoolPtrOutput `pulumi:"archived"`
 	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayOutput `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayOutput `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsOutput `pulumi:"defaults"`
@@ -218,7 +218,7 @@ type featureFlagState struct {
 	Archived *bool `pulumi:"archived"`
 	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities []FeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
@@ -252,7 +252,7 @@ type FeatureFlagState struct {
 	Archived pulumi.BoolPtrInput
 	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayInput
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsPtrInput
@@ -290,7 +290,7 @@ type featureFlagArgs struct {
 	Archived *bool `pulumi:"archived"`
 	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities []FeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []FeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults *FeatureFlagDefaults `pulumi:"defaults"`
@@ -325,7 +325,7 @@ type FeatureFlagArgs struct {
 	Archived pulumi.BoolPtrInput
 	// A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities FeatureFlagClientSideAvailabilityArrayInput
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties FeatureFlagCustomPropertyArrayInput
 	// A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
 	Defaults FeatureFlagDefaultsPtrInput
@@ -451,7 +451,7 @@ func (o FeatureFlagOutput) ClientSideAvailabilities() FeatureFlagClientSideAvail
 	return o.ApplyT(func(v *FeatureFlag) FeatureFlagClientSideAvailabilityArrayOutput { return v.ClientSideAvailabilities }).(FeatureFlagClientSideAvailabilityArrayOutput)
 }
 
-// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 func (o FeatureFlagOutput) CustomProperties() FeatureFlagCustomPropertyArrayOutput {
 	return o.ApplyT(func(v *FeatureFlag) FeatureFlagCustomPropertyArrayOutput { return v.CustomProperties }).(FeatureFlagCustomPropertyArrayOutput)
 }

@@ -15,7 +15,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
     /// 
     /// This resource allows you to create and manage team members within your LaunchDarkly organization.
     /// 
-    /// &gt; **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/docs/teams/managing).
+    /// &gt; **Note:** You can only manage team members with "admin" level personal access tokens. To learn more, read [Managing Teams](https://docs.launchdarkly.com/home/teams/managing).
     /// 
     /// ## Example Usage
     /// 

@@ -168,28 +168,28 @@ public class Environment extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.confirmChanges);
     }
     /**
-     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     @Export(name="defaultTrackEvents", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> defaultTrackEvents;
 
     /**
-     * @return Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * @return Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     public Output<Optional<Boolean>> defaultTrackEvents() {
         return Codegen.optional(this.defaultTrackEvents);
     }
     /**
-     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     @Export(name="defaultTtl", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> defaultTtl;
 
     /**
-     * @return The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * @return The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     public Output<Optional<Integer>> defaultTtl() {

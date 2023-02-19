@@ -120,7 +120,7 @@ type AccessToken struct {
 	InlineRoles AccessTokenInlineRoleArrayOutput `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 	//
 	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 	PolicyStatements AccessTokenPolicyStatementArrayOutput `pulumi:"policyStatements"`
@@ -179,7 +179,7 @@ type accessTokenState struct {
 	InlineRoles []AccessTokenInlineRole `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name *string `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 	//
 	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
@@ -205,7 +205,7 @@ type AccessTokenState struct {
 	InlineRoles AccessTokenInlineRoleArrayInput
 	// A human-friendly name for the access token.
 	Name pulumi.StringPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 	//
 	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 	PolicyStatements AccessTokenPolicyStatementArrayInput
@@ -235,7 +235,7 @@ type accessTokenArgs struct {
 	InlineRoles []AccessTokenInlineRole `pulumi:"inlineRoles"`
 	// A human-friendly name for the access token.
 	Name *string `pulumi:"name"`
-	// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 	//
 	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 	PolicyStatements []AccessTokenPolicyStatement `pulumi:"policyStatements"`
@@ -260,7 +260,7 @@ type AccessTokenArgs struct {
 	InlineRoles AccessTokenInlineRoleArrayInput
 	// A human-friendly name for the access token.
 	Name pulumi.StringPtrInput
-	// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+	// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 	//
 	// Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 	PolicyStatements AccessTokenPolicyStatementArrayInput
@@ -385,7 +385,7 @@ func (o AccessTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inlineRole` to maintain compatibility with future versions.
+// Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inlineRole` to maintain compatibility with future versions.
 //
 // Deprecated: 'policy_statements' is deprecated in favor of 'inline_roles'. This field will be removed in the next major release of the LaunchDarkly provider
 func (o AccessTokenOutput) PolicyStatements() AccessTokenPolicyStatementArrayOutput {

@@ -49,11 +49,11 @@ export interface GetEnvironmentArgs {
      */
     confirmChanges?: boolean;
     /**
-     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
     defaultTrackEvents?: boolean;
     /**
-     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
     defaultTtl?: number;
     /**
@@ -100,11 +100,11 @@ export interface GetEnvironmentResult {
      */
     readonly confirmChanges?: boolean;
     /**
-     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
     readonly defaultTrackEvents?: boolean;
     /**
-     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
     readonly defaultTtl?: number;
     /**
@@ -165,11 +165,11 @@ export interface GetEnvironmentOutputArgs {
      */
     confirmChanges?: pulumi.Input<boolean>;
     /**
-     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
     defaultTrackEvents?: pulumi.Input<boolean>;
     /**
-     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
     defaultTtl?: pulumi.Input<number>;
     /**

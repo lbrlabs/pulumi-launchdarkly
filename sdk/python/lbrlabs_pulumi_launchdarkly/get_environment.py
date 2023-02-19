@@ -111,7 +111,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> Optional[bool]:
         """
-        A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+        A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -119,7 +119,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[int]:
         """
-        The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 
@@ -232,8 +232,8 @@ def get_environment(approval_settings: Optional[Sequence[pulumi.InputType['GetEn
 
 
     :param bool confirm_changes: A value of `true` indicates that this environment requires confirmation for flag and segment changes.
-    :param bool default_track_events: A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
-    :param int default_ttl: The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+    :param bool default_track_events: A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+    :param int default_ttl: The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
     :param str key: The environment's unique key.
     :param str project_key: The environment's project key.
     :param bool require_comments: A value of `true` indicates that this environment requires comments for flag and segment changes.
@@ -299,8 +299,8 @@ def get_environment_output(approval_settings: Optional[pulumi.Input[Optional[Seq
 
 
     :param bool confirm_changes: A value of `true` indicates that this environment requires confirmation for flag and segment changes.
-    :param bool default_track_events: A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
-    :param int default_ttl: The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+    :param bool default_track_events: A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+    :param int default_ttl: The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
     :param str key: The environment's unique key.
     :param str project_key: The environment's project key.
     :param bool require_comments: A value of `true` indicates that this environment requires comments for flag and segment changes.

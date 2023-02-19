@@ -138,7 +138,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableArray<Outputs.FeatureFlagClientSideAvailability>> ClientSideAvailabilities { get; private set; } = null!;
 
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         [Output("customProperties")]
         public Output<ImmutableArray<Outputs.FeatureFlagCustomProperty>> CustomProperties { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.FeatureFlagCustomPropertyArgs>? _customProperties;
 
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         public InputList<Inputs.FeatureFlagCustomPropertyArgs> CustomProperties
         {
@@ -396,7 +396,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.FeatureFlagCustomPropertyGetArgs>? _customProperties;
 
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         public InputList<Inputs.FeatureFlagCustomPropertyGetArgs> CustomProperties
         {

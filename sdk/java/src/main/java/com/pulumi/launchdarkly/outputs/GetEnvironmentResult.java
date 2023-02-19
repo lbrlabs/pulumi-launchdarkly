@@ -37,12 +37,12 @@ public final class GetEnvironmentResult {
      */
     private @Nullable Boolean confirmChanges;
     /**
-     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     private @Nullable Boolean defaultTrackEvents;
     /**
-     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     private @Nullable Integer defaultTtl;
@@ -112,14 +112,14 @@ public final class GetEnvironmentResult {
         return Optional.ofNullable(this.confirmChanges);
     }
     /**
-     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * @return A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     public Optional<Boolean> defaultTrackEvents() {
         return Optional.ofNullable(this.defaultTrackEvents);
     }
     /**
-     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * @return The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     public Optional<Integer> defaultTtl() {

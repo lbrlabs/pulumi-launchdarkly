@@ -55,9 +55,9 @@ type LookupEnvironmentArgs struct {
 	ApprovalSettings []GetEnvironmentApprovalSetting `pulumi:"approvalSettings"`
 	// A value of `true` indicates that this environment requires confirmation for flag and segment changes.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
-	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// The environment's unique key.
 	Key string `pulumi:"key"`
@@ -82,9 +82,9 @@ type LookupEnvironmentResult struct {
 	Color string `pulumi:"color"`
 	// A value of `true` indicates that this environment requires confirmation for flag and segment changes.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
-	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// The provider-assigned unique ID for this managed resource.
 	Id  string `pulumi:"id"`
@@ -120,9 +120,9 @@ type LookupEnvironmentOutputArgs struct {
 	ApprovalSettings GetEnvironmentApprovalSettingArrayInput `pulumi:"approvalSettings"`
 	// A value of `true` indicates that this environment requires confirmation for flag and segment changes.
 	ConfirmChanges pulumi.BoolPtrInput `pulumi:"confirmChanges"`
-	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+	// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents pulumi.BoolPtrInput `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+	// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
 	// The environment's unique key.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -179,12 +179,12 @@ func (o LookupEnvironmentResultOutput) ConfirmChanges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *bool { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
 }
 
-// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+// A value of `true` enables data export for every flag created in this environment. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 func (o LookupEnvironmentResultOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *bool { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
 }
 
-// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+// The TTL for the environment. This will be a numeric value between 0 and 60 in minutes. The TTL setting only applies to environments using the PHP SDK. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 func (o LookupEnvironmentResultOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
