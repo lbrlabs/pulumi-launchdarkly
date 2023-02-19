@@ -71,14 +71,14 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     @Import(name="defaultTrackEvents")
     private @Nullable Output<Boolean> defaultTrackEvents;
 
     /**
-     * @return Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * @return Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      * 
      */
     public Optional<Output<Boolean>> defaultTrackEvents() {
@@ -86,14 +86,14 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     @Import(name="defaultTtl")
     private @Nullable Output<Integer> defaultTtl;
 
     /**
-     * @return The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * @return The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      * 
      */
     public Optional<Output<Integer>> defaultTtl() {
@@ -292,7 +292,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultTrackEvents Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+         * @param defaultTrackEvents Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultTrackEvents Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+         * @param defaultTrackEvents Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultTtl The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+         * @param defaultTtl The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class ProjectEnvironmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param defaultTtl The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+         * @param defaultTtl The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
          * 
          * @return builder
          * 

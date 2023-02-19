@@ -24,7 +24,7 @@ public final class GetFeatureFlagResult {
      */
     private List<GetFeatureFlagClientSideAvailability> clientSideAvailabilities;
     /**
-     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     private @Nullable List<GetFeatureFlagCustomProperty> customProperties;
@@ -101,7 +101,7 @@ public final class GetFeatureFlagResult {
         return this.clientSideAvailabilities;
     }
     /**
-     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     public List<GetFeatureFlagCustomProperty> customProperties() {

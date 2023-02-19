@@ -86,7 +86,7 @@ type CustomRole struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
 	Policies CustomRolePolicyArrayOutput `pulumi:"policies"`
-	// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+	// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 	PolicyStatements CustomRolePolicyStatementArrayOutput `pulumi:"policyStatements"`
 }
 
@@ -133,7 +133,7 @@ type customRoleState struct {
 	Name *string `pulumi:"name"`
 	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
 	Policies []CustomRolePolicy `pulumi:"policies"`
-	// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+	// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 	PolicyStatements []CustomRolePolicyStatement `pulumi:"policyStatements"`
 }
 
@@ -148,7 +148,7 @@ type CustomRoleState struct {
 	Name pulumi.StringPtrInput
 	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
 	Policies CustomRolePolicyArrayInput
-	// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+	// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 	PolicyStatements CustomRolePolicyStatementArrayInput
 }
 
@@ -167,7 +167,7 @@ type customRoleArgs struct {
 	Name *string `pulumi:"name"`
 	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
 	Policies []CustomRolePolicy `pulumi:"policies"`
-	// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+	// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 	PolicyStatements []CustomRolePolicyStatement `pulumi:"policyStatements"`
 }
 
@@ -183,7 +183,7 @@ type CustomRoleArgs struct {
 	Name pulumi.StringPtrInput
 	// Deprecated: 'policy' is now deprecated. Please migrate to 'policy_statements' to maintain future compatability.
 	Policies CustomRolePolicyArrayInput
-	// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+	// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 	PolicyStatements CustomRolePolicyStatementArrayInput
 }
 
@@ -299,7 +299,7 @@ func (o CustomRoleOutput) Policies() CustomRolePolicyArrayOutput {
 	return o.ApplyT(func(v *CustomRole) CustomRolePolicyArrayOutput { return v.Policies }).(CustomRolePolicyArrayOutput)
 }
 
-// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
 func (o CustomRoleOutput) PolicyStatements() CustomRolePolicyStatementArrayOutput {
 	return o.ApplyT(func(v *CustomRole) CustomRolePolicyStatementArrayOutput { return v.PolicyStatements }).(CustomRolePolicyStatementArrayOutput)
 }

@@ -329,10 +329,6 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
                  track_events: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a LaunchDarkly environment-specific feature flag resource.
-
-        This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
-
         ## Example Usage
 
         ```python
@@ -418,10 +414,6 @@ class FeatureFlagEnvironment(pulumi.CustomResource):
                  args: FeatureFlagEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a LaunchDarkly environment-specific feature flag resource.
-
-        This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
-
         ## Example Usage
 
         ```python

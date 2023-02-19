@@ -95,7 +95,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private List<Inputs.GetFeatureFlagCustomPropertyArgs>? _customProperties;
 
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         public List<Inputs.GetFeatureFlagCustomPropertyArgs> CustomProperties
         {
@@ -196,7 +196,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.GetFeatureFlagCustomPropertyInputArgs>? _customProperties;
 
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         public InputList<Inputs.GetFeatureFlagCustomPropertyInputArgs> CustomProperties
         {
@@ -286,7 +286,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagClientSideAvailabilityResult> ClientSideAvailabilities;
         /// <summary>
-        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        /// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFeatureFlagCustomPropertyResult> CustomProperties;
         /// <summary>

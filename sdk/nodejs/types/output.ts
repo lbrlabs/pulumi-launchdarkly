@@ -76,7 +76,7 @@ export interface AuditLogSubscriptionStatement {
 
 export interface CustomRolePolicy {
     /**
-     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
      */
     actions: string[];
     /**
@@ -84,14 +84,14 @@ export interface CustomRolePolicy {
      */
     effect: string;
     /**
-     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
      */
     resources: string[];
 }
 
 export interface CustomRolePolicyStatement {
     /**
-     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
      */
     actions?: string[];
     /**
@@ -99,15 +99,15 @@ export interface CustomRolePolicyStatement {
      */
     effect: string;
     /**
-     * The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+     * The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
      */
     notActions?: string[];
     /**
-     * - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     * - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
      */
     notResources?: string[];
     /**
-     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+     * - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
      */
     resources?: string[];
 }
@@ -606,11 +606,11 @@ export interface ProjectEnvironment {
      */
     confirmChanges?: boolean;
     /**
-     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+     * Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
      */
     defaultTrackEvents?: boolean;
     /**
-     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+     * The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
      */
     defaultTtl?: number;
     /**

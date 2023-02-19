@@ -7,10 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a LaunchDarkly environment-specific feature flag resource.
- *
- * This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
- *
  * ## Example Usage
  *
  * ```typescript

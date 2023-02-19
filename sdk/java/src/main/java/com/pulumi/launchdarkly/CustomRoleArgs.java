@@ -98,14 +98,14 @@ public final class CustomRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      * 
      */
     @Import(name="policyStatements")
     private @Nullable Output<List<CustomRolePolicyStatementArgs>> policyStatements;
 
     /**
-     * @return The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * @return The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      * 
      */
     public Optional<Output<List<CustomRolePolicyStatementArgs>>> policyStatements() {
@@ -263,7 +263,7 @@ public final class CustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+         * @param policyStatements The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class CustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+         * @param policyStatements The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class CustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyStatements The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+         * @param policyStatements The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
          * 
          * @return builder
          * 

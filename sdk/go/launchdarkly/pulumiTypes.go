@@ -410,11 +410,11 @@ func (o AuditLogSubscriptionStatementArrayOutput) Index(i pulumi.IntInput) Audit
 }
 
 type CustomRolePolicy struct {
-	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
-	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	Resources []string `pulumi:"resources"`
 }
 
@@ -430,11 +430,11 @@ type CustomRolePolicyInput interface {
 }
 
 type CustomRolePolicyArgs struct {
-	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -489,7 +489,7 @@ func (o CustomRolePolicyOutput) ToCustomRolePolicyOutputWithContext(ctx context.
 	return o
 }
 
-// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 func (o CustomRolePolicyOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicy) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -499,7 +499,7 @@ func (o CustomRolePolicyOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRolePolicy) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 func (o CustomRolePolicyOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicy) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -525,15 +525,15 @@ func (o CustomRolePolicyArrayOutput) Index(i pulumi.IntInput) CustomRolePolicyOu
 }
 
 type CustomRolePolicyStatement struct {
-	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	Actions []string `pulumi:"actions"`
 	// - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect string `pulumi:"effect"`
-	// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	NotActions []string `pulumi:"notActions"`
-	// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	NotResources []string `pulumi:"notResources"`
-	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	Resources []string `pulumi:"resources"`
 }
 
@@ -549,15 +549,15 @@ type CustomRolePolicyStatementInput interface {
 }
 
 type CustomRolePolicyStatementArgs struct {
-	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
 	Effect pulumi.StringInput `pulumi:"effect"`
-	// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+	// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 	NotActions pulumi.StringArrayInput `pulumi:"notActions"`
-	// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	NotResources pulumi.StringArrayInput `pulumi:"notResources"`
-	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+	// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -612,7 +612,7 @@ func (o CustomRolePolicyStatementOutput) ToCustomRolePolicyStatementOutputWithCo
 	return o
 }
 
-// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// The list of action specifiers defining the actions to which the statement applies. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 func (o CustomRolePolicyStatementOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
@@ -622,17 +622,17 @@ func (o CustomRolePolicyStatementOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) string { return v.Effect }).(pulumi.StringOutput)
 }
 
-// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+// The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `notActions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
 func (o CustomRolePolicyStatementOutput) NotActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) []string { return v.NotActions }).(pulumi.StringArrayOutput)
 }
 
-// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+// - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 func (o CustomRolePolicyStatementOutput) NotResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) []string { return v.NotResources }).(pulumi.StringArrayOutput)
 }
 
-// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+// - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `notResources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
 func (o CustomRolePolicyStatementOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomRolePolicyStatement) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -2297,9 +2297,9 @@ type ProjectEnvironment struct {
 	Color string `pulumi:"color"`
 	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges *bool `pulumi:"confirmChanges"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents *bool `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl *int `pulumi:"defaultTtl"`
 	// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
 	Key       string  `pulumi:"key"`
@@ -2333,9 +2333,9 @@ type ProjectEnvironmentArgs struct {
 	Color pulumi.StringInput `pulumi:"color"`
 	// Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
 	ConfirmChanges pulumi.BoolPtrInput `pulumi:"confirmChanges"`
-	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+	// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 	DefaultTrackEvents pulumi.BoolPtrInput `pulumi:"defaultTrackEvents"`
-	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+	// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
 	// The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
 	Key       pulumi.StringInput    `pulumi:"key"`
@@ -2423,12 +2423,12 @@ func (o ProjectEnvironmentOutput) ConfirmChanges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.ConfirmChanges }).(pulumi.BoolPtrOutput)
 }
 
-// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
 func (o ProjectEnvironmentOutput) DefaultTrackEvents() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ProjectEnvironment) *bool { return v.DefaultTrackEvents }).(pulumi.BoolPtrOutput)
 }
 
-// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
 func (o ProjectEnvironmentOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ProjectEnvironment) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }

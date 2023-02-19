@@ -180,14 +180,14 @@ public class FeatureFlag extends com.pulumi.resources.CustomResource {
         return this.clientSideAvailabilities;
     }
     /**
-     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     @Export(name="customProperties", type=List.class, parameters={FeatureFlagCustomProperty.class})
     private Output</* @Nullable */ List<FeatureFlagCustomProperty>> customProperties;
 
     /**
-     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     public Output<Optional<List<FeatureFlagCustomProperty>>> customProperties() {

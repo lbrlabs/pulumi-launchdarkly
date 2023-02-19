@@ -43,14 +43,14 @@ public final class GetFeatureFlagPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     @Import(name="customProperties")
     private @Nullable List<GetFeatureFlagCustomProperty> customProperties;
 
     /**
-     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * @return List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      * 
      */
     public Optional<List<GetFeatureFlagCustomProperty>> customProperties() {
@@ -262,7 +262,7 @@ public final class GetFeatureFlagPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GetFeatureFlagPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+         * @param customProperties List of nested blocks describing the feature flag&#39;s [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
          * 
          * @return builder
          * 

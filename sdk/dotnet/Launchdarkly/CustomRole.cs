@@ -101,7 +101,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<ImmutableArray<Outputs.CustomRolePolicy>> Policies { get; private set; } = null!;
 
         /// <summary>
-        /// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        /// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         /// </summary>
         [Output("policyStatements")]
         public Output<ImmutableArray<Outputs.CustomRolePolicyStatement>> PolicyStatements { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.CustomRolePolicyStatementArgs>? _policyStatements;
 
         /// <summary>
-        /// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        /// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         /// </summary>
         public InputList<Inputs.CustomRolePolicyStatementArgs> PolicyStatements
         {
@@ -243,7 +243,7 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         private InputList<Inputs.CustomRolePolicyStatementGetArgs>? _policyStatements;
 
         /// <summary>
-        /// The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+        /// The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
         /// </summary>
         public InputList<Inputs.CustomRolePolicyStatementGetArgs> PolicyStatements
         {

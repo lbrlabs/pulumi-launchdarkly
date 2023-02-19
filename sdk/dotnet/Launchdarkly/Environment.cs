@@ -106,13 +106,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Output<bool?> ConfirmChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Output("defaultTrackEvents")]
         public Output<bool?> DefaultTrackEvents { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Output("defaultTtl")]
         public Output<int?> DefaultTtl { get; private set; } = null!;
@@ -233,13 +233,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<bool>? ConfirmChanges { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
@@ -347,13 +347,13 @@ namespace Lbrlabs.PulumiPackage.Launchdarkly
         public Input<bool>? ConfirmChanges { get; set; }
 
         /// <summary>
-        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+        /// Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         /// </summary>
         [Input("defaultTrackEvents")]
         public Input<bool>? DefaultTrackEvents { get; set; }
 
         /// <summary>
-        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        /// The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }

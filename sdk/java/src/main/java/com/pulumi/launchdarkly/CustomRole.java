@@ -147,14 +147,14 @@ public class CustomRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policies);
     }
     /**
-     * The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      * 
      */
     @Export(name="policyStatements", type=List.class, parameters={CustomRolePolicyStatement.class})
     private Output</* @Nullable */ List<CustomRolePolicyStatement>> policyStatements;
 
     /**
-     * @return The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * @return The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      * 
      */
     public Output<Optional<List<CustomRolePolicyStatement>>> policyStatements() {

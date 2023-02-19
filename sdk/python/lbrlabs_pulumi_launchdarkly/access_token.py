@@ -32,7 +32,7 @@ class AccessTokenArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenInlineRoleArgs']]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
@@ -124,7 +124,7 @@ class AccessTokenArgs:
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]]]:
         """
-        Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         """
         return pulumi.get(self, "policy_statements")
 
@@ -177,7 +177,7 @@ class _AccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input['AccessTokenInlineRoleArgs']]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         :param pulumi.Input[str] token: The access token used to authorize usage of the LaunchDarkly API.
@@ -272,7 +272,7 @@ class _AccessTokenState:
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessTokenPolicyStatementArgs']]]]:
         """
-        Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         """
         return pulumi.get(self, "policy_statements")
 
@@ -377,7 +377,7 @@ class AccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenInlineRoleArgs']]]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         """
@@ -506,7 +506,7 @@ class AccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenInlineRoleArgs']]]] inline_roles: An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place
                of a built-in or custom role.
         :param pulumi.Input[str] name: A human-friendly name for the access token.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessTokenPolicyStatementArgs']]]] policy_statements: Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         :param pulumi.Input[str] role: A built-in LaunchDarkly role. Can be `reader`, `writer`, or `admin`
         :param pulumi.Input[bool] service_token: Whether the token will be a [service token](https://docs.launchdarkly.com/home/account-security/api-access-tokens#service-tokens). A change in this field will force the destruction of the existing token and the creation of a new one.
         :param pulumi.Input[str] token: The access token used to authorize usage of the LaunchDarkly API.
@@ -571,7 +571,7 @@ class AccessToken(pulumi.CustomResource):
     @pulumi.getter(name="policyStatements")
     def policy_statements(self) -> pulumi.Output[Optional[Sequence['outputs.AccessTokenPolicyStatement']]]:
         """
-        Define inline custom roles. An array of statements represented as config blocks with 3 attributes: effect, resources, actions. May be used in place of a built-in or custom role. [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles). May be specified more than once. This field argument is **deprecated**. Please update your config to use `inline_role` to maintain compatibility with future versions.
+        Define inline custom roles. An array of statements represented as config blocks with three attributes: effect, resources, actions. May be used in place of a built-in or custom role. May be specified more than once. This field argument is **deprecated**. Update your config to use `inline_role` to maintain compatibility with future versions.
         """
         return pulumi.get(self, "policy_statements")
 

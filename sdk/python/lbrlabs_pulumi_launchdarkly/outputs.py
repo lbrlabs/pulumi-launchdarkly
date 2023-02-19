@@ -320,9 +320,9 @@ class CustomRolePolicy(dict):
                  effect: str,
                  resources: Sequence[str]):
         """
-        :param Sequence[str] actions: The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        :param Sequence[str] actions: The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
         :param str effect: - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        :param Sequence[str] resources: - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        :param Sequence[str] resources: - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "effect", effect)
@@ -332,7 +332,7 @@ class CustomRolePolicy(dict):
     @pulumi.getter
     def actions(self) -> Sequence[str]:
         """
-        The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -348,7 +348,7 @@ class CustomRolePolicy(dict):
     @pulumi.getter
     def resources(self) -> Sequence[str]:
         """
-        - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
         """
         return pulumi.get(self, "resources")
 
@@ -382,10 +382,10 @@ class CustomRolePolicyStatement(dict):
                  resources: Optional[Sequence[str]] = None):
         """
         :param str effect: - Either `allow` or `deny`. This argument defines whether the statement allows or denies access to the named resources and actions.
-        :param Sequence[str] actions: The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        :param Sequence[str] not_actions: The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
-        :param Sequence[str] not_resources: - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
-        :param Sequence[str] resources: - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        :param Sequence[str] actions: The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
+        :param Sequence[str] not_actions: The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
+        :param Sequence[str] not_resources: - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
+        :param Sequence[str] resources: - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
         """
         pulumi.set(__self__, "effect", effect)
         if actions is not None:
@@ -409,7 +409,7 @@ class CustomRolePolicyStatement(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence[str]]:
         """
-        The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        The list of action specifiers defining the actions to which the statement applies. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
         """
         return pulumi.get(self, "actions")
 
@@ -417,7 +417,7 @@ class CustomRolePolicyStatement(dict):
     @pulumi.getter(name="notActions")
     def not_actions(self) -> Optional[Sequence[str]]:
         """
-        The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/account-security/custom-roles/actions#actions-reference).
+        The list of action specifiers defining the actions to which the statement does not apply. Either `actions` or `not_actions` must be specified. For a list of available actions read [Actions reference](https://docs.launchdarkly.com/home/members/role-actions#actions-reference).
         """
         return pulumi.get(self, "not_actions")
 
@@ -425,7 +425,7 @@ class CustomRolePolicyStatement(dict):
     @pulumi.getter(name="notResources")
     def not_resources(self) -> Optional[Sequence[str]]:
         """
-        - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        - The list of resource specifiers defining the resources to which the statement does not apply. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
         """
         return pulumi.get(self, "not_resources")
 
@@ -433,7 +433,7 @@ class CustomRolePolicyStatement(dict):
     @pulumi.getter
     def resources(self) -> Optional[Sequence[str]]:
         """
-        - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/account-security/custom-roles/resources#understanding-resource-types-and-scopes).
+        - The list of resource specifiers defining the resources to which the statement applies. Either `resources` or `not_resources` must be specified. For a list of available resources read [Understanding resource types and scopes](https://docs.launchdarkly.com/home/members/role-resources#understanding-resource-types-and-scopes).
         """
         return pulumi.get(self, "resources")
 
@@ -1168,8 +1168,8 @@ class ProjectEnvironment(dict):
         :param str key: The project-unique key for the environment. A change in this field will force the destruction of the existing environment and the creation of a new one.
         :param str name: The name of the environment.
         :param bool confirm_changes: Set to `true` if this environment requires confirmation for flag and segment changes. This field will default to `false` when not set.
-        :param bool default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
-        :param int default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        :param bool default_track_events: Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
+        :param int default_ttl: The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         :param bool require_comments: Set to `true` if this environment requires comments for flag and segment changes. This field will default to `false` when not set.
         :param bool secure_mode: Set to `true` to ensure a user of the client-side SDK cannot impersonate another user. This field will default to `false` when not set.
         :param Sequence[str] tags: Set of tags associated with the environment.
@@ -1249,7 +1249,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="defaultTrackEvents")
     def default_track_events(self) -> Optional[bool]:
         """
-        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/docs/data-export).
+        Set to `true` to enable data export for every flag created in this environment after you configure this argument. This field will default to `false` when not set. To learn more, read [Data Export](https://docs.launchdarkly.com/home/data-export).
         """
         return pulumi.get(self, "default_track_events")
 
@@ -1257,7 +1257,7 @@ class ProjectEnvironment(dict):
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[int]:
         """
-        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/docs/environments#section-ttl-settings).
+        The TTL for the environment. This must be between 0 and 60 minutes. The TTL setting only applies to environments using the PHP SDK. This field will default to `0` when not set. To learn more, read [TTL settings](https://docs.launchdarkly.com/home/organize/environments#ttl-settings).
         """
         return pulumi.get(self, "default_ttl")
 

@@ -52,7 +52,7 @@ export interface GetFeatureFlagArgs {
      */
     clientSideAvailabilities?: inputs.GetFeatureFlagClientSideAvailability[];
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: inputs.GetFeatureFlagCustomProperty[];
     /**
@@ -105,7 +105,7 @@ export interface GetFeatureFlagResult {
      */
     readonly clientSideAvailabilities: outputs.GetFeatureFlagClientSideAvailability[];
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      */
     readonly customProperties?: outputs.GetFeatureFlagCustomProperty[];
     /**
@@ -187,7 +187,7 @@ export interface GetFeatureFlagOutputArgs {
      */
     clientSideAvailabilities?: pulumi.Input<pulumi.Input<inputs.GetFeatureFlagClientSideAvailabilityArgs>[]>;
     /**
-     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+     * List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
      */
     customProperties?: pulumi.Input<pulumi.Input<inputs.GetFeatureFlagCustomPropertyArgs>[]>;
     /**

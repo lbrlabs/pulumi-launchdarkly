@@ -11,10 +11,6 @@ using Pulumi;
 namespace Lbrlabs.PulumiPackage.Launchdarkly
 {
     /// <summary>
-    /// Provides a LaunchDarkly environment-specific feature flag resource.
-    /// 
-    /// This resource allows you to create and manage environment-specific feature flags attributes within your LaunchDarkly organization.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

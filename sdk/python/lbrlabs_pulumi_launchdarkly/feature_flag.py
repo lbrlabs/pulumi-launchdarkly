@@ -37,7 +37,7 @@ class FeatureFlagArgs:
         :param pulumi.Input[str] variation_type: The feature flag's variation type: `boolean`, `string`, `number` or `json`.
         :param pulumi.Input[bool] archived: Whether to archive the flag
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
         :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
@@ -141,7 +141,7 @@ class FeatureFlagArgs:
     @pulumi.getter(name="customProperties")
     def custom_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         """
         return pulumi.get(self, "custom_properties")
 
@@ -268,7 +268,7 @@ class _FeatureFlagState:
         Input properties used for looking up and filtering FeatureFlag resources.
         :param pulumi.Input[bool] archived: Whether to archive the flag
         :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagClientSideAvailabilityArgs']]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input['FeatureFlagDefaultsArgs'] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
         :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
@@ -342,7 +342,7 @@ class _FeatureFlagState:
     @pulumi.getter(name="customProperties")
     def custom_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureFlagCustomPropertyArgs']]]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         """
         return pulumi.get(self, "custom_properties")
 
@@ -593,7 +593,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] archived: Whether to archive the flag
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
         :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
@@ -792,7 +792,7 @@ class FeatureFlag(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] archived: Whether to archive the flag
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagClientSideAvailabilityArgs']]]] client_side_availabilities: A block describing whether this flag should be made available to the client-side JavaScript SDK using the client-side Id, mobile key, or both. This value gets its default from your project configuration if not set. To learn more, read Nested Client-Side Availability Block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureFlagCustomPropertyArgs']]]] custom_properties: List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         :param pulumi.Input[pulumi.InputType['FeatureFlagDefaultsArgs']] defaults: A block containing the indices of the variations to be used as the default on and off variations in all new environments. Flag configurations in existing environments will not be changed nor updated if the configuration block is removed. To learn more, read Nested Defaults Blocks.
         :param pulumi.Input[str] description: The feature flag's description.
         :param pulumi.Input[bool] include_in_snippet: **Deprecated** (Optional) Specifies whether this flag should be made available to the client-side JavaScript SDK using the client-side Id. This value gets its default from your project configuration if not set. `include_in_snippet` is now deprecated. Please migrate to `client_side_availability.using_environment_id` to maintain future compatability.
@@ -846,7 +846,7 @@ class FeatureFlag(pulumi.CustomResource):
     @pulumi.getter(name="customProperties")
     def custom_properties(self) -> pulumi.Output[Optional[Sequence['outputs.FeatureFlagCustomProperty']]]:
         """
-        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+        List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
         """
         return pulumi.get(self, "custom_properties")
 

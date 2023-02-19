@@ -55,7 +55,7 @@ type LookupFeatureFlagArgs struct {
 	Archived *bool `pulumi:"archived"`
 	// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities []GetFeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []GetFeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
 	Defaults *GetFeatureFlagDefaults `pulumi:"defaults"`
@@ -84,7 +84,7 @@ type LookupFeatureFlagResult struct {
 	Archived *bool `pulumi:"archived"`
 	// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities []GetFeatureFlagClientSideAvailability `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties []GetFeatureFlagCustomProperty `pulumi:"customProperties"`
 	// A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
 	Defaults GetFeatureFlagDefaults `pulumi:"defaults"`
@@ -131,7 +131,7 @@ type LookupFeatureFlagOutputArgs struct {
 	Archived pulumi.BoolPtrInput `pulumi:"archived"`
 	// A map describing whether this flag has been made available to the client-side JavaScript SDK. To learn more, read Nested Client-Side Availability Block.
 	ClientSideAvailabilities GetFeatureFlagClientSideAvailabilityArrayInput `pulumi:"clientSideAvailabilities"`
-	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+	// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 	CustomProperties GetFeatureFlagCustomPropertyArrayInput `pulumi:"customProperties"`
 	// A map describing the index of the variation served when the flag is on for new environments. To learn more, read Nested Defaults Blocks.
 	Defaults GetFeatureFlagDefaultsPtrInput `pulumi:"defaults"`
@@ -185,7 +185,7 @@ func (o LookupFeatureFlagResultOutput) ClientSideAvailabilities() GetFeatureFlag
 	}).(GetFeatureFlagClientSideAvailabilityArrayOutput)
 }
 
-// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/docs/custom-properties). To learn more, read Nested Custom Properties.
+// List of nested blocks describing the feature flag's [custom properties](https://docs.launchdarkly.com/home/connecting/custom-properties). To learn more, read Nested Custom Properties.
 func (o LookupFeatureFlagResultOutput) CustomProperties() GetFeatureFlagCustomPropertyArrayOutput {
 	return o.ApplyT(func(v LookupFeatureFlagResult) []GetFeatureFlagCustomProperty { return v.CustomProperties }).(GetFeatureFlagCustomPropertyArrayOutput)
 }

@@ -94,7 +94,7 @@ export class CustomRole extends pulumi.CustomResource {
      */
     public readonly policies!: pulumi.Output<outputs.CustomRolePolicy[] | undefined>;
     /**
-     * The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      */
     public readonly policyStatements!: pulumi.Output<outputs.CustomRolePolicyStatement[] | undefined>;
 
@@ -159,7 +159,7 @@ export interface CustomRoleState {
      */
     policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[]>;
     /**
-     * The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      */
     policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[]>;
 }
@@ -189,7 +189,7 @@ export interface CustomRoleArgs {
      */
     policies?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicy>[]>;
     /**
-     * The custom role policy block. To learn more, read [Policies in custom roles](https://docs.launchdarkly.com/docs/policies-in-custom-roles).
+     * The custom role policy block. To learn more, read [Using policies](https://docs.launchdarkly.com/home/members/role-policies).
      */
     policyStatements?: pulumi.Input<pulumi.Input<inputs.CustomRolePolicyStatement>[]>;
 }
